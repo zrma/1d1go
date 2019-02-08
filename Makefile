@@ -12,20 +12,17 @@ deps:
 
 devel-deps: deps
 	$(GO) get ${u} \
-	  gopkg.in/alecthomas/gometalinter.v2  \
 	  golang.org/x/lint/golint             \
 	  github.com/mattn/goveralls           \
 	  github.com/motemen/gobump/cmd/gobump \
 	  github.com/Songmu/goxz/cmd/goxz      \
-	  github.com/Songmu/ghch/cmd/ghch      \
-	  gometalinter.v2 --install --update
+	  github.com/Songmu/ghch/cmd/ghch
 
 test: deps
-	$(GO) test
+	$(GO) test ./...
 
 lint: devel-deps
 	$(GO) vet ./...
-	gometalinter.v2 --deadline=300s --disable=dupl --linter='vet:go tool vet -printfuncs=Infof,Debugf,Warningf,Errorf:PATH:LINE:MESSAGE' ./...
 	golint -set_exit_status
 
 cover: devel-deps

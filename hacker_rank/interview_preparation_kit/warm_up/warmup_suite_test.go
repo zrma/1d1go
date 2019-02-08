@@ -1,4 +1,4 @@
-package warmup_test
+package warm_up_test
 
 import (
 	"testing"
@@ -7,7 +7,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-func TestWarmup(t *testing.T) {
+func TestWarmUp(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Warmup Suite")
+	RunSpecs(t, "WarmUp Suite")
 }
