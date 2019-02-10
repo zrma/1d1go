@@ -12,8 +12,8 @@ type data struct {
 func bubbleSort(items []data, limit int) (int, bool) {
 	var (
 		n      = len(items)
-		sorted = false
 		cnt    = 0
+		sorted = false
 	)
 	for !sorted {
 		swapped := false
