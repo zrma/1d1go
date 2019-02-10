@@ -3,8 +3,7 @@ package warm_up
 import "math"
 
 func birthdayCakeCandles(ar []int32) int32 {
-	var cnt int32
-	var max int32
+	var cnt, max int32
 	max = math.MinInt32
 
 	for _, n := range ar {
