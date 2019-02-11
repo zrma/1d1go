@@ -1,4 +1,4 @@
-package t_30_days_of_code
+package tutorial_30_days_of_code
 
 import "fmt"
 

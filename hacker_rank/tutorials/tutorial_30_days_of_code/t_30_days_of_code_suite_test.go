@@ -1,4 +1,4 @@
-package t_30_days_of_code_test
+package tutorial_30_days_of_code_test
 
 import (
 	"testing"
