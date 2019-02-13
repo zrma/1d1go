@@ -17,7 +17,7 @@ var _ = Describe("https://www.hackerrank.com/challenges/crush/problem", func() {
 			{1, 5, 3},
 			{4, 8, 7},
 			{6, 9, 1},
-		}, 10, ),
+		}, 10),
 		Entry("1", 5, [][]int32{
 			{1, 2, 100},
 			{2, 5, 100},
