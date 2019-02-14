@@ -18,4 +18,19 @@ var _ = Describe("https://www.hackerrank.com/challenges/minimum-swaps-2/problem"
 		Entry("test_2", []int32{1, 3, 5, 2, 4, 6, 7}, 3),
 		Entry("test_3", []int32{7, 1, 3, 2, 4, 5, 6}, 5),
 	)
+
+	Context("find 함수는", func() {
+		arr := []int32{1, 2, 3, 4, 5}
+		l := len(arr)
+
+		It("배열에서 주어진 오프셋 위치부터 타겟을 잘 찾는다.", func() {
+			actual, ok := find(arr, int32(3), 2, l)
+			Expect(ok).Should(Equal(true))
+			Expect(actual).Should(Equal(2))
+		})
+		It("오프셋 앞쪽의 타겟은 찾지 않는다.", func() {
+			_, ok := find(arr, int32(2), 2, l)
+			Expect(ok).Should(Equal(false))
+		})
+	})
 })
