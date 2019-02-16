@@ -3,11 +3,12 @@ package arrays
 import (
 	"bufio"
 	"encoding/csv"
+	"os"
+	"strconv"
+
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
-	"os"
-	"strconv"
 )
 
 var _ = Describe("https://www.hackerrank.com/challenges/crush/problem", func() {

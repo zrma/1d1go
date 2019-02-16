@@ -12,10 +12,6 @@ func sherlockAndAnagrams(s string) int32 {
 		for j := i + 1; j <= length; j++ {
 			token := s[i:j]
 			token = utils.SortString(token)
-
-			if _, ok := m[token]; !ok {
-				m[token] = 0
-			}
 			m[token]++
 		}
 	}
