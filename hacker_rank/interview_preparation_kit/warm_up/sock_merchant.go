@@ -4,11 +4,7 @@ func sockMerchant(ar []int32) int32 {
 	counter := make(map[int32]int32)
 
 	for _, n := range ar {
-		if _, ok := counter[n]; ok {
-			counter[n]++
-		} else {
-			counter[n] = 1
-		}
+		counter[n]++
 	}
 
 	var result int32
