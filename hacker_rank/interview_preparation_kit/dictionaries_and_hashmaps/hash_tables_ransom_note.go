@@ -4,17 +4,13 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+
+	"github.com/zrma/1d1c/hacker_rank/common/utils"
 )
 
-type adapter []string
-
-func (a adapter) Len() int           { return len(a) }
-func (a adapter) Less(i, j int) bool { return strings.Compare(a[i], a[j]) < 0 }
-func (a adapter) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-
 func checkMagazine(magazine []string, note []string) {
-	sort.Sort(adapter(magazine))
-	sort.Sort(adapter(note))
+	sort.Sort(utils.SortAdapter(magazine))
+	sort.Sort(utils.SortAdapter(note))
 
 	i := len(magazine) - 1
 	j := len(note) - 1
