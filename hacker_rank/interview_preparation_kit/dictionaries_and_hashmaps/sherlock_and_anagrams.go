@@ -1,22 +1,30 @@
 package dictionaries_and_hashmaps
 
-func sherlockAndAnagrams(s string) int32 {
-	//m := make(map[uint8]int)
-	//for i := 0; i < len(s); i++ {
-	//	if _, ok := m[s[i]]; !ok {
-	//		m[s[i]] = 0
-	//	}
-	//	m[s[i]]++
-	//}
-	//
-	//var seed []string
-	//for k, v := range m {
-	//	if v > 0 {
-	//		idx := strings.IndexAny(s, string(k))
-	//	}
-	//}
-	//
-	//strings.Index(s, seed)
+import (
+	"github.com/zrma/1d1c/hacker_rank/common/utils"
+)
 
-	panic("implement me")
+func sherlockAndAnagrams(s string) int32 {
+	length := len(s)
+
+	m := make(map[string]int32)
+	for i := 0; i < length; i++ {
+		for j := i + 1; j <= length; j++ {
+			token := s[i:j]
+			token = utils.SortString(token)
+
+			if _, ok := m[token]; !ok {
+				m[token] = 0
+			}
+			m[token]++
+		}
+	}
+
+	var total int32
+	for _, v := range m {
+		// v Combinations of 2
+		// vC2 = v * (v - 1) / (2 * 1)
+		total += v * (v - 1) / 2
+	}
+	return total
 }

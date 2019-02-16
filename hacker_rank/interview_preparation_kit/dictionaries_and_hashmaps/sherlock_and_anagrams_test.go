@@ -8,7 +8,7 @@ import (
 )
 
 //noinspection SpellCheckingInspection
-var _ = XDescribe("https://www.hackerrank.com/challenges/sherlock-and-anagrams/problem", func() {
+var _ = Describe("https://www.hackerrank.com/challenges/sherlock-and-anagrams/problem", func() {
 	DescribeTable("문제를 풀었다",
 		func(s string, i int) {
 			actual := sherlockAndAnagrams(s)
@@ -20,4 +20,33 @@ var _ = XDescribe("https://www.hackerrank.com/challenges/sherlock-and-anagrams/p
 		Entry("test_3", "kkkk", 10),
 		Entry("test_4", "cdcd", 5),
 	)
+
+	Measure("성능 테스트", func(b Benchmarker) {
+		runtime := b.Time("long string", func() {
+			actual := sherlockAndAnagrams("ifailuhkqq")
+			Expect(actual).Should(BeNumerically("==", 3))
+			actual = sherlockAndAnagrams("dbcfibibcheigfccacfegicigcefieeeeegcghggdheichgafhdigffgifidfbeaccadabecbdcgieaffbigffcecahafcafhcdg")
+			Expect(actual).Should(BeNumerically("==", 1464))
+			actual = sherlockAndAnagrams("dfcaabeaeeabfffcdbbfaffadcacdeeabcadabfdefcfcbbacadaeafcfceeedacbafdebbffcecdbfebdbfdbdecbfbadddbcec")
+			Expect(actual).Should(BeNumerically("==", 2452))
+			actual = sherlockAndAnagrams("gjjkaaakklheghidclhaaeggllagkmblhdlmihmgkjhkkfcjaekckaafgabfclmgahmdebjekaedhaiikdjmfbmfbdlcafamjbfe")
+			Expect(actual).Should(BeNumerically("==", 873))
+			actual = sherlockAndAnagrams("fdbdidhaiqbggqkhdmqhmemgljaphocpaacdohnokfqmlpmiioedpnjhphmjjnjlpihmpodgkmookedkehfaceklbljcjglncfal")
+			Expect(actual).Should(BeNumerically("==", 585))
+			actual = sherlockAndAnagrams("bcgdehhbcefeeadchgaheddegbiihehcbbdffiiiifgibhfbchffcaiabbbcceabehhiffggghbafabbaaebgediafabafdicdhg")
+			Expect(actual).Should(BeNumerically("==", 1305))
+			actual = sherlockAndAnagrams("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+			Expect(actual).Should(BeNumerically("==", 166650))
+			actual = sherlockAndAnagrams("mhmgmbbccbbaffhbncgndbffkjbhmkfncmihhdhcebmchnfacdigflhhbekhfejblegakjjiejeenibemfmkfjbkkmlichlkbnhc")
+			Expect(actual).Should(BeNumerically("==", 840))
+			actual = sherlockAndAnagrams("fdacbaeacbdbaaacafdfbbdcefadgfcagdfcgbgeafbfbggdedfbdefdbgbefcgdababafgffedbefdecbaabdaafggceffbacgb")
+			Expect(actual).Should(BeNumerically("==", 2134))
+			actual = sherlockAndAnagrams("bahdcafcdadbdgagdddcidaaicggcfdbfeeeghiibbdhabdhffddhffcdccfdddhgiceciffhgdibfdacbidgagdadhdceibbbcc")
+			Expect(actual).Should(BeNumerically("==", 1571))
+			actual = sherlockAndAnagrams("dichcagakdajjhhdhegiifiiggjebejejciaabbifkcbdeigajhgfcfdgekfajbcdifikafkgjjjfefkdbeicgiccgkjheeiefje")
+			Expect(actual).Should(BeNumerically("==", 1042))
+		})
+
+		Expect(runtime.Seconds()).Should(BeNumerically("<", 5), "시간 초과")
+	}, 10)
 })
