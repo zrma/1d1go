@@ -5,10 +5,16 @@ import (
 	"strings"
 )
 
+type sortable []byte
+
+func (s sortable) Len() int           { return len(s) }
+func (s sortable) Less(i, j int) bool { return s[i] < s[j] }
+func (s sortable) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
+
 func SortString(s string) string {
-	ss := strings.Split(s, "")
-	sort.Strings(ss)
-	return strings.Join(ss, "")
+	b := sortable(s)
+	sort.Sort(b)
+	return string(b)
 }
 
 type SortAdapter []string
