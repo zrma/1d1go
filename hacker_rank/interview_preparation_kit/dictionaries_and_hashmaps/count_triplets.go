@@ -22,9 +22,9 @@ func countTriplets(arr []int64, r int64) int64 {
 
 	var total int64
 	for _, num := range arr {
-		total += map3[num]
-		map3[num*r] += map2[num]
 		map2[num*r]++
+		map3[num*r] += map2[num]
+		total += map3[num]
 	}
 
 	return total
