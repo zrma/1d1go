@@ -10,7 +10,7 @@ var _ = Describe("https://www.hackerrank.com/challenges/30-loops/problem", func(
 			defer GinkgoRecover()
 
 			ExampleLetsReview()
-			
+
 			close(done)
 		}()
 	})
