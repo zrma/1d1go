@@ -11,4 +11,10 @@ var _ = Describe("https://www.hackerrank.com/challenges/time-conversion/problem"
 		actual := timeConversion(s)
 		Expect(actual).Should(Equal("19:05:45"))
 	})
+
+	It("예외에도 정상적으로 동작한다.", func() {
+		s := "AB:12:34AM"
+		actual := timeConversion(s)
+		Expect(actual).Should(Equal("00:12:34"))
+	})
 })

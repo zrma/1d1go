@@ -21,5 +21,6 @@ var _ = Describe("https://www.hackerrank.com/challenges/ctci-array-left-rotation
 		Entry("3", 3, a, []int32{4, 5, 1, 2, 3}),
 		Entry("4", 4, a, []int32{5, 1, 2, 3, 4}),
 		Entry("5", 5, a, []int32{1, 2, 3, 4, 5}),
+		Entry("6", 6, a, []int32{2, 3, 4, 5, 1}),
 	)
 })

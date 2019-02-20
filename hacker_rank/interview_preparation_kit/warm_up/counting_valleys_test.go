@@ -6,13 +6,18 @@ import (
 )
 
 var _ = Describe("https://www.hackerrank.com/challenges/counting-valleys/problem", func() {
-	var n int32 = 8
-
-	//noinspection SpellCheckingInspection
-	s := "UDDDUDUU"
-
 	It("문제를 풀었다", func() {
-		actual := countingValleys(n, s)
+		//noinspection SpellCheckingInspection
+		s := "UDDDUDUU"
+		actual := countingValleys(int32(len(s)), s)
 		Expect(actual).Should(BeNumerically("==", 1))
+
+		s = ""
+		actual = countingValleys(int32(len(s)), s)
+		Expect(actual).Should(BeNumerically("==", 0))
+
+		s = "ABC"
+		actual = countingValleys(int32(len(s)), s)
+		Expect(actual).Should(BeNumerically("==", 0))
 	})
 })
