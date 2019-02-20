@@ -15,5 +15,11 @@ var _ = Describe("https://www.hackerrank.com/challenges/repeated-string/problem"
 
 		actual = repeatedString("afternoon after", 3)
 		Expect(actual).Should(BeNumerically("==", 1))
+
+		actual = repeatedString("school hometown", 5)
+		Expect(actual).Should(BeNumerically("==", 0))
+
+		actual = repeatedString("", 5)
+		Expect(actual).Should(BeNumerically("==", 0))
 	})
 })

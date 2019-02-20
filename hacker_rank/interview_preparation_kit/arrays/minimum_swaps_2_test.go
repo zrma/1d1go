@@ -17,6 +17,7 @@ var _ = Describe("https://www.hackerrank.com/challenges/minimum-swaps-2/problem"
 		Entry("test_1", []int32{2, 3, 4, 1, 5}, 3),
 		Entry("test_2", []int32{1, 3, 5, 2, 4, 6, 7}, 3),
 		Entry("test_3", []int32{7, 1, 3, 2, 4, 5, 6}, 5),
+		Entry("test_4", []int32{1, 3, 4, 5, 6}, -1),
 	)
 
 	Context("find 함수는", func() {
