@@ -19,5 +19,9 @@ var _ = Describe("https://www.hackerrank.com/challenges/counting-valleys/problem
 		s = "ABC"
 		actual = countingValleys(int32(len(s)), s)
 		Expect(actual).Should(BeNumerically("==", 0))
+
+		s = "ABC"
+		actual = countingValleys(int32(len(s)+1), s)
+		Expect(actual).Should(BeNumerically("==", 0))
 	})
 })
