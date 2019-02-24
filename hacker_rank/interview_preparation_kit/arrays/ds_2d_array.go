@@ -34,3 +34,7 @@ func hourglassSum(arr [][]int32) int32 {
 
 	return max
 }
+
+func HourGlassSum(arr [][]int32) int32 {
+	return hourglassSum(arr)
+}
