@@ -28,14 +28,6 @@ lint: devel-deps
 cover: devel-deps
 	goveralls
 
-build: deps
-	$(GO) build -ldflags=$(BUILD_LDFLAGS) ./cmd/ghg
-
-crossbuild: devel-deps
-	env GO111MODULE=on goxz -pv=v$(shell gobump show -r) -build-ldflags=$(BUILD_LDFLAGS) \
-	  -os=linux,darwin,windows,freebsd -arch=amd64 -d=./dist/v$(shell gobump show -r) \
-	  ./cmd/ghg
-
 bump: devel-deps
 	_tools/releng
 
