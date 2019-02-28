@@ -1,5 +1,8 @@
 bin/
 reports/
+coverage.out
+
+\.scannerwork/
 
 # Created by https://www.gitignore.io/api/go,osx,linux,windows,jetbrains
 # Edit at https://www.gitignore.io/?templates=go,osx,linux,windows,jetbrains
@@ -170,3 +173,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/go,osx,linux,windows,jetbrains
+
