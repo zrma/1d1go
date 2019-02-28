@@ -2,7 +2,7 @@ package arrays
 
 import "math"
 
-func hourglassSum(arr [][]int32) int32 {
+func HourGlassSum(arr [][]int32) int32 {
 
 	rowSize := len(arr)
 	if rowSize == 0 || rowSize < 3 {
@@ -33,8 +33,4 @@ func hourglassSum(arr [][]int32) int32 {
 	}
 
 	return max
-}
-
-func HourGlassSum(arr [][]int32) int32 {
-	return hourglassSum(arr)
 }

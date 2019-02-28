@@ -15,7 +15,7 @@ var _ = Describe("https://www.hackerrank.com/challenges/2d-array/problem", func(
 			{0, 0, 0, -2, 0, 0},
 			{0, 0, 1, 2, 4, 0},
 		}
-		actual := hourglassSum(arr)
+		actual := HourGlassSum(arr)
 		Expect(actual).Should(BeNumerically("==", 28))
 
 		arr = [][]int32{
@@ -26,15 +26,15 @@ var _ = Describe("https://www.hackerrank.com/challenges/2d-array/problem", func(
 			{0, 0, 0, 2, 0, 0},
 			{0, 0, 1, 2, 4, 0},
 		}
-		actual = hourglassSum(arr)
+		actual = HourGlassSum(arr)
 		Expect(actual).Should(BeNumerically("==", 19))
 	})
 
 	It("예외에도 잘 동작한다.", func() {
-		actual := hourglassSum([][]int32{})
+		actual := HourGlassSum([][]int32{})
 		Expect(actual).Should(BeNumerically("==", 0))
 
-		actual = hourglassSum([][]int32{
+		actual = HourGlassSum([][]int32{
 			{1, 2}, {3, 4}, {5, 6}, {7, 8},
 		})
 	})
