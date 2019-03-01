@@ -19,14 +19,14 @@ devel-deps: deps
 	  github.com/Songmu/ghch/cmd/ghch
 
 test: deps
-	$(GO) test -coverprofile=coverage.out ./...
+	$(GO) test -covermode=count -coverprofile=coverage.out ./...
 
 lint: devel-deps
 	$(GO) vet ./...
 	golint -set_exit_status
 
 cover: devel-deps
-	goveralls
+	COVERALLS_TOKEN=${COVERALLS_TOKEN} goveralls -coverprofile=coverage.out -service=travis-ci
 
 bump: devel-deps
 	_tools/releng
