@@ -29,6 +29,23 @@ var _ = Describe("문자열 관련 유틸 함수 검증", func() {
 			sort.Sort(SortAdapter(actual))
 			Expect(deep.Equal(actual, expect)).Should(BeNil())
 		})
+	})
 
+	Context("Reverse 함수는", func() {
+		It("문자열을 잘 뒤집는다.", func() {
+			actual := Reverse("abc")
+			Expect(actual).Should(Equal("cba"))
+		})
+
+		It("빈 문자열에 오류가 발생하지 않는다.", func(done Done) {
+			go func() {
+				defer GinkgoRecover()
+
+				actual := Reverse("")
+				Expect(actual).Should(Equal(""))
+
+				close(done)
+			}()
+		})
 	})
 })

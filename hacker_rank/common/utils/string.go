@@ -22,3 +22,11 @@ type SortAdapter []string
 func (a SortAdapter) Len() int           { return len(a) }
 func (a SortAdapter) Less(i, j int) bool { return strings.Compare(a[i], a[j]) < 0 }
 func (a SortAdapter) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+
+func Reverse(s string) string {
+	runes := []rune(s)
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
+	}
+	return string(runes)
+}
