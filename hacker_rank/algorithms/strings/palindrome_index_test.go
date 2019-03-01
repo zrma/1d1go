@@ -3,48 +3,42 @@ package strings
 import (
 	"bufio"
 	"encoding/csv"
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
 	"os"
+
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/extensions/table"
+	. "github.com/onsi/gomega"
 )
 
 //noinspection SpellCheckingInspection
 var _ = Describe("https://www.hackerrank.com/challenges/palindrome-index/problem", func() {
-	It("문제를 풀었다", func() {
-		actual := palindromeIndex("aaab")
-		Expect(actual).Should(BeNumerically("==", 3))
-		actual = palindromeIndex("baa")
-		Expect(actual).Should(BeNumerically("==", 0))
-		actual = palindromeIndex("aaa")
-		Expect(actual).Should(BeNumerically("==", -1))
-		actual = palindromeIndex("a")
-		Expect(actual).Should(BeNumerically("==", -1))
-		actual = palindromeIndex("abcadcdddaba")
-		Expect(actual).Should(BeNumerically("==", -1))
-		actual = palindromeIndex("abcd")
-		Expect(actual).Should(BeNumerically("==", -1))
+	type testData struct {
+		s      string
+		expect int32
+	}
 
-		actual = palindromeIndex("quyjjdcgsvvsgcdjjyq")
-		Expect(actual).Should(BeNumerically("==", 1))
-		actual = palindromeIndex("hgygsvlfwcwnswtuhmyaljkqlqjjqlqkjlaymhutwsnwcflvsgygh")
-		Expect(actual).Should(BeNumerically("==", 8))
-		actual = palindromeIndex("fgnfnidynhxebxxxfmxixhsruldhsaobhlcggchboashdlurshxixmfxxxbexhnydinfngf")
-		Expect(actual).Should(BeNumerically("==", 33))
-		actual = palindromeIndex("bsyhvwfuesumsehmytqioswvpcbxyolapfywdxeacyuruybhbwxjmrrmjxwbhbyuruycaexdwyfpaloyxbcpwsoiqtymhesmuseufwvhysb")
-		Expect(actual).Should(BeNumerically("==", 23))
-		actual = palindromeIndex("fvyqxqxynewuebtcuqdwyetyqqisappmunmnldmkttkmdlnmnumppasiqyteywdquctbeuwenyxqxqyvf")
-		Expect(actual).Should(BeNumerically("==", 25))
-		actual = palindromeIndex("mmbiefhflbeckaecprwfgmqlydfroxrblulpasumubqhhbvlqpixvvxipqlvbhqbumusaplulbrxorfdylqmgfwrpceakceblfhfeibmm")
-		Expect(actual).Should(BeNumerically("==", 44))
-		actual = palindromeIndex("tpqknkmbgasitnwqrqasvolmevkasccsakvemlosaqrqwntisagbmknkqpt")
-		Expect(actual).Should(BeNumerically("==", 20))
-		actual = palindromeIndex("lhrxvssvxrhl")
-		Expect(actual).Should(BeNumerically("==", -1))
-		actual = palindromeIndex("prcoitfiptvcxrvoalqmfpnqyhrubxspplrftomfehbbhefmotfrlppsxburhyqnpfmqlaorxcvtpiftiocrp")
-		Expect(actual).Should(BeNumerically("==", 14))
-		actual = palindromeIndex("kjowoemiduaaxasnqghxbxkiccikxbxhgqnsaxaaudimeowojk")
-		Expect(actual).Should(BeNumerically("==", -1))
-	})
+	DescribeTable("문제를 풀었다.",
+		func(data testData) {
+			actual := palindromeIndex(data.s)
+			Expect(actual).Should(BeNumerically("==", data.expect))
+		},
+		Entry("aaab",	testData{"aaab",3}),
+		Entry("baa",	testData{"baa",0}),
+		Entry("aaa",	testData{"aaa",-1}),
+		Entry("a",	testData{"a",-1}),
+		Entry("abcadcdddaba",	testData{"abcadcdddaba",-1}),
+		Entry("abcd",	testData{"abcd",-1}),
+		Entry("quyjjdcgsvvsgcdjjyq",	testData{"quyjjdcgsvvsgcdjjyq",1}),
+		Entry("hgygsvlfwcwnswtuhmyaljkqlqjjqlqkjlaymhutwsnwcflvsgygh",	testData{"hgygsvlfwcwnswtuhmyaljkqlqjjqlqkjlaymhutwsnwcflvsgygh",8}),
+		Entry("fgnfnidynhxebxxxfmxixhsruldhsaobhlcggchboashdlurshxixmfxxxbexhnydinfngf",	testData{"fgnfnidynhxebxxxfmxixhsruldhsaobhlcggchboashdlurshxixmfxxxbexhnydinfngf",33}),
+		Entry("bsyhvwfuesumsehmytqioswvpcbxyolapfywdxeacyuruybhbwxjmrrmjxwbhbyuruycaexdwyfpaloyxbcpwsoiqtymhesmuseufwvhysb",	testData{"bsyhvwfuesumsehmytqioswvpcbxyolapfywdxeacyuruybhbwxjmrrmjxwbhbyuruycaexdwyfpaloyxbcpwsoiqtymhesmuseufwvhysb",23}),
+		Entry("fvyqxqxynewuebtcuqdwyetyqqisappmunmnldmkttkmdlnmnumppasiqyteywdquctbeuwenyxqxqyvf",	testData{"fvyqxqxynewuebtcuqdwyetyqqisappmunmnldmkttkmdlnmnumppasiqyteywdquctbeuwenyxqxqyvf",25}),
+		Entry("mmbiefhflbeckaecprwfgmqlydfroxrblulpasumubqhhbvlqpixvvxipqlvbhqbumusaplulbrxorfdylqmgfwrpceakceblfhfeibmm",	testData{"mmbiefhflbeckaecprwfgmqlydfroxrblulpasumubqhhbvlqpixvvxipqlvbhqbumusaplulbrxorfdylqmgfwrpceakceblfhfeibmm",44}),
+		Entry("tpqknkmbgasitnwqrqasvolmevkasccsakvemlosaqrqwntisagbmknkqpt",	testData{"tpqknkmbgasitnwqrqasvolmevkasccsakvemlosaqrqwntisagbmknkqpt",20}),
+		Entry("lhrxvssvxrhl",	testData{"lhrxvssvxrhl",-1}),
+		Entry("prcoitfiptvcxrvoalqmfpnqyhrubxspplrftomfehbbhefmotfrlppsxburhyqnpfmqlaorxcvtpiftiocrp",	testData{"prcoitfiptvcxrvoalqmfpnqyhrubxspplrftomfehbbhefmotfrlppsxburhyqnpfmqlaorxcvtpiftiocrp",14}),
+		Entry("kjowoemiduaaxasnqghxbxkiccikxbxhgqnsaxaaudimeowojk",	testData{"kjowoemiduaaxasnqghxbxkiccikxbxhgqnsaxaaudimeowojk",-1}),
+	)
 
 	Context("equalPrefix 함수는", func() {
 		Context("1글자 문자열 두 개가", func() {
