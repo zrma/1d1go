@@ -11,53 +11,50 @@ func equalPrefix(s1, s2 string) bool {
 	return eq && (s1[1] == s2[1])
 }
 
-type checkData struct {
-	s1, s2                                string
-	forward, backward                     bool
-	forwardMargin, backwardMargin, target int
+func getChecker(s1, s2 string, length int) func(int) (int, bool, bool) {
+	var forward, backward bool
+	var forwardMargin, backwardMargin, target int
+
+	return func(i int) (int, bool, bool) {
+		if s1[i+forwardMargin] == s2[i+backwardMargin] {
+			return target, forward || backward, true
+		}
+
+		if forward || backward {
+			return -1, false, false
+		}
+
+		if s1[i] == s2[i+1] && equalPrefix(s1[i:], s2[i+1:]) {
+			backwardMargin++
+			backward = true
+			target = length - i - 1
+
+			return target, forward || backward, true
+		}
+
+		if s1[i+1] == s2[i] && equalPrefix(s1[i+1:], s2[i:]) {
+			forwardMargin++
+			forward = true
+			target = i
+
+			return target, forward || backward, true
+		}
+
+		return -1, false, false
+	}
 }
 
-func NewData(s1, s2 string) *checkData {
-	return &checkData{s1: s1, s2: s2}
-}
+func getDiffPos(s1, s2 string, length int) (target int, diff bool) {
 
-func checkIt(i, length int, data *checkData) bool {
-	if data.s1[i+data.forwardMargin] == data.s2[i+data.backwardMargin] {
-		return true
-	}
-
-	if data.forward || data.backward {
-		return false
-	}
-
-	if data.s1[i] == data.s2[i+1] && equalPrefix(data.s1[i:], data.s2[i+1:]) {
-		data.backwardMargin++
-		data.backward = true
-		data.target = length - i - 1
-
-		return true
-	}
-
-	if data.s1[i+1] == data.s2[i] && equalPrefix(data.s1[i+1:], data.s2[i:]) {
-		data.forwardMargin++
-		data.forward = true
-		data.target = i
-
-		return true
-	}
-
-	return false
-}
-
-func checkSimilarity(s1, s2 string, length int) (int, bool) {
-	data := NewData(s1, s2)
+	checker := getChecker(s1, s2, length)
+	var ok bool
 	for i := 0; i < length/2; i++ {
-		if ok := checkIt(i, length, data); !ok {
+		if target, diff, ok = checker(i); !ok {
 			return -1, false
 		}
 	}
 
-	return data.target, data.forward || data.backward
+	return target, diff
 }
 
 func palindromeIndex(s string) int32 {
@@ -67,8 +64,8 @@ func palindromeIndex(s string) int32 {
 	}
 
 	re := utils.Reverse(s)
-	result, similar := checkSimilarity(s, re, l)
-	if !similar {
+	result, ok := getDiffPos(s, re, l)
+	if !ok {
 		return -1
 	}
 
