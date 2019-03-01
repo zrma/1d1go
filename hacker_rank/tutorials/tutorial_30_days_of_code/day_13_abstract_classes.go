@@ -2,7 +2,7 @@ package tutorial_30_days_of_code
 
 import "fmt"
 
-type viewer interface {
+type Viewer interface {
 	display()
 }
 
@@ -10,7 +10,7 @@ type Book struct {
 	title  string
 	author string
 
-	viewer
+	Viewer
 }
 
 func NewBook(title, author string) *Book {
@@ -36,7 +36,7 @@ func (b MyBook) display() {
 }
 
 func AbstractClasses(title, author string, price int) {
-	var v viewer
+	var v Viewer
 	v = NewMyBook(title, author, price)
 	v.display()
 }
