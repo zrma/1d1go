@@ -21,6 +21,8 @@ var _ = Describe("https://www.hackerrank.com/challenges/palindrome-index/problem
 		Expect(actual).Should(BeNumerically("==", -1))
 		actual = palindromeIndex("abcadcdddaba")
 		Expect(actual).Should(BeNumerically("==", -1))
+		actual = palindromeIndex("abcd")
+		Expect(actual).Should(BeNumerically("==", -1))
 
 		actual = palindromeIndex("quyjjdcgsvvsgcdjjyq")
 		Expect(actual).Should(BeNumerically("==", 1))
