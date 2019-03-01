@@ -5,3 +5,11 @@
 [![Coverage Status](https://coveralls.io/repos/github/zrma/1d1c/badge.svg?branch=master)](https://coveralls.io/github/zrma/1d1c?branch=master)
 
 1 day 1 coding
+
+
+#### Requirement
+> [Go](https://golang.org) (v1.11+)
+
+
+#### Test
+> $ make test
