@@ -14,13 +14,13 @@ func NewDifference(elements []int) *Difference {
 }
 
 func (d Difference) computeDifference() int {
-	var min = math.MaxInt32
-	var max = math.MinInt32
+	var min int32 = math.MaxInt32
+	var max int32 = math.MinInt32
 
 	for _, num := range d.elements {
-		min = utils.Min(min, num)
-		max = utils.Max(max, num)
+		min = utils.MinInt32([]int32{min, int32(num)})
+		max = utils.MaxInt32([]int32{max, int32(num)})
 	}
 
-	return max - min
+	return int(max - min)
 }

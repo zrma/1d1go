@@ -35,21 +35,22 @@ var _ = Describe("https://www.hackerrank.com/challenges/count-triplets-1/problem
 	Measure("성능 테스트", func(b Benchmarker) {
 		runtime := b.Time("long array", func() {
 			file, err := os.Open("./test_data/count_triplets.csv")
-			Expect(err).Should(BeNil())
+			Expect(err).ShouldNot(HaveOccurred())
+			defer file.Close()
 
 			r := csv.NewReader(bufio.NewReader(file))
 			rows, err := r.ReadAll()
-			Expect(err).Should(BeNil())
+			Expect(err).ShouldNot(HaveOccurred())
 
 			row := rows[0]
 			var ratio int64
 			ratio, err = strconv.ParseInt(row[0], 10, 64)
-			Expect(err).Should(BeNil())
+			Expect(err).ShouldNot(HaveOccurred())
 
 			var arr []int64
 			for _, col := range row[1:] {
 				num, err := strconv.ParseInt(col, 10, 64)
-				Expect(err).Should(BeNil())
+				Expect(err).ShouldNot(HaveOccurred())
 
 				arr = append(arr, num)
 			}

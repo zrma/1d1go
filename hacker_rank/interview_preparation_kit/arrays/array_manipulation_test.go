@@ -34,22 +34,23 @@ var _ = Describe("https://www.hackerrank.com/challenges/crush/problem", func() {
 	Measure("성능 테스트", func(b Benchmarker) {
 		runtime := b.Time("long array", func() {
 			file, err := os.Open("./test_data/array_manipulation.csv")
-			Expect(err).Should(BeNil())
+			Expect(err).ShouldNot(HaveOccurred())
+			defer file.Close()
 
 			r := csv.NewReader(bufio.NewReader(file))
 			rows, err := r.ReadAll()
-			Expect(err).Should(BeNil())
+			Expect(err).ShouldNot(HaveOccurred())
 
 			var arr [][]int32
 			for _, row := range rows {
 				begin, err := strconv.ParseInt(row[0], 10, 64)
-				Expect(err).Should(BeNil())
+				Expect(err).ShouldNot(HaveOccurred())
 
 				end, err := strconv.ParseInt(row[1], 10, 64)
-				Expect(err).Should(BeNil())
+				Expect(err).ShouldNot(HaveOccurred())
 
 				value, err := strconv.ParseInt(row[2], 10, 64)
-				Expect(err).Should(BeNil())
+				Expect(err).ShouldNot(HaveOccurred())
 
 				arr = append(arr, []int32{int32(begin), int32(end), int32(value)})
 			}
