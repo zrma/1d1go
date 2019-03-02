@@ -33,7 +33,7 @@ func getDiffChecker(s1, s2 string, length int) func(int) (int, bool, bool) {
 		// The following two quadrants should be concurrent, not sequential,
 		// so you should check up to the second candidate(use function equalPrefix)
 
-		// If the difference ca be avoided by a single rune difference in backward,
+		// If the difference can be avoided by a single rune difference in backward,
 		// mark it in backward and increase backwardMargin.
 		if s1[curPos] == s2[curPos+1] && equalPrefix(s1[curPos:], s2[curPos+1:]) {
 			backwardMargin++
@@ -43,7 +43,7 @@ func getDiffChecker(s1, s2 string, length int) func(int) (int, bool, bool) {
 			return target, isDiff(), true
 		}
 
-		// Else if the difference ca be avoided by a single rune difference in forward,
+		// Else if the difference can be avoided by a single rune difference in forward,
 		// mark it in forward and increase forwardMargin.
 		if s1[curPos+1] == s2[curPos] && equalPrefix(s1[curPos+1:], s2[curPos:]) {
 			forwardMargin++
