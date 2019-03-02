@@ -5,7 +5,6 @@ import (
 )
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-more-exceptions/problem", func() {
-	//noinspection SpellCheckingInspection
 	It("문제를 풀었다", func(done Done) {
 		go func() {
 			defer GinkgoRecover()
@@ -17,7 +16,6 @@ var _ = Describe("https://www.hackerrank.com/challenges/30-more-exceptions/probl
 	})
 })
 
-//noinspection SpellCheckingInspection
 func ExampleMoreException() {
 	MoreException(3, 5)
 	MoreException(2, 4)

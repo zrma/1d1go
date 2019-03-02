@@ -8,8 +8,8 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-//noinspection SpellCheckingInspection
 var _ = Describe("문자열 관련 유틸 함수 검증", func() {
+	//noinspection SpellCheckingInspection
 	Context("SortString 함수는", func() {
 		It("하나의 문자열을 잘 정렬한다.", func() {
 			actual := SortString("dcba")

@@ -5,7 +5,6 @@ import (
 )
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-abstract-classes/problem", func() {
-	//noinspection SpellCheckingInspection
 	It("문제를 풀었다", func(done Done) {
 		go func() {
 			defer GinkgoRecover()

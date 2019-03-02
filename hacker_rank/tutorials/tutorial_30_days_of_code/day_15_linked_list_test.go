@@ -5,7 +5,6 @@ import (
 )
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-linked-list/problem", func() {
-	//noinspection SpellCheckingInspection
 	It("문제를 풀었다", func(done Done) {
 		go func() {
 			defer GinkgoRecover()
@@ -17,7 +16,6 @@ var _ = Describe("https://www.hackerrank.com/challenges/30-linked-list/problem",
 	})
 })
 
-//noinspection SpellCheckingInspection
 func ExampleLinkedList() {
 	LinkedList([]int{2, 3, 4, 1})
 	// Output:
