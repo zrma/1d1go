@@ -69,11 +69,12 @@ var _ = Describe("https://www.hackerrank.com/challenges/palindrome-index/problem
 	Measure("성능 테스트", func(b Benchmarker) {
 		runtime := b.Time("long string", func() {
 			file, err := os.Open("./test_data/palindrome_index.csv")
-			Expect(err).Should(BeNil())
+			Expect(err).ShouldNot(HaveOccurred())
+			defer file.Close()
 
 			r := csv.NewReader(bufio.NewReader(file))
 			rows, err := r.ReadAll()
-			Expect(err).Should(BeNil())
+			Expect(err).ShouldNot(HaveOccurred())
 
 			var arr []string
 			for _, row := range rows {
