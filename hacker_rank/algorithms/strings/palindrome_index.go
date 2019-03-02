@@ -11,46 +11,60 @@ func equalPrefix(s1, s2 string) bool {
 	return eq && (s1[1] == s2[1])
 }
 
-func getChecker(s1, s2 string, length int) func(int) (int, bool, bool) {
+func getDiffChecker(s1, s2 string, length int) func(int) (int, bool, bool) {
 	var forward, backward bool
 	var forwardMargin, backwardMargin, target int
 
-	return func(i int) (int, bool, bool) {
-		if s1[i+forwardMargin] == s2[i+backwardMargin] {
-			return target, forward || backward, true
+	isDiff := func() bool {
+		return forward || backward
+	}
+
+	return func(curPos int) (int, bool, bool) {
+		// It is a palindrome
+		if s1[curPos+forwardMargin] == s2[curPos+backwardMargin] {
+			return target, isDiff(), true
 		}
 
-		if forward || backward {
-			return -1, false, false
+		// The chance to remove the rune was given only once, but it was consumed before.
+		if isDiff() {
+			return -1, isDiff(), false
 		}
 
-		if s1[i] == s2[i+1] && equalPrefix(s1[i:], s2[i+1:]) {
+		// The following two quadrants should be concurrent, not sequential,
+		// so you should check up to the second candidate(use function equalPrefix)
+
+		// If the difference ca be avoided by a single rune difference in backward,
+		// mark it in backward and increase backwardMargin.
+		if s1[curPos] == s2[curPos+1] && equalPrefix(s1[curPos:], s2[curPos+1:]) {
 			backwardMargin++
 			backward = true
-			target = length - i - 1
+			target = length - curPos - 1
 
-			return target, forward || backward, true
+			return target, isDiff(), true
 		}
 
-		if s1[i+1] == s2[i] && equalPrefix(s1[i+1:], s2[i:]) {
+		// Else if the difference ca be avoided by a single rune difference in forward,
+		// mark it in forward and increase forwardMargin.
+		if s1[curPos+1] == s2[curPos] && equalPrefix(s1[curPos+1:], s2[curPos:]) {
 			forwardMargin++
 			forward = true
-			target = i
+			target = curPos
 
-			return target, forward || backward, true
+			return target, isDiff(), true
 		}
 
-		return -1, false, false
+		return -1, isDiff(), false
 	}
 }
 
 func getDiffPos(s1, s2 string, length int) (target int, diff bool) {
 
-	checker := getChecker(s1, s2, length)
-	var ok bool
+	diffChecker := getDiffChecker(s1, s2, length)
+	var valid bool
 	for i := 0; i < length/2; i++ {
-		if target, diff, ok = checker(i); !ok {
-			return -1, false
+		if target, diff, valid = diffChecker(i); !valid {
+			// The input string can not be a palindrome, even if one rune is removed.
+			return -1, diff
 		}
 	}
 
@@ -64,10 +78,11 @@ func palindromeIndex(s string) int32 {
 	}
 
 	re := utils.Reverse(s)
-	result, ok := getDiffPos(s, re, l)
-	if !ok {
+	pos, diff := getDiffPos(s, re, l)
+	if !diff {
+		// The input string is already a palindrome. You can not remove any rune.
 		return -1
 	}
 
-	return int32(result)
+	return int32(pos)
 }
