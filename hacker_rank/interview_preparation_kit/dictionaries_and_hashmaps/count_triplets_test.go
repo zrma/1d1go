@@ -12,7 +12,6 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-//noinspection SpellCheckingInspection
 var _ = Describe("https://www.hackerrank.com/challenges/count-triplets-1/problem", func() {
 	type testData struct {
 		arr    []int64

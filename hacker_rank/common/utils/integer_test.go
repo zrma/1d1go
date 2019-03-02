@@ -6,7 +6,6 @@ import (
 	"math"
 )
 
-//noinspection SpellCheckingInspection
 var _ = Describe("정수형 관련 유틸 함수 검증", func() {
 	Context("Min 함수는", func() {
 		It("두 정수 중 작은 수를 반환한다.", func() {
