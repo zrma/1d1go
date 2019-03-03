@@ -2,7 +2,7 @@ package dynamic_programming
 
 import "github.com/zrma/1d1c/hacker_rank/common/utils"
 
-// Use the cache for dynamic programming.
+// Use the cache for memoize.
 // If not do that, you can not solve it within the time limit.
 type cache map[int]map[int]int64
 
