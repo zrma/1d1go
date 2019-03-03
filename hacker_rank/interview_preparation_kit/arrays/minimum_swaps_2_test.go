@@ -26,12 +26,12 @@ var _ = Describe("https://www.hackerrank.com/challenges/minimum-swaps-2/problem"
 
 		It("배열에서 주어진 오프셋 위치부터 타겟을 잘 찾는다.", func() {
 			actual, ok := find(arr, int32(3), 2, l)
-			Expect(ok).Should(Equal(true))
+			Expect(ok).Should(BeTrue())
 			Expect(actual).Should(Equal(2))
 		})
 		It("오프셋 앞쪽의 타겟은 찾지 않는다.", func() {
 			_, ok := find(arr, int32(2), 2, l)
-			Expect(ok).Should(Equal(false))
+			Expect(ok).Should(BeFalse())
 		})
 	})
 })
