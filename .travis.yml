@@ -1,8 +1,6 @@
 language: go
 go:
 - 1.12.x
-before_install:
-  - chmod +x test.sh
 script:
 - make lint
 - make test

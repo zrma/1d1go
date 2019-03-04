@@ -19,8 +19,7 @@ devel-deps: deps
 	  github.com/Songmu/ghch/cmd/ghch
 
 test: deps
-	$(GO) fmt ./...
-	./test.sh
+	$(GO) test -coverprofile=coverage.out ./...
 
 lint: devel-deps
 	$(GO) vet ./...
