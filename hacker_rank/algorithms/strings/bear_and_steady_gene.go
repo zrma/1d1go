@@ -5,48 +5,57 @@ import (
 	"math"
 )
 
-func isSteady(arr [4]int, validCnt int) bool {
-	for _, num := range arr {
-		if num > validCnt {
-			return false
+type validateFunc func() bool
+type increaseFunc func(byte)
+type decreaseFunc func(byte)
+
+func getCalculators(l int) (increaseFunc, decreaseFunc, validateFunc) {
+	cnt := l / 4
+	var arr = [4]int{-cnt, -cnt, -cnt, -cnt}
+
+	calcArr := func(b byte, margin int) {
+		switch b {
+		case 'A':
+			arr[0] += margin
+		case 'C':
+			arr[1] += margin
+		case 'T':
+			arr[2] += margin
+		case 'G':
+			arr[3] += margin
 		}
 	}
-	return true
-}
 
-func calcArr(b byte, arr *[4]int, increase bool) {
-	margin := 1
-	if !increase {
-		margin = -1
-	}
-	switch b {
-	case 'A':
-		arr[0] += margin
-	case 'C':
-		arr[1] += margin
-	case 'T':
-		arr[2] += margin
-	case 'G':
-		arr[3] += margin
+	return func(b byte) {
+		calcArr(b, 1)
+	}, func(b byte) {
+		calcArr(b, -1)
+	}, func() bool {
+		for _, num := range arr {
+			if num > 0 {
+				return false
+			}
+		}
+		return true
 	}
 }
 
 func steadyGene(gene string) int32 {
-	validCnt := len(gene) / 4
-	var arr [4]int
-	for i := range gene {
-		calcArr(gene[i], &arr, true)
+	l := len(gene)
+	increase, decrease, validate := getCalculators(l)
+	for _, g := range gene {
+		increase(byte(g))
 	}
 
 	var begin, end int32
 	var minRange int32 = math.MaxInt32
-	for end < int32(len(gene)-1) {
-		calcArr(gene[end], &arr, false)
+	for end < int32(l-1) {
+		decrease(gene[end])
 		end++
 
-		for isSteady(arr, validCnt) {
+		for validate() {
 			minRange = utils.MinInt32([]int32{minRange, end - begin})
-			calcArr(gene[begin], &arr, true)
+			increase(gene[begin])
 			begin++
 		}
 	}
