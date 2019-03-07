@@ -2,29 +2,23 @@ package warm_up
 
 import (
 	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
+	"github.com/zrma/1d1c/hacker_rank/common/utils"
 )
 
 var _ = Describe("https://www.hackerrank.com/challenges/staircase/problem", func() {
-	It("문제를 풀었다", func(done Done) {
-		go func() {
-			defer GinkgoRecover()
-
-			ExampleStaircase()
-
-			close(done)
-		}()
+	It("문제를 풀었다", func() {
+		err := utils.PrintTest(func() error {
+			staircase(6)
+			return nil
+		}, []string{
+			"     #",
+			"    ##",
+			"   ###",
+			"  ####",
+			" #####",
+			"######",
+		})
+		Expect(err).ShouldNot(HaveOccurred())
 	})
 })
-
-func ExampleStaircase() {
-	var n int32 = 6
-
-	Staircase(n)
-	// Output:
-	//      #
-	//     ##
-	//    ###
-	//   ####
-	//  #####
-	// ######
-}

@@ -22,7 +22,3 @@ func binaryNumbers(n int32) {
 
 	fmt.Println(max)
 }
-
-func BinaryNumbers(n int32) {
-	binaryNumbers(n)
-}

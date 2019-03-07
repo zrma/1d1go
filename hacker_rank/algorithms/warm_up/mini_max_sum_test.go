@@ -2,23 +2,18 @@ package warm_up
 
 import (
 	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
+	"github.com/zrma/1d1c/hacker_rank/common/utils"
 )
 
 var _ = Describe("https://www.hackerrank.com/challenges/mini-max-sum/problem", func() {
-	It("문제를 풀었다", func(done Done) {
-		go func() {
-			defer GinkgoRecover()
-
-			ExampleMiniMaxSum()
-
-			close(done)
-		}()
+	It("문제를 풀었다", func() {
+		err := utils.PrintTest(func() error {
+			miniMaxSum([]int64{1, 2, 3, 4, 5})
+			return nil
+		}, []string{
+			"10 14",
+		})
+		Expect(err).ShouldNot(HaveOccurred())
 	})
 })
-
-func ExampleMiniMaxSum() {
-	arr := []int64{1, 2, 3, 4, 5}
-
-	MiniMaxSum(arr)
-	// Output: 10 14
-}

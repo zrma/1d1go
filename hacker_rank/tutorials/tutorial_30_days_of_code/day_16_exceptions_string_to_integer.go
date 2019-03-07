@@ -14,7 +14,3 @@ func stringToInteger(s string) {
 
 	fmt.Println(num)
 }
-
-func StringToInteger(s string) {
-	stringToInteger(s)
-}

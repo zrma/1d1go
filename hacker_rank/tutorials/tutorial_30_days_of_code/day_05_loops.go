@@ -8,7 +8,3 @@ func loop(n int32) {
 		fmt.Printf("%d x %d = %d\n", n, i, n*i)
 	}
 }
-
-func Loop(i int32) {
-	loop(i)
-}

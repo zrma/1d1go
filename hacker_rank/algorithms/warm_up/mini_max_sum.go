@@ -24,7 +24,3 @@ func miniMaxSum(arr []int64) {
 
 	fmt.Printf("%d %d", sum-max, sum-min)
 }
-
-func MiniMaxSum(arr []int64) {
-	miniMaxSum(arr)
-}
