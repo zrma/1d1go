@@ -16,7 +16,3 @@ func staircase(n int32) {
 		fmt.Println(s)
 	}
 }
-
-func Staircase(n int32) {
-	staircase(n)
-}

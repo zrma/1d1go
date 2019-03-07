@@ -20,7 +20,3 @@ func exceedingTheSpeedLimit(s int32) {
 		fmt.Println(0, MsgNoPunishment)
 	}
 }
-
-func ExceedingTheSpeedLimit(s int32) {
-	exceedingTheSpeedLimit(s)
-}

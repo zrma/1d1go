@@ -27,17 +27,17 @@ func getCalculators(l int) (increaseFunc, decreaseFunc, validateFunc) {
 	}
 
 	return func(b byte) {
-		calcArr(b, 1)
-	}, func(b byte) {
-		calcArr(b, -1)
-	}, func() bool {
-		for _, num := range arr {
-			if num > 0 {
-				return false
+			calcArr(b, 1)
+		}, func(b byte) {
+			calcArr(b, -1)
+		}, func() bool {
+			for _, num := range arr {
+				if num > 0 {
+					return false
+				}
 			}
+			return true
 		}
-		return true
-	}
 }
 
 func steadyGene(gene string) int32 {

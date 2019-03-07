@@ -50,7 +50,3 @@ func minimumBribes(q []int32) {
 	}
 	fmt.Println(cnt)
 }
-
-func MinimumBribes(q []int32) {
-	minimumBribes(q)
-}

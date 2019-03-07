@@ -22,7 +22,3 @@ func dictionariesAndMaps(n int, ss []string) {
 		}
 	}
 }
-
-func DictionariesAndMaps(n int, s []string) {
-	dictionariesAndMaps(n, s)
-}

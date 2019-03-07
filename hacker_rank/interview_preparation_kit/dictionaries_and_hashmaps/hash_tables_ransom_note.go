@@ -30,7 +30,3 @@ func checkMagazine(magazine []string, note []string) {
 
 	fmt.Println("Yes")
 }
-
-func CheckMagazine(magazine []string, note []string) {
-	checkMagazine(magazine, note)
-}

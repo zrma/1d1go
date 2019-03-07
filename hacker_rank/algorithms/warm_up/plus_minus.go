@@ -24,7 +24,3 @@ func plusMinus(arr []int32) {
 	fmt.Printf(fmtStr, float64(nag)/float64(tot))
 	fmt.Printf(fmtStr, float64(zero)/float64(tot))
 }
-
-func PlusMinus(arr []int32) {
-	plusMinus(arr)
-}

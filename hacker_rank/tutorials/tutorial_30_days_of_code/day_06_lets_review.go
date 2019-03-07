@@ -13,9 +13,3 @@ func letsReview(s string) {
 	}
 	fmt.Println(even, odd)
 }
-
-func LetsReview(ss []string) {
-	for _, s := range ss {
-		letsReview(s)
-	}
-}
