@@ -22,6 +22,7 @@ func commonChild(s1 string, s2 string) int32 {
 		arr[i][0] = 0
 	}
 
+	// n * m 문제
 	for i, c1 := range s1 {
 		for j, c2 := range s2 {
 			if c1 == c2 {

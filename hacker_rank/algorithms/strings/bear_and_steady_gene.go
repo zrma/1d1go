@@ -40,6 +40,7 @@ func getCalculators(l int) (increaseFunc, decreaseFunc, validateFunc) {
 		}
 }
 
+// 넘치는 문자열을 넘치는 만큼만 포함하는 최소 구간을 찾는다.
 func steadyGene(gene string) int32 {
 	l := len(gene)
 	increase, decrease, validate := getCalculators(l)
