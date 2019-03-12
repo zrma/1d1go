@@ -2,21 +2,17 @@ package tutorial_30_days_of_code
 
 import "fmt"
 
-type Node struct {
+type listNode struct {
 	data int
-	next *Node
-}
-
-func NewNode(d int) *Node {
-	return &Node{d, nil}
+	next *listNode
 }
 
 type linkedList struct {
-	head *Node
+	head *listNode
 }
 
-func (l *linkedList) insert(data int) *Node {
-	n := NewNode(data)
+func (l *linkedList) insert(data int) *listNode {
+	n := &listNode{data: data}
 
 	if l.head == nil {
 		return n
