@@ -26,7 +26,7 @@ lint: devel-deps
 	golint -set_exit_status
 
 cover: devel-deps
-	COVERALLS_TOKEN=${COVERALLS_TOKEN} goveralls -coverprofile=coverage.out -service=travis-ci
+	COVERALLS_TOKEN=${COVERALLS_TOKEN} goveralls -coverprofile=coverage.out --service=travis-ci
 
 bump: devel-deps
 	_tools/releng
