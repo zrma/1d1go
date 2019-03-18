@@ -8,9 +8,8 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-linked-list/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			LinkedList([]int{2, 3, 4, 1})
-			return nil
 		}, []string{
 			"2",
 			"3",

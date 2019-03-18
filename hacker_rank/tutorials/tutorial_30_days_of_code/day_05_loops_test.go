@@ -8,9 +8,8 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-loops/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			loop(2)
-			return nil
 		}, []string{
 			"2 x 1 = 2",
 			"2 x 2 = 4",

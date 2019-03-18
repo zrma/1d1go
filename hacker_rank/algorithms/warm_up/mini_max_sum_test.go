@@ -8,9 +8,8 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/mini-max-sum/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			miniMaxSum([]int64{1, 2, 3, 4, 5})
-			return nil
 		}, []string{
 			"10 14",
 		})

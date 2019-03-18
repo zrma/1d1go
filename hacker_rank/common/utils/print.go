@@ -8,23 +8,20 @@ import (
 	"strings"
 )
 
-func PrintTest(f func() error, expected []string) error {
+func PrintTest(f func(), expected []string) error {
 	r, w, _ := os.Pipe()
 	tmp := os.Stdout
 	defer func() {
 		os.Stdout = tmp
+		r.Close()
 	}()
 	os.Stdout = w
-	ch := make(chan error)
 	go func() {
-		ch <- f()
-		w.Close()
+		defer w.Close()
+		f()
 	}()
-	e := <-ch
-	stdout, err := ioutil.ReadAll(r)
-	if err != nil || e != nil {
-		return err
-	}
+	stdout, _ := ioutil.ReadAll(r)
+
 	actual := strings.Split(string(stdout), "\n")
 	if actual[len(actual)-1] == "" {
 		actual = actual[:len(actual)-1]

@@ -8,12 +8,11 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-more-exceptions/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			MoreException(3, 5)
 			MoreException(2, 4)
 			MoreException(-1, -2)
 			MoreException(-1, 3)
-			return nil
 		}, []string{
 			"243",
 			"16",

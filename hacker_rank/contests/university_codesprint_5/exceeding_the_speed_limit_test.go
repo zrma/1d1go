@@ -8,11 +8,10 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/contests/university-codesprint-5/challenges/exceeding-speed-limit", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			exceedingTheSpeedLimit(100)
 			exceedingTheSpeedLimit(140)
 			exceedingTheSpeedLimit(85)
-			return nil
 		}, []string{
 			"3000 Warning",
 			"25000 License removed",

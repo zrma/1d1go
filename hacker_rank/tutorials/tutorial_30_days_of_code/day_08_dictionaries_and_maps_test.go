@@ -8,7 +8,7 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-dictionaries-and-maps/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			dictionariesAndMaps(3, []string{
 				"sam 99912222",
 				"tom 11122222",
@@ -17,7 +17,6 @@ var _ = Describe("https://www.hackerrank.com/challenges/30-dictionaries-and-maps
 				"edward",
 				"harry",
 			})
-			return nil
 		}, []string{
 			"sam=99912222",
 			"Not found",

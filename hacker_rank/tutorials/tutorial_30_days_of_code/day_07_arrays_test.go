@@ -8,9 +8,8 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-arrays/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			printReverse([]int32{1, 4, 3, 2})
-			return nil
 		}, []string{
 			"2 3 4 1",
 		})

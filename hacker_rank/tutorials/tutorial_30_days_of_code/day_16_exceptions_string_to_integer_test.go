@@ -8,10 +8,9 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-exceptions-string-to-integer/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			stringToInteger("3")
 			stringToInteger("za")
-			return nil
 		}, []string{
 			"3",
 			"Bad String",

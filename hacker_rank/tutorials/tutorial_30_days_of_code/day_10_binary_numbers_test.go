@@ -8,10 +8,9 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-binary-numbers/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			binaryNumbers(5)
 			binaryNumbers(13)
-			return nil
 		}, []string{
 			"1",
 			"2",

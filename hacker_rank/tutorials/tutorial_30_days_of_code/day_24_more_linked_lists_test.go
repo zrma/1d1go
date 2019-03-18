@@ -14,9 +14,8 @@ var _ = Describe("https://www.hackerrank.com/challenges/30-linked-list-deletion/
 		}
 
 		list.head = removeDuplicates(list.head)
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			list.display()
-			return nil
 		}, []string{
 			"1", "2", "3", "4",
 		})
@@ -30,9 +29,8 @@ var _ = Describe("https://www.hackerrank.com/challenges/30-linked-list-deletion/
 		}
 
 		list.head = removeDuplicates(list.head)
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			list.display()
-			return nil
 		}, []string{
 			"1", "2", "3", "4",
 		})
