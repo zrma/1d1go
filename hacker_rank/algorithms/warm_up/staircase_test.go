@@ -8,9 +8,8 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/staircase/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			staircase(6)
-			return nil
 		}, []string{
 			"     #",
 			"    ##",

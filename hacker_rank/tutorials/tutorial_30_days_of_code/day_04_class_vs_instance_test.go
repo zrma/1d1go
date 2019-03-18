@@ -8,12 +8,11 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-class-vs-instance/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			ClassAndInstance(-1)
 			ClassAndInstance(10)
 			ClassAndInstance(16)
 			ClassAndInstance(18)
-			return nil
 		}, []string{
 			"Age is not valid, setting age to 0.",
 			"You are young.",

@@ -8,7 +8,7 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-2d-arrays/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			arr := [][]int32{
 				{1, 1, 1, 0, 0, 0},
 				{0, 1, 0, 0, 0, 0},
@@ -18,7 +18,6 @@ var _ = Describe("https://www.hackerrank.com/challenges/30-2d-arrays/problem", f
 				{0, 0, 1, 2, 4, 0},
 			}
 			hourGlassSum(arr)
-			return nil
 		}, []string{
 			"19",
 		})

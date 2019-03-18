@@ -8,7 +8,7 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-exceptions-string-to-integer/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			var arr []interface{}
 			for _, data := range []int{1, 2, 3} {
 				arr = append(arr, data)
@@ -20,7 +20,6 @@ var _ = Describe("https://www.hackerrank.com/challenges/30-exceptions-string-to-
 				arr = append(arr, data)
 			}
 			printArray(arr...)
-			return nil
 		}, []string{
 			"1",
 			"2",

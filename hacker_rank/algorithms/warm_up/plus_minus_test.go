@@ -8,9 +8,8 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/plus-minus/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			plusMinus([]int32{-4, 3, -9, 0, 4, 1})
-			return nil
 		}, []string{
 			"0.500000",
 			"0.333333",

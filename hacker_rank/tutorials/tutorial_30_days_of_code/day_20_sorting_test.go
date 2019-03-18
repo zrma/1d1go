@@ -8,10 +8,9 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-sorting/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			sorting([]int32{1, 2, 3})
 			sorting([]int32{3, 2, 1})
-			return nil
 		}, []string{
 			"Array is sorted in 0 swaps.",
 			"First Element: 1",

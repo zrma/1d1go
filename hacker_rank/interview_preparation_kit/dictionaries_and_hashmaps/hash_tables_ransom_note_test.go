@@ -8,7 +8,7 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/ctci-ransom-note/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			checkMagazine(
 				[]string{"give", "me", "one", "grand", "today", "night"},
 				[]string{"give", "one", "grand", "today"},
@@ -21,7 +21,6 @@ var _ = Describe("https://www.hackerrank.com/challenges/ctci-ransom-note/problem
 				[]string{"ive", "got", "a", "lovely", "brunch", "of", "coconuts"},
 				[]string{"ive", "got", "some", "coconuts"},
 			)
-			return nil
 		}, []string{
 			"Yes",
 			"No",

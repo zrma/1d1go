@@ -8,10 +8,9 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-loops/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			letsReview("Hacker")
 			letsReview("Rank")
-			return nil
 		}, []string{
 			"Hce akr",
 			"Rn ak",

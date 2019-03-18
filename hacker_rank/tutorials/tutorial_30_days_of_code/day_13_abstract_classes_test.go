@@ -9,9 +9,8 @@ import (
 //noinspection SpellCheckingInspection
 var _ = Describe("https://www.hackerrank.com/challenges/30-abstract-classes/problem", func() {
 	It("문제를 풀었다", func() {
-		err := utils.PrintTest(func() error {
+		err := utils.PrintTest(func() {
 			AbstractClasses("The Alchemist", "Paulo Coelho", 248)
-			return nil
 		}, []string{
 			"Title: The Alchemist",
 			"Author: Paulo Coelho",
