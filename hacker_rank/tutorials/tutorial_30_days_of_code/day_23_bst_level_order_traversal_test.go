@@ -6,7 +6,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe("https://stackoverflow.com/questions/2818852/is-there-a-queue-implementation", func() {
+var _ = Describe("https://www.hackerrank.com/challenges/30-binary-trees/problem", func() {
 	It("문제를 풀었다", func() {
 		var root *treeNode
 		for _, num := range []int{3, 5, 4, 7, 2, 1} {
