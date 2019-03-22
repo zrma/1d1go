@@ -1,7 +1,7 @@
 package strings
 
 import (
-	"github.com/zrma/1d1c/hacker_rank/common/utils"
+	"github.com/zrma/1d1c/hacker_rank/common/utils/integer_util"
 	"math"
 )
 
@@ -55,7 +55,7 @@ func steadyGene(gene string) int32 {
 		end++
 
 		for validate() {
-			minRange = utils.MinInt32([]int32{minRange, end - begin})
+			minRange = integer_util.MinInt32([]int32{minRange, end - begin})
 			increase(gene[begin])
 			begin++
 		}

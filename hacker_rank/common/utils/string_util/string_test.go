@@ -1,8 +1,9 @@
-package utils
+package string_util
 
 import (
-	"github.com/go-test/deep"
 	"sort"
+
+	"github.com/go-test/deep"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

@@ -1,4 +1,4 @@
-package utils
+package integer_util
 
 import (
 	. "github.com/onsi/ginkgo"

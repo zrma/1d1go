@@ -5,12 +5,12 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/zrma/1d1c/hacker_rank/common/utils"
+	"github.com/zrma/1d1c/hacker_rank/common/utils/string_util"
 )
 
 func checkMagazine(magazine []string, note []string) {
-	sort.Sort(utils.SortAdapter(magazine))
-	sort.Sort(utils.SortAdapter(note))
+	sort.Sort(string_util.SortAdapter(magazine))
+	sort.Sort(string_util.SortAdapter(note))
 
 	i := len(magazine) - 1
 	j := len(note) - 1

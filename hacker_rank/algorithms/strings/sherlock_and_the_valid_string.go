@@ -1,6 +1,6 @@
 package strings
 
-import "github.com/zrma/1d1c/hacker_rank/common/utils"
+import "github.com/zrma/1d1c/hacker_rank/common/utils/integer_util"
 
 func getCntMap(s string) map[int32]int32 {
 	m1 := make(map[int32]int32)
@@ -40,8 +40,8 @@ func valid(s string) bool {
 		i++
 	}
 
-	min := utils.MinInt32([]int32{arr[0].key, arr[1].key})
-	max := utils.MaxInt32([]int32{arr[0].key, arr[1].key})
+	min := integer_util.MinInt32([]int32{arr[0].key, arr[1].key})
+	max := integer_util.MaxInt32([]int32{arr[0].key, arr[1].key})
 	if max-min != 1 {
 		return false
 	}
