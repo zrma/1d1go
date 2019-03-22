@@ -1,10 +1,10 @@
 package dictionaries_and_hashmaps
 
-import "github.com/zrma/1d1c/hacker_rank/common/utils"
+import "github.com/zrma/1d1c/hacker_rank/common/utils/string_util"
 
 func twoStrings(s1 string, s2 string) string {
-	s1 = utils.SortString(s1)
-	s2 = utils.SortString(s2)
+	s1 = string_util.SortString(s1)
+	s2 = string_util.SortString(s2)
 
 	var i, j int
 	for i < len(s1)-1 && j < len(s2)-1 {

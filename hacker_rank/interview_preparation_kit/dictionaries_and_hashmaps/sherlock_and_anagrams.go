@@ -1,7 +1,7 @@
 package dictionaries_and_hashmaps
 
 import (
-	"github.com/zrma/1d1c/hacker_rank/common/utils"
+	"github.com/zrma/1d1c/hacker_rank/common/utils/string_util"
 )
 
 func sherlockAndAnagrams(s string) int32 {
@@ -11,7 +11,7 @@ func sherlockAndAnagrams(s string) int32 {
 	for i := 0; i < length; i++ {
 		for j := i + 1; j <= length; j++ {
 			token := s[i:j]
-			token = utils.SortString(token)
+			token = string_util.SortString(token)
 			m[token]++
 		}
 	}

@@ -1,6 +1,6 @@
 package dynamic_programming
 
-import "github.com/zrma/1d1c/hacker_rank/common/utils"
+import "github.com/zrma/1d1c/hacker_rank/common/utils/integer_util"
 
 // 메모이제이션을 위해 캐시를 사용한다.
 // 그러지 않으면 성능 테스트 케이스 타임아웃에 걸린다.
@@ -29,7 +29,7 @@ func playSubGame(arr []int32, begin, end int, c cache) int64 {
 	}
 
 	if end-begin == 4 {
-		result := utils.MaxInt64([]int64{
+		result := integer_util.MaxInt64([]int64{
 			int64(arr[begin] + arr[begin+1] + arr[begin+2]),
 			int64(arr[begin] + arr[begin+4]),
 		})
@@ -38,21 +38,21 @@ func playSubGame(arr []int32, begin, end int, c cache) int64 {
 	}
 
 	// 나는 최대한 점수를 많이 내려고 한다.
-	result := utils.MaxInt64([]int64{
+	result := integer_util.MaxInt64([]int64{
 		// 상대방은 내 점수를 최대한 적게 내도록 한다.
-		utils.MinInt64([]int64{
+		integer_util.MinInt64([]int64{
 			int64(arr[begin]) + playSubGame(arr, begin+2, end, c),
 			int64(arr[begin]) + playSubGame(arr, begin+3, end, c),
 			int64(arr[begin]) + playSubGame(arr, begin+4, end, c),
 		}),
 		// 상대방은 내 점수를 최대한 적게 내도록 한다.
-		utils.MinInt64([]int64{
+		integer_util.MinInt64([]int64{
 			int64(arr[begin]) + int64(arr[begin+1]) + playSubGame(arr, begin+3, end, c),
 			int64(arr[begin]) + int64(arr[begin+1]) + playSubGame(arr, begin+4, end, c),
 			int64(arr[begin]) + int64(arr[begin+1]) + playSubGame(arr, begin+5, end, c),
 		}),
 		// 상대방은 내 점수를 최대한 적게 내도록 한다.
-		utils.MinInt64([]int64{
+		integer_util.MinInt64([]int64{
 			int64(arr[begin]) + int64(arr[begin+1]) + int64(arr[begin+2]) + playSubGame(arr, begin+4, end, c),
 			int64(arr[begin]) + int64(arr[begin+1]) + int64(arr[begin+2]) + playSubGame(arr, begin+5, end, c),
 			int64(arr[begin]) + int64(arr[begin+1]) + int64(arr[begin+2]) + playSubGame(arr, begin+6, end, c),

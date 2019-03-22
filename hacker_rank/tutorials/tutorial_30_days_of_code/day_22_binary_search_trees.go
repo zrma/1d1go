@@ -1,6 +1,6 @@
 package tutorial_30_days_of_code
 
-import "github.com/zrma/1d1c/hacker_rank/common/utils"
+import "github.com/zrma/1d1c/hacker_rank/common/utils/integer_util"
 
 type treeNode struct {
 	data        int
@@ -28,5 +28,5 @@ func getHeight(root *treeNode) int32 {
 		return -1
 	}
 
-	return utils.MaxInt32([]int32{getHeight(root.left), getHeight(root.right)}) + 1
+	return integer_util.MaxInt32([]int32{getHeight(root.left), getHeight(root.right)}) + 1
 }
