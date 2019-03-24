@@ -11,12 +11,12 @@ import (
 
 var _ = Describe("문자열 관련 유틸 함수 검증", func() {
 	//noinspection SpellCheckingInspection
-	Context("SortString 함수는", func() {
+	Context("Sort 함수는", func() {
 		It("하나의 문자열을 잘 정렬한다.", func() {
-			actual := SortString("dcba")
+			actual := Sort("dcba")
 			Expect(actual).Should(Equal("abcd"))
 
-			actual = SortString("ffbbaa")
+			actual = Sort("ffbbaa")
 			Expect(actual).Should(Equal("aabbff"))
 		})
 	})
