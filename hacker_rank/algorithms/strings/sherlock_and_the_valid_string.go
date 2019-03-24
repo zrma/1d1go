@@ -2,7 +2,7 @@ package strings
 
 import "github.com/zrma/1d1c/hacker_rank/common/utils/integer_util"
 
-func getCntMap(s string) map[int32]int32 {
+func countMap(s string) map[int32]int32 {
 	m1 := make(map[int32]int32)
 	m2 := make(map[int32]int32)
 
@@ -18,7 +18,7 @@ func getCntMap(s string) map[int32]int32 {
 }
 
 func valid(s string) bool {
-	m := getCntMap(s)
+	m := countMap(s)
 	if len(m) > 2 {
 		return false
 	}

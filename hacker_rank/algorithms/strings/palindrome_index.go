@@ -11,7 +11,9 @@ func equalPrefix(s1, s2 string) bool {
 	return eq && (s1[1] == s2[1])
 }
 
-func getDiffChecker(s1, s2 string, length int) func(int) (int, bool, bool) {
+type checker func(int) (target int, isDiff, available bool)
+
+func diffChecker(s1, s2 string, length int) checker {
 	var forward, backward bool
 	var forwardMargin, backwardMargin, target int
 
@@ -59,9 +61,9 @@ func getDiffChecker(s1, s2 string, length int) func(int) (int, bool, bool) {
 	}
 }
 
-func getDiffPos(s1, s2 string, length int) (target int, diff bool) {
+func diffPos(s1, s2 string, length int) (target int, diff bool) {
 
-	diffChecker := getDiffChecker(s1, s2, length)
+	diffChecker := diffChecker(s1, s2, length)
 	var valid bool
 	for i := 0; i < length/2; i++ {
 		if target, diff, valid = diffChecker(i); !valid {
@@ -80,7 +82,7 @@ func palindromeIndex(s string) int32 {
 	}
 
 	re := string_util.Reverse(s)
-	pos, diff := getDiffPos(s, re, l)
+	pos, diff := diffPos(s, re, l)
 	if !diff {
 		// 만약 이미 회문이라면 더 이상 제거할 문자가 없다
 		return -1

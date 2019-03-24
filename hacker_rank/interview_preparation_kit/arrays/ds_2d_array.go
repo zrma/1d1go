@@ -14,7 +14,7 @@ func HourGlassSum(arr [][]int32) int32 {
 		return 0
 	}
 
-	getValue := func(x, y int) int32 {
+	calc := func(x, y int) int32 {
 		sum := arr[y-1][x-1] + arr[y-1][x] + arr[y-1][x+1]
 		sum += arr[y][x]
 		sum += arr[y+1][x-1] + arr[y+1][x] + arr[y+1][x+1]
@@ -25,7 +25,7 @@ func HourGlassSum(arr [][]int32) int32 {
 	var max int32 = math.MinInt32
 	for y := 1; y < rowSize-1; y++ {
 		for x := 1; x < colSize-1; x++ {
-			val := getValue(x, y)
+			val := calc(x, y)
 			if max < val {
 				max = val
 			}
