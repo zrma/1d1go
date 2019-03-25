@@ -24,8 +24,8 @@ var _ = Describe("https://www.hackerrank.com/challenges/sherlock-and-anagrams/pr
 	Measure("성능 테스트", func(b Benchmarker) {
 		runtime := b.Time("long string", func() {
 			for _, data := range []struct {
-				s      string
-				expect int
+				s        string
+				expected int
 			}{
 				{"dbcfibibcheigfccacfegicigcefieeeeegcghggdheichgafhdigffgifidfbeaccadabecbdcgieaffbigffcecahafcafhcdg", 1464},
 				{"dfcaabeaeeabfffcdbbfaffadcacdeeabcadabfdefcfcbbacadaeafcfceeedacbafdebbffcecdbfebdbfdbdecbfbadddbcec", 2452},
@@ -39,7 +39,7 @@ var _ = Describe("https://www.hackerrank.com/challenges/sherlock-and-anagrams/pr
 				{"dichcagakdajjhhdhegiifiiggjebejejciaabbifkcbdeigajhgfcfdgekfajbcdifikafkgjjjfefkdbeicgiccgkjheeiefje", 1042},
 			} {
 				actual := sherlockAndAnagrams(data.s)
-				Expect(actual).Should(BeNumerically("==", data.expect))
+				Expect(actual).Should(BeNumerically("==", data.expected))
 			}
 		})
 

@@ -13,14 +13,14 @@ import (
 //noinspection SpellCheckingInspection
 var _ = Describe("https://www.hackerrank.com/challenges/palindrome-index/problem", func() {
 	type testData struct {
-		s      string
-		expect int32
+		s        string
+		expected int32
 	}
 
 	DescribeTable("문제를 풀었다.",
 		func(data testData) {
 			actual := palindromeIndex(data.s)
-			Expect(actual).Should(BeNumerically("==", data.expect))
+			Expect(actual).Should(BeNumerically("==", data.expected))
 		},
 		Entry("aaab", testData{"aaab", 3}),
 		Entry("baa", testData{"baa", 0}),

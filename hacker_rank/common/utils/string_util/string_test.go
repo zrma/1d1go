@@ -25,10 +25,10 @@ var _ = Describe("문자열 관련 유틸 함수 검증", func() {
 		actual := []string{"def", "abc", "bcd"}
 
 		It("정상적으로 잘 정렬한다.", func() {
-			expect := []string{"abc", "bcd", "def"}
+			expected := []string{"abc", "bcd", "def"}
 
 			sort.Sort(SortAdapter(actual))
-			Expect(deep.Equal(actual, expect)).Should(BeNil())
+			Expect(deep.Equal(actual, expected)).Should(BeNil())
 		})
 	})
 
