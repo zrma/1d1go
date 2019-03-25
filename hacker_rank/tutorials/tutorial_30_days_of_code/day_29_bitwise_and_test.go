@@ -8,13 +8,13 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/30-bitwise-and/problem", func() {
 	type testData struct {
-		n, k   int32
-		expect int32
+		n, k     int32
+		expected int32
 	}
 	DescribeTable("문제를 풀었다.",
 		func(data testData) {
 			actual := bitwiseAND(data.n, data.k)
-			Expect(actual).Should(BeNumerically("==", data.expect))
+			Expect(actual).Should(BeNumerically("==", data.expected))
 		},
 		Entry("test_0", testData{5, 2, 1}),
 		Entry("test_1", testData{8, 5, 4}),

@@ -14,15 +14,15 @@ import (
 
 var _ = Describe("https://www.hackerrank.com/challenges/count-triplets-1/problem", func() {
 	type testData struct {
-		arr    []int64
-		ratio  int64
-		expect int64
+		arr      []int64
+		ratio    int64
+		expected int64
 	}
 
 	DescribeTable("문제를 풀었다",
 		func(data testData) {
 			actual := countTriplets(data.arr, data.ratio)
-			Expect(actual).Should(BeNumerically("==", data.expect))
+			Expect(actual).Should(BeNumerically("==", data.expected))
 		},
 		Entry("test_0", testData{[]int64{1, 2, 2, 4}, 2, 2}),
 		Entry("test_1", testData{[]int64{1, 3, 9, 9, 27, 81}, 3, 6}),
