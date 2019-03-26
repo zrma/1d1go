@@ -33,6 +33,8 @@ var _ = Describe("https://www.hackerrank.com/challenges/play-game/problem", func
 			Expect(err).ShouldNot(HaveOccurred())
 
 			arr2, err := readCSV("./test_data/bricks_game_1.csv")
+			Expect(err).ShouldNot(HaveOccurred())
+
 			arr = append(arr, arr2...)
 
 			expected := []struct{ l, e int64 }{
