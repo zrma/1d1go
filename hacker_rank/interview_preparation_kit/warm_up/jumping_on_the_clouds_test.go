@@ -2,37 +2,26 @@ package warm_up
 
 import (
 	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
 )
 
 var _ = Describe("https://www.hackerrank.com/challenges/jumping-on-the-clouds/problem", func() {
-	It("문제를 풀었다", func() {
-		c := []int32{0, 0, 1, 0, 0, 1, 0}
-		actual := jumpingOnClouds(c)
-		Expect(actual).Should(BeNumerically("==", 4))
+	type testData struct {
+		data     []int32
+		expected int32
+	}
 
-		c = []int32{0, 0, 0, 0, 1, 0}
-		actual = jumpingOnClouds(c)
-		Expect(actual).Should(BeNumerically("==", 3))
-
-		c = []int32{0, 0, 0, 0, 0}
-		actual = jumpingOnClouds(c)
-		Expect(actual).Should(BeNumerically("==", 2))
-
-		c = []int32{0, 1, 0, 0, 1, 0}
-		actual = jumpingOnClouds(c)
-		Expect(actual).Should(BeNumerically("==", 3))
-
-		c = []int32{0, 1, 1, 0, 1, 0}
-		actual = jumpingOnClouds(c)
-		Expect(actual).Should(BeNumerically("==", -1))
-
-		c = []int32{0, 0, 1, 0, 1, 0}
-		actual = jumpingOnClouds(c)
-		Expect(actual).Should(BeNumerically("==", 3))
-
-		c = []int32{0, 0, 0, 1, 0, 0}
-		actual = jumpingOnClouds(c)
-		Expect(actual).Should(BeNumerically("==", 3))
-	})
+	DescribeTable("문제를 풀었다.", func(d testData) {
+		actual := jumpingOnClouds(d.data)
+		Expect(actual).Should(BeNumerically("==", d.expected))
+	},
+		Entry("test0", testData{[]int32{0, 0, 1, 0, 0, 1, 0}, 4}),
+		Entry("test1", testData{[]int32{0, 0, 0, 0, 1, 0}, 3}),
+		Entry("test2", testData{[]int32{0, 0, 0, 0, 0}, 2}),
+		Entry("test3", testData{[]int32{0, 1, 0, 0, 1, 0}, 3}),
+		Entry("test4", testData{[]int32{0, 1, 1, 0, 1, 0}, -1}),
+		Entry("test5", testData{[]int32{0, 0, 1, 0, 1, 0}, 3}),
+		Entry("test6", testData{[]int32{0, 0, 0, 1, 0, 0}, 3}),
+	)
 })
