@@ -49,4 +49,22 @@ var _ = Describe("Solve collect max diamond problem", func() {
 		Expect(array([]int{1, 2, 3}).find(4)).Should(BeFalse())
 		Expect(array([]int{}).find(1)).Should(BeFalse())
 	})
+
+	Measure("성능 테스트", func(b Benchmarker) {
+		runtime := b.Time("long string", func() {
+			data := [][]int{
+				{1, 1, 1, 1, 1, 1},
+				{1, 1, 1, 2, 1, 1},
+				{1, 1, 1, 1, 1, 1},
+				{1, 1, 1, 1, 1, 1},
+				{1, 1, 1, 1, 1, 1},
+				{1, 1, 1, 1, 1, 1},
+				{1, 1, 1, 1, 1, 1},
+			}
+
+			Expect(collectMax(data)).Should(BeNumerically("==", 23))
+		})
+
+		Expect(runtime.Seconds()).Should(BeNumerically("<", 10), "시간 초과")
+	}, 10)
 })
