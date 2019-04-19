@@ -26,7 +26,7 @@ var _ = Describe("https://www.hackerrank.com/challenges/30-queues-stacks/problem
 			Expect(ok).Should(BeTrue())
 			Expect(actual).Should(Equal("c"))
 
-			actual, ok = q.dequeue()
+			_, ok = q.dequeue()
 			Expect(ok).Should(BeFalse())
 		})
 
@@ -49,7 +49,7 @@ var _ = Describe("https://www.hackerrank.com/challenges/30-queues-stacks/problem
 			Expect(ok).Should(BeTrue())
 			Expect(actual).Should(Equal("a"))
 
-			actual, ok = s.pop()
+			_, ok = s.pop()
 			Expect(ok).Should(BeFalse())
 		})
 	})
