@@ -2,6 +2,15 @@ package arrays
 
 import "math"
 
+// HourGlassSum 함수는 주어진 2차원 int32 슬라이스 내부를 순회하며 모래시계 모양의 좌표 내의 값을 합산하고
+// 그 결과 중 가장 큰 값을 반환한다.
+// 모래 시계 모양의 좌표값 합산 예시는 아래와 같다.
+//
+// 1 2 3
+// 4 5 6
+// 7 8 9
+//
+// 1 + 2 + 3 + 5 + 7 + 8 + 9 = 35
 func HourGlassSum(arr [][]int32) int32 {
 
 	rowSize := len(arr)

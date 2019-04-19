@@ -1,4 +1,4 @@
-package data_structures
+package implementation
 
 import (
 	. "github.com/onsi/ginkgo"
