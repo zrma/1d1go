@@ -1,6 +1,8 @@
 package strings
 
-import "github.com/zrma/1d1c/hacker_rank/common/utils/string_util"
+import (
+	"github.com/zrma/1d1c/hacker_rank/common/utils/str"
+)
 
 func equalPrefix(s1, s2 string) bool {
 	eq := s1[0] == s2[0]
@@ -81,7 +83,7 @@ func palindromeIndex(s string) int32 {
 		return -1
 	}
 
-	re := string_util.Reverse(s)
+	re := str.Reverse(s)
 	pos, diff := diffPos(s, re, l)
 	if !diff {
 		// 만약 이미 회문이라면 더 이상 제거할 문자가 없다

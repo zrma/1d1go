@@ -47,7 +47,7 @@ func makeHighestValuePalindrome(s string, b []byte, n, k int32) []byte {
 				// k에서 1번의 기회를 사용해 나머지 한 수도 9로 바꾸자.
 				b[i1] = '9'
 				b[i2] = '9'
-				k -= 1
+				k--
 			}
 		}
 	}
