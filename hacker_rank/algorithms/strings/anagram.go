@@ -1,6 +1,8 @@
 package strings
 
-import "github.com/zrma/1d1c/hacker_rank/common/utils/string_util"
+import (
+	"github.com/zrma/1d1c/hacker_rank/common/utils/str"
+)
 
 func anagram(s string) int32 {
 	l := len(s)
@@ -8,8 +10,8 @@ func anagram(s string) int32 {
 		return -1
 	}
 
-	s1 := string_util.Sort(s[0 : l/2])
-	s2 := string_util.Sort(s[l/2:])
+	s1 := str.Sort(s[0 : l/2])
+	s2 := str.Sort(s[l/2:])
 
 	l = l / 2
 	var eq int32

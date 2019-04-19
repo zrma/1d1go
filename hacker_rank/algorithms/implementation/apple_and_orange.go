@@ -1,4 +1,4 @@
-package data_structures
+package implementation
 
 import "fmt"
 
@@ -10,14 +10,14 @@ func countApplesAndOranges(s int32, t int32, a int32, b int32, apples []int32, o
 	var sum int32
 	for _, apple := range apples {
 		if inside(a, apple) {
-			sum += 1
+			sum++
 		}
 	}
 	fmt.Println(sum)
 	sum = 0
 	for _, orange := range oranges {
 		if inside(b, orange) {
-			sum += 1
+			sum++
 		}
 	}
 	fmt.Println(sum)
