@@ -1,7 +1,7 @@
 package dictionariesandhashmaps
 
 import (
-	"github.com/zrma/1d1c/hacker_rank/common/utils/str"
+	"github.com/zrma/going/utils/str"
 )
 
 func sherlockAndAnagrams(s string) int32 {

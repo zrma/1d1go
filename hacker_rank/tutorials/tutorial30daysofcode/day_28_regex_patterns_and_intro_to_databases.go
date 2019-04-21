@@ -2,7 +2,7 @@ package tutorial30daysofcode
 
 import (
 	"fmt"
-	"github.com/zrma/1d1c/hacker_rank/common/utils/str"
+	"github.com/zrma/going/utils/str"
 	"sort"
 	"strings"
 )

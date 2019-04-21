@@ -1,7 +1,7 @@
 package dp
 
 import (
-	"github.com/zrma/1d1c/hacker_rank/common/utils/integer"
+	"github.com/zrma/going/utils/integer"
 )
 
 // 메모이제이션을 위해 캐시를 사용한다.

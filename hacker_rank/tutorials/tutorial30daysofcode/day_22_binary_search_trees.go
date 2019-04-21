@@ -1,7 +1,7 @@
 package tutorial30daysofcode
 
 import (
-	"github.com/zrma/1d1c/hacker_rank/common/utils/integer"
+	"github.com/zrma/going/utils/integer"
 )
 
 type treeNode struct {
