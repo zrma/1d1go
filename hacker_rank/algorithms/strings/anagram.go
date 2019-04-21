@@ -1,7 +1,7 @@
 package strings
 
 import (
-	"github.com/zrma/1d1c/hacker_rank/common/utils/str"
+	"github.com/zrma/going/utils/str"
 )
 
 func anagram(s string) int32 {
