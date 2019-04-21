@@ -9,7 +9,7 @@
 
 
 #### Requirement
-> [Go](https://golang.org) (v1.11+)
+> [Go](https://golang.org) (v1.12+)
 
 
 #### Test
