@@ -3,7 +3,7 @@ package warmup
 import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	"github.com/zrma/1d1c/hacker_rank/common/utils"
+	"github.com/zrma/going/utils"
 )
 
 var _ = Describe("https://www.hackerrank.com/challenges/plus-minus/problem", func() {
