@@ -44,5 +44,5 @@ var _ = Describe("https://www.hackerrank.com/challenges/sherlock-and-anagrams/pr
 		})
 
 		Expect(runtime.Seconds()).Should(BeNumerically("<", 5), "시간 초과")
-	}, 10)
+	}, 3)
 })

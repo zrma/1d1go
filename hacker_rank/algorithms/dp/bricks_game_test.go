@@ -57,7 +57,7 @@ var _ = Describe("https://www.hackerrank.com/challenges/play-game/problem", func
 		})
 
 		Expect(runtime.Seconds()).Should(BeNumerically("<", 5), "시간 초과")
-	}, 10)
+	}, 3)
 })
 
 func readCSV(fileName string) ([][]int32, error) {
