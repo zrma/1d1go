@@ -18,8 +18,8 @@ func (d difference) computeDifference() int {
 	var max int32 = math.MinInt32
 
 	for _, num := range d.elements {
-		min = integer.MinInt32([]int32{min, int32(num)})
-		max = integer.MaxInt32([]int32{max, int32(num)})
+		min = integer.MinInt32(min, int32(num))
+		max = integer.MaxInt32(max, int32(num))
 	}
 
 	return int(max - min)

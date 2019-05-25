@@ -55,7 +55,7 @@ func steadyGene(gene string) int32 {
 		end++
 
 		for validate() {
-			minRange = integer.MinInt32([]int32{minRange, end - begin})
+			minRange = integer.MinInt32(minRange, end-begin)
 			increase(gene[begin])
 			begin++
 		}

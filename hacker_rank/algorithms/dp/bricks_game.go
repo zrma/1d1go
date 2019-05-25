@@ -31,35 +31,35 @@ func playSubGame(arr []int32, begin, end int, c cache) int64 {
 	}
 
 	if end-begin == 4 {
-		result := integer.MaxInt64([]int64{
-			int64(arr[begin] + arr[begin+1] + arr[begin+2]),
-			int64(arr[begin] + arr[begin+4]),
-		})
+		result := integer.MaxInt64(
+			int64(arr[begin]+arr[begin+1]+arr[begin+2]),
+			int64(arr[begin]+arr[begin+4]),
+		)
 		c[begin][end] = result
 		return result
 	}
 
 	// 나는 최대한 점수를 많이 내려고 한다.
-	result := integer.MaxInt64([]int64{
+	result := integer.MaxInt64(
 		// 상대방은 내 점수를 최대한 적게 내도록 한다.
-		integer.MinInt64([]int64{
-			int64(arr[begin]) + playSubGame(arr, begin+2, end, c),
-			int64(arr[begin]) + playSubGame(arr, begin+3, end, c),
-			int64(arr[begin]) + playSubGame(arr, begin+4, end, c),
-		}),
+		integer.MinInt64(
+			int64(arr[begin])+playSubGame(arr, begin+2, end, c),
+			int64(arr[begin])+playSubGame(arr, begin+3, end, c),
+			int64(arr[begin])+playSubGame(arr, begin+4, end, c),
+		),
 		// 상대방은 내 점수를 최대한 적게 내도록 한다.
-		integer.MinInt64([]int64{
-			int64(arr[begin]) + int64(arr[begin+1]) + playSubGame(arr, begin+3, end, c),
-			int64(arr[begin]) + int64(arr[begin+1]) + playSubGame(arr, begin+4, end, c),
-			int64(arr[begin]) + int64(arr[begin+1]) + playSubGame(arr, begin+5, end, c),
-		}),
+		integer.MinInt64(
+			int64(arr[begin])+int64(arr[begin+1])+playSubGame(arr, begin+3, end, c),
+			int64(arr[begin])+int64(arr[begin+1])+playSubGame(arr, begin+4, end, c),
+			int64(arr[begin])+int64(arr[begin+1])+playSubGame(arr, begin+5, end, c),
+		),
 		// 상대방은 내 점수를 최대한 적게 내도록 한다.
-		integer.MinInt64([]int64{
-			int64(arr[begin]) + int64(arr[begin+1]) + int64(arr[begin+2]) + playSubGame(arr, begin+4, end, c),
-			int64(arr[begin]) + int64(arr[begin+1]) + int64(arr[begin+2]) + playSubGame(arr, begin+5, end, c),
-			int64(arr[begin]) + int64(arr[begin+1]) + int64(arr[begin+2]) + playSubGame(arr, begin+6, end, c),
-		}),
-	})
+		integer.MinInt64(
+			int64(arr[begin])+int64(arr[begin+1])+int64(arr[begin+2])+playSubGame(arr, begin+4, end, c),
+			int64(arr[begin])+int64(arr[begin+1])+int64(arr[begin+2])+playSubGame(arr, begin+5, end, c),
+			int64(arr[begin])+int64(arr[begin+1])+int64(arr[begin+2])+playSubGame(arr, begin+6, end, c),
+		),
+	)
 	c[begin][end] = result
 	return result
 }
