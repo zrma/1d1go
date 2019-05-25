@@ -58,6 +58,8 @@ github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 h1:nIPpBwaJSVYIxUFsDv3M8ofm
 github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8/go.mod h1:HUYIGzjTL3rfEspMxjDjgmT5uz5wzYJKVo23qUhYTos=
 github.com/zrma/going v0.0.0-20190422160320-e406772bc42b h1:qReOyaZvVEUiv8fRHr/UuhGPnJMdsISb1KobUR2C57k=
 github.com/zrma/going v0.0.0-20190422160320-e406772bc42b/go.mod h1:hzlOTBn302ZiwMx6DkRhrfIS0RTtpO3elOiiP1ANaMo=
+github.com/zrma/going v0.0.0-20190525123801-97b90ffce07c h1:LAiibiXGNqohmDzMRUMTbw1OLc41IZrTmcQGG3IH+Es=
+github.com/zrma/going v0.0.0-20190525123801-97b90ffce07c/go.mod h1:hzlOTBn302ZiwMx6DkRhrfIS0RTtpO3elOiiP1ANaMo=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/lint v0.0.0-20190409202823-959b441ac422 h1:QzoH/1pFpZguR8NrRHLcO6jKqfv2zpuSqZLgdm7ZmjI=
 golang.org/x/lint v0.0.0-20190409202823-959b441ac422/go.mod h1:6SW0HCj/g11FgYtHlgUYUwCkIfeOF89ocIRzGO/8vkc=
