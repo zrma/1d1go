@@ -42,8 +42,8 @@ func valid(s string) bool {
 		i++
 	}
 
-	min := integer.MinInt32([]int32{arr[0].key, arr[1].key})
-	max := integer.MaxInt32([]int32{arr[0].key, arr[1].key})
+	min := integer.MinInt32(arr[0].key, arr[1].key)
+	max := integer.MaxInt32(arr[0].key, arr[1].key)
 	if max-min != 1 {
 		return false
 	}
