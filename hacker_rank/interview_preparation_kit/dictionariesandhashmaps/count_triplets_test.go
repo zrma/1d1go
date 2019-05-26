@@ -28,8 +28,8 @@ var _ = Describe("https://www.hackerrank.com/challenges/count-triplets-1/problem
 		Entry("test_1", testData{[]int64{1, 3, 9, 9, 27, 81}, 3, 6}),
 		Entry("test_2", testData{[]int64{1, 5, 5, 25, 125}, 5, 4}),
 		Entry("test_3", testData{[]int64{1, 2, 4, 2, 4, 8}, 2, 6}),
-		Entry("test_3", testData{[]int64{1, 2, 4, 2, 4, 8, 2, 4, 2, 8}, 2, 15}),
-		Entry("test_4", testData{[]int64{1, 2, 1, 2, 1, 2}, 1, 2}),
+		Entry("test_4", testData{[]int64{1, 2, 4, 2, 4, 8, 2, 4, 2, 8}, 2, 15}),
+		Entry("test_5", testData{[]int64{1, 2, 1, 2, 1, 2}, 1, 2}),
 	)
 
 	Measure("성능 테스트", func(b Benchmarker) {
