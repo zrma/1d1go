@@ -21,5 +21,7 @@ var _ = Describe("https://www.hackerrank.com/challenges/morgan-and-a-string/prob
 		Entry("test_0", testData{"ACA", "BCF", "ABCACF"}),
 		Entry("test_1", testData{"JACK", "DANIEL", "DAJACKNIEL"}),
 		Entry("test_2", testData{"ABACABA", "ABACABA", "AABABACABACABA"}),
+		Entry("test_3", testData{"AAAAB", "AAAAC", "AAAAAAAABC"}),
+		Entry("test_3", testData{"AAAAC", "AAAAB", "AAAAAAAABC"}),
 	)
 })
