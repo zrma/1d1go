@@ -6,9 +6,9 @@ import (
 
 // 메모이제이션을 위해 캐시를 사용한다.
 // 그러지 않으면 성능 테스트 케이스 타임아웃에 걸린다.
-type cache map[int]map[int]int64
+type brickCache map[int]map[int]int64
 
-func playSubGame(arr []int32, begin, end int, c cache) int64 {
+func playSubGame(arr []int32, begin, end int, c brickCache) int64 {
 	if endData, ok := c[begin]; ok {
 		if result, ok := endData[end]; ok {
 			return result
@@ -65,6 +65,6 @@ func playSubGame(arr []int32, begin, end int, c cache) int64 {
 }
 
 func bricksGame(arr []int32) int64 {
-	c := make(cache)
+	c := make(brickCache)
 	return playSubGame(arr, 0, len(arr)-1, c)
 }
