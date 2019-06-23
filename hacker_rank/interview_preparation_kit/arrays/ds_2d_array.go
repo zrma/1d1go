@@ -14,7 +14,7 @@ import "math"
 func HourGlassSum(arr [][]int32) int32 {
 
 	rowSize := len(arr)
-	if rowSize == 0 || rowSize < 3 {
+	if rowSize < 3 {
 		return 0
 	}
 
