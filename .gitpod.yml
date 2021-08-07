@@ -1,5 +1,0 @@
-image:
-  file: ./docker/gitpod/Dockerfile
-
-tasks:
-  - init: sudo docker-up
