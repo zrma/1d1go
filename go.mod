@@ -1,6 +1,6 @@
 module 1d1go
 
-go 1.14
+go 1.16
 
 require (
 	fyne.io/fyne v1.2.3
