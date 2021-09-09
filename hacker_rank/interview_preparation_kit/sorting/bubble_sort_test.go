@@ -89,6 +89,8 @@ func TestCountSwapsPerformance(t *testing.T) {
 			countSwaps(given)
 		})
 		assert.NoError(t, err)
-		return assert.Equal(t, want, got)
+		assert.Equal(t, want, got)
+
+		return true
 	}, time.Second, time.Millisecond*100, "시간 초과")
 }

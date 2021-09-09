@@ -109,6 +109,7 @@ func TestPalindromeIndexPerformance(t *testing.T) {
 			got := palindromeIndex(s)
 			assert.EqualValues(t, want[i], got)
 		}
+
 		return true
 	}, time.Second, time.Millisecond*100, "시간 초과")
 }
