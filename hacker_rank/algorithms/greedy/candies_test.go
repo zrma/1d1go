@@ -76,6 +76,8 @@ func TestCandiesPerformance(t *testing.T) {
 		const want = 160929
 
 		got := candies(int32(len(given)), given)
-		return assert.EqualValues(t, want, got)
+		assert.EqualValues(t, want, got)
+
+		return true
 	}, time.Second, time.Millisecond*100, "시간 초과")
 }

@@ -51,6 +51,7 @@ func TestSherlockAndAnagramsPerformance(t *testing.T) {
 				assert.Equal(t, tt.want, got)
 			})
 		}
+
 		return true
 	}, time.Second*3, time.Millisecond*100, "시간 초과")
 }

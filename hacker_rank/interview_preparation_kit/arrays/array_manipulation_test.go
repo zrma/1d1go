@@ -80,6 +80,8 @@ func TestArrayManipulationPerformance(t *testing.T) {
 		const want = 2506721627
 
 		got := arrayManipulation(10000000, arr)
-		return assert.EqualValues(t, want, got)
+		assert.EqualValues(t, want, got)
+
+		return true
 	}, time.Second*5, time.Millisecond*100, "시간 초과")
 }

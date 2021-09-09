@@ -67,6 +67,8 @@ func TestCountTripletsPerformance(t *testing.T) {
 		const want = 2325652489
 
 		got := countTriplets(arr, ratio)
-		return assert.EqualValues(t, want, got)
+		assert.EqualValues(t, want, got)
+
+		return true
 	}, time.Second, time.Millisecond*100, "시간 초과")
 }

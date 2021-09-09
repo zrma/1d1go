@@ -121,6 +121,7 @@ func TestBricksGamePerformance(t *testing.T) {
 			got := bricksGame(arr)
 			assert.EqualValues(t, want[i].e, got)
 		}
+
 		return true
 	}, time.Second, time.Millisecond*100, "시간 초과")
 }

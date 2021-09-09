@@ -99,6 +99,7 @@ func TestFreqQueryPerformance(t *testing.T) {
 				assert.Equal(t, want, got)
 			})
 		}
+
 		return true
 	}, time.Second*10, time.Millisecond*100, "시간 초과")
 }
