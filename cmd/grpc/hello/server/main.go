@@ -40,16 +40,14 @@ func main() {
 
 	svr := &server{}
 	s := grpc.NewServer(opts...)
-	pb.RegisterGreeterService(s, &pb.GreeterService{
-		SayHello:      svr.SayHello,
-		SayHelloAgain: svr.SayHelloAgain,
-	})
+	pb.RegisterGreeterServer(s, svr)
 	if err := s.Serve(listener); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
 }
 
 type server struct {
+	pb.GreeterServer
 }
 
 // SayHello implements hello.GreeterServer

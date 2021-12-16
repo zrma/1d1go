@@ -11,6 +11,7 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
+// Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
 // GreeterClient is the client API for Greeter service.
@@ -31,10 +32,6 @@ func NewGreeterClient(cc grpc.ClientConnInterface) GreeterClient {
 	return &greeterClient{cc}
 }
 
-var greeterSayHelloStreamDesc = &grpc.StreamDesc{
-	StreamName: "SayHello",
-}
-
 func (c *greeterClient) SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
 	out := new(HelloReply)
 	err := c.cc.Invoke(ctx, "/Greeter/SayHello", in, out, opts...)
@@ -42,10 +39,6 @@ func (c *greeterClient) SayHello(ctx context.Context, in *HelloRequest, opts ...
 		return nil, err
 	}
 	return out, nil
-}
-
-var greeterSayHelloAgainStreamDesc = &grpc.StreamDesc{
-	StreamName: "SayHelloAgain",
 }
 
 func (c *greeterClient) SayHelloAgain(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
@@ -57,80 +50,92 @@ func (c *greeterClient) SayHelloAgain(ctx context.Context, in *HelloRequest, opt
 	return out, nil
 }
 
-// GreeterService is the service API for Greeter service.
-// Fields should be assigned to their respective handler implementations only before
-// RegisterGreeterService is called.  Any unassigned fields will result in the
-// handler for that method returning an Unimplemented error.
-type GreeterService struct {
+// GreeterServer is the server API for Greeter service.
+// All implementations must embed UnimplementedGreeterServer
+// for forward compatibility
+type GreeterServer interface {
 	// Sends a greeting
-	SayHello func(context.Context, *HelloRequest) (*HelloReply, error)
+	SayHello(context.Context, *HelloRequest) (*HelloReply, error)
 	// Sends another greeting
-	SayHelloAgain func(context.Context, *HelloRequest) (*HelloReply, error)
+	SayHelloAgain(context.Context, *HelloRequest) (*HelloReply, error)
+	mustEmbedUnimplementedGreeterServer()
 }
 
-func (s *GreeterService) sayHello(_ interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+// UnimplementedGreeterServer must be embedded to have forward compatible implementations.
+type UnimplementedGreeterServer struct {
+}
+
+func (UnimplementedGreeterServer) SayHello(context.Context, *HelloRequest) (*HelloReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
+}
+func (UnimplementedGreeterServer) SayHelloAgain(context.Context, *HelloRequest) (*HelloReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SayHelloAgain not implemented")
+}
+func (UnimplementedGreeterServer) mustEmbedUnimplementedGreeterServer() {}
+
+// UnsafeGreeterServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to GreeterServer will
+// result in compilation errors.
+type UnsafeGreeterServer interface {
+	mustEmbedUnimplementedGreeterServer()
+}
+
+func RegisterGreeterServer(s grpc.ServiceRegistrar, srv GreeterServer) {
+	s.RegisterService(&Greeter_ServiceDesc, srv)
+}
+
+func _Greeter_SayHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(HelloRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return s.SayHello(ctx, in)
+		return srv.(GreeterServer).SayHello(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
-		Server:     s,
+		Server:     srv,
 		FullMethod: "/Greeter/SayHello",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return s.SayHello(ctx, req.(*HelloRequest))
+		return srv.(GreeterServer).SayHello(ctx, req.(*HelloRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
-func (s *GreeterService) sayHelloAgain(_ interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+
+func _Greeter_SayHelloAgain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(HelloRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return s.SayHelloAgain(ctx, in)
+		return srv.(GreeterServer).SayHelloAgain(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
-		Server:     s,
+		Server:     srv,
 		FullMethod: "/Greeter/SayHelloAgain",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return s.SayHelloAgain(ctx, req.(*HelloRequest))
+		return srv.(GreeterServer).SayHelloAgain(ctx, req.(*HelloRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// RegisterGreeterService registers a service implementation with a gRPC server.
-func RegisterGreeterService(s grpc.ServiceRegistrar, srv *GreeterService) {
-	srvCopy := *srv
-	if srvCopy.SayHello == nil {
-		srvCopy.SayHello = func(context.Context, *HelloRequest) (*HelloReply, error) {
-			return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
-		}
-	}
-	if srvCopy.SayHelloAgain == nil {
-		srvCopy.SayHelloAgain = func(context.Context, *HelloRequest) (*HelloReply, error) {
-			return nil, status.Errorf(codes.Unimplemented, "method SayHelloAgain not implemented")
-		}
-	}
-	sd := grpc.ServiceDesc{
-		ServiceName: "Greeter",
-		Methods: []grpc.MethodDesc{
-			{
-				MethodName: "SayHello",
-				Handler:    srvCopy.sayHello,
-			},
-			{
-				MethodName: "SayHelloAgain",
-				Handler:    srvCopy.sayHelloAgain,
-			},
+// Greeter_ServiceDesc is the grpc.ServiceDesc for Greeter service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var Greeter_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "Greeter",
+	HandlerType: (*GreeterServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "SayHello",
+			Handler:    _Greeter_SayHello_Handler,
 		},
-		Streams:  []grpc.StreamDesc{},
-		Metadata: "hello.proto",
-	}
-
-	s.RegisterService(&sd, nil)
+		{
+			MethodName: "SayHelloAgain",
+			Handler:    _Greeter_SayHelloAgain_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "hello.proto",
 }
