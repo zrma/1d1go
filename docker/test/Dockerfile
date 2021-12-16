@@ -12,7 +12,7 @@ RUN apt-get -y install --no-install-recommends wget=1.20.3-1ubuntu1 curl=7.68.0-
 RUN apt-get autoremove -y
 RUN apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
-ARG GO_VERSION=1.17
+ARG GO_VERSION=1.17.5
 
 ADD https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz /usr/local/
 RUN tar -zxf /usr/local/go${GO_VERSION}.linux-amd64.tar.gz -C /usr/local
@@ -20,7 +20,7 @@ RUN ln -s /usr/local/go/bin/go /usr/local/bin/go
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.31.0
+RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.43.0
 
 RUN mkdir -p /go/src/app/
 WORKDIR /go/src/app
