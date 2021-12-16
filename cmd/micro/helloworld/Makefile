@@ -2,7 +2,10 @@
 GOPATH:=$(shell go env GOPATH)
 .PHONY: proto
 proto:
-	protoc --proto_path=. --micro_out=. --go_out=:. proto/helloworld.proto
+	protoc --go_out=proto --go_opt=paths=source_relative \
+        --go-grpc_out=proto --go-grpc_opt=paths=source_relative \
+        --micro_out=proto --micro_opt=paths=source_relative \
+        -I proto helloworld.proto
 
 .PHONY: build
 build:

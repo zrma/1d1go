@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/keepalive"
 
 	"1d1go/cmd/grpc/hello/pb"
@@ -25,10 +26,9 @@ func main() {
 }
 
 func run() error {
-	// Set up a connection to the server.
 	conn, err := grpc.Dial(
 		address,
-		grpc.WithInsecure(),
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithKeepaliveParams(keepalive.ClientParameters{
 			// keepalive settings - https://github.com/grpc/grpc/blob/master/doc/keepalive.md
 			Time:                10 * time.Second,
