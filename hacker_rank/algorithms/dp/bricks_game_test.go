@@ -36,17 +36,17 @@ func TestBricksGame(t *testing.T) {
 			want:        6,
 		},
 		{
-			description: "앞에 큰 수, 뒤에 0",
+			description: "big number front, zero back",
 			given:       []int32{999, 1, 1, 1, 0},
 			want:        1001,
 		},
 		{
-			description: "앞에 0, 뒤에 큰 수",
+			description: "zero front, big number end",
 			given:       []int32{0, 1, 1, 1, 999},
 			want:        999,
 		},
 		{
-			description: "여러 중복 값의 처리",
+			description: "multiple duplicate values",
 			given:       []int32{0, 1, 1, 1, 999, 999},
 			want:        1001,
 		},

@@ -31,7 +31,7 @@ func TestSolveFirstBadVersion(t *testing.T) {
 			want := int(math.Ceil(math.Log2(float64(tt.given))))
 			got, callCount := solveFirstBadVersion(tt.given, tt.want)
 			assert.Equal(t, tt.want, got)
-			assert.LessOrEqual(t, callCount, want, "성능 제한")
+			assert.LessOrEqual(t, callCount, want, "time complexity limitation")
 		})
 	}
 }

@@ -11,7 +11,7 @@ import (
 func TestSort(t *testing.T) {
 	t.Parallel()
 
-	t.Log("Sort 함수는 하나의 문자열을 잘 정렬한다.")
+	t.Log("Sort function sorts a string well")
 
 	//noinspection SpellCheckingInspection
 	for i, tt := range []struct {
@@ -31,7 +31,7 @@ func TestSort(t *testing.T) {
 func TestSortAdapter(t *testing.T) {
 	t.Parallel()
 
-	t.Log("SortAdapter 구조체는 문자열 슬라이스를 잘 정렬한다.")
+	t.Log("SortAdapter structure sorts string slices well")
 
 	for i, tt := range []struct {
 		given []string
@@ -58,7 +58,7 @@ func TestSortAdapter(t *testing.T) {
 func TestReverse(t *testing.T) {
 	t.Parallel()
 
-	t.Run("문자열을 잘 뒤집는다", func(t *testing.T) {
+	t.Run("Reverse function reverses given string", func(t *testing.T) {
 		const (
 			given = "abc"
 			want  = "cba"
@@ -67,7 +67,7 @@ func TestReverse(t *testing.T) {
 		assert.Equal(t, want, got)
 	})
 
-	t.Run("빈 문자열에 오류가 발생하지 않는다.", func(t *testing.T) {
+	t.Run("no error with empty string", func(t *testing.T) {
 		assert.NotPanics(t, func() {
 			const emptyStr = ""
 			got := Reverse(emptyStr)

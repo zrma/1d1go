@@ -10,7 +10,7 @@ import (
 func TestMinimumIndex(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-testing/problem")
 
-	t.Run("emptyArray() 함수는 비어 있는 슬라이스를 잘 반환한다.", func(t *testing.T) {
+	t.Run("emptyArray function returns an empty slice just fine.", func(t *testing.T) {
 		const want = invalidIdx
 		given := emptyArray()
 
@@ -20,7 +20,7 @@ func TestMinimumIndex(t *testing.T) {
 		assert.Equal(t, want, got)
 	})
 
-	t.Run("uniqueValues() 함수는 유니크한 두 개 이상의 값을 담고 있는 슬라이스를 반환한다.", func(t *testing.T) {
+	t.Run("uniqueValues() function returns a slice containing two or more unique values.", func(t *testing.T) {
 		seq := uniqueValues()
 		assert.GreaterOrEqual(t, len(seq), 2)
 
@@ -36,7 +36,7 @@ func TestMinimumIndex(t *testing.T) {
 		assert.Equal(t, 0, got, "해당 풀이에서는 minimumIndex = 0")
 	})
 
-	t.Run("exactlyTwoDifferentMinimums() 함수는 가장 작은 정수 두 개와 임의의 다른 더 큰 0개 이상의 정수로 이뤄진 슬라이스를 반환한다.", func(t *testing.T) {
+	t.Run("exactlyTwoDifferentMinimums() function returns a slice of the two smallest integers and any other larger integer of zero or more.", func(t *testing.T) {
 		seq := exactlyTwoDifferentMinimums()
 		assert.GreaterOrEqual(t, len(seq), 2)
 

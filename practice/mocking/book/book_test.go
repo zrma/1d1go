@@ -15,7 +15,7 @@ func TestPlayWithBook(t *testing.T) {
 	t.Parallel()
 
 	//noinspection SpellCheckingInspection
-	t.Run("gomock 사용 연습", func(t *testing.T) {
+	t.Run("gomock", func(t *testing.T) {
 		ctrl := gomock.NewController(t)
 		defer ctrl.Finish()
 
@@ -40,7 +40,7 @@ func TestPlayWithBook(t *testing.T) {
 		})
 	})
 
-	t.Run("testify.mock 사용 연습", func(t *testing.T) {
+	t.Run("testify.mock", func(t *testing.T) {
 		m := new(myMockBook)
 		m.On("Read", "a").Return(true)
 		m.On("Page", "a").Return(123)

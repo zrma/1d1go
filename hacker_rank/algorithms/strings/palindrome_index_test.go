@@ -51,22 +51,22 @@ func TestEqualPrefix(t *testing.T) {
 		want           bool
 	}{
 		{
-			description: "한 글자 문자열, 같으면 true",
+			description: "single-character string, true if equal",
 			given1:      "a", given2: "a",
 			want: true,
 		},
 		{
-			description: "한 글자 문자열, 다르면 false",
+			description: "single-character string, false if not equal",
 			given1:      "a", given2: "b",
 			want: false,
 		},
 		{
-			description: "두 글자 이상, 앞 2글자 같으면 true",
+			description: "over two characters string, true if the first two characters are the same",
 			given1:      "abcd", given2: "abab",
 			want: true,
 		},
 		{
-			description: "두 글자 이상, 앞 2글자 다르면 false",
+			description: "over two characters string, false if the first two characters are not the same",
 			given1:      "abc", given2: "bbc",
 			want: false,
 		},

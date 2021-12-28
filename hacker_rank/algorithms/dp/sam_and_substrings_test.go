@@ -70,17 +70,17 @@ func TestSubStrings(t *testing.T) {
 			want:        597988838,
 		},
 		{
-			description: "앞 예외처리",
+			description: "previous exception handling",
 			given:       "invalid",
 			want:        0,
 		},
 		{
-			description: "중간 예외처리",
+			description: "intermediate exception handling",
 			given:       "1234a",
 			want:        substrings("12340"),
 		},
 		{
-			description: "중간 예외처리 풀이",
+			description: "intermediate exception handling explanation",
 			given:       "1234a",
 			want: substrings("1234")*10 +
 				1 + 2 + 3 + 4 +
