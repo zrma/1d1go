@@ -35,13 +35,13 @@ func TestFind(t *testing.T) {
 		wantVal     int
 	}{
 		{
-			description: "배열에서 주어진 오프셋 위치부터 타겟을 잘 찾는다.",
+			description: "It finds the target from the given offset position in the array",
 			given:       3,
 			wantOk:      true,
 			wantVal:     2,
 		},
 		{
-			description: "오프셋 앞쪽의 타겟은 찾지 않는다.",
+			description: "targets before the offset are not found",
 			given:       2,
 			wantOk:      false,
 		},

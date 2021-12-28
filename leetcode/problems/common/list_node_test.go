@@ -29,11 +29,11 @@ func TestListNode(t *testing.T) {
 		assert.Equal(t, want, got)
 	}
 
-	t.Run("Traversal 함수 검증", func(t *testing.T) {
+	{
 		const want = "456123"
 		got := node.Traversal()
 		assert.Equal(t, want, got)
-	})
+	}
 }
 
 //noinspection GoNilness
