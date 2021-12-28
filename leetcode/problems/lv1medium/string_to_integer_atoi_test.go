@@ -14,21 +14,21 @@ func TestMyAtoI(t *testing.T) {
 		given       string
 		want        int
 	}{
-		{"정수", "42", 42},
-		{"공백 + 음수", "   -42", -42},
-		{"정수 + 문자", "4193 with words", 4193},
-		{"문자 + 정수", "words and 987", 0},
-		{"음수", "-91283472332", -2147483648},
-		{"없음", "", 0},
-		{"소수", "3.14159", 3},
-		{"공백 + 음수 + 문자", "  -0012a42", -12},
-		{"공백", "          ", 0},
-		{"공백 + 기호", "          -", 0},
-		{"+ 명시 양수", "+1", 1},
-		{"큰 수 overflow", "9223372036854775808", 2147483647},
-		{"큰 수 overflow", "18446744073709551617", 2147483647},
-		{"앞의 공백 + 0 버림", "  0000000000012345678", 12345678},
-		{"0으로 채워진 음수", "-000000000000001", -1},
+		{"integer", "42", 42},
+		{"blank + negative", "   -42", -42},
+		{"integer + character", "4193 with words", 4193},
+		{"character + integer", "words and 987", 0},
+		{"negative", "-91283472332", -2147483648},
+		{"empty", "", 0},
+		{"decimal", "3.14159", 3},
+		{"blank + negative + character", "  -0012a42", -12},
+		{"blank", "          ", 0},
+		{"blank + sign", "          -", 0},
+		{"+ explicit positive", "+1", 1},
+		{"large number overflow", "9223372036854775808", 2147483647},
+		{"large number overflow", "18446744073709551617", 2147483647},
+		{"leading space 0 truncated", "  0000000000012345678", 12345678},
+		{"zero padded negative numbers", "-000000000000001", -1},
 	} {
 		t.Run(tt.description, func(t *testing.T) {
 			got := myAtoI(tt.given)
