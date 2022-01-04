@@ -1,13 +1,11 @@
-FROM ubuntu:focal-20210723
-
-COPY ./docker/etc/sources.list /etc/apt
+FROM ubuntu:focal-20211006
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get -y install --no-install-recommends ca-certificates=20210119~20.04.1
-RUN apt-get -y install --no-install-recommends libgl1-mesa-dev=21.0.3-0ubuntu0.2~20.04.1 xorg-dev=1:7.7+19ubuntu14 gcc=4:9.3.0-1ubuntu2
-RUN apt-get -y install --no-install-recommends wget=1.20.3-1ubuntu1 curl=7.68.0-1ubuntu2.6
+RUN apt-get -y install --no-install-recommends ca-certificates=20210119~20.04.2
+RUN apt-get -y install --no-install-recommends libgl1-mesa-dev=21.0.3-0ubuntu0.3~20.04.5 xorg-dev=1:7.7+19ubuntu14 gcc=4:9.3.0-1ubuntu2
+RUN apt-get -y install --no-install-recommends wget=1.20.3-1ubuntu2 curl=7.68.0-1ubuntu2.7
 
 RUN apt-get autoremove -y
 RUN apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
