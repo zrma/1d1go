@@ -123,5 +123,5 @@ func TestBricksGamePerformance(t *testing.T) {
 		}
 
 		return true
-	}, time.Second, time.Millisecond*100, "시간 초과")
+	}, time.Second*5, time.Millisecond*100, "시간 초과")
 }
