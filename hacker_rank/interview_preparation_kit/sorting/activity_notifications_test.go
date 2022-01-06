@@ -85,7 +85,7 @@ func TestActivityNotificationsPerformance(t *testing.T) {
 		assert.Equal(t, want, got)
 
 		return true
-	}, 3*time.Second, time.Millisecond*100, "시간 초과")
+	}, time.Second*30, time.Millisecond*100, "시간 초과")
 }
 
 func TestMedianOdd(t *testing.T) {

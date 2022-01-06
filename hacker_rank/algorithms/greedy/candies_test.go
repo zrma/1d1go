@@ -79,5 +79,5 @@ func TestCandiesPerformance(t *testing.T) {
 		assert.EqualValues(t, want, got)
 
 		return true
-	}, time.Second, time.Millisecond*100, "시간 초과")
+	}, time.Second*3, time.Millisecond*100, "시간 초과")
 }
