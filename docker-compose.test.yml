@@ -2,7 +2,6 @@ version: '3.2'
 
 services:
   1d1go-test:
-    platform: linux/amd64
     container_name: 1d1go-test
     build:
       context: .

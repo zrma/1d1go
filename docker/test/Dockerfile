@@ -1,30 +1,8 @@
-FROM ubuntu:focal-20211006
+FROM golang:1.17.7-bullseye
 
-ARG DEBIAN_FRONTEND=noninteractive
+COPY . /go/src/1d1go
+WORKDIR /go/src/1d1go
 
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get -y install --no-install-recommends ca-certificates=20210119~20.04.2
-RUN apt-get -y install --no-install-recommends libgl1-mesa-dev=21.0.3-0ubuntu0.3~20.04.5 xorg-dev=1:7.7+19ubuntu14 gcc=4:9.3.0-1ubuntu2
-RUN apt-get -y install --no-install-recommends wget=1.20.3-1ubuntu2 curl=7.68.0-1ubuntu2.7
-
-RUN apt-get autoremove -y
-RUN apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
-
-ARG GO_VERSION=1.17.6
-
-ADD https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz /usr/local/
-RUN tar -zxf /usr/local/go${GO_VERSION}.linux-amd64.tar.gz -C /usr/local
-RUN ln -s /usr/local/go/bin/go /usr/local/bin/go
-
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
-RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.43.0
-
-RUN mkdir -p /go/src/app/
-WORKDIR /go/src/app
-
-COPY ./ /go/src/app
-
-RUN golangci-lint run --timeout 10m
+RUN go mod download
 
 RUN go test -race -covermode=atomic $(go list ./... | grep -v /cmd/)
