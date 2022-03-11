@@ -50,7 +50,7 @@ func changeModified(rootFile string, logger *zap.Logger) {
 				return nil
 			}
 			logger.Info("ChTimes",
-				zap.String("file", "path"),
+				zap.String("file", path),
 			)
 			if err := os.Chtimes(path, now, now); err != nil {
 				return err
