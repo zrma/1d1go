@@ -1,6 +1,6 @@
 module 1d1go
 
-go 1.17
+go 1.18
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.42.0
 
