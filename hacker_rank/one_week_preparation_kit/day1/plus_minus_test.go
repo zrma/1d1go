@@ -1,4 +1,4 @@
-package one_week_preparation_kit
+package day1
 
 import (
 	"testing"
