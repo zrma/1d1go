@@ -1,4 +1,4 @@
-package warmup
+package day2
 
 import (
 	"fmt"
@@ -9,6 +9,7 @@ import (
 
 func TestDiagonalDifference(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/diagonal-difference/problem")
+	t.Log("https://www.hackerrank.com/challenges/one-week-preparation-kit-diagonal-difference/problem")
 
 	for i, tt := range []struct {
 		given [][]int32
