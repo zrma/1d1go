@@ -1,4 +1,4 @@
-package warmup
+package one_week_preparation_kit
 
 import (
 	"testing"
@@ -8,13 +8,13 @@ import (
 
 func TestTimeConversion(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/time-conversion/problem")
+	t.Log("https://www.hackerrank.com/challenges/one-week-preparation-kit-time-conversion/problem")
 
 	for _, tt := range []struct {
 		given string
 		want  string
 	}{
 		{"07:05:45PM", "19:05:45"},
-		{"AB:12:34AM", "00:12:34"},
 		{"12:01:00PM", "12:01:00"},
 		{"12:01:00AM", "00:01:00"},
 		{"11:59:59AM", "11:59:59"},
