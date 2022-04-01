@@ -18,9 +18,9 @@ func (p simplePerson) NewPerson(initialAge int) simplePerson {
 		fmt.Println(msgOfInvalid)
 		initialAge = 0
 	}
-
-	p.age = initialAge
-	return p
+	res := p
+	res.age = initialAge
+	return res
 }
 
 func (p simplePerson) amIOld() {
