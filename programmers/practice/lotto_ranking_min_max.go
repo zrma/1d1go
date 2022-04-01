@@ -1,6 +1,6 @@
 package practice
 
-func lottoRankingMinMax(lottoNumbers []int, winNumbers []int) []int {
+func lottoRankingMinMax(lottoNumbers, winNumbers []int) []int {
 	var unknownSlots int
 	var matchedCount int
 	for _, lottoNum := range lottoNumbers {
@@ -21,14 +21,14 @@ func lottoRankingMinMax(lottoNumbers []int, winNumbers []int) []int {
 	}
 }
 
-func max(a int, b int) int {
+func max(a, b int) int {
 	if a > b {
 		return a
 	}
 	return b
 }
 
-func min(a int, b int) int {
+func min(a, b int) int {
 	if a < b {
 		return a
 	}

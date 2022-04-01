@@ -1,9 +1,10 @@
 package main
 
 import (
+	"crypto/rand"
 	"fmt"
 	"io"
-	"math/rand"
+	"math/big"
 	"net/http"
 	"net/url"
 	"os"
@@ -76,10 +77,16 @@ func getPage(endpoint string, logger *zap.Logger) error {
 					zap.Error(err),
 				)
 			}
-			name = strings.Replace(name, "?", "_", -1)
+			name = strings.ReplaceAll(name, "?", "-")
 			name = fullPath + "/" + name
 
-			time.Sleep(time.Millisecond*80 + time.Duration(rand.Intn(40)))
+			n, err := rand.Int(nil, big.NewInt(40))
+			if err != nil {
+				logger.Error("rand",
+					zap.Error(err),
+				)
+			}
+			time.Sleep(time.Millisecond*80 + time.Duration(n.Int64()))
 
 			if err := downloadFile(name, attr); err != nil {
 				logger.Error("download",
@@ -91,7 +98,7 @@ func getPage(endpoint string, logger *zap.Logger) error {
 	return nil
 }
 
-func downloadFile(filepath string, url string) (err error) {
+func downloadFile(filepath, url string) (err error) {
 	out, err := os.Create(filepath)
 	if err != nil {
 		return err

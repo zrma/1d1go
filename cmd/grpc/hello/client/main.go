@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"sync"
 	"time"
 
 	"google.golang.org/grpc"
@@ -65,12 +66,16 @@ func run() error {
 	}
 	log.Printf("Greeting again: %s", r.Message)
 
+	var goroErr error
+	var wg sync.WaitGroup
+	wg.Add(1)
 	go func() {
+		defer wg.Done()
 		for {
 			time.Sleep(60 * time.Second)
 			r, err := c.SayHello(context.Background(), &pb.HelloRequest{Name: name})
 			if err != nil {
-				log.Fatalf("could not greet: %v", err)
+				goroErr = fmt.Errorf("could not greet: %v", err)
 			}
 			log.Printf("Greeting: %s", r.GetMessage())
 		}
@@ -90,5 +95,7 @@ func run() error {
 
 	log.Println("end")
 	time.Sleep(time.Second)
-	return nil
+
+	wg.Wait()
+	return goroErr
 }

@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"go.uber.org/fx"
-	_ "go.uber.org/fx"
 )
 
 func NewLogger() *log.Logger {

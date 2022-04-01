@@ -1,9 +1,10 @@
 package lv2hard
 
 import (
+	"crypto/rand"
 	"fmt"
 	"math"
-	"math/rand"
+	"math/big"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -204,13 +205,20 @@ func benchmarkFindMedianSortedArrays(cnt1 int, b *testing.B) {
 	b.StopTimer()
 	nums1 := make([]int, cnt1)
 	for i := 0; i < cnt1; i++ {
-		nums1[i] = rand.Intn(cnt1)
+		n, err := rand.Int(nil, big.NewInt(40))
+		assert.NoError(b, err)
+		nums1[i] = int(n.Int64())
 	}
 
-	cnt2 := rand.Intn(cnt1) + 1
+	n, err := rand.Int(nil, big.NewInt(40))
+	assert.NoError(b, err)
+
+	cnt2 := int(n.Int64()) + 1
 	nums2 := make([]int, cnt2)
 	for i := 0; i < cnt2; i++ {
-		nums2[i] = rand.Intn(cnt1)
+		n, err := rand.Int(nil, big.NewInt(40))
+		assert.NoError(b, err)
+		nums2[i] = int(n.Int64())
 	}
 	b.StartTimer()
 
