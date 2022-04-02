@@ -12,14 +12,16 @@ micro new helloworld
 
 ```
 # protoc
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
+
 (linux) brew install protobuf
 (windows) scoop install protobuf
 
 # protoc-gen-go
-go get github.com/golang/protobuf/protoc-gen-go
+go install google.golang.org/protobuf/cmd/protoc-gen-go
 
 # protoc-gen-micro
-go get github.com/micro/micro/v3/cmd/protoc-gen-micro@master
+go install go-micro.dev/v4/cmd/protoc-gen-micro@v4
 ```
 
 ## Getting Started

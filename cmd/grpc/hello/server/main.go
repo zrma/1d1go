@@ -47,16 +47,26 @@ func main() {
 }
 
 type server struct {
-	pb.GreeterServer
+	pb.UnimplementedGreeterServer
+	callCount int
 }
 
 // SayHello implements hello.GreeterServer
-func (_ *server) SayHello(_ context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
-	log.Printf("Received: %v", in.GetName())
+func (svr *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+	if ctx.Err() != nil {
+		return nil, ctx.Err()
+	}
+	svr.callCount++
+	log.Printf("Received: %v, %d", in.GetName(), svr.callCount)
 	return &pb.HelloReply{Message: "Hello " + in.GetName()}, nil
 }
 
 // SayHelloAgain implements hello.GreeterServer
-func (_ *server) SayHelloAgain(_ context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+func (svr *server) SayHelloAgain(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+	if ctx.Err() != nil {
+		return nil, ctx.Err()
+	}
+	svr.callCount++
+	log.Printf("Received: %v, %d", in.GetName(), svr.callCount)
 	return &pb.HelloReply{Message: "Hello again " + in.Name}, nil
 }
