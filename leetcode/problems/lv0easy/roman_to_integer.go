@@ -2,60 +2,28 @@ package lv0easy
 
 func romanToInt(s string) int {
 	var sum int
-	for i := 0; i < len(s); i++ {
-		c := s[i]
-		switch c {
-		case 'I':
-			if i+1 < len(s) {
-				if s[i+1] == 'V' {
-					sum += 4
-					i++
-					continue
-				}
-				if s[i+1] == 'X' {
-					sum += 9
-					i++
-					continue
-				}
-			}
-			sum += 1
-		case 'X':
-			if i+1 < len(s) {
-				if s[i+1] == 'L' {
-					sum += 40
-					i++
-					continue
-				}
-				if s[i+1] == 'C' {
-					sum += 90
-					i++
-					continue
-				}
-			}
-			sum += 10
-		case 'C':
-			if i+1 < len(s) {
-				if s[i+1] == 'D' {
-					sum += 400
-					i++
-					continue
-				}
-				if s[i+1] == 'M' {
-					sum += 900
-					i++
-					continue
-				}
-			}
-			sum += 100
-		case 'V':
-			sum += 5
-		case 'L':
-			sum += 50
-		case 'D':
-			sum += 500
-		case 'M':
-			sum += 1000
+	var prev byte
+	m := map[byte]int{
+		'I': 1,
+		'V': 5,
+		'X': 10,
+		'L': 50,
+		'C': 100,
+		'D': 500,
+		'M': 1000,
+	}
+
+	isEdgeCase := func(curr byte) bool {
+		return prev == 'I' && (curr == 'V' || curr == 'X') ||
+			prev == 'X' && (curr == 'L' || curr == 'C') ||
+			prev == 'C' && (curr == 'D' || curr == 'M')
+	}
+	for _, curr := range s {
+		sum += m[byte(curr)]
+		if isEdgeCase(byte(curr)) {
+			sum -= 2 * m[prev]
 		}
+		prev = byte(curr)
 	}
 	return sum
 }
