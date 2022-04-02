@@ -101,7 +101,7 @@ func TestFreqQueryPerformance(t *testing.T) {
 		}
 
 		return true
-	}, time.Second*60, time.Millisecond*100, "시간 초과")
+	}, time.Second*10, time.Millisecond*100, "시간 초과")
 }
 
 func readInputCSV(fileName string) (arr [][]int32, err error) {

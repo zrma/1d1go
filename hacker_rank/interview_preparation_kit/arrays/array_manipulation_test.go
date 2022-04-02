@@ -83,5 +83,5 @@ func TestArrayManipulationPerformance(t *testing.T) {
 		assert.EqualValues(t, want, got)
 
 		return true
-	}, time.Second*15, time.Millisecond*100, "시간 초과")
+	}, time.Second*5, time.Millisecond*100, "시간 초과")
 }
