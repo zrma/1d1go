@@ -92,5 +92,5 @@ func TestCountSwapsPerformance(t *testing.T) {
 		assert.Equal(t, want, got)
 
 		return true
-	}, time.Second*3, time.Millisecond*100, "시간 초과")
+	}, time.Second, time.Millisecond*100, "시간 초과")
 }
