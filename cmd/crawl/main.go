@@ -80,7 +80,7 @@ func getPage(endpoint string, logger *zap.Logger) error {
 			name = strings.ReplaceAll(name, "?", "-")
 			name = fullPath + "/" + name
 
-			n, err := rand.Int(nil, big.NewInt(40))
+			n, err := rand.Int(rand.Reader, big.NewInt(40))
 			if err != nil {
 				logger.Error("rand",
 					zap.Error(err),
