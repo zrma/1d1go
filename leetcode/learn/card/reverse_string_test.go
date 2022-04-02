@@ -15,6 +15,7 @@ func TestReverseString(t *testing.T) {
 		given []byte
 		want  []byte
 	}{
+		{[]byte{}, []byte{}},
 		{[]byte{'h', 'e', 'l', 'l', 'o'}, []byte{'o', 'l', 'l', 'e', 'h'}},
 		{[]byte{'H', 'a', 'n', 'n', 'a', 'h'}, []byte{'h', 'a', 'n', 'n', 'a', 'H'}},
 		{[]byte{'A', 'B'}, []byte{'B', 'A'}},
