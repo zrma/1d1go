@@ -56,6 +56,11 @@ func TestBricksGame(t *testing.T) {
 			assert.Equal(t, tt.want, got)
 		})
 
+		t.Run(tt.description+"/v2", func(t *testing.T) {
+			got := bricksGameV2(tt.given)
+			assert.Equal(t, tt.want, got)
+		})
+
 		t.Run(tt.description+"/recur", func(t *testing.T) {
 			got := bricksGameRecur(tt.given)
 			assert.Equal(t, tt.want, got)

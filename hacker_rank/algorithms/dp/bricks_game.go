@@ -53,6 +53,46 @@ func bricksGame(arr []int32) int64 {
 	return result[0]
 }
 
+func bricksGameV2(arr []int32) int64 {
+	length := len(arr)
+	if length <= 3 {
+		var sum int64
+		for _, n := range arr {
+			sum += int64(n)
+		}
+		return sum
+	}
+
+	lastIndex := length - 1
+
+	tot := make([]int64, length)
+	var prev int64
+	for i := 0; i < length; i++ {
+		n := int64(arr[lastIndex-i])
+		cur := prev + n
+		prev = cur
+		tot[i] = cur
+	}
+
+	pick := make([]int64, length)
+	for i := 0; i < 3; i++ {
+		pick[i] = tot[i]
+	}
+
+	getPickNth := func(i int) int64 {
+		return tot[i] - pick[i]
+	}
+
+	for i := 3; i <= lastIndex; i++ {
+		take1 := int64(arr[lastIndex-i]) + getPickNth(i-1)
+		take2 := int64(arr[lastIndex-i]+arr[lastIndex-i+1]) + getPickNth(i-2)
+		take3 := int64(arr[lastIndex-i]+arr[lastIndex-i+1]+arr[lastIndex-i+2]) + getPickNth(i-3)
+
+		pick[i] = integer.MaxInt64(take1, take2, take3)
+	}
+	return pick[lastIndex]
+}
+
 func bricksGameReversal(arr []int32) int64 {
 	var sum int64
 	for _, n := range arr {
