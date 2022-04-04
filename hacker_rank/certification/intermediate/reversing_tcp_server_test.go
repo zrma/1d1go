@@ -50,7 +50,7 @@ func TestTCPServer(t *testing.T) {
 }
 
 func newTCPListener(t *testing.T) *net.TCPListener {
-	const endpoint = ""
+	const endpoint = "localhost:"
 	addr, err := net.ResolveTCPAddr(network, endpoint)
 	assert.NoError(t, err)
 
