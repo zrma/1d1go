@@ -13,8 +13,36 @@ func twoSum(nums []int, target int) []int {
 	return result
 }
 
+func twoSumSorted(nums []int, target int) []int {
+	lo, hi := 0, len(nums)-1
+	for lo < hi {
+		sum := nums[lo] + nums[hi]
+		if sum == target {
+			break
+		}
+		if sum < target {
+			lo++
+		}
+		if sum > target {
+			hi--
+		}
+	}
+	return []int{lo, hi}
+}
+
+func twoSumHash(nums []int, target int) []int {
+	m := make(map[int]int)
+	for curIdx, num := range nums {
+		if prevIdx, ok := m[target-num]; ok {
+			return []int{prevIdx, curIdx}
+		}
+		m[num] = curIdx
+	}
+	return []int{}
+}
+
 func twoSum2InputArrayIsSorted(nums []int, target int) []int {
-	result := twoSum(nums, target)
+	result := twoSumSorted(nums, target)
 	for i := range result {
 		result[i]++
 	}
