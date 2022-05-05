@@ -1,4 +1,4 @@
-package boj
+package p10100
 
 type direction int
 
