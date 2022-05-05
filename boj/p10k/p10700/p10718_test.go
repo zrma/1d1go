@@ -1,4 +1,4 @@
-package boj
+package p10700
 
 import (
 	"testing"

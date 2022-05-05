@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"1d1go/boj"
+	"1d1go/boj/p2k/p2400"
 )
 
 func main() {
@@ -15,6 +15,6 @@ func main() {
 		_, _ = fmt.Scan(&a)
 		arr = append(arr, a)
 	}
-	res := boj.Solve2437(arr)
+	res := p2400.Solve2437(arr)
 	fmt.Println(res)
 }

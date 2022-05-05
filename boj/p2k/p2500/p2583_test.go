@@ -1,4 +1,4 @@
-package boj
+package p2500
 
 import (
 	"fmt"
