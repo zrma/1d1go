@@ -8,7 +8,7 @@ import (
 
 func main() {
 	var a, b int
-	_, _ = fmt.Scanf("%d %d", &a, &b)
+	_, _ = fmt.Scan(&a, &b)
 
 	p10800.Solve10869(a, b)
 }

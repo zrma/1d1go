@@ -8,7 +8,7 @@ import (
 
 func main() {
 	var year int
-	_, _ = fmt.Scanf("%d", &year)
+	_, _ = fmt.Scan(&year)
 
 	res := p18108.Solve18108(year)
 	fmt.Println(res)
