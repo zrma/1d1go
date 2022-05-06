@@ -8,8 +8,8 @@ import (
 
 func main() {
 	var c, r, k int
-	_, _ = fmt.Scanf("%d %d", &c, &r)
-	_, _ = fmt.Scanf("%d", &k)
+	_, _ = fmt.Scan(&c, &r)
+	_, _ = fmt.Scan(&k)
 
 	x, y, ok := p10100.Solve10157(c, r, k)
 	if ok {

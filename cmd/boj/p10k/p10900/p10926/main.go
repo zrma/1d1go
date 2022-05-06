@@ -8,7 +8,7 @@ import (
 
 func main() {
 	var s string
-	_, _ = fmt.Scanf("%s", &s)
+	_, _ = fmt.Scan(&s)
 
 	res := p10900.Solve10926(s)
 	fmt.Println(res)
