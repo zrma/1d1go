@@ -1,9 +1,5 @@
 package strings
 
-import (
-	"1d1go/utils/integer"
-)
-
 func countMap(s string) map[int32]int32 {
 	m1 := make(map[int32]int32)
 	m2 := make(map[int32]int32)
@@ -42,23 +38,24 @@ func valid(s string) bool {
 		i++
 	}
 
-	min := integer.MinInt32(arr[0].key, arr[1].key)
-	max := integer.MaxInt32(arr[0].key, arr[1].key)
-	if max-min != 1 {
+	if abs(arr[0].key-arr[1].key) != 1 {
 		return false
 	}
+	return arr[0].value == 1 || arr[1].value == 1
+}
 
-	if arr[0].key == max {
-		return arr[0].value == 1
+func abs(n int32) int32 {
+	if n < 0 {
+		return -n
+	} else {
+		return n
 	}
-
-	return arr[1].value == 1
 }
 
 func isValid(s string) string {
 	if valid(s) {
 		return "YES"
+	} else {
+		return "NO"
 	}
-
-	return "NO"
 }
