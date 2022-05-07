@@ -27,11 +27,11 @@ func main() {
 	defer func() { _ = logger.Sync() }()
 
 	const (
-		startIdx = 0
-		endIdx   = startIdx + 1
+		startIndex = 0
+		endIndex   = startIndex + 1
 	)
 
-	for i := startIdx; i < endIdx; i++ {
+	for i := startIndex; i < endIndex; i++ {
 		endpoint := fmt.Sprintf("https://nipponsei.minglong.org/index.php?section=Tracker&page=%d", i)
 		if err := getPage(endpoint, logger); err != nil {
 			logger.Error("fail",

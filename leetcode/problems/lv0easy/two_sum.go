@@ -32,11 +32,11 @@ func twoSumSorted(nums []int, target int) []int {
 
 func twoSumHash(nums []int, target int) []int {
 	m := make(map[int]int)
-	for curIdx, num := range nums {
-		if prevIdx, ok := m[target-num]; ok {
-			return []int{prevIdx, curIdx}
+	for curIndex, num := range nums {
+		if prevIndex, ok := m[target-num]; ok {
+			return []int{prevIndex, curIndex}
 		}
-		m[num] = curIdx
+		m[num] = curIndex
 	}
 	return []int{}
 }

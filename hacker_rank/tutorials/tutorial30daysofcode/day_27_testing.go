@@ -3,21 +3,21 @@ package tutorial30daysofcode
 import "errors"
 
 const (
-	errMsg     = "cannot get the minimum value index from an empty sequence"
-	invalidIdx = -1
+	errMsg       = "cannot get the minimum value index from an empty sequence"
+	invalidIndex = -1
 )
 
 func minimumIndex(arr []int) (int, error) {
 	if len(arr) == 0 {
-		return invalidIdx, errors.New(errMsg)
+		return invalidIndex, errors.New(errMsg)
 	}
-	var minIdx = 0
+	var minIndex = 0
 	for i := 1; i < len(arr); i++ {
-		if arr[i] < arr[minIdx] {
-			minIdx = i
+		if arr[i] < arr[minIndex] {
+			minIndex = i
 		}
 	}
-	return minIdx, nil
+	return minIndex, nil
 }
 
 func emptyArray() []int {
