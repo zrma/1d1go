@@ -13,11 +13,11 @@ func TestClassAndInstance(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-class-vs-instance/problem")
 
 	for _, tt := range []struct {
-		given int
-		want  []string
+		age  int
+		want []string
 	}{
 		{
-			given: -1,
+			age: -1,
 			want: []string{
 				"Age is not valid, setting age to 0.",
 				"You are young.",
@@ -26,7 +26,7 @@ func TestClassAndInstance(t *testing.T) {
 			},
 		},
 		{
-			given: 10,
+			age: 10,
 			want: []string{
 				"You are young.",
 				"You are a teenager.",
@@ -34,7 +34,7 @@ func TestClassAndInstance(t *testing.T) {
 			},
 		},
 		{
-			given: 16,
+			age: 16,
 			want: []string{
 				"You are a teenager.",
 				"You are old.",
@@ -42,7 +42,7 @@ func TestClassAndInstance(t *testing.T) {
 			},
 		},
 		{
-			given: 18,
+			age: 18,
 			want: []string{
 				"You are old.",
 				"You are old.",
@@ -50,9 +50,9 @@ func TestClassAndInstance(t *testing.T) {
 			},
 		},
 	} {
-		t.Run(fmt.Sprintf("%d", tt.given), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", tt.age), func(t *testing.T) {
 			got, err := utils.GetPrinted(func() {
-				classAndInstance(tt.given)
+				classAndInstance(tt.age)
 			})
 			assert.NoError(t, err)
 			assert.Equal(t, tt.want, got)

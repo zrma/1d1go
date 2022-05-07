@@ -17,8 +17,8 @@ func TestFreqQuery(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/frequency-queries/problem")
 
 	for i, tt := range []struct {
-		given [][]int32
-		want  []int32
+		queries [][]int32
+		want    []int32
 	}{
 		{
 			[][]int32{
@@ -59,7 +59,7 @@ func TestFreqQuery(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := freqQuery(tt.given)
+			got := freqQuery(tt.queries)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -68,34 +68,34 @@ func TestFreqQuery(t *testing.T) {
 func TestFreqQueryPerformance(t *testing.T) {
 	assert.Eventually(t, func() bool {
 		for _, tt := range []struct {
-			givenFile string
-			givenLen  int
-			wantFile  string
-			wantLen   int
+			queriesFile string
+			queriesLen  int
+			wantFile    string
+			wantLen     int
 		}{
 			{
-				givenFile: "./test_data/frequency_queries_0.csv",
-				givenLen:  1000000,
-				wantFile:  "./test_data/frequency_queries_result_0.csv",
-				wantLen:   332855,
+				queriesFile: "./test_data/frequency_queries_0.csv",
+				queriesLen:  1000000,
+				wantFile:    "./test_data/frequency_queries_result_0.csv",
+				wantLen:     332855,
 			},
 			{
-				givenFile: "./test_data/frequency_queries_1.csv",
-				givenLen:  100000,
-				wantFile:  "./test_data/frequency_queries_result_1.csv",
-				wantLen:   33246,
+				queriesFile: "./test_data/frequency_queries_1.csv",
+				queriesLen:  100000,
+				wantFile:    "./test_data/frequency_queries_result_1.csv",
+				wantLen:     33246,
 			},
 		} {
-			t.Run(tt.givenFile, func(t *testing.T) {
-				given, err := readInputCSV(tt.givenFile)
+			t.Run(tt.queriesFile, func(t *testing.T) {
+				queries, err := readInputCSV(tt.queriesFile)
 				assert.NoError(t, err)
-				assert.Len(t, given, tt.givenLen)
+				assert.Len(t, queries, tt.queriesLen)
 
 				want, err := readResultCSV(tt.wantFile)
 				assert.NoError(t, err)
 				assert.Len(t, want, tt.wantLen)
 
-				got := freqQuery(given)
+				got := freqQuery(queries)
 				assert.Equal(t, want, got)
 			})
 		}

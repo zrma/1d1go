@@ -11,8 +11,8 @@ func TestSolve2437(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/2437")
 
 	for i, tt := range []struct {
-		given []int
-		want  int
+		arr  []int
+		want int
 	}{
 		{[]int{3, 1, 6, 2, 7, 30, 1}, 21},
 		{[]int{1, 1, 2, 3, 6, 7, 30}, 21},
@@ -28,7 +28,7 @@ func TestSolve2437(t *testing.T) {
 		{[]int{1, 2, 5}, 4},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := Solve2437(tt.given)
+			got := Solve2437(tt.arr)
 			assert.Equal(t, tt.want, got)
 		})
 	}

@@ -11,7 +11,7 @@ func TestMyAtoI(t *testing.T) {
 
 	for _, tt := range []struct {
 		description string
-		given       string
+		str         string
 		want        int
 	}{
 		{"integer", "42", 42},
@@ -31,7 +31,7 @@ func TestMyAtoI(t *testing.T) {
 		{"zero padded negative numbers", "-000000000000001", -1},
 	} {
 		t.Run(tt.description, func(t *testing.T) {
-			got := myAtoI(tt.given)
+			got := myAtoI(tt.str)
 			assert.Equal(t, tt.want, got)
 		})
 	}

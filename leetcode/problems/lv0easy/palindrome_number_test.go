@@ -11,8 +11,8 @@ func TestIsPalindrome(t *testing.T) {
 	t.Log("https://leetcode.com/problems/palindrome-number/")
 
 	for _, tt := range []struct {
-		given int
-		want  bool
+		n    int
+		want bool
 	}{
 		{121, true},
 		{-121, false},
@@ -21,8 +21,8 @@ func TestIsPalindrome(t *testing.T) {
 		{1234321, true},
 		{0, true},
 	} {
-		t.Run(fmt.Sprintf("%d", tt.given), func(t *testing.T) {
-			got := isPalindrome(tt.given)
+		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
+			got := isPalindrome(tt.n)
 			assert.Equal(t, tt.want, got)
 		})
 	}

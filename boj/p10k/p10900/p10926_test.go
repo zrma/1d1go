@@ -11,14 +11,14 @@ func TestSolve10926(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		given string
-		want  string
+		s    string
+		want string
 	}{
 		{"joonas", "joonas??!"},
 		{"baekjoon", "baekjoon??!"},
 	} {
-		t.Run(tt.given, func(t *testing.T) {
-			got := Solve10926(tt.given)
+		t.Run(tt.s, func(t *testing.T) {
+			got := Solve10926(tt.s)
 			assert.Equal(t, tt.want, got)
 		})
 	}

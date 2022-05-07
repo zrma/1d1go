@@ -2,17 +2,17 @@ package lv0easy
 
 var isBadVersion func(int) bool
 
-func solveFirstBadVersion(n, expected int) (int, int) {
+func solveFirstBadVersion(maxVer, badVer int) (int, int) {
 	var callCount int
-	isBadVersion = func(i int) bool {
+	isBadVersion = func(curVer int) bool {
 		callCount++
-		return i >= expected
+		return curVer >= badVer
 	}
-	return firstBadVersion(n), callCount
+	return firstBadVersion(maxVer), callCount
 }
 
-func firstBadVersion(n int) int {
-	l, r := 1, n
+func firstBadVersion(maxVer int) int {
+	l, r := 1, maxVer
 	for l < r {
 		mid := l + (r-l)/2
 		if isBadVersion(mid) {

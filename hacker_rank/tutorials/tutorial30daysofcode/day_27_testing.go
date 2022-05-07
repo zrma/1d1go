@@ -7,13 +7,13 @@ const (
 	invalidIdx = -1
 )
 
-func minimumIndex(seq []int) (int, error) {
-	if len(seq) == 0 {
+func minimumIndex(arr []int) (int, error) {
+	if len(arr) == 0 {
 		return invalidIdx, errors.New(errMsg)
 	}
 	var minIdx = 0
-	for i := 1; i < len(seq); i++ {
-		if seq[i] < seq[minIdx] {
+	for i := 1; i < len(arr); i++ {
+		if arr[i] < arr[minIdx] {
 			minIdx = i
 		}
 	}

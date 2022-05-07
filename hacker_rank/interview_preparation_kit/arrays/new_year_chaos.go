@@ -37,9 +37,9 @@ func bubbleSort(items []data, limit int) (int, bool) {
 	return cnt, true
 }
 
-func minimumBribes(q []int32) {
-	adapter := make([]data, len(q))
-	for i, n := range q {
+func minimumBribes(arr []int32) {
+	adapter := make([]data, len(arr))
+	for i, n := range arr {
 		adapter[i] = data{n, 0}
 	}
 

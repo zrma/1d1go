@@ -46,33 +46,37 @@ func TestPalindromeIndex(t *testing.T) {
 func TestEqualPrefix(t *testing.T) {
 	//noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		description    string
-		given1, given2 string
-		want           bool
+		description string
+		s1, s2      string
+		want        bool
 	}{
 		{
 			description: "single-character string, true if equal",
-			given1:      "a", given2: "a",
-			want: true,
+			s1:          "a",
+			s2:          "a",
+			want:        true,
 		},
 		{
 			description: "single-character string, false if not equal",
-			given1:      "a", given2: "b",
-			want: false,
+			s1:          "a",
+			s2:          "b",
+			want:        false,
 		},
 		{
 			description: "over two characters string, true if the first two characters are the same",
-			given1:      "abcd", given2: "abab",
-			want: true,
+			s1:          "abcd",
+			s2:          "abab",
+			want:        true,
 		},
 		{
 			description: "over two characters string, false if the first two characters are not the same",
-			given1:      "abc", given2: "bbc",
-			want: false,
+			s1:          "abc",
+			s2:          "bbc",
+			want:        false,
 		},
 	} {
-		t.Run(fmt.Sprintf("%s %s, %s", tt.description, tt.given1, tt.given2), func(t *testing.T) {
-			got := equalPrefix(tt.given1, tt.given2)
+		t.Run(fmt.Sprintf("%s %s, %s", tt.description, tt.s1, tt.s2), func(t *testing.T) {
+			got := equalPrefix(tt.s1, tt.s2)
 			assert.Equal(t, tt.want, got)
 		})
 	}

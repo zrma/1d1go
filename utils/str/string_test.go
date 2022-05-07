@@ -15,14 +15,14 @@ func TestSort(t *testing.T) {
 
 	//noinspection SpellCheckingInspection
 	for i, tt := range []struct {
-		given string
-		want  string
+		s    string
+		want string
 	}{
 		{"dcba", "abcd"},
 		{"ffbbaa", "aabbff"},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := Sort(tt.given)
+			got := Sort(tt.s)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -34,8 +34,8 @@ func TestSortAdapter(t *testing.T) {
 	t.Log("SortAdapter structure sorts string slices well")
 
 	for i, tt := range []struct {
-		given []string
-		want  []string
+		strArr []string
+		want   []string
 	}{
 		{
 			[]string{"a", "d", "b", "c"},
@@ -47,8 +47,8 @@ func TestSortAdapter(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := make([]string, len(tt.given))
-			copy(got, tt.given)
+			got := make([]string, len(tt.strArr))
+			copy(got, tt.strArr)
 			sort.Sort(SortAdapter(got))
 			assert.Equal(t, tt.want, got)
 		})
@@ -60,10 +60,10 @@ func TestReverse(t *testing.T) {
 
 	t.Run("Reverse function reverses given string", func(t *testing.T) {
 		const (
-			given = "abc"
-			want  = "cba"
+			s    = "abc"
+			want = "cba"
 		)
-		got := Reverse(given)
+		got := Reverse(s)
 		assert.Equal(t, want, got)
 	})
 

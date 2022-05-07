@@ -17,52 +17,52 @@ func TestBricksGame(t *testing.T) {
 
 	for _, tt := range []struct {
 		description string
-		given       []int32
+		arr         []int32
 		want        int64
 	}{
 		{
 			description: "1~3",
-			given:       []int32{1, 2, 3},
+			arr:         []int32{1, 2, 3},
 			want:        6,
 		},
 		{
 			description: "1~4",
-			given:       []int32{1, 2, 3, 4},
+			arr:         []int32{1, 2, 3, 4},
 			want:        6,
 		},
 		{
 			description: "1~5",
-			given:       []int32{1, 2, 3, 4, 5},
+			arr:         []int32{1, 2, 3, 4, 5},
 			want:        6,
 		},
 		{
 			description: "big number front, zero back",
-			given:       []int32{999, 1, 1, 1, 0},
+			arr:         []int32{999, 1, 1, 1, 0},
 			want:        1001,
 		},
 		{
 			description: "zero front, big number end",
-			given:       []int32{0, 1, 1, 1, 999},
+			arr:         []int32{0, 1, 1, 1, 999},
 			want:        999,
 		},
 		{
 			description: "multiple duplicate values",
-			given:       []int32{0, 1, 1, 1, 999, 999},
+			arr:         []int32{0, 1, 1, 1, 999, 999},
 			want:        1001,
 		},
 	} {
 		t.Run(tt.description+"/loop", func(t *testing.T) {
-			got := bricksGame(tt.given)
+			got := bricksGame(tt.arr)
 			assert.Equal(t, tt.want, got)
 		})
 
 		t.Run(tt.description+"/v2", func(t *testing.T) {
-			got := bricksGameV2(tt.given)
+			got := bricksGameV2(tt.arr)
 			assert.Equal(t, tt.want, got)
 		})
 
 		t.Run(tt.description+"/recur", func(t *testing.T) {
-			got := bricksGameRecur(tt.given)
+			got := bricksGameRecur(tt.arr)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -71,42 +71,42 @@ func TestBricksGame(t *testing.T) {
 func TestBricksGame_Reversal(t *testing.T) {
 	for _, tt := range []struct {
 		description string
-		given       []int32
+		arr         []int32
 		want        int64
 	}{
 		{
 			description: "1~3",
-			given:       []int32{1, 2, 3},
+			arr:         []int32{1, 2, 3},
 			want:        0,
 		},
 		{
 			description: "1~4",
-			given:       []int32{1, 2, 3, 4},
+			arr:         []int32{1, 2, 3, 4},
 			want:        4,
 		},
 		{
 			description: "1~5",
-			given:       []int32{1, 2, 3, 4, 5},
+			arr:         []int32{1, 2, 3, 4, 5},
 			want:        9,
 		},
 		{
 			description: "big number front, zero back",
-			given:       []int32{999, 1, 1, 1, 0},
+			arr:         []int32{999, 1, 1, 1, 0},
 			want:        1,
 		},
 		{
 			description: "zero front, big number end",
-			given:       []int32{0, 1, 1, 1, 999},
+			arr:         []int32{0, 1, 1, 1, 999},
 			want:        3,
 		},
 		{
 			description: "multiple duplicate values",
-			given:       []int32{0, 1, 1, 1, 999, 999},
+			arr:         []int32{0, 1, 1, 1, 999, 999},
 			want:        1000,
 		},
 	} {
 		t.Run(tt.description, func(t *testing.T) {
-			got := bricksGameReversal(tt.given)
+			got := bricksGameReversal(tt.arr)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -145,8 +145,8 @@ func readCSV(tb testing.TB, fileName string) ([][]int32, error) {
 }
 
 type fixture struct {
-	given [][]int32
-	want  []struct {
+	arrays [][]int32
+	want   []struct {
 		len int
 		val int64
 	}
@@ -163,7 +163,7 @@ func newFixture(tb testing.TB) fixture {
 	assert.Len(tb, arr, 8)
 
 	return fixture{
-		given: arr,
+		arrays: arr,
 		want: []struct {
 			len int
 			val int64
@@ -184,7 +184,7 @@ func TestBricksGamePerformance(t *testing.T) {
 	assert.Eventually(t, func() bool {
 		f := newFixture(t)
 
-		for i, arr := range f.given {
+		for i, arr := range f.arrays {
 			assert.Len(t, arr, f.want[i].len)
 
 			got := bricksGame(arr)
@@ -213,7 +213,7 @@ func BenchmarkBrickGame(b *testing.B) {
 			b.StartTimer()
 
 			for pb.Next() {
-				for _, arr := range f.given {
+				for _, arr := range f.arrays {
 					bricksGame(arr)
 				}
 			}
@@ -227,7 +227,7 @@ func BenchmarkBrickGame(b *testing.B) {
 			b.StartTimer()
 
 			for pb.Next() {
-				for _, arr := range f.given {
+				for _, arr := range f.arrays {
 					bricksGameRecur(arr)
 				}
 			}

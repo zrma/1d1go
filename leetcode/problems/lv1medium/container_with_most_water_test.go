@@ -10,9 +10,9 @@ func TestMaxArea(t *testing.T) {
 	t.Log("https://leetcode.com/problems/container-with-most-water/")
 
 	var (
-		given = []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
-		want  = 49
+		heights = []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
+		want    = 49
 	)
-	got := maxArea(given)
+	got := maxArea(heights)
 	assert.Equal(t, want, got)
 }

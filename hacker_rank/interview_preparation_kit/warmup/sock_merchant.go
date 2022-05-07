@@ -1,9 +1,9 @@
 package warmup
 
-func sockMerchant(ar []int32) int32 {
+func sockMerchant(arr []int32) int32 {
 	counter := make(map[int32]int32)
 
-	for _, n := range ar {
+	for _, n := range arr {
 		counter[n]++
 	}
 

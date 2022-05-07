@@ -95,14 +95,14 @@ type side struct {
 
 type arr []int
 
-func (a arr) getVal(i int) int {
-	if i < 0 {
+func (a arr) getVal(idx int) int {
+	if idx < 0 {
 		return math.MinInt32
 	}
-	if i >= len(a) {
+	if idx >= len(a) {
 		return math.MaxInt32
 	}
-	return a[i]
+	return a[idx]
 }
 
 func findBoundary(nums1, nums2 []int, totCnt int) (leftMax, rightMin side) {

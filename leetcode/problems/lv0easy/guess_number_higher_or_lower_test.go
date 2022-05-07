@@ -12,8 +12,8 @@ func TestSolveGuessNumber(t *testing.T) {
 	t.Log("https://leetcode.com/problems/guess-number-higher-or-lower/")
 
 	for _, tt := range []struct {
-		given int
-		want  int
+		maxNum int
+		target int
 	}{
 		{5, 4},
 		{10, 3},
@@ -28,12 +28,12 @@ func TestSolveGuessNumber(t *testing.T) {
 		{1024, 513},
 		{1024, 1024},
 	} {
-		t.Run(fmt.Sprintf("%d,", tt.given), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d,", tt.maxNum), func(t *testing.T) {
 			// 3진 탐색, 1회 탐색에 2번씩 호출
-			want := int(math.Ceil((math.Log(float64(tt.given)))/math.Log(3))*2) + 1
-			got, callCount := solveGuessNumber(tt.given, tt.want)
-			assert.Equal(t, tt.want, got)
-			assert.LessOrEqual(t, callCount, want, "성능 제한")
+			wantCount := int(math.Ceil((math.Log(float64(tt.maxNum)))/math.Log(3))*2) + 1
+			got, callCount := solveGuessNumber(tt.maxNum, tt.target)
+			assert.Equal(t, tt.target, got)
+			assert.LessOrEqual(t, callCount, wantCount, "성능 제한")
 		})
 	}
 

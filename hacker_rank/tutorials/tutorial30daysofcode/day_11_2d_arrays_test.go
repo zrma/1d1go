@@ -15,7 +15,7 @@ func TestHourGlassSum(t *testing.T) {
 		"19",
 	}
 	got, err := utils.GetPrinted(func() {
-		arr := [][]int32{
+		arr2D := [][]int32{
 			{1, 1, 1, 0, 0, 0},
 			{0, 1, 0, 0, 0, 0},
 			{1, 1, 1, 0, 0, 0},
@@ -23,7 +23,7 @@ func TestHourGlassSum(t *testing.T) {
 			{0, 0, 0, 2, 0, 0},
 			{0, 0, 1, 2, 4, 0},
 		}
-		hourGlassSum(arr)
+		hourGlassSum(arr2D)
 	})
 	assert.NoError(t, err)
 	assert.Equal(t, want, got)

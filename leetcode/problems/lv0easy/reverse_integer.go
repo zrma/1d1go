@@ -2,12 +2,12 @@ package lv0easy
 
 import "math"
 
-func rev(x int) int {
+func rev(n int) int {
 	var res int
-	for x > 0 {
+	for n > 0 {
 		res *= 10
-		res += x % 10
-		x /= 10
+		res += n % 10
+		n /= 10
 	}
 
 	if res > math.MaxInt32 || res < math.MinInt32 {
@@ -16,11 +16,11 @@ func rev(x int) int {
 	return res
 }
 
-func reverse(x int) int {
-	negative := x < 0
+func reverse(n int) int {
+	negative := n < 0
 	if negative {
-		x = -x
-		return -rev(x)
+		n = -n
+		return -rev(n)
 	}
-	return rev(x)
+	return rev(n)
 }

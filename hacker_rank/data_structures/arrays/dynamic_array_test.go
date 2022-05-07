@@ -9,9 +9,9 @@ import (
 func TestDynamicArray(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/2d-array/problem")
 
-	const givenN = 2
+	const n = 2
 	var (
-		givenArr = [][]int32{
+		arr = [][]int32{
 			{1, 0, 5},
 			{1, 1, 7},
 			{1, 0, 3},
@@ -21,6 +21,6 @@ func TestDynamicArray(t *testing.T) {
 		want = []int32{7, 3}
 	)
 
-	got := dynamicArray(givenN, givenArr)
+	got := dynamicArray(n, arr)
 	assert.Equal(t, want, got)
 }

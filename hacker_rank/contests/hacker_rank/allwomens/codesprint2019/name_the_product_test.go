@@ -12,19 +12,19 @@ func TestProductName(t *testing.T) {
 
 	//noinspection SpellCheckingInspection
 	for i, tt := range []struct {
-		given []string
+		names []string
 		want  string
 	}{
 		{
-			given: []string{"bubby", "bunny", "berry"},
+			names: []string{"bubby", "bunny", "berry"},
 			want:  "zzzzz",
 		},
 		{
-			given: []string{"ready", "stedy", "zebra"},
+			names: []string{"ready", "stedy", "zebra"},
 			want:  "yzzzz",
 		},
 		{
-			given: []string{
+			names: []string{
 				"aaaaa", "bbbbb", "ccccc", "ddddd", "eeeee", "fffff", "ggggg",
 				"hhhhh", "iiiii", "jjjjj", "kkkkk", "lllll", "mmmmm", "nnnnn",
 				"ooooo", "ppppp", "qqqqq", "rrrrr", "sssss", "ttttt", "uuuuu",
@@ -33,12 +33,12 @@ func TestProductName(t *testing.T) {
 			want: "yyyyy",
 		},
 		{
-			given: []string{"uuuuu", "vvvvv", "wwwww", "yyyyy", "zzzzz"},
+			names: []string{"uuuuu", "vvvvv", "wwwww", "yyyyy", "zzzzz"},
 			want:  "xxxxx",
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := productName(tt.given)
+			got := productName(tt.names)
 			assert.Equal(t, tt.want, got)
 		})
 	}

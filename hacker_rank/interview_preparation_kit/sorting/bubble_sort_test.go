@@ -19,11 +19,11 @@ func TestCountSwaps(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/ctci-bubble-sort/problem")
 
 	for i, tt := range []struct {
-		given []int32
-		want  []string
+		arr  []int32
+		want []string
 	}{
 		{
-			given: []int32{6, 4, 1},
+			arr: []int32{6, 4, 1},
 			want: []string{
 				"Array is sorted in 3 swaps.",
 				"First Element: 1",
@@ -31,7 +31,7 @@ func TestCountSwaps(t *testing.T) {
 			},
 		},
 		{
-			given: []int32{1, 2, 3},
+			arr: []int32{1, 2, 3},
 			want: []string{
 				"Array is sorted in 0 swaps.",
 				"First Element: 1",
@@ -39,7 +39,7 @@ func TestCountSwaps(t *testing.T) {
 			},
 		},
 		{
-			given: []int32{3, 2, 1},
+			arr: []int32{3, 2, 1},
 			want: []string{
 				"Array is sorted in 3 swaps.",
 				"First Element: 1",
@@ -49,7 +49,7 @@ func TestCountSwaps(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got, err := utils.GetPrinted(func() {
-				countSwaps(tt.given)
+				countSwaps(tt.arr)
 			})
 			assert.NoError(t, err)
 			assert.Equal(t, tt.want, got)
@@ -70,15 +70,15 @@ func TestCountSwapsPerformance(t *testing.T) {
 		rows, err := r.ReadAll()
 		assert.NoError(t, err)
 
-		var given []int32
+		var arr []int32
 		for _, row := range rows {
 			num, err := strconv.ParseInt(strings.TrimSpace(row[0]), 10, 32)
 			assert.NoError(t, err)
 
-			given = append(given, int32(num))
+			arr = append(arr, int32(num))
 		}
 
-		assert.Len(t, given, 528)
+		assert.Len(t, arr, 528)
 
 		want := []string{
 			"Array is sorted in 68472 swaps.",
@@ -86,7 +86,7 @@ func TestCountSwapsPerformance(t *testing.T) {
 			"Last Element: 1994569",
 		}
 		got, err := utils.GetPrinted(func() {
-			countSwaps(given)
+			countSwaps(arr)
 		})
 		assert.NoError(t, err)
 		assert.Equal(t, want, got)

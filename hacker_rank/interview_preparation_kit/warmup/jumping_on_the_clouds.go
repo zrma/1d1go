@@ -1,10 +1,10 @@
 package warmup
 
-func jumpingOnClouds(c []int32) int32 {
+func jumpingOnClouds(arr []int32) int32 {
 	var total int32
 	var before int32
-	length := len(c)
-	for cur, v := range c {
+	length := len(arr)
+	for cur, v := range arr {
 		if v == 1 {
 			step := jump(before, int32(cur-1))
 			if step < 0 {

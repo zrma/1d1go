@@ -13,7 +13,7 @@ import (
 func TestHighestValuePalindrome(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/richie-rich/problem")
 
-	extremelyLongGiven, extremelyLongWant := readExtremelyLongTestData(t)
+	extremelyLongStr, extremelyLongWant := readExtremelyLongTestData(t)
 
 	for i, tt := range []struct {
 		s    string
@@ -36,7 +36,7 @@ func TestHighestValuePalindrome(t *testing.T) {
 		{"1111111", 7, 5, "9919199"},
 		{"11111111", 8, 1, "11111111"},
 		{"1111111", 7, 1, "1119111"},
-		{extremelyLongGiven, 77543, 58343, extremelyLongWant},
+		{extremelyLongStr, 77543, 58343, extremelyLongWant},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got := highestValuePalindrome(tt.s, tt.n, tt.k)
@@ -45,7 +45,7 @@ func TestHighestValuePalindrome(t *testing.T) {
 	}
 }
 
-func readExtremelyLongTestData(t *testing.T) (given string, want string) {
+func readExtremelyLongTestData(t *testing.T) (str string, want string) {
 	file, err := os.Open("./test_data/highest_value_palindrome.csv")
 	assert.NoError(t, err)
 	defer func() {

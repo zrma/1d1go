@@ -11,8 +11,8 @@ func TestIsPrime(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-running-time-and-complexity/problem")
 
 	for _, tt := range []struct {
-		given int32
-		want  bool
+		num  int32
+		want bool
 	}{
 		{1, false},
 		{2, true},
@@ -28,8 +28,8 @@ func TestIsPrime(t *testing.T) {
 		{173, true},
 		{177, false},
 	} {
-		t.Run(fmt.Sprintf("%d", tt.given), func(t *testing.T) {
-			got := isPrime(tt.given)
+		t.Run(fmt.Sprintf("%d", tt.num), func(t *testing.T) {
+			got := isPrime(tt.num)
 			assert.Equal(t, tt.want, got)
 		})
 	}
