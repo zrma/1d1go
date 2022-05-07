@@ -2,24 +2,24 @@ package lv0easy
 
 var guess func(int) int
 
-func solveGuessNumber(n, expected int) (int, int) {
+func solveGuessNumber(maxNum, target int) (int, int) {
 	var callCount int
 	guess = func(i int) int {
 		callCount++
 		switch {
-		case expected < i:
+		case target < i:
 			return -1
-		case expected > i:
+		case target > i:
 			return 1
 		default:
 			return 0
 		}
 	}
-	return guessNumber(n), callCount
+	return guessNumber(maxNum), callCount
 }
 
-func guessNumber(n int) int {
-	l, r := 1, n
+func guessNumber(maxNum int) int {
+	l, r := 1, maxNum
 	for l <= r {
 		mid1 := l + (r-l)/3
 		mid2 := r - (r-l)/3

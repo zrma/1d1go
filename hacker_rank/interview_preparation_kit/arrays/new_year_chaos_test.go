@@ -13,8 +13,8 @@ func TestMinimumBribes(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/new-year-chaos/problem")
 
 	for i, tt := range []struct {
-		given []int32
-		want  string
+		arr  []int32
+		want string
 	}{
 		{[]int32{2, 1, 5, 3, 4}, "3"},
 		{[]int32{2, 5, 1, 3, 4}, "Too chaotic"},
@@ -25,7 +25,7 @@ func TestMinimumBribes(t *testing.T) {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			want := []string{tt.want}
 			got, err := utils.GetPrinted(func() {
-				minimumBribes(tt.given)
+				minimumBribes(tt.arr)
 			})
 			assert.NoError(t, err)
 			assert.Equal(t, want, got)

@@ -12,8 +12,8 @@ func TestSolveFirstBadVersion(t *testing.T) {
 	t.Log("https://leetcode.com/problems/first-bad-version/")
 
 	for _, tt := range []struct {
-		given int
-		want  int
+		maxVer int
+		badVer int
 	}{
 		{5, 4},
 		{10, 3},
@@ -27,11 +27,11 @@ func TestSolveFirstBadVersion(t *testing.T) {
 		{1024, 513},
 		{1024, 1024},
 	} {
-		t.Run(fmt.Sprintf("%d", tt.given), func(t *testing.T) {
-			want := int(math.Ceil(math.Log2(float64(tt.given))))
-			got, callCount := solveFirstBadVersion(tt.given, tt.want)
-			assert.Equal(t, tt.want, got)
-			assert.LessOrEqual(t, callCount, want, "time complexity limitation")
+		t.Run(fmt.Sprintf("%d", tt.maxVer), func(t *testing.T) {
+			wantCount := int(math.Ceil(math.Log2(float64(tt.maxVer))))
+			badVer, callCount := solveFirstBadVersion(tt.maxVer, tt.badVer)
+			assert.Equal(t, tt.badVer, badVer)
+			assert.LessOrEqual(t, callCount, wantCount, "time complexity limitation")
 		})
 	}
 }

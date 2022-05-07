@@ -9,9 +9,9 @@ import (
 func TestSimpleArraySum(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/simple-array-sum/problem")
 
-	given := []int32{1, 2, 3, 4, 10, 11}
+	arr := []int32{1, 2, 3, 4, 10, 11}
 	const want = 31
 
-	got := simpleArraySum(given)
+	got := simpleArraySum(arr)
 	assert.EqualValues(t, want, got)
 }

@@ -11,14 +11,14 @@ func TestFactorial(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-recursion/problem")
 
 	for _, tt := range []struct {
-		given int32
-		want  int32
+		n    int32
+		want int32
 	}{
 		{3, 6},
 		{10, 3628800},
 	} {
-		t.Run(fmt.Sprintf("%d", tt.given), func(t *testing.T) {
-			got := factorial(tt.given)
+		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
+			got := factorial(tt.n)
 			assert.Equal(t, tt.want, got)
 		})
 	}

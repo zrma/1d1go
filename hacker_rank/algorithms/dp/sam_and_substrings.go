@@ -27,11 +27,11 @@ import (
 // b   0           1            15               164
 // b'  1          15           164              1670
 
-func substrings(n string) int32 {
+func substrings(s string) int32 {
 	const modulo = 1000000007
 
-	length := len(n)
-	b, err := strconv.Atoi(string(n[0]))
+	length := len(s)
+	b, err := strconv.Atoi(string(s[0]))
 	if err != nil {
 		return 0
 	}
@@ -39,7 +39,7 @@ func substrings(n string) int32 {
 	a := b
 	var i int
 	for i = 1; i < length; i++ {
-		cur, err := strconv.Atoi(string(n[i]))
+		cur, err := strconv.Atoi(string(s[i]))
 		if err != nil {
 			cur = 0
 		}

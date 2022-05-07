@@ -12,8 +12,8 @@ func TestSherlockAndAnagrams(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		given string
-		want  int32
+		s    string
+		want int32
 	}{
 		{"abba", 4},
 		{"abcd", 0},
@@ -21,8 +21,8 @@ func TestSherlockAndAnagrams(t *testing.T) {
 		{"kkkk", 10},
 		{"cdcd", 5},
 	} {
-		t.Run(tt.given, func(t *testing.T) {
-			got := sherlockAndAnagrams(tt.given)
+		t.Run(tt.s, func(t *testing.T) {
+			got := sherlockAndAnagrams(tt.s)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -32,8 +32,8 @@ func TestSherlockAndAnagramsPerformance(t *testing.T) {
 	assert.Eventually(t, func() bool {
 		//goland:noinspection SpellCheckingInspection
 		for _, tt := range []struct {
-			given string
-			want  int32
+			s    string
+			want int32
 		}{
 			{"dbcfibibcheigfccacfegicigcefieeeeegcghggdheichgafhdigffgifidfbeaccadabecbdcgieaffbigffcecahafcafhcdg", 1464},
 			{"dfcaabeaeeabfffcdbbfaffadcacdeeabcadabfdefcfcbbacadaeafcfceeedacbafdebbffcecdbfebdbfdbdecbfbadddbcec", 2452},
@@ -46,8 +46,8 @@ func TestSherlockAndAnagramsPerformance(t *testing.T) {
 			{"bahdcafcdadbdgagdddcidaaicggcfdbfeeeghiibbdhabdhffddhffcdccfdddhgiceciffhgdibfdacbidgagdadhdceibbbcc", 1571},
 			{"dichcagakdajjhhdhegiifiiggjebejejciaabbifkcbdeigajhgfcfdgekfajbcdifikafkgjjjfefkdbeicgiccgkjheeiefje", 1042},
 		} {
-			t.Run(tt.given, func(t *testing.T) {
-				got := sherlockAndAnagrams(tt.given)
+			t.Run(tt.s, func(t *testing.T) {
+				got := sherlockAndAnagrams(tt.s)
 				assert.Equal(t, tt.want, got)
 			})
 		}

@@ -13,11 +13,11 @@ func TestSorting(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-sorting/problem")
 
 	for i, tt := range []struct {
-		given []int32
-		want  []string
+		arr  []int32
+		want []string
 	}{
 		{
-			given: []int32{1, 2, 3},
+			arr: []int32{1, 2, 3},
 			want: []string{
 				"Array is sorted in 0 swaps.",
 				"First Element: 1",
@@ -25,7 +25,7 @@ func TestSorting(t *testing.T) {
 			},
 		},
 		{
-			given: []int32{3, 2, 1},
+			arr: []int32{3, 2, 1},
 			want: []string{
 				"Array is sorted in 3 swaps.",
 				"First Element: 1",
@@ -35,7 +35,7 @@ func TestSorting(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got, err := utils.GetPrinted(func() {
-				sorting(tt.given)
+				sorting(tt.arr)
 			})
 			assert.NoError(t, err)
 			assert.Equal(t, tt.want, got)

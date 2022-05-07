@@ -1,15 +1,15 @@
 package lv0easy
 
-func removeDuplicates(nums []int) int {
-	if len(nums) == 0 {
+func removeDuplicates(arr []int) int {
+	if len(arr) == 0 {
 		return 0
 	}
 
 	cnt := 1
-	prev := nums[0]
-	for _, n := range nums[1:] {
+	prev := arr[0]
+	for _, n := range arr[1:] {
 		if n != prev {
-			nums[cnt] = n
+			arr[cnt] = n
 			cnt++
 			prev = n
 		}

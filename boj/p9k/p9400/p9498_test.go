@@ -11,7 +11,7 @@ func TestSolve9498(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/9498")
 
 	for _, tt := range []struct {
-		given int
+		score int
 		want  string
 	}{
 		{100, "A"},
@@ -25,8 +25,8 @@ func TestSolve9498(t *testing.T) {
 		{59, "F"},
 		{0, "F"},
 	} {
-		t.Run(fmt.Sprintf("%d", tt.given), func(t *testing.T) {
-			got := Solve9498(tt.given)
+		t.Run(fmt.Sprintf("%d", tt.score), func(t *testing.T) {
+			got := Solve9498(tt.score)
 			assert.Equal(t, tt.want, got)
 		})
 	}

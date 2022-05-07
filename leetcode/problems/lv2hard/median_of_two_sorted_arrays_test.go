@@ -112,17 +112,17 @@ func TestFindMedianSortedArrays(t *testing.T) {
 
 func TestGetVal(t *testing.T) {
 	for _, tt := range []struct {
-		given int
-		want  int
+		idx  int
+		want int
 	}{
 		{-1, math.MinInt32},
 		{0, 0},
 		{4, 4},
 		{5, math.MaxInt32},
 	} {
-		t.Run(fmt.Sprintf("%d", tt.given), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", tt.idx), func(t *testing.T) {
 			nums := arr([]int{0, 1, 2, 3, 4})
-			got := nums.getVal(tt.given)
+			got := nums.getVal(tt.idx)
 			assert.Equal(t, tt.want, got)
 		})
 	}

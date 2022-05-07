@@ -13,21 +13,21 @@ func TestPrintArray(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-exceptions-string-to-integer/problem")
 
 	for i, tt := range []struct {
-		given []interface{}
-		want  []string
+		args []interface{}
+		want []string
 	}{
 		{
-			given: []interface{}{1, 2, 3},
-			want:  []string{"1", "2", "3"},
+			args: []interface{}{1, 2, 3},
+			want: []string{"1", "2", "3"},
 		},
 		{
-			given: []interface{}{"Hello", "World"},
-			want:  []string{"Hello", "World"},
+			args: []interface{}{"Hello", "World"},
+			want: []string{"Hello", "World"},
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got, err := utils.GetPrinted(func() {
-				printArray(tt.given...)
+				printArray(tt.args...)
 			})
 			assert.NoError(t, err)
 			assert.Equal(t, tt.want, got)

@@ -12,13 +12,13 @@ import (
 func TestDisplayLinkedList(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-linked-list/problem")
 
-	var given = []int{2, 3, 4, 1}
-	want := make([]string, len(given))
-	for i, n := range given {
+	var arr = []int{2, 3, 4, 1}
+	want := make([]string, len(arr))
+	for i, n := range arr {
 		want[i] = strconv.Itoa(n)
 	}
 	got, err := utils.GetPrinted(func() {
-		displayLinkedList(given)
+		displayLinkedList(arr)
 	})
 	assert.NoError(t, err)
 	assert.Equal(t, want, got)

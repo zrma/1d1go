@@ -71,17 +71,17 @@ func buildBinarySearchTree(t *testing.T) binarySearchTree {
 
 func TestBinarySearchTreeExist(t *testing.T) {
 	for _, tt := range []struct {
-		given int
-		want  bool
+		data int
+		want bool
 	}{
 		{1, true},
 		{2, false},
 		{3, true},
 		{4, false},
 	} {
-		t.Run(fmt.Sprintf("%d", tt.given), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", tt.data), func(t *testing.T) {
 			bst := buildBinarySearchTree(t)
-			got := bst.exist(tt.given)
+			got := bst.exist(tt.data)
 			assert.Equal(t, tt.want, got)
 		})
 	}

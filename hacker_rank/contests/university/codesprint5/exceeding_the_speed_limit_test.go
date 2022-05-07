@@ -11,17 +11,17 @@ import (
 
 func TestExceedingTheSpeedLimit(t *testing.T) {
 	for _, tt := range []struct {
-		given int32
-		want  string
+		n    int32
+		want string
 	}{
 		{100, "3000 Warning"},
 		{140, "25000 License removed"},
 		{85, "0 No punishment"},
 	} {
-		t.Run(fmt.Sprintf("%d", tt.given), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
 			want := []string{tt.want}
 			got, err := utils.GetPrinted(func() {
-				exceedingTheSpeedLimit(tt.given)
+				exceedingTheSpeedLimit(tt.n)
 			})
 			assert.NoError(t, err)
 			assert.Equal(t, want, got)

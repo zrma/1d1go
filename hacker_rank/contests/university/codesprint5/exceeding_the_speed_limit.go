@@ -2,7 +2,7 @@ package codesprint5
 
 import "fmt"
 
-func exceedingTheSpeedLimit(s int32) {
+func exceedingTheSpeedLimit(n int32) {
 	const (
 		MsgLineRemoved  = "License removed"
 		MsgWarning      = "Warning"
@@ -10,11 +10,11 @@ func exceedingTheSpeedLimit(s int32) {
 	)
 
 	switch {
-	case s > 110:
-		fine := (s - 90) * 500
+	case n > 110:
+		fine := (n - 90) * 500
 		fmt.Println(fine, MsgLineRemoved)
-	case s > 90:
-		fine := (s - 90) * 300
+	case n > 90:
+		fine := (n - 90) * 300
 		fmt.Println(fine, MsgWarning)
 	default:
 		fmt.Println(0, MsgNoPunishment)

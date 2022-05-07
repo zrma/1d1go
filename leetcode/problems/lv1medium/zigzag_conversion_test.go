@@ -12,17 +12,17 @@ func TestConvert(t *testing.T) {
 
 	//noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		given string
-		n     int
-		want  string
+		s    string
+		n    int
+		want string
 	}{
 		{"PAYPALISHIRING", 3, "PAHNAPLSIIGYIR"},
 		{"PAYPALISHIRING", 4, "PINALSIGYAHRPI"},
 		{"AB", 1, "AB"},
 	} {
-		t.Run(fmt.Sprintf("%s %d", tt.given, tt.n), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%s %d", tt.s, tt.n), func(t *testing.T) {
 			assert.NotPanics(t, func() {
-				got := convert(tt.given, tt.n)
+				got := convert(tt.s, tt.n)
 				assert.Equal(t, tt.want, got)
 			})
 		})

@@ -10,8 +10,8 @@ import (
 func TestCustomSorting(t *testing.T) {
 	//goland:noinspection SpellCheckingInspection
 	for i, tt := range []struct {
-		given []string
-		want  []string
+		strArr []string
+		want   []string
 	}{
 		{
 			[]string{"abcd", "abc", "cd", "ab", "a", "cde", "b", "abcde"},
@@ -31,7 +31,7 @@ func TestCustomSorting(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := customSorting(tt.given)
+			got := customSorting(tt.strArr)
 			assert.Equal(t, tt.want, got)
 		})
 	}

@@ -9,14 +9,14 @@ import (
 
 func TestCountBits(t *testing.T) {
 	for _, tt := range []struct {
-		given uint32
-		want  int32
+		n    uint32
+		want int32
 	}{
 		{127, 7},
 		{10, 2},
 	} {
-		t.Run(fmt.Sprintf("%d", tt.given), func(t *testing.T) {
-			got := countBits(tt.given)
+		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
+			got := countBits(tt.n)
 			assert.Equal(t, tt.want, got)
 		})
 	}

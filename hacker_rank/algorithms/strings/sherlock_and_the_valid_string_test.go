@@ -11,8 +11,8 @@ func TestIsValid(t *testing.T) {
 
 	//noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		given string
-		want  string
+		s    string
+		want string
 	}{
 		{"aabbcd", "NO"},
 		{"aabbccddeefghi", "NO"},
@@ -23,8 +23,8 @@ func TestIsValid(t *testing.T) {
 		{"aabbcc", "YES"},
 		{"abcdefghhgfedecba", "YES"},
 	} {
-		t.Run(tt.given, func(t *testing.T) {
-			got := isValid(tt.given)
+		t.Run(tt.s, func(t *testing.T) {
+			got := isValid(tt.s)
 			assert.Equal(t, tt.want, got)
 		})
 	}

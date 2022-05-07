@@ -12,9 +12,9 @@ func TestMinimumIndex(t *testing.T) {
 
 	t.Run("emptyArray function returns an empty slice just fine.", func(t *testing.T) {
 		const want = invalidIdx
-		given := emptyArray()
+		arr := emptyArray()
 
-		got, err := minimumIndex(given)
+		got, err := minimumIndex(arr)
 		assert.Error(t, err)
 		assert.EqualError(t, err, errMsg)
 		assert.Equal(t, want, got)

@@ -12,10 +12,10 @@ import (
 
 func TestPrintTest(t *testing.T) {
 	t.Run("normal", func(t *testing.T) {
-		const given = "test"
-		want := []string{given}
+		const msg = "test"
+		want := []string{msg}
 		got, err := GetPrinted(func() {
-			fmt.Println(given)
+			fmt.Println(msg)
 		})
 		assert.NoError(t, err)
 		assert.Equal(t, want, got)

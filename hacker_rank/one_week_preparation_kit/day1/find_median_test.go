@@ -11,8 +11,8 @@ func TestFindMedian(t *testing.T) {
 	t.Log("https://www.hackerrank.com/test/eoipgdk427n/questions/a8taf02a12a")
 
 	for _, tt := range []struct {
-		given []int32
-		want  int32
+		arr  []int32
+		want int32
 	}{
 		{
 			[]int32{0, 1, 2, 4, 6, 5, 3},
@@ -27,8 +27,8 @@ func TestFindMedian(t *testing.T) {
 			3,
 		},
 	} {
-		t.Run(fmt.Sprintf("%v", tt.given), func(t *testing.T) {
-			got := findMedian(tt.given)
+		t.Run(fmt.Sprintf("%v", tt.arr), func(t *testing.T) {
+			got := findMedian(tt.arr)
 			assert.Equal(t, tt.want, got)
 		})
 	}

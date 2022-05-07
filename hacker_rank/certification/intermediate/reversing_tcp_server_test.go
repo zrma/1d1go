@@ -13,8 +13,8 @@ import (
 func TestTCPServer(t *testing.T) {
 	//goland:noinspection SpellCheckingInspection
 	for i, tt := range []struct {
-		given []string
-		want  []string
+		messages []string
+		want     []string
 	}{
 		{
 			[]string{"abc", "def", "ghi"},
@@ -33,7 +33,7 @@ func TestTCPServer(t *testing.T) {
 			logger := mockLogger{}
 
 			waitCh := TCPServer(ctx, listener, &logger)
-			got, err := tcpClient(addr, tt.given)
+			got, err := tcpClient(addr, tt.messages)
 			if err != nil {
 				t.Log(err.Error())
 			}
@@ -71,15 +71,15 @@ func parseAddr(original string) string {
 
 func TestParseAddr(t *testing.T) {
 	for i, tt := range []struct {
-		given string
-		want  string
+		original string
+		want     string
 	}{
 		{"[::]:1234", "1234"},
 		{":1234", "1234"},
 		{"", ""},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := parseAddr(tt.given)
+			got := parseAddr(tt.original)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -124,25 +124,25 @@ func (m mockAcceptor) AcceptTCP() (*net.TCPConn, error) {
 func TestHandleConn(t *testing.T) {
 	assert.NotPanics(t, func() {
 		const (
-			given = "abc"
-			want  = "cba"
+			msg  = "abc"
+			want = "cba"
 		)
 
-		b := newBufferImpl(t, given, want)
+		b := newBufferImpl(t, msg, want)
 		handleConn(b)
 	})
 }
 
 func TestHandleConnError(t *testing.T) {
 	const (
-		given = "abc"
-		want  = "cba"
+		msg  = "abc"
+		want = "cba"
 	)
 
 	t.Run("SetReadBuffer", func(t *testing.T) {
 		const wantErrMsg = "SetReadBuffer"
 		assert.PanicsWithError(t, wantErrMsg, func() {
-			b := newBufferImpl(t, given, want)
+			b := newBufferImpl(t, msg, want)
 			b.setReadBuffer = func(n int) error {
 				assert.Equal(t, maxBufferSize, n)
 				return fmt.Errorf(wantErrMsg)
@@ -154,7 +154,7 @@ func TestHandleConnError(t *testing.T) {
 	t.Run("SetWriteBuffer", func(t *testing.T) {
 		const wantErrMsg = "SetWriteBuffer"
 		assert.PanicsWithError(t, wantErrMsg, func() {
-			b := newBufferImpl(t, given, want)
+			b := newBufferImpl(t, msg, want)
 			b.setWriteBuffer = func(n int) error {
 				assert.Equal(t, len(want), n)
 				return fmt.Errorf(wantErrMsg)
@@ -166,7 +166,7 @@ func TestHandleConnError(t *testing.T) {
 	t.Run("Read", func(t *testing.T) {
 		const wantErrMsg = "read 실패"
 		assert.PanicsWithError(t, wantErrMsg, func() {
-			b := newBufferImpl(t, given, want)
+			b := newBufferImpl(t, msg, want)
 			b.read = func(p []byte) (n int, err error) {
 				assert.NotNil(t, p)
 				assert.Len(t, p, maxBufferSize)
@@ -179,21 +179,21 @@ func TestHandleConnError(t *testing.T) {
 	t.Run("Write", func(t *testing.T) {
 		const wantErrMsg = "write 실패"
 		assert.PanicsWithError(t, wantErrMsg, func() {
-			b := newBufferImpl(t, given, want)
+			b := newBufferImpl(t, msg, want)
 			b.write = func(p []byte) (n int, err error) {
 				assert.NotNil(t, p)
 				assert.Len(t, p, len(want))
 				for i, c := range want {
 					assert.EqualValues(t, c, p[i])
 				}
-				return len(given), fmt.Errorf(wantErrMsg)
+				return len(msg), fmt.Errorf(wantErrMsg)
 			}
 			handleConn(b)
 		})
 	})
 }
 
-func newBufferImpl(t *testing.T, given, want string) bufferImpl {
+func newBufferImpl(t *testing.T, msg, want string) bufferImpl {
 	return bufferImpl{
 		setReadBuffer: func(n int) error {
 			assert.Equal(t, maxBufferSize, n)
@@ -206,10 +206,10 @@ func newBufferImpl(t *testing.T, given, want string) bufferImpl {
 		read: func(p []byte) (n int, err error) {
 			assert.NotNil(t, p)
 			assert.Len(t, p, maxBufferSize)
-			for i, c := range given {
+			for i, c := range msg {
 				p[i] = byte(c)
 			}
-			return len(given), nil
+			return len(msg), nil
 		},
 		write: func(p []byte) (n int, err error) {
 			assert.NotNil(t, p)
@@ -217,7 +217,7 @@ func newBufferImpl(t *testing.T, given, want string) bufferImpl {
 			for i, c := range want {
 				assert.EqualValues(t, c, p[i])
 			}
-			return len(given), nil
+			return len(msg), nil
 		},
 	}
 }

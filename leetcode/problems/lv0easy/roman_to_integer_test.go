@@ -11,8 +11,8 @@ func TestRomanToInteger(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		given string
-		want  int
+		s    string
+		want int
 	}{
 		{"I", 1},
 		{"V", 5},
@@ -34,8 +34,8 @@ func TestRomanToInteger(t *testing.T) {
 		{"MCMXCIV", 1994},
 		{"MMMCMXCIX", 3999},
 	} {
-		t.Run(tt.given, func(t *testing.T) {
-			got := romanToInt(tt.given)
+		t.Run(tt.s, func(t *testing.T) {
+			got := romanToInt(tt.s)
 			assert.Equal(t, tt.want, got)
 		})
 	}

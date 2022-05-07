@@ -11,13 +11,13 @@ import (
 
 func TestEncodeManager(t *testing.T) {
 	for i, tt := range []struct {
-		given   *Manager
+		manager *Manager
 		marshal func(interface{}) ([]byte, error)
 		err     error
 		want    string
 	}{
 		{
-			given: &Manager{
+			manager: &Manager{
 				FullName:       "Jack Oliver",
 				Position:       "CEO",
 				Age:            44,
@@ -26,7 +26,7 @@ func TestEncodeManager(t *testing.T) {
 			want: `{"full_name":"Jack Oliver","position":"CEO","age":44}`,
 		},
 		{
-			given: &Manager{
+			manager: &Manager{
 				FullName: `Jack Oliver
 `,
 				Age:            44,
@@ -35,14 +35,14 @@ func TestEncodeManager(t *testing.T) {
 			want: `{"full_name":"Jack Oliver\n","age":44,"years_in_company":8}`,
 		},
 		{
-			given: &Manager{
+			manager: &Manager{
 				FullName:       "abc",
 				Position:       "de",
 				Age:            123,
 				YearsInCompany: 456,
 			},
-			marshal: func(given interface{}) ([]byte, error) {
-				m, ok := given.(*Manager)
+			marshal: func(got interface{}) ([]byte, error) {
+				m, ok := got.(*Manager)
 				assert.True(t, ok)
 				assert.Equal(t, "abc", m.FullName)
 				assert.Equal(t, "de", m.Position)
@@ -60,7 +60,7 @@ func TestEncodeManager(t *testing.T) {
 			t.Cleanup(func() {
 				marshal = json.Marshal
 			})
-			reader, err := EncodeManager(tt.given)
+			reader, err := EncodeManager(tt.manager)
 			assert.Equal(t, tt.err, err)
 
 			if err == nil {

@@ -12,11 +12,11 @@ func TestDisguise(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	for i, tt := range []struct {
-		given [][]string
-		want  int
+		clothes [][]string
+		want    int
 	}{
 		{
-			given: [][]string{
+			clothes: [][]string{
 				{"yellowhat", "headgear"},
 				{"bluesunglasses", "eyewear"},
 				{"green_turban", "headgear"},
@@ -24,7 +24,7 @@ func TestDisguise(t *testing.T) {
 			want: 5,
 		},
 		{
-			given: [][]string{
+			clothes: [][]string{
 				{"crowmask", "face"},
 				{"bluesunglasses", "face"},
 				{"smoky_makeup", "face"},
@@ -33,7 +33,7 @@ func TestDisguise(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := disguise(tt.given)
+			got := disguise(tt.clothes)
 			assert.Equal(t, tt.want, got)
 		})
 	}

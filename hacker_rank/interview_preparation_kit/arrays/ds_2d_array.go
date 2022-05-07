@@ -11,22 +11,22 @@ import "math"
 // 7 8 9
 //
 // 1 + 2 + 3 + 5 + 7 + 8 + 9 = 35
-func HourGlassSum(arr [][]int32) int32 {
+func HourGlassSum(arr2D [][]int32) int32 {
 
-	rowSize := len(arr)
+	rowSize := len(arr2D)
 	if rowSize < 3 {
 		return 0
 	}
 
-	colSize := len(arr[0])
+	colSize := len(arr2D[0])
 	if colSize < 3 {
 		return 0
 	}
 
 	calc := func(x, y int) int32 {
-		sum := arr[y-1][x-1] + arr[y-1][x] + arr[y-1][x+1]
-		sum += arr[y][x]
-		sum += arr[y+1][x-1] + arr[y+1][x] + arr[y+1][x+1]
+		sum := arr2D[y-1][x-1] + arr2D[y-1][x] + arr2D[y-1][x+1]
+		sum += arr2D[y][x]
+		sum += arr2D[y+1][x-1] + arr2D[y+1][x] + arr2D[y+1][x+1]
 
 		return sum
 	}
