@@ -105,7 +105,7 @@ func (a arr) getVal(idx int) int {
 	return a[idx]
 }
 
-func findBoundary(nums1, nums2 []int, totCnt int) (leftMax, rightMin side) {
+func findBoundary(nums1, nums2 []int, totalCount int) (leftMax, rightMin side) {
 	// range of binary search target in nums1
 	low, high := 0, len(nums1)
 
@@ -113,17 +113,17 @@ func findBoundary(nums1, nums2 []int, totCnt int) (leftMax, rightMin side) {
 		// nums1:  1 2 4 | 5 6 7
 		// nums2:  3 5   | 8 9
 		//
-		// totCnt := 6 + 4
+		// totalCount := 6 + 4
 		// cut1 := (0 + 6) / 2 = 3
-		// cut2 := (totCnt+1) / 2 - cut1 = 5 - 3 = 2
+		// cut2 := (totalCount+1) / 2 - cut1 = 5 - 3 = 2
 		//
 		// 총 10개이므로 좌우측 중 한 쪽에서 5개씩 가져갈 수 있음
-		// totCnt 에 더해주는 +1 은 인덱스 계산을 편하게 하기 위한 sugar
+		// totalCount 에 더해주는 +1 은 인덱스 계산을 편하게 하기 위한 sugar
 		// 좌측의 nums1에서 먼저 3개를 가져가면 nums2는 2개만 가져갈 수 있음
 		//
 		// it makes both side(left and right) being equal count
 		cut1 := (low + high) / 2
-		cut2 := (totCnt+1)/2 - cut1
+		cut2 := (totalCount+1)/2 - cut1
 
 		leftMax.nums1 = arr(nums1).getVal(cut1 - 1)
 		leftMax.nums2 = arr(nums2).getVal(cut2 - 1)
@@ -148,11 +148,11 @@ func findMedianSortedArraysWithBinSearch(nums1, nums2 []int) float64 {
 		nums1, nums2 = nums2, nums1
 	}
 
-	totCnt := len(nums1) + len(nums2)
-	leftMax, rightMin := findBoundary(nums1, nums2, totCnt)
+	totalCount := len(nums1) + len(nums2)
+	leftMax, rightMin := findBoundary(nums1, nums2, totalCount)
 
 	leftMaxVal := math.Max(float64(leftMax.nums1), float64(leftMax.nums2))
-	if totCnt%2 == 0 {
+	if totalCount%2 == 0 {
 		rightMinVal := math.Min(float64(rightMin.nums1), float64(rightMin.nums2))
 		return (leftMaxVal + rightMinVal) / 2
 	} else {

@@ -11,7 +11,7 @@ func TestMinimumIndex(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-testing/problem")
 
 	t.Run("emptyArray function returns an empty slice just fine.", func(t *testing.T) {
-		const want = invalidIdx
+		const want = invalidIndex
 		arr := emptyArray()
 
 		got, err := minimumIndex(arr)

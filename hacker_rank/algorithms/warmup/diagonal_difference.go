@@ -6,11 +6,11 @@ func diagonalDifference(arr [][]int32) int32 {
 	}
 
 	var val1, val2 int32
-	lastIdx := len(arr[0]) - 1
+	lastIndex := len(arr[0]) - 1
 
 	for pos, row := range arr {
 		val1 += row[pos]
-		val2 += row[lastIdx-pos]
+		val2 += row[lastIndex-pos]
 	}
 
 	abs := func(n int32) int32 {

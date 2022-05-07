@@ -9,15 +9,15 @@ func dynamicArray(n int32, queries [][]int32) []int32 {
 		cmd, x, y := query[0], query[1], query[2]
 
 		if cmd == 1 {
-			seqIdx := (x ^ lastAnswer) % n
-			seq := seqList[seqIdx]
+			seqIndex := (x ^ lastAnswer) % n
+			seq := seqList[seqIndex]
 			seq = append(seq, y)
-			seqList[seqIdx] = seq
+			seqList[seqIndex] = seq
 		} else {
-			seqIdx := (x ^ lastAnswer) % n
-			seq := seqList[seqIdx]
-			elemIdx := y % int32(len(seq))
-			lastAnswer = seq[elemIdx]
+			seqIndex := (x ^ lastAnswer) % n
+			seq := seqList[seqIndex]
+			elemIndex := y % int32(len(seq))
+			lastAnswer = seq[elemIndex]
 			result = append(result, lastAnswer)
 		}
 	}

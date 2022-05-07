@@ -11,13 +11,13 @@ func repeatedString(s string, n int64) int64 {
 
 	length := int64(len(s))
 	cnt := int64(strings.Count(s, findTarget))
-	repeatCnt := n / length
+	repeatCount := n / length
 	mod := n % length
 
-	return cnt*repeatCnt + partialCnt(s, mod)
+	return cnt*repeatCount + partialCount(s, mod)
 }
 
-func partialCnt(s string, n int64) int64 {
+func partialCount(s string, n int64) int64 {
 	if !isValid(s, n) {
 		return 0
 	}

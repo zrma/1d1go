@@ -9,7 +9,7 @@ func lengthOfLongestSubstring(s string) int {
 
 	curLength := 1
 	maxLength := 1
-	prevIdx := 0
+	prevIndex := 0
 
 	var visited [math.MaxUint8]int
 	for i := range visited {
@@ -22,14 +22,14 @@ func lengthOfLongestSubstring(s string) int {
 	// |--|
 	// 0123
 	//
-	// prevIdx = 0
+	// prevIndex = 0
 	// curLength -> 2까지 증가
 	//
 	// i < 3 일 경우
 	//
-	// b, c의 경우 모두 prevIdx == -1
+	// b, c의 경우 모두 prevIndex == -1
 	//
-	// i == 1 : 1 - 1 == 0 (prevIdx == 0)
+	// i == 1 : 1 - 1 == 0 (prevIndex == 0)
 	// i == 2 : 2 - 1 == 0 -> curLength++ -> 2
 	// i == 3 : curLength(2) > maxLength(1) -> maxLength(2), curLength = 3 - 0 = 3
 	//
@@ -37,14 +37,14 @@ func lengthOfLongestSubstring(s string) int {
 	//
 	// curLength(3) > maxLength(2) -> maxLength(3)
 	for i := 1; i < len(s); i++ {
-		prevIdx = visited[s[i]]
-		if prevIdx == -1 || (i-curLength > prevIdx) {
+		prevIndex = visited[s[i]]
+		if prevIndex == -1 || (i-curLength > prevIndex) {
 			curLength++
 		} else {
 			if curLength > maxLength {
 				maxLength = curLength
 			}
-			curLength = i - prevIdx
+			curLength = i - prevIndex
 		}
 		visited[s[i]] = i
 	}
