@@ -15,6 +15,7 @@ func TestSolve10157(t *testing.T) {
 		wantOk       bool
 		wantX, wantY int
 	}{
+		{3, 3, 8, true, 2, 1},
 		{7, 6, 1, true, 1, 1},
 		{7, 6, 6, true, 1, 6},
 		{7, 6, 7, true, 2, 6},

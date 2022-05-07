@@ -19,9 +19,14 @@ func TestIsValid(t *testing.T) {
 		{"abbccc", "NO"},
 		{"aaaabbcc", "NO"},
 		{"aaaaabc", "NO"},
+		{"aaabbbc", "YES"},
+		{"aaabb", "YES"},
+		{"abcdefghhgfedecba", "YES"},
 		{"aabbc", "YES"},
 		{"aabbcc", "YES"},
-		{"abcdefghhgfedecba", "YES"},
+		{"aabbccc", "YES"},
+		{"aabbccd", "YES"},
+		{"abbc", "YES"},
 	} {
 		t.Run(tt.s, func(t *testing.T) {
 			got := isValid(tt.s)
