@@ -1,4 +1,4 @@
-package basic
+package go_basic
 
 func countBits(n uint32) int32 {
 	var res int32

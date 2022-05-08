@@ -1,4 +1,4 @@
-package intermediate
+package go_intermediate
 
 import (
 	"fmt"
