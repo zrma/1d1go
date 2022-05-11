@@ -25,10 +25,10 @@ func main() {
 	}
 
 	w := bufio.NewWriter(os.Stdout)
+	defer func() { _ = w.Flush() }()
 
 	res := p15500.Solve15552(arr2D)
 	for _, v := range res {
 		_, _ = fmt.Fprintln(w, v)
 	}
-	_ = w.Flush()
 }

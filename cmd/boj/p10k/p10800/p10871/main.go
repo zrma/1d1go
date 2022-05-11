@@ -26,10 +26,10 @@ func main() {
 	}
 
 	w := bufio.NewWriter(os.Stdout)
+	defer func() { _ = w.Flush() }()
 
 	res := p10800.Solve10871(x, arr)
 	for _, v := range res {
 		_, _ = fmt.Fprintf(w, "%d ", v)
 	}
-	_ = w.Flush()
 }
