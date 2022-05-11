@@ -13,10 +13,10 @@ func main() {
 	_, _ = fmt.Scan(&n)
 
 	w := bufio.NewWriter(os.Stdout)
+	defer func() { _ = w.Flush() }()
 
 	res := p2700.Solve2742(n)
 	for _, v := range res {
 		_, _ = fmt.Fprintln(w, v)
 	}
-	_ = w.Flush()
 }
