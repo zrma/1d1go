@@ -1,10 +1,13 @@
-package p1000
+package p1000_test
 
 import (
 	"fmt"
 	"testing"
 
+	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p1k/p1000"
 )
 
 func TestSolve1008(t *testing.T) {
@@ -20,11 +23,24 @@ func TestSolve1008(t *testing.T) {
 		{4, 5, 0.8},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			const epsilon = 1e-9
+			io := newIOWithMock(t)
+			io.EXPECT().
+				Scan(gomock.Any()).
+				Do(func(args ...any) {
+					assert.Len(t, args, 2)
+					pA, ok := args[0].(*int)
+					assert.True(t, ok)
+					pB, ok := args[1].(*int)
+					assert.True(t, ok)
+					*pA = tt.a
+					*pB = tt.b
+				}).
+				Return(0, nil)
+			io.EXPECT().
+				Println(tt.want).
+				Return(0, nil)
 
-			got := Solve1008(tt.a, tt.b)
-			assert.InDelta(t, tt.want, got, epsilon)
-			assert.InEpsilon(t, tt.want, got, epsilon)
+			p1000.Solve1008(io)
 		})
 	}
 }

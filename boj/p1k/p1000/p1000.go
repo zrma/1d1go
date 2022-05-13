@@ -1,5 +1,11 @@
 package p1000
 
-func Solve1000(a, b int) int {
-	return a + b
+import (
+	"1d1go/utils"
+)
+
+func Solve1000(fmt utils.InOut) {
+	var a, b int
+	_, _ = fmt.Scan(&a, &b)
+	_, _ = fmt.Println(a + b)
 }
