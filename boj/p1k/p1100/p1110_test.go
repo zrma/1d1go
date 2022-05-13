@@ -1,10 +1,12 @@
-package p1100
+package p1100_test
 
 import (
 	"fmt"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/golang/mock/gomock"
+
+	"1d1go/boj/p1k/p1100"
 )
 
 func TestSolve1110(t *testing.T) {
@@ -21,8 +23,16 @@ func TestSolve1110(t *testing.T) {
 		{71, 12},
 	} {
 		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
-			got := Solve1110(tt.n)
-			assert.Equal(t, tt.want, got)
+			io := newIOWithMock(t)
+			io.EXPECT().
+				Scan(gomock.Any()).
+				SetArg(0, tt.n).
+				Return(0, nil)
+			io.EXPECT().
+				Println(tt.want).
+				Return(0, nil)
+
+			p1100.Solve1110(io)
 		})
 	}
 }
