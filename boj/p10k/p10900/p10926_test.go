@@ -1,9 +1,12 @@
-package p10900
+package p10900_test
 
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/golang/mock/gomock"
+
+	"1d1go/boj/p10k/p10900"
+	"1d1go/utils/mocks"
 )
 
 func TestSolve10926(t *testing.T) {
@@ -18,8 +21,19 @@ func TestSolve10926(t *testing.T) {
 		{"baekjoon", "baekjoon??!"},
 	} {
 		t.Run(tt.s, func(t *testing.T) {
-			got := Solve10926(tt.s)
-			assert.Equal(t, tt.want, got)
+			ctrl := gomock.NewController(t)
+			defer ctrl.Finish()
+
+			scanner := mocks.NewMockScanner(ctrl)
+			writer := mocks.NewMockWriter(ctrl)
+
+			scanner.EXPECT().Scan().Return(true)
+			scanner.EXPECT().Text().Return(tt.s)
+
+			want := []byte(tt.want + "\n")
+			writer.EXPECT().Write(want).Return(len(want), nil)
+
+			p10900.Solve10926(scanner, writer)
 		})
 	}
 }

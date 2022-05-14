@@ -4,8 +4,6 @@ import (
 	"fmt"
 )
 
-//go:generate go run github.com/golang/mock/mockgen -destination=./mock_in_out.go -package=utils . InOut
-
 type InOut interface {
 	Scan(a ...any) (n int, err error)
 	Println(a ...any) (n int, err error)
@@ -28,4 +26,18 @@ func (i impl) Scan(args ...any) (n int, err error) {
 
 func (i impl) Println(args ...any) (n int, err error) {
 	return fnOut(args...)
+}
+
+//go:generate go run github.com/golang/mock/mockgen -destination=./mocks/mock_scanner.go -package=mocks . Scanner
+//go:generate go run github.com/golang/mock/mockgen -destination=./mocks/mock_writer.go -package=mocks . Writer
+
+type Scanner interface {
+	Scan() bool
+	Text() string
+	Err() error
+}
+
+type Writer interface {
+	Write(p []byte) (n int, err error)
+	Flush() error
 }

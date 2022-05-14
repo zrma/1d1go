@@ -1,16 +1,23 @@
 package p10900
 
 import (
-	"bufio"
 	"fmt"
-	"os"
+	"strconv"
 )
 
-func Solve10952(arr2D [][2]int) {
-	w := bufio.NewWriter(os.Stdout)
-	defer func() { _ = w.Flush() }()
+func Solve10952(scanner Scanner, writer Writer) {
+	for scanner.Scan() {
+		a, _ := strconv.Atoi(scanner.Text())
+		if ok := scanner.Scan(); !ok {
+			break
+		}
+		b, _ := strconv.Atoi(scanner.Text())
 
-	for _, v := range arr2D {
-		_, _ = fmt.Fprintln(w, v[0]+v[1])
+		if a == 0 && b == 0 {
+			break
+		}
+
+		_, _ = fmt.Fprintln(writer, a+b)
 	}
+	_ = writer.Flush()
 }
