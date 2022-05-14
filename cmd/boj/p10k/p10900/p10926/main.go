@@ -1,15 +1,18 @@
 package main
 
 import (
-	"fmt"
+	"bufio"
+	"os"
 
 	"1d1go/boj/p10k/p10900"
 )
 
 func main() {
-	var s string
-	_, _ = fmt.Scan(&s)
+	scanner := bufio.NewScanner(bufio.NewReader(os.Stdin))
+	scanner.Split(bufio.ScanWords)
 
-	res := p10900.Solve10926(s)
-	fmt.Println(res)
+	writer := bufio.NewWriter(os.Stdout)
+	defer func() { _ = writer.Flush() }()
+
+	p10900.Solve10926(scanner, writer)
 }

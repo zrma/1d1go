@@ -1,9 +1,20 @@
 package p10900
 
-func Solve10950(arr2D [][2]int) []int {
-	res := make([]int, len(arr2D))
-	for i, arr := range arr2D {
-		res[i] = arr[0] + arr[1]
+import (
+	"fmt"
+	"strconv"
+)
+
+func Solve10950(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	n, _ := strconv.Atoi(scanner.Text())
+
+	for i := 0; i < n; i++ {
+		scanner.Scan()
+		a, _ := strconv.Atoi(scanner.Text())
+		scanner.Scan()
+		b, _ := strconv.Atoi(scanner.Text())
+
+		_, _ = fmt.Fprintln(writer, a+b)
 	}
-	return res
 }

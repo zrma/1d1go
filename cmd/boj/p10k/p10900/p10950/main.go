@@ -1,22 +1,18 @@
 package main
 
 import (
-	"fmt"
+	"bufio"
+	"os"
 
 	"1d1go/boj/p10k/p10900"
 )
 
 func main() {
-	var n int
-	_, _ = fmt.Scan(&n)
+	scanner := bufio.NewScanner(bufio.NewReader(os.Stdin))
+	scanner.Split(bufio.ScanWords)
 
-	arr2D := make([][2]int, n)
-	for i := range arr2D {
-		_, _ = fmt.Scan(&arr2D[i][0], &arr2D[i][1])
-	}
+	writer := bufio.NewWriter(os.Stdout)
+	defer func() { _ = writer.Flush() }()
 
-	res := p10900.Solve10950(arr2D)
-	for _, v := range res {
-		fmt.Println(v)
-	}
+	p10900.Solve10950(scanner, writer)
 }
