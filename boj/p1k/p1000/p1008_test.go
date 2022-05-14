@@ -2,12 +2,13 @@ package p1000_test
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
 
 	"github.com/golang/mock/gomock"
-	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p1k/p1000"
+	"1d1go/utils/mocks"
 )
 
 func TestSolve1008(t *testing.T) {
@@ -23,24 +24,23 @@ func TestSolve1008(t *testing.T) {
 		{4, 5, 0.8},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			io := newIOWithMock(t)
-			io.EXPECT().
-				Scan(gomock.Any()).
-				Do(func(args ...any) {
-					assert.Len(t, args, 2)
-					pA, ok := args[0].(*int)
-					assert.True(t, ok)
-					pB, ok := args[1].(*int)
-					assert.True(t, ok)
-					*pA = tt.a
-					*pB = tt.b
-				}).
-				Return(0, nil)
-			io.EXPECT().
-				Println(tt.want).
-				Return(0, nil)
+			ctrl := gomock.NewController(t)
+			defer ctrl.Finish()
 
-			p1000.Solve1008(io)
+			scanner := mocks.NewMockScanner(ctrl)
+			writer := mocks.NewMockWriter(ctrl)
+
+			a := strconv.Itoa(tt.a)
+			b := strconv.Itoa(tt.b)
+
+			scanner.EXPECT().Scan().Return(true).Times(2)
+			scanner.EXPECT().Text().Return(a)
+			scanner.EXPECT().Text().Return(b)
+
+			want := []byte(fmt.Sprintln(tt.want))
+			writer.EXPECT().Write(want).Return(len(want), nil)
+
+			p1000.Solve1008(scanner, writer)
 		})
 	}
 }

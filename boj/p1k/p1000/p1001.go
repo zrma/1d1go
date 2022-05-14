@@ -1,11 +1,15 @@
 package p1000
 
 import (
-	"1d1go/utils"
+	"fmt"
+	"strconv"
 )
 
-func Solve1001(fmt utils.InOut) {
-	var a, b int
-	_, _ = fmt.Scan(&a, &b)
-	_, _ = fmt.Println(a - b)
+func Solve1001(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	a, _ := strconv.Atoi(scanner.Text())
+	scanner.Scan()
+	b, _ := strconv.Atoi(scanner.Text())
+
+	_, _ = fmt.Fprintln(writer, a-b)
 }

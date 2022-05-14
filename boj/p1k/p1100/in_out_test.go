@@ -5,7 +5,7 @@ import (
 
 	"github.com/golang/mock/gomock"
 
-	"1d1go/boj/p1k/p1000/mocks"
+	"1d1go/boj/p1k/p1100/mocks"
 )
 
 func newIOWithMock(t *testing.T) *mocks.MockInOut {
