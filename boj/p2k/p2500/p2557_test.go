@@ -1,20 +1,19 @@
-package p2500
+package p2500_test
 
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-
-	"1d1go/utils"
+	"1d1go/boj/p2k/p2500"
 )
 
 func TestSolve2557(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/2557")
 
-	want := []string{"Hello World!"}
-	got, err := utils.GetPrinted(func() {
-		Solve2557()
-	})
-	assert.NoError(t, err)
-	assert.Equal(t, want, got)
+	const want = "Hello World!"
+	io := newIOWithMock(t)
+	io.EXPECT().
+		Println(want).
+		Return(0, nil)
+
+	p2500.Solve2557(io)
 }

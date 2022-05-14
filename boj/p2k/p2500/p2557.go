@@ -1,9 +1,5 @@
 package p2500
 
-import (
-	"fmt"
-)
-
-func Solve2557() {
-	fmt.Println("Hello World!")
+func Solve2557(fmt InOut) {
+	_, _ = fmt.Println("Hello World!")
 }
