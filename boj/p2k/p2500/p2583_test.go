@@ -2,12 +2,13 @@ package p2500_test
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
 
 	"github.com/golang/mock/gomock"
-	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p2k/p2500"
+	"1d1go/utils/mocks"
 )
 
 func TestSolve2583(t *testing.T) {
@@ -47,46 +48,43 @@ func TestSolve2583(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			io := newIOWithMock(t)
-			io.EXPECT().
-				Scan(gomock.Any()).
-				Do(func(args ...any) {
-					assert.Len(t, args, 3)
-					row, ok := args[0].(*int)
-					assert.True(t, ok)
-					col, ok := args[1].(*int)
-					assert.True(t, ok)
-					k, ok := args[2].(*int)
-					assert.True(t, ok)
-					*row = tt.row
-					*col = tt.col
-					*k = len(tt.rects)
-				}).
-				Return(0, nil)
+			ctr := gomock.NewController(t)
+			defer ctr.Finish()
+
+			scanner := mocks.NewMockScanner(ctr)
+			writer := mocks.NewMockWriter(ctr)
+
+			row := strconv.Itoa(tt.row)
+			col := strconv.Itoa(tt.col)
+			k := strconv.Itoa(len(tt.rects))
+
+			scanner.EXPECT().Scan().Return(true).Times(3)
+			scanner.EXPECT().Text().Return(row)
+			scanner.EXPECT().Text().Return(col)
+			scanner.EXPECT().Text().Return(k)
+
 			for _, rect := range tt.rects {
-				r := rect // capture
-				io.EXPECT().
-					Scan(gomock.Any()).
-					Do(func(args ...any) {
-						assert.Len(t, args, 4)
-						for i, n := range args {
-							ptr, ok := n.(*int)
-							assert.True(t, ok)
-							*ptr = r[i]
-						}
-					}).
-					Return(0, nil)
+				x1 := strconv.Itoa(rect[0])
+				y1 := strconv.Itoa(rect[1])
+				x2 := strconv.Itoa(rect[2])
+				y2 := strconv.Itoa(rect[3])
+
+				scanner.EXPECT().Scan().Return(true).Times(4)
+				scanner.EXPECT().Text().Return(x1)
+				scanner.EXPECT().Text().Return(y1)
+				scanner.EXPECT().Text().Return(x2)
+				scanner.EXPECT().Text().Return(y2)
 			}
 
-			io.EXPECT().
-				Println(len(tt.want)).
-				Return(0, nil)
+			wantLen := []byte(strconv.Itoa(len(tt.want)) + "\n")
+			writer.EXPECT().Write(wantLen).Return(len(wantLen), nil)
+
 			for _, want := range tt.want {
-				io.EXPECT().
-					Println(want).
-					Return(0, nil)
+				wantStr := []byte(strconv.Itoa(want) + " ")
+				writer.EXPECT().Write(wantStr).Return(len(wantStr), nil)
 			}
-			p2500.Solve2583(io)
+
+			p2500.Solve2583(scanner, writer)
 		})
 	}
 }

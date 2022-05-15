@@ -1,10 +1,17 @@
 package p2500
 
-func Solve2525(fmt InOut) {
-	var hour, minute int
-	var duration int
-	_, _ = fmt.Scan(&hour, &minute)
-	_, _ = fmt.Scan(&duration)
+import (
+	"fmt"
+	"strconv"
+)
+
+func Solve2525(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	hour, _ := strconv.Atoi(scanner.Text())
+	scanner.Scan()
+	minute, _ := strconv.Atoi(scanner.Text())
+	scanner.Scan()
+	duration, _ := strconv.Atoi(scanner.Text())
 
 	minute += duration
 	if minute >= 60 {
@@ -12,5 +19,6 @@ func Solve2525(fmt InOut) {
 	}
 	minute %= 60
 	hour %= 24
-	_, _ = fmt.Println(hour, minute)
+
+	_, _ = fmt.Fprintln(writer, hour, minute)
 }
