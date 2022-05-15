@@ -1,15 +1,20 @@
 package p1100
 
-func Solve1110(fmt InOut) {
-	var n int
-	_, _ = fmt.Scan(&n)
+import (
+	"fmt"
+	"strconv"
+)
+
+func Solve1110(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	n, _ := strconv.Atoi(scanner.Text())
 
 	count := 1
 	for x := modify(n); x != n; x = modify(x) {
 		count++
 	}
 
-	_, _ = fmt.Println(count)
+	_, _ = fmt.Fprintln(writer, count)
 }
 
 func modify(n int) int {
