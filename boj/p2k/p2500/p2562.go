@@ -1,23 +1,23 @@
 package p2500
 
 import (
+	"fmt"
 	"math"
-
-	"1d1go/utils"
+	"strconv"
 )
 
-func Solve2562(fmt utils.InOut) {
+func Solve2562(scanner Scanner, writer Writer) {
 	const count = 9
 	var max = math.MinInt
 	var pos int
 	for i := 1; i <= count; i++ {
-		var n int
-		_, _ = fmt.Scan(&n)
+		scanner.Scan()
+		n, _ := strconv.Atoi(scanner.Text())
 		if n > max {
 			max = n
 			pos = i
 		}
 	}
-	_, _ = fmt.Println(max)
-	_, _ = fmt.Println(pos)
+	_, _ = fmt.Fprintln(writer, max)
+	_, _ = fmt.Fprintln(writer, pos)
 }

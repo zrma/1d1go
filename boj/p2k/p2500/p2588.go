@@ -1,15 +1,22 @@
 package p2500
 
-func Solve2588(fmt InOut) {
-	var a, b int
-	_, _ = fmt.Scan(&a, &b)
+import (
+	"fmt"
+	"strconv"
+)
+
+func Solve2588(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	a, _ := strconv.Atoi(scanner.Text())
+	scanner.Scan()
+	b, _ := strconv.Atoi(scanner.Text())
 
 	third := a * (b % 10)
 	fourth := a * (b / 10 % 10)
 	fifth := a * (b / 100 % 10)
 
-	_, _ = fmt.Println(third)
-	_, _ = fmt.Println(fourth)
-	_, _ = fmt.Println(fifth)
-	_, _ = fmt.Println(third + fourth*10 + fifth*100)
+	_, _ = fmt.Fprintln(writer, third)
+	_, _ = fmt.Fprintln(writer, fourth)
+	_, _ = fmt.Fprintln(writer, fifth)
+	_, _ = fmt.Fprintln(writer, third+fourth*10+fifth*100)
 }

@@ -2,12 +2,13 @@ package p2500_test
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
 
 	"github.com/golang/mock/gomock"
-	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p2k/p2500"
+	"1d1go/utils/mocks"
 )
 
 func TestSolve2525(t *testing.T) {
@@ -22,29 +23,25 @@ func TestSolve2525(t *testing.T) {
 		{23, 48, 25, 0, 13},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			io := newIOWithMock(t)
-			io.EXPECT().
-				Scan(gomock.Any()).
-				Do(func(args ...any) {
-					assert.Len(t, args, 2)
-					pA, ok := args[0].(*int)
-					assert.True(t, ok)
-					pB, ok := args[1].(*int)
-					assert.True(t, ok)
-					*pA = tt.hour
-					*pB = tt.minute
-				}).
-				Return(0, nil)
-			io.EXPECT().
-				Scan(gomock.Any()).
-				SetArg(0, tt.duration).
-				Return(0, nil)
+			ctrl := gomock.NewController(t)
+			defer ctrl.Finish()
 
-			io.EXPECT().
-				Println(tt.wantHour, tt.wantMinute).
-				Return(0, nil)
+			scanner := mocks.NewMockScanner(ctrl)
+			writer := mocks.NewMockWriter(ctrl)
 
-			p2500.Solve2525(io)
+			hour := strconv.Itoa(tt.hour)
+			minute := strconv.Itoa(tt.minute)
+			duration := strconv.Itoa(tt.duration)
+
+			scanner.EXPECT().Scan().Return(true).Times(3)
+			scanner.EXPECT().Text().Return(hour)
+			scanner.EXPECT().Text().Return(minute)
+			scanner.EXPECT().Text().Return(duration)
+
+			want := fmt.Sprintln(tt.wantHour, tt.wantMinute)
+			writer.EXPECT().Write([]byte(want)).Return(len(want), nil)
+
+			p2500.Solve2525(scanner, writer)
 		})
 	}
 }

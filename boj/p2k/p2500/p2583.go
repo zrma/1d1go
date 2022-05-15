@@ -1,19 +1,31 @@
 package p2500
 
 import (
+	"fmt"
 	"sort"
+	"strconv"
 )
 
 type Rect [4]int
 
-func Solve2583(fmt InOut) {
-	var row, col, k int
-	_, _ = fmt.Scan(&row, &col, &k)
+func Solve2583(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	row, _ := strconv.Atoi(scanner.Text())
+	scanner.Scan()
+	col, _ := strconv.Atoi(scanner.Text())
+	scanner.Scan()
+	k, _ := strconv.Atoi(scanner.Text())
 
 	var rects []Rect
 	for i := 0; i < k; i++ {
-		var x1, y1, x2, y2 int
-		_, _ = fmt.Scan(&x1, &y1, &x2, &y2)
+		scanner.Scan()
+		x1, _ := strconv.Atoi(scanner.Text())
+		scanner.Scan()
+		y1, _ := strconv.Atoi(scanner.Text())
+		scanner.Scan()
+		x2, _ := strconv.Atoi(scanner.Text())
+		scanner.Scan()
+		y2, _ := strconv.Atoi(scanner.Text())
 		rects = append(rects, Rect{x1, y1, x2, y2})
 	}
 
@@ -67,8 +79,8 @@ func Solve2583(fmt InOut) {
 	}
 	sort.Ints(res)
 
-	_, _ = fmt.Println(len(res))
+	_, _ = fmt.Fprintln(writer, len(res))
 	for _, n := range res {
-		_, _ = fmt.Println(n)
+		_, _ = fmt.Fprintf(writer, "%d ", n)
 	}
 }
