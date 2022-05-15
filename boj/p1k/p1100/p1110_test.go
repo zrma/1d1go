@@ -2,11 +2,13 @@ package p1100_test
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
 
 	"github.com/golang/mock/gomock"
 
 	"1d1go/boj/p1k/p1100"
+	"1d1go/utils/mocks"
 )
 
 func TestSolve1110(t *testing.T) {
@@ -23,16 +25,20 @@ func TestSolve1110(t *testing.T) {
 		{71, 12},
 	} {
 		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
-			io := newIOWithMock(t)
-			io.EXPECT().
-				Scan(gomock.Any()).
-				SetArg(0, tt.n).
-				Return(0, nil)
-			io.EXPECT().
-				Println(tt.want).
-				Return(0, nil)
+			ctrl := gomock.NewController(t)
+			defer ctrl.Finish()
 
-			p1100.Solve1110(io)
+			scanner := mocks.NewMockScanner(ctrl)
+			writer := mocks.NewMockWriter(ctrl)
+
+			n := strconv.Itoa(tt.n)
+			scanner.EXPECT().Scan().Return(true)
+			scanner.EXPECT().Text().Return(n)
+
+			want := []byte(strconv.Itoa(tt.want) + "\n")
+			writer.EXPECT().Write(want).Return(len(want), nil)
+
+			p1100.Solve1110(scanner, writer)
 		})
 	}
 }
