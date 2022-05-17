@@ -1,6 +1,5 @@
 package utils
 
-//go:generate go run github.com/golang/mock/mockgen -destination=./mocks/mock_scanner.go -package=mocks . Scanner
 //go:generate go run github.com/golang/mock/mockgen -destination=./mocks/mock_writer.go -package=mocks . Writer
 
 type Scanner interface {

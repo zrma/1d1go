@@ -6,6 +6,7 @@ import (
 	"github.com/golang/mock/gomock"
 
 	"1d1go/boj/p10k/p10900"
+	"1d1go/utils"
 	"1d1go/utils/mocks"
 )
 
@@ -24,11 +25,8 @@ func TestSolve10926(t *testing.T) {
 			ctrl := gomock.NewController(t)
 			defer ctrl.Finish()
 
-			scanner := mocks.NewMockScanner(ctrl)
+			scanner := utils.NewStringScanner(tt.s)
 			writer := mocks.NewMockWriter(ctrl)
-
-			scanner.EXPECT().Scan().Return(true)
-			scanner.EXPECT().Text().Return(tt.s)
 
 			want := []byte(tt.want + "\n")
 			writer.EXPECT().Write(want).Return(len(want), nil)

@@ -11,11 +11,12 @@ import (
 )
 
 func TestNewStringScanner(t *testing.T) {
-	scanner := utils.NewStringScanner(`3
+	const s = `3
 3 123 456 789
 4 12 345 67 890
 5 12 23 56 78
-`)
+`
+	scanner := utils.NewStringScanner(s)
 	assert.NoError(t, scanner.Err())
 
 	assert.True(t, scanner.Scan())

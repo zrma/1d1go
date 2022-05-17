@@ -7,6 +7,7 @@ import (
 	"github.com/golang/mock/gomock"
 
 	"1d1go/boj/p2k/p2500"
+	"1d1go/utils"
 	"1d1go/utils/mocks"
 )
 
@@ -16,17 +17,12 @@ func TestSolve2588(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	defer ctrl.Finish()
 
-	scanner := mocks.NewMockScanner(ctrl)
+	const s = `472
+385`
+	scanner := utils.NewStringScanner(s)
 	writer := mocks.NewMockWriter(ctrl)
 
-	const a, b = 472, 385
-	wants := []int{2360, 3776, 1416, 181720}
-
-	scanner.EXPECT().Scan().Return(true).Times(2)
-	scanner.EXPECT().Text().Return(strconv.Itoa(a))
-	scanner.EXPECT().Text().Return(strconv.Itoa(b))
-
-	for _, want := range wants {
+	for _, want := range []int{2360, 3776, 1416, 181720} {
 		b := []byte(strconv.Itoa(want) + "\n")
 		writer.EXPECT().Write(b).Return(len(b), nil)
 	}
