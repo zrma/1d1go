@@ -4,10 +4,10 @@ import (
 	"testing"
 
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p10k/p10900"
 	"1d1go/utils"
-	"1d1go/utils/mocks"
 )
 
 func TestSolve10952(t *testing.T) {
@@ -16,22 +16,27 @@ func TestSolve10952(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	defer ctrl.Finish()
 
-	const s = `1 1
+	const (
+		s = `1 1
 2 3
 3 4
 9 8
 5 2
 0 0`
+		want = `2
+5
+7
+17
+7
+`
+	)
 	scanner := utils.NewStringScanner(s)
-	writer := mocks.NewMockWriter(ctrl)
-
-	for _, want := range []string{"2", "5", "7", "17", "7"} {
-		b := []byte(want + "\n")
-		writer.EXPECT().Write(b).Return(len(b), nil)
-	}
-	writer.EXPECT().Flush().Return(nil)
+	writer := utils.NewStringWriter()
 
 	p10900.Solve10952(scanner, writer)
+
+	got := writer.String()
+	assert.Equal(t, want, got)
 }
 
 func TestSolve10952_StopAbnormally(t *testing.T) {
@@ -41,11 +46,12 @@ func TestSolve10952_StopAbnormally(t *testing.T) {
 
 		const s = ``
 		scanner := utils.NewStringScanner(s)
-		writer := mocks.NewMockWriter(ctrl)
-
-		writer.EXPECT().Flush().Return(nil)
+		writer := utils.NewStringWriter()
 
 		p10900.Solve10952(scanner, writer)
+
+		got := writer.String()
+		assert.Empty(t, got)
 	})
 
 	t.Run("second scan returns false", func(t *testing.T) {
@@ -54,10 +60,11 @@ func TestSolve10952_StopAbnormally(t *testing.T) {
 
 		const s = `1`
 		scanner := utils.NewStringScanner(s)
-		writer := mocks.NewMockWriter(ctrl)
-
-		writer.EXPECT().Flush().Return(nil)
+		writer := utils.NewStringWriter()
 
 		p10900.Solve10952(scanner, writer)
+
+		got := writer.String()
+		assert.Empty(t, got)
 	})
 }

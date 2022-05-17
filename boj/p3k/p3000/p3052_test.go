@@ -2,14 +2,12 @@ package p3000_test
 
 import (
 	"fmt"
-	"strconv"
 	"testing"
 
-	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p3k/p3000"
 	"1d1go/utils"
-	"1d1go/utils/mocks"
 )
 
 func TestSolve3052(t *testing.T) {
@@ -17,7 +15,7 @@ func TestSolve3052(t *testing.T) {
 
 	for i, tt := range []struct {
 		s    string
-		want int
+		want string
 	}{
 		{
 			`1
@@ -30,7 +28,7 @@ func TestSolve3052(t *testing.T) {
 8
 9
 10`,
-			10,
+			"10",
 		},
 		{
 			`42
@@ -43,7 +41,7 @@ func TestSolve3052(t *testing.T) {
 84
 420
 126`,
-			1,
+			"1",
 		},
 		{
 			`39
@@ -56,20 +54,20 @@ func TestSolve3052(t *testing.T) {
 83
 84
 85`,
-			6,
+			"6",
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			ctrl := gomock.NewController(t)
-			defer ctrl.Finish()
-
 			scanner := utils.NewStringScanner(tt.s)
-			writer := mocks.NewMockWriter(ctrl)
-
-			want := []byte(strconv.Itoa(tt.want) + "\n")
-			writer.EXPECT().Write(want).Return(len(want), nil)
+			writer := utils.NewStringWriter()
 
 			p3000.Solve3052(scanner, writer)
+
+			err := writer.Flush()
+			assert.NoError(t, err)
+
+			got := writer.String()
+			assert.Equal(t, tt.want, got)
 		})
 	}
 }

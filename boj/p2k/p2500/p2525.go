@@ -20,5 +20,5 @@ func Solve2525(scanner Scanner, writer Writer) {
 	minute %= 60
 	hour %= 24
 
-	_, _ = fmt.Fprintln(writer, hour, minute)
+	_, _ = fmt.Fprintf(writer, "%d %d", hour, minute)
 }

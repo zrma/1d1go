@@ -3,11 +3,10 @@ package p10900_test
 import (
 	"testing"
 
-	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p10k/p10900"
 	"1d1go/utils"
-	"1d1go/utils/mocks"
 )
 
 func TestSolve10926(t *testing.T) {
@@ -22,16 +21,16 @@ func TestSolve10926(t *testing.T) {
 		{"baekjoon", "baekjoon??!"},
 	} {
 		t.Run(tt.s, func(t *testing.T) {
-			ctrl := gomock.NewController(t)
-			defer ctrl.Finish()
-
 			scanner := utils.NewStringScanner(tt.s)
-			writer := mocks.NewMockWriter(ctrl)
-
-			want := []byte(tt.want + "\n")
-			writer.EXPECT().Write(want).Return(len(want), nil)
+			writer := utils.NewStringWriter()
 
 			p10900.Solve10926(scanner, writer)
+
+			err := writer.Flush()
+			assert.NoError(t, err)
+
+			got := writer.String()
+			assert.Equal(t, tt.want, got)
 		})
 	}
 }

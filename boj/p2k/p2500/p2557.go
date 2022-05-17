@@ -5,5 +5,5 @@ import (
 )
 
 func Solve2557(writer Writer) {
-	_, _ = fmt.Fprintln(writer, "Hello World!")
+	_, _ = fmt.Fprint(writer, "Hello World!")
 }

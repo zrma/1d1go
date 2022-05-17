@@ -12,5 +12,5 @@ func Solve3052(scanner Scanner, write Writer) {
 		n, _ := strconv.Atoi(scanner.Text())
 		m[n%42] = true
 	}
-	_, _ = fmt.Fprintln(write, len(m))
+	_, _ = fmt.Fprint(write, len(m))
 }

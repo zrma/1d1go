@@ -15,7 +15,7 @@ func Solve1065(scanner Scanner, writer Writer) {
 			count++
 		}
 	}
-	_, _ = fmt.Fprintln(writer, count)
+	_, _ = fmt.Fprint(writer, count)
 }
 
 // arithmeticProgression args: n (1~1000)
