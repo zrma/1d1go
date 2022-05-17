@@ -1,14 +1,13 @@
 package p2500_test
 
 import (
-	"strconv"
 	"testing"
 
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p2k/p2500"
 	"1d1go/utils"
-	"1d1go/utils/mocks"
 )
 
 func TestSolve2562(t *testing.T) {
@@ -17,7 +16,8 @@ func TestSolve2562(t *testing.T) {
 	ctr := gomock.NewController(t)
 	defer ctr.Finish()
 
-	const s = `3
+	const (
+		s = `3
 29
 38
 12
@@ -26,17 +26,19 @@ func TestSolve2562(t *testing.T) {
 40
 85
 61`
-	scanner := utils.NewStringScanner(s)
-	writer := mocks.NewMockWriter(ctr)
-
-	var (
-		want0 = 85
-		want1 = 8
+		want = `85
+8
+`
 	)
-	b0 := []byte(strconv.Itoa(want0) + "\n")
-	writer.EXPECT().Write(b0).Return(len(b0), nil)
-	b1 := []byte(strconv.Itoa(want1) + "\n")
-	writer.EXPECT().Write(b1).Return(len(b1), nil)
+	scanner := utils.NewStringScanner(s)
+	writer := utils.NewStringWriter()
 
 	p2500.Solve2562(scanner, writer)
+
+	err := writer.Flush()
+	assert.NoError(t, err)
+
+	got := writer.String()
+	assert.Equal(t, want, got)
+
 }

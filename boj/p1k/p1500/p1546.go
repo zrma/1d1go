@@ -23,5 +23,5 @@ func Solve1546(scanner Scanner, writer Writer) {
 	for i := range arr {
 		sum += (float64(arr[i]) / float64(max)) * 100
 	}
-	_, _ = fmt.Fprintln(writer, sum/float64(n))
+	_, _ = fmt.Fprint(writer, sum/float64(n))
 }

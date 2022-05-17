@@ -37,7 +37,7 @@ func TestTCPServer(t *testing.T) {
 			if err != nil {
 				t.Log(err.Error())
 			}
-			assert.Nil(t, err)
+			assert.NoError(t, err)
 			assert.Equal(t, tt.want, got)
 
 			cancel()

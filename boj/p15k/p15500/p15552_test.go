@@ -1,13 +1,12 @@
 package p15500
 
 import (
-	"strconv"
 	"testing"
 
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/assert"
 
 	"1d1go/utils"
-	"1d1go/utils/mocks"
 )
 
 func TestSolve15552(t *testing.T) {
@@ -16,19 +15,28 @@ func TestSolve15552(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	defer ctrl.Finish()
 
-	const s = `5
+	const (
+		s = `5
 1 1
 12 34
 5 500
 40 60
 1000 1000`
+		want = `2
+46
+505
+100
+2000
+`
+	)
 	scanner := utils.NewStringScanner(s)
-	writer := mocks.NewMockWriter(ctrl)
-
-	for _, want := range []int{2, 46, 505, 100, 2000} {
-		b := []byte(strconv.Itoa(want) + "\n")
-		writer.EXPECT().Write(b).Return(len(b), nil)
-	}
+	writer := utils.NewStringWriter()
 
 	Solve15552(scanner, writer)
+
+	err := writer.Flush()
+	assert.NoError(t, err)
+
+	got := writer.String()
+	assert.Equal(t, want, got)
 }

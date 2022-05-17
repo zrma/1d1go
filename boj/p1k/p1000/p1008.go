@@ -11,5 +11,5 @@ func Solve1008(scanner Scanner, writer Writer) {
 	scanner.Scan()
 	b, _ := strconv.ParseFloat(scanner.Text(), 64)
 
-	_, _ = fmt.Fprintln(writer, a/b)
+	_, _ = fmt.Fprint(writer, a/b)
 }

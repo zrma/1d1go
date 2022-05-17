@@ -11,5 +11,5 @@ func Solve10998(scanner Scanner, writer Writer) {
 	scanner.Scan()
 	b, _ := strconv.Atoi(scanner.Text())
 
-	_, _ = fmt.Fprintln(writer, a*b)
+	_, _ = fmt.Fprint(writer, a*b)
 }

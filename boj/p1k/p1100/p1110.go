@@ -14,7 +14,7 @@ func Solve1110(scanner Scanner, writer Writer) {
 		count++
 	}
 
-	_, _ = fmt.Fprintln(writer, count)
+	_, _ = fmt.Fprint(writer, count)
 }
 
 func modify(n int) int {
