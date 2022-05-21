@@ -1,10 +1,11 @@
-package p11000
+package p11000_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
+	"1d1go/boj/p11k/p11000"
 	"1d1go/utils"
 )
 
@@ -26,7 +27,7 @@ func TestSolve11021(t *testing.T) {
 		{5, 2},
 	}
 	got, err := utils.GetPrinted(func() {
-		Solve11021(arr2D)
+		p11000.Solve11021(arr2D)
 	})
 	assert.NoError(t, err)
 	assert.Equal(t, want, got)

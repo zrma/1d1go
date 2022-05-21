@@ -1,10 +1,11 @@
-package p10100
+package p10100_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
+	"1d1go/boj/p10k/p10100"
 	"1d1go/utils"
 )
 
@@ -18,7 +19,7 @@ func TestSolve10171(t *testing.T) {
 		` \(__)|`,
 	}
 	got, err := utils.GetPrinted(func() {
-		Solve10171()
+		p10100.Solve10171()
 	})
 	assert.NoError(t, err)
 	assert.Equal(t, want, got)

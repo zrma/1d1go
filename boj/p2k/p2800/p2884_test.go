@@ -1,10 +1,12 @@
-package p2800
+package p2800_test
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p2k/p2800"
 )
 
 func TestSolve2884(t *testing.T) {
@@ -20,7 +22,7 @@ func TestSolve2884(t *testing.T) {
 		{0, 45, 0, 0},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			gotHour, gotMinute := Solve2884(tt.hour, tt.minute)
+			gotHour, gotMinute := p2800.Solve2884(tt.hour, tt.minute)
 			assert.Equal(t, tt.wantHour, gotHour)
 			assert.Equal(t, tt.wantMinute, gotMinute)
 		})

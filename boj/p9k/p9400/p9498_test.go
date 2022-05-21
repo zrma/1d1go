@@ -1,10 +1,12 @@
-package p9400
+package p9400_test
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p9k/p9400"
 )
 
 func TestSolve9498(t *testing.T) {
@@ -26,7 +28,7 @@ func TestSolve9498(t *testing.T) {
 		{0, "F"},
 	} {
 		t.Run(fmt.Sprintf("%d", tt.score), func(t *testing.T) {
-			got := Solve9498(tt.score)
+			got := p9400.Solve9498(tt.score)
 			assert.Equal(t, tt.want, got)
 		})
 	}

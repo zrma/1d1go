@@ -1,10 +1,11 @@
-package p2400
+package p2400_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
+	"1d1go/boj/p2k/p2400"
 	"1d1go/utils"
 )
 
@@ -21,7 +22,7 @@ func TestSolve2438(t *testing.T) {
 		"*******",
 	}
 	got, err := utils.GetPrinted(func() {
-		Solve2438(7)
+		p2400.Solve2438(7)
 	})
 	assert.NoError(t, err)
 	assert.Equal(t, want, got)

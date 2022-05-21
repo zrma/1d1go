@@ -1,4 +1,4 @@
-package p4600
+package p4600_test
 
 import (
 	"fmt"
@@ -7,6 +7,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
+	"1d1go/boj/p4k/p4600"
 	"1d1go/utils"
 )
 
@@ -26,34 +27,10 @@ func TestSolve4673(t *testing.T) {
 				want[i] = strconv.Itoa(v)
 			}
 			got, err := utils.GetPrinted(func() {
-				Solve4673(tt.n)
+				p4600.Solve4673(tt.n)
 			})
 			assert.NoError(t, err)
 			assert.Equal(t, want, got)
-		})
-	}
-}
-
-func TestD(t *testing.T) {
-	for _, tt := range []struct {
-		n    int
-		want int
-	}{
-		{1, 2},
-		{33, 39},
-		{39, 51},
-		{51, 57},
-		{57, 69},
-		{69, 84},
-		{84, 96},
-		{96, 111},
-		{111, 114},
-		{114, 120},
-		{120, 123},
-	} {
-		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
-			got := d(tt.n)
-			assert.Equal(t, tt.want, got)
 		})
 	}
 }

@@ -1,10 +1,12 @@
-package p2700
+package p2700_test
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p2k/p2700"
 )
 
 func TestSolve2741(t *testing.T) {
@@ -22,7 +24,7 @@ func TestSolve2741(t *testing.T) {
 		{6, []int{1, 2, 3, 4, 5, 6}},
 	} {
 		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
-			got := Solve2741(tt.n)
+			got := p2700.Solve2741(tt.n)
 			assert.Equal(t, tt.want, got)
 		})
 	}

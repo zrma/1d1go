@@ -1,9 +1,11 @@
-package p11600
+package p11600_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p11k/p11600"
 )
 
 func TestSolve11654(t *testing.T) {
@@ -23,7 +25,7 @@ func TestSolve11654(t *testing.T) {
 		{"z", 122},
 	} {
 		t.Run(tt.s, func(t *testing.T) {
-			got := Solve11654(tt.s)
+			got := p11600.Solve11654(tt.s)
 			assert.Equal(t, tt.want, got)
 		})
 	}
