@@ -1,10 +1,16 @@
 package p1400
 
 import (
+	"fmt"
+	"strconv"
+
 	"1d1go/utils/integer"
 )
 
-func Solve1463(n int) int {
+func Solve1463(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	n, _ := strconv.Atoi(scanner.Text())
+
 	arr := make([]int, n+1)
 	for i := 2; i <= n; i++ {
 		arr[i] = arr[i-1] + 1
@@ -15,5 +21,6 @@ func Solve1463(n int) int {
 			arr[i] = integer.MinInt(arr[i], arr[i/3]+1)
 		}
 	}
-	return arr[n]
+
+	_, _ = fmt.Fprint(writer, arr[n])
 }
