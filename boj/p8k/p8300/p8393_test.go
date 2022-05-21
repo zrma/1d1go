@@ -1,10 +1,12 @@
-package p8300
+package p8300_test
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p8k/p8300"
 )
 
 func TestSolve8393(t *testing.T) {
@@ -23,12 +25,12 @@ func TestSolve8393(t *testing.T) {
 		{10000, 50005000},
 	} {
 		t.Run(fmt.Sprintf("loop/%d", tt.n), func(t *testing.T) {
-			got := Solve8393(tt.n)
+			got := p8300.Solve8393(tt.n)
 			assert.Equal(t, tt.want, got)
 		})
 
 		t.Run(fmt.Sprintf("arithmetic progression formula/%d", tt.n), func(t *testing.T) {
-			got := Solve8393AP(tt.n)
+			got := p8300.Solve8393AP(tt.n)
 			assert.Equal(t, tt.want, got)
 		})
 	}

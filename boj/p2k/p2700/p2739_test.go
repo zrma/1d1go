@@ -1,10 +1,11 @@
-package p2700
+package p2700_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
+	"1d1go/boj/p2k/p2700"
 	"1d1go/utils"
 )
 
@@ -23,7 +24,7 @@ func TestSolve2739(t *testing.T) {
 		"2 * 9 = 18",
 	}
 	got, err := utils.GetPrinted(func() {
-		Solve2739(2)
+		p2700.Solve2739(2)
 	})
 	assert.NoError(t, err)
 	assert.Equal(t, want, got)

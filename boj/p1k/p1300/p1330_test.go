@@ -1,10 +1,12 @@
-package p1300
+package p1300_test
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p1k/p1300"
 )
 
 func TestSolve1330(t *testing.T) {
@@ -19,7 +21,7 @@ func TestSolve1330(t *testing.T) {
 		{5, 5, "=="},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := Solve1330(tt.a, tt.b)
+			got := p1300.Solve1330(tt.a, tt.b)
 			assert.Equal(t, tt.want, got)
 		})
 	}

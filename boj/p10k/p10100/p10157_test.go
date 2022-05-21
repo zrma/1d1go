@@ -1,10 +1,12 @@
-package p10100
+package p10100_test
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p10k/p10100"
 )
 
 func TestSolve10157(t *testing.T) {
@@ -28,7 +30,7 @@ func TestSolve10157(t *testing.T) {
 		{10000, 10000, 99999999, true, 5001, 5001},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			gotX, gotY, gotOk := Solve10157(tt.col, tt.row, tt.k)
+			gotX, gotY, gotOk := p10100.Solve10157(tt.col, tt.row, tt.k)
 			assert.Equal(t, tt.wantOk, gotOk)
 			if gotOk {
 				assert.Equal(t, tt.wantX, gotX)

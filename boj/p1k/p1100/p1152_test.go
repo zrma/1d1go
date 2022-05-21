@@ -1,4 +1,4 @@
-package p1100
+package p1100_test
 
 import (
 	"bufio"
@@ -7,6 +7,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
+	"1d1go/boj/p1k/p1100"
 	"1d1go/utils"
 )
 
@@ -23,15 +24,16 @@ func TestSolve1152(t *testing.T) {
 		{" ", "0"},
 		{"Word ", "1"},
 		{" Word", "1"},
-		{`These words are 
+		{`These words are
 edge cases`, "3"},
 		{"These words are\n edge cases", "3"},
+		{"These words are \n edge cases", "3"},
 	} {
 		t.Run(tt.s, func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.s))
 			writer := utils.NewStringWriter()
 
-			Solve1152(reader, writer)
+			p1100.Solve1152(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

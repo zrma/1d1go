@@ -1,10 +1,12 @@
-package p10800
+package p10800_test
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p10k/p10800"
 )
 
 func TestSolve10871(t *testing.T) {
@@ -27,7 +29,7 @@ func TestSolve10871(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := Solve10871(tt.x, tt.arr)
+			got := p10800.Solve10871(tt.x, tt.arr)
 			assert.Equal(t, tt.want, got)
 		})
 	}

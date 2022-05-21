@@ -1,4 +1,4 @@
-package p15500
+package p15500_test
 
 import (
 	"testing"
@@ -6,6 +6,7 @@ import (
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 
+	"1d1go/boj/p15k/p15500"
 	"1d1go/utils"
 )
 
@@ -32,7 +33,7 @@ func TestSolve15552(t *testing.T) {
 	scanner := utils.NewStringScanner(s)
 	writer := utils.NewStringWriter()
 
-	Solve15552(scanner, writer)
+	p15500.Solve15552(scanner, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)

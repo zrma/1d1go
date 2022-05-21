@@ -1,10 +1,12 @@
-package p2400
+package p2400_test
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p2k/p2400"
 )
 
 func TestSolve2437(t *testing.T) {
@@ -28,7 +30,7 @@ func TestSolve2437(t *testing.T) {
 		{[]int{1, 2, 5}, 4},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := Solve2437(tt.arr)
+			got := p2400.Solve2437(tt.arr)
 			assert.Equal(t, tt.want, got)
 		})
 	}

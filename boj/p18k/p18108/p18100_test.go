@@ -1,10 +1,12 @@
-package p18108
+package p18108_test
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p18k/p18108"
 )
 
 func TestSolve18108(t *testing.T) {
@@ -18,7 +20,7 @@ func TestSolve18108(t *testing.T) {
 		{543, 0},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := Solve18108(tt.year)
+			got := p18108.Solve18108(tt.year)
 			assert.Equal(t, tt.want, got)
 		})
 	}

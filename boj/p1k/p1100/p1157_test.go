@@ -1,4 +1,4 @@
-package p1100
+package p1100_test
 
 import (
 	"bufio"
@@ -7,6 +7,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
+	"1d1go/boj/p1k/p1100"
 	"1d1go/utils"
 )
 
@@ -35,7 +36,7 @@ BB`, "?"},
 			reader := bufio.NewReader(strings.NewReader(tt.s))
 			writer := utils.NewStringWriter()
 
-			Solve1157(reader, writer)
+			p1100.Solve1157(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
