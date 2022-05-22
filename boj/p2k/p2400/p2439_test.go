@@ -12,18 +12,24 @@ import (
 func TestSolve2439(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/2439")
 
-	want := []string{
-		"      *",
-		"     **",
-		"    ***",
-		"   ****",
-		"  *****",
-		" ******",
-		"*******",
-	}
-	got, err := utils.GetPrinted(func() {
-		p2400.Solve2439(7)
-	})
+	const (
+		s    = "5"
+		want = `    *
+   **
+  ***
+ ****
+*****
+`
+	)
+
+	scanner := utils.NewStringScanner(s)
+	writer := utils.NewStringWriter()
+
+	p2400.Solve2439(scanner, writer)
+
+	err := writer.Flush()
 	assert.NoError(t, err)
+
+	got := writer.String()
 	assert.Equal(t, want, got)
 }

@@ -7,30 +7,82 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p2k/p2400"
+	"1d1go/utils"
 )
 
 func TestSolve2437(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/2437")
 
 	for i, tt := range []struct {
-		arr  []int
-		want int
+		s    string
+		want string
 	}{
-		{[]int{3, 1, 6, 2, 7, 30, 1}, 21},
-		{[]int{1, 1, 2, 3, 6, 7, 30}, 21},
-		{[]int{1}, 2},
-		{[]int{2}, 1},
-		{[]int{3}, 1},
-		{[]int{1, 1}, 3},
-		{[]int{1, 2}, 4},
-		{[]int{1, 3}, 2},
-		{[]int{1, 4}, 2},
-		{[]int{2, 4}, 1},
-		{[]int{1, 2, 4}, 8},
-		{[]int{1, 2, 5}, 4},
+		{
+			`7
+3 1 6 2 7 30 1`,
+			"21",
+		},
+		{
+			`7
+1 1 2 3 6 7 30`,
+			"21",
+		},
+		{
+			`1
+1`,
+			"2",
+		},
+		{
+			`1
+2`,
+			"1",
+		},
+		{
+			`1
+3`,
+			"1",
+		},
+		{
+			`2
+1 1`,
+			"3",
+		},
+		{
+			`2
+1 2`,
+			"4",
+		},
+		{
+			`2
+1 3`,
+			"2",
+		},
+		{
+			`2
+1 4`,
+			"2",
+		},
+		{
+			`3
+1 2 4`,
+			"8",
+		},
+		{
+			`3
+1 2 5`,
+			"4",
+		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := p2400.Solve2437(tt.arr)
+			scanner := utils.NewStringScanner(tt.s)
+			writer := utils.NewStringWriter()
+
+			p2400.Solve2437(scanner, writer)
+
+			err := writer.Flush()
+			assert.NoError(t, err)
+
+			got := writer.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}
