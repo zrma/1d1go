@@ -1,5 +1,9 @@
 package p2900
 
+type Reader interface {
+	ReadString(delim byte) (string, error)
+}
+
 type Scanner interface {
 	Scan() bool
 	Text() string
