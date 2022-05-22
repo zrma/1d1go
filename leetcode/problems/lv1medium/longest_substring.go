@@ -17,10 +17,10 @@ func lengthOfLongestSubstring(s string) int {
 	}
 	visited[s[0]] = 0
 
-	// 한 문자가 다시 출현할 때까지의 최대 거리를 구한다.
-	// abcabc
-	// |--|
-	// 0123
+	// 한 문자가 다시 출현할 때 까지의 최대 거리를 구한다.
+	// a b c a b c
+	// |-----|
+	// 0 1 2 3
 	//
 	// prevIndex = 0
 	// curLength -> 2까지 증가
