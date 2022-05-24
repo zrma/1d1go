@@ -1,9 +1,15 @@
 package p2700
 
-func Solve2742(n int) []int {
-	res := make([]int, n)
+import (
+	"fmt"
+	"strconv"
+)
+
+func Solve2742(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	n, _ := strconv.Atoi(scanner.Text())
+
 	for i := n; i > 0; i-- {
-		res[n-i] = i
+		_, _ = fmt.Fprintln(writer, i)
 	}
-	return res
 }
