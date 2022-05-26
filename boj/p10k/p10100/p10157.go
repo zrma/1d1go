@@ -1,20 +1,27 @@
 package p10100
 
-type direction int
-
-const (
-	up direction = 0 + iota
-	right
-	down
-	left
-	dirMax
+import (
+	"fmt"
+	"strconv"
 )
 
-func turn(d direction) direction {
-	return (d + 1) % dirMax
+func Solve10157(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	col, _ := strconv.Atoi(scanner.Text())
+	scanner.Scan()
+	row, _ := strconv.Atoi(scanner.Text())
+	scanner.Scan()
+	k, _ := strconv.Atoi(scanner.Text())
+
+	x, y, ok := calcSeatNumber(col, row, k)
+	if ok {
+		_, _ = fmt.Fprintf(writer, "%d %d", x, y)
+	} else {
+		_, _ = fmt.Fprint(writer, "0")
+	}
 }
 
-func Solve10157(col, row, k int) (int, int, bool) {
+func calcSeatNumber(col, row, k int) (int, int, bool) {
 	if row*col < k {
 		return 0, 0, false
 	}
@@ -63,4 +70,18 @@ func Solve10157(col, row, k int) (int, int, bool) {
 			dir = turn(dir)
 		}
 	}
+}
+
+type direction int
+
+const (
+	up direction = 0 + iota
+	right
+	down
+	left
+	dirMax
+)
+
+func turn(d direction) direction {
+	return (d + 1) % dirMax
 }

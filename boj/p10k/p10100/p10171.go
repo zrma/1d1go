@@ -4,10 +4,11 @@ import (
 	"fmt"
 )
 
-func Solve10171() {
-	const msg = `\    /\
+func Solve10171(writer Writer) {
+	const s = `\    /\
  )  ( ')
 (  /  )
  \(__)|`
-	fmt.Println(msg)
+
+	_, _ = fmt.Fprint(writer, s)
 }
