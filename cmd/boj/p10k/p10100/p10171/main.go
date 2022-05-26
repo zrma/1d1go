@@ -1,9 +1,15 @@
 package main
 
 import (
+	"bufio"
+	"os"
+
 	"1d1go/boj/p10k/p10100"
 )
 
 func main() {
-	p10100.Solve10171()
+	writer := bufio.NewWriter(os.Stdout)
+	defer func() { _ = writer.Flush() }()
+
+	p10100.Solve10171(writer)
 }
