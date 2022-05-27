@@ -13,10 +13,15 @@ func TestSolve10718(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/10718")
 
 	//goland:noinspection SpellCheckingInspection
-	want := []string{"강한친구 대한육군", "강한친구 대한육군"}
-	got, err := utils.GetPrinted(func() {
-		p10700.Solve10718()
-	})
+	const want = `강한친구 대한육군
+강한친구 대한육군
+`
+	writer := utils.NewStringWriter()
+	p10700.Solve10718(writer)
+
+	err := writer.Flush()
 	assert.NoError(t, err)
+
+	got := writer.String()
 	assert.Equal(t, want, got)
 }
