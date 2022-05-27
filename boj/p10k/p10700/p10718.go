@@ -4,9 +4,9 @@ import (
 	"fmt"
 )
 
-func Solve10718() {
+func Solve10718(writer Writer) {
 	//goland:noinspection SpellCheckingInspection
 	const msg = "강한친구 대한육군"
-	fmt.Println(msg)
-	fmt.Println(msg)
+	_, _ = fmt.Fprintln(writer, msg)
+	_, _ = fmt.Fprintln(writer, msg)
 }
