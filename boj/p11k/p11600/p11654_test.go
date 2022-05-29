@@ -6,6 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p11k/p11600"
+	"1d1go/utils"
 )
 
 func TestSolve11654(t *testing.T) {
@@ -13,19 +14,27 @@ func TestSolve11654(t *testing.T) {
 
 	for _, tt := range []struct {
 		s    string
-		want int
+		want string
 	}{
-		{"A", 65},
-		{"B", 66},
-		{"C", 67},
-		{"0", 48},
-		{"1", 49},
-		{"9", 57},
-		{"a", 97},
-		{"z", 122},
+		{"A", "65"},
+		{"B", "66"},
+		{"C", "67"},
+		{"0", "48"},
+		{"1", "49"},
+		{"9", "57"},
+		{"a", "97"},
+		{"z", "122"},
 	} {
 		t.Run(tt.s, func(t *testing.T) {
-			got := p11600.Solve11654(tt.s)
+			scanner := utils.NewStringScanner(tt.s)
+			writer := utils.NewStringWriter()
+
+			p11600.Solve11654(scanner, writer)
+
+			err := writer.Flush()
+			assert.NoError(t, err)
+
+			got := writer.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}
