@@ -8,11 +8,12 @@ import (
 )
 
 func main() {
-	scanner := bufio.NewScanner(bufio.NewReader(os.Stdin))
-	scanner.Split(bufio.ScanWords)
+	reader := bufio.NewReader(os.Stdin)
 
 	writer := bufio.NewWriter(os.Stdout)
 	defer func() { _ = writer.Flush() }()
 
-	p1100.Solve1193(scanner, writer)
+	// NOTE - run solution to test in cli or IDE
+	//        pO000.SolveOOOO(reader, writer)
+	p1100.Solve1152(reader, writer)
 }

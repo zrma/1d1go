@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"os"
 
-	"1d1go/boj/p10k/p10800"
+	"1d1go/boj/p1k/p1000"
 )
 
 func main() {
@@ -14,5 +14,7 @@ func main() {
 	writer := bufio.NewWriter(os.Stdout)
 	defer func() { _ = writer.Flush() }()
 
-	p10800.Solve10809(scanner, writer)
+	// NOTE - run solution to test in cli or IDE
+	//        pO000.SolveOOOO(scanner, writer)
+	p1000.Solve1000(scanner, writer)
 }
