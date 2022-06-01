@@ -1,13 +1,26 @@
 package p8300
 
-func Solve8393(n int) int {
+import (
+	"fmt"
+	"strconv"
+)
+
+func Solve8393(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	n, _ := strconv.Atoi(scanner.Text())
+
 	var sum int
 	for i := 1; i <= n; i++ {
 		sum += i
 	}
-	return sum
+
+	_, _ = fmt.Fprint(writer, sum)
 }
 
-func Solve8393AP(n int) int {
-	return n * (n + 1) / 2
+func Solve8393AP(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	n, _ := strconv.Atoi(scanner.Text())
+
+	sum := n * (n + 1) / 2
+	_, _ = fmt.Fprint(writer, sum)
 }

@@ -7,29 +7,37 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p10k/p10800"
+	"1d1go/utils"
 )
 
 func TestSolve10871(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/10871")
 
 	for i, tt := range []struct {
-		x    int
-		arr  []int
-		want []int
+		s    string
+		want string
 	}{
 		{
-			5,
-			[]int{1, 10, 4, 9, 2, 3, 8, 5, 7, 6},
-			[]int{1, 4, 2, 3},
+			`10 5
+1 10 4 9 2 3 8 5 7 6`,
+			"1 4 2 3 ",
 		},
 		{
-			4,
-			[]int{1, 10, 4, 9, 2, 3, 8, 5, 7, 6},
-			[]int{1, 2, 3},
+			`10 4
+1 10 4 9 2 3 8 5 7 6`,
+			"1 2 3 ",
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := p10800.Solve10871(tt.x, tt.arr)
+			scanner := utils.NewStringScanner(tt.s)
+			writer := utils.NewStringWriter()
+
+			p10800.Solve10871(scanner, writer)
+
+			err := writer.Flush()
+			assert.NoError(t, err)
+
+			got := writer.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}

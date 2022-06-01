@@ -1,6 +1,16 @@
 package p2800
 
-func Solve2884(hour, minute int) (int, int) {
+import (
+	"fmt"
+	"strconv"
+)
+
+func Solve2884(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	hour, _ := strconv.Atoi(scanner.Text())
+	scanner.Scan()
+	minute, _ := strconv.Atoi(scanner.Text())
+
 	hour += 23
 	minute += 15
 
@@ -9,5 +19,5 @@ func Solve2884(hour, minute int) (int, int) {
 		hour++
 	}
 	hour %= 24
-	return hour, minute
+	_, _ = fmt.Fprintf(writer, "%d %d", hour, minute)
 }

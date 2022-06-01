@@ -24,9 +24,8 @@ func findConstructor(n int) int {
 
 func decompose(n int) int {
 	res := n
-	for n > 0 {
+	for ; n > 0; n /= 10 {
 		res += n % 10
-		n /= 10
 	}
 	return res
 }

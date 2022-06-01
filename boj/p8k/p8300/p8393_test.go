@@ -7,30 +7,47 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p8k/p8300"
+	"1d1go/utils"
 )
 
 func TestSolve8393(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/8393")
 
 	for _, tt := range []struct {
-		n    int
-		want int
+		s    string
+		want string
 	}{
-		{1, 1},
-		{2, 3},
-		{3, 6},
-		{10, 55},
-		{100, 5050},
-		{1000, 500500},
-		{10000, 50005000},
+		{"1", "1"},
+		{"2", "3"},
+		{"3", "6"},
+		{"10", "55"},
+		{"100", "5050"},
+		{"1000", "500500"},
+		{"10000", "50005000"},
 	} {
-		t.Run(fmt.Sprintf("loop/%d", tt.n), func(t *testing.T) {
-			got := p8300.Solve8393(tt.n)
+		t.Run(fmt.Sprintf("loop/%s", tt.s), func(t *testing.T) {
+			scanner := utils.NewStringScanner(tt.s)
+			writer := utils.NewStringWriter()
+
+			p8300.Solve8393(scanner, writer)
+
+			err := writer.Flush()
+			assert.NoError(t, err)
+
+			got := writer.String()
 			assert.Equal(t, tt.want, got)
 		})
 
-		t.Run(fmt.Sprintf("arithmetic progression formula/%d", tt.n), func(t *testing.T) {
-			got := p8300.Solve8393AP(tt.n)
+		t.Run(fmt.Sprintf("arithmetic progression formula/%s", tt.s), func(t *testing.T) {
+			scanner := utils.NewStringScanner(tt.s)
+			writer := utils.NewStringWriter()
+
+			p8300.Solve8393AP(scanner, writer)
+
+			err := writer.Flush()
+			assert.NoError(t, err)
+
+			got := writer.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}

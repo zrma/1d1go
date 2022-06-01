@@ -1,16 +1,28 @@
 package p10800
 
-func Solve10818(arr []int) [2]int {
-	min := arr[0]
-	max := arr[0]
+import (
+	"fmt"
+	"math"
+	"strconv"
+)
 
-	for _, n := range arr[1:] {
-		if n < min {
-			min = n
+func Solve10818(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	n, _ := strconv.Atoi(scanner.Text())
+
+	min := math.MaxInt
+	max := math.MinInt
+	for i := 0; i < n; i++ {
+		scanner.Scan()
+		v, _ := strconv.Atoi(scanner.Text())
+
+		if v < min {
+			min = v
 		}
-		if n > max {
-			max = n
+		if v > max {
+			max = v
 		}
 	}
-	return [2]int{min, max}
+
+	_, _ = fmt.Fprintf(writer, "%d %d", min, max)
 }

@@ -25,7 +25,7 @@ func TestD(t *testing.T) {
 		{120, 123},
 	} {
 		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
-			got := d(tt.n)
+			got := decompose(tt.n)
 			assert.Equal(t, tt.want, got)
 		})
 	}

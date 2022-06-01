@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func Solve25083() {
+func Solve25083(writer Writer) {
 	const msg = "         ,r'\"7\nr`-_   ,'  ,/\n \\. \". L_r'\n   `~\\/\n      |\n      |"
-	fmt.Println(msg)
+	_, _ = fmt.Fprint(writer, msg)
 }

@@ -1,17 +1,13 @@
-package p15500_test
+package p15500
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p15k/p15500"
 )
 
-func TestSolve15596(t *testing.T) {
-	t.Log("https://www.acmicpc.net/problem/15596")
-
+func TestSum(t *testing.T) {
 	for i, tt := range []struct {
 		arr  []int
 		want int
@@ -30,7 +26,7 @@ func TestSolve15596(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := p15500.Solve15596(tt.arr)
+			got := sum(tt.arr)
 			assert.Equal(t, tt.want, got)
 		})
 	}
