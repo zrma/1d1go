@@ -12,17 +12,22 @@ import (
 func TestSolve25083(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/25083")
 
-	want := []string{
-		"         ,r'\"7",
-		"r`-_   ,'  ,/",
-		" \\. \". L_r'",
-		"   `~\\/",
-		"      |",
-		"      |",
-	}
-	got, err := utils.GetPrinted(func() {
-		p25000.Solve25083()
-	})
+	const (
+		want = "         ,r'\"7\n" +
+			"r`-_   ,'  ,/\n" +
+			" \\. \". L_r'\n" +
+			"   `~\\/\n" +
+			"      |\n" +
+			"      |"
+	)
+
+	writer := utils.NewStringWriter()
+
+	p25000.Solve25083(writer)
+
+	err := writer.Flush()
 	assert.NoError(t, err)
+
+	got := writer.String()
 	assert.Equal(t, want, got)
 }

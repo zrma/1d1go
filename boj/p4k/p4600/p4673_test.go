@@ -1,8 +1,9 @@
 package p4600_test
 
 import (
-	"fmt"
-	"strconv"
+	"bufio"
+	"os"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,23 +15,35 @@ import (
 func TestSolve4673(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/4673")
 
-	for _, tt := range []struct {
-		n    int
-		want []int
-	}{
-		{50, []int{1, 3, 5, 7, 9, 20, 31, 42}},
-		{99, []int{1, 3, 5, 7, 9, 20, 31, 42, 53, 64, 75, 86, 97}},
-	} {
-		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
-			want := make([]string, len(tt.want))
-			for i, v := range tt.want {
-				want[i] = strconv.Itoa(v)
-			}
-			got, err := utils.GetPrinted(func() {
-				p4600.Solve4673(tt.n)
-			})
-			assert.NoError(t, err)
-			assert.Equal(t, want, got)
-		})
+	want, err := readFile(t, "./test_data/p4673_want.txt")
+	assert.NoError(t, err)
+
+	writer := utils.NewStringWriter()
+	p4600.Solve4673(writer)
+
+	err = writer.Flush()
+	assert.NoError(t, err)
+
+	got := writer.String()
+	assert.Equal(t, want, got)
+}
+
+func readFile(tb testing.TB, fileName string) (string, error) {
+	file, err := os.Open(fileName)
+	if err != nil {
+		return "", err
 	}
+	defer func() {
+		err := file.Close()
+		assert.NoError(tb, err)
+	}()
+
+	r := bufio.NewScanner(bufio.NewReader(file))
+	r.Split(bufio.ScanLines)
+
+	var lines []string
+	for r.Scan() {
+		lines = append(lines, r.Text())
+	}
+	return strings.Join(lines, "\n") + "\n", r.Err()
 }

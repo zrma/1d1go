@@ -12,12 +12,23 @@ import (
 func TestSolve10430(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/10430")
 
-	want := []string{
-		"1", "1", "0", "0",
-	}
-	got, err := utils.GetPrinted(func() {
-		p10400.Solve10430(5, 8, 4)
-	})
+	const (
+		s    = "5 8 4"
+		want = `1
+1
+0
+0
+`
+	)
+
+	scanner := utils.NewStringScanner(s)
+	writer := utils.NewStringWriter()
+
+	p10400.Solve10430(scanner, writer)
+
+	err := writer.Flush()
 	assert.NoError(t, err)
+
+	got := writer.String()
 	assert.Equal(t, want, got)
 }

@@ -1,6 +1,17 @@
 package p9400
 
-func Solve9498(score int) string {
+import (
+	"fmt"
+	"strconv"
+)
+
+func Solve9498(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	score, _ := strconv.Atoi(scanner.Text())
+	_, _ = fmt.Fprint(writer, scoreToGrade(score))
+}
+
+func scoreToGrade(score int) string {
 	switch {
 	case score >= 90:
 		return "A"

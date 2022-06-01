@@ -2,11 +2,19 @@ package p10400
 
 import (
 	"fmt"
+	"strconv"
 )
 
-func Solve10430(a, b, c int) {
-	fmt.Println((a + b) % c)
-	fmt.Println((a%c + b%c) % c)
-	fmt.Println((a * b) % c)
-	fmt.Println((a % c * b % c) % c)
+func Solve10430(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	a, _ := strconv.Atoi(scanner.Text())
+	scanner.Scan()
+	b, _ := strconv.Atoi(scanner.Text())
+	scanner.Scan()
+	c, _ := strconv.Atoi(scanner.Text())
+
+	_, _ = fmt.Fprintln(writer, (a + b) % c)
+	_, _ = fmt.Fprintln(writer, (a%c + b%c) % c)
+	_, _ = fmt.Fprintln(writer, (a * b) % c)
+	_, _ = fmt.Fprintln(writer, (a % c * b % c) % c)
 }
