@@ -1,16 +1,23 @@
 package p11000
 
 import (
-	"bufio"
 	"fmt"
-	"os"
+	"strconv"
 )
 
-func Solve11022(arr2D [][2]int) {
-	w := bufio.NewWriter(os.Stdout)
-	defer func() { _ = w.Flush() }()
+func Solve11022(scanner Scanner, writer Writer) {
+	scanner.Scan()
+	n, _ := strconv.Atoi(scanner.Text())
+
+	arr2D := make([][2]int, n)
+	for i := range arr2D {
+		scanner.Scan()
+		arr2D[i][0], _ = strconv.Atoi(scanner.Text())
+		scanner.Scan()
+		arr2D[i][1], _ = strconv.Atoi(scanner.Text())
+	}
 
 	for i, arr := range arr2D {
-		_, _ = fmt.Fprintf(w, "Case #%d: %d + %d = %d\n", i+1, arr[0], arr[1], arr[0]+arr[1])
+		_, _ = fmt.Fprintf(writer, "Case #%d: %d + %d = %d\n", i+1, arr[0], arr[1], arr[0]+arr[1])
 	}
 }
