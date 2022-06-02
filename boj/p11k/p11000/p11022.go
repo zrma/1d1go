@@ -9,15 +9,12 @@ func Solve11022(scanner Scanner, writer Writer) {
 	scanner.Scan()
 	n, _ := strconv.Atoi(scanner.Text())
 
-	arr2D := make([][2]int, n)
-	for i := range arr2D {
+	for i := 0; i < n; i++ {
 		scanner.Scan()
-		arr2D[i][0], _ = strconv.Atoi(scanner.Text())
+		a, _ := strconv.Atoi(scanner.Text())
 		scanner.Scan()
-		arr2D[i][1], _ = strconv.Atoi(scanner.Text())
-	}
+		b, _ := strconv.Atoi(scanner.Text())
 
-	for i, arr := range arr2D {
-		_, _ = fmt.Fprintf(writer, "Case #%d: %d + %d = %d\n", i+1, arr[0], arr[1], arr[0]+arr[1])
+		_, _ = fmt.Fprintf(writer, "Case #%d: %d + %d = %d\n", i+1, a, b, a+b)
 	}
 }
