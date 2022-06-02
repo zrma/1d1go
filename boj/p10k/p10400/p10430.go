@@ -13,8 +13,8 @@ func Solve10430(scanner Scanner, writer Writer) {
 	scanner.Scan()
 	c, _ := strconv.Atoi(scanner.Text())
 
-	_, _ = fmt.Fprintln(writer, (a + b) % c)
-	_, _ = fmt.Fprintln(writer, (a%c + b%c) % c)
-	_, _ = fmt.Fprintln(writer, (a * b) % c)
-	_, _ = fmt.Fprintln(writer, (a % c * b % c) % c)
+	_, _ = fmt.Fprintln(writer, (a+b)%c)
+	_, _ = fmt.Fprintln(writer, (a%c+b%c)%c)
+	_, _ = fmt.Fprintln(writer, (a*b)%c)
+	_, _ = fmt.Fprintln(writer, (a%c*b%c)%c)
 }
