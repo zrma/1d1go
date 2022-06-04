@@ -1,6 +1,7 @@
 package p1900_test
 
 import (
+	_ "embed"
 	"testing"
 	"time"
 
@@ -38,14 +39,14 @@ func TestSolve1934(t *testing.T) {
 	assert.Equal(t, want, got)
 }
 
+//go:embed test_data/p1934_give.txt
+var p1934give string
+
+//go:embed test_data/p1934_want.txt
+var p1934want string
+
 func TestSolve1934_Performance(t *testing.T) {
-	s, err := utils.ReadStringFromFile("./test_data/p1934_give.txt")
-	assert.NoError(t, err)
-
-	want, err := utils.ReadStringFromFile("./test_data/p1934_want.txt")
-	assert.NoError(t, err)
-
-	scanner := utils.NewStringScanner(s)
+	scanner := utils.NewStringScanner(p1934give)
 	writer := utils.NewStringWriter()
 
 	assert.Eventually(t, func() bool {
@@ -53,9 +54,9 @@ func TestSolve1934_Performance(t *testing.T) {
 		return true
 	}, time.Second, time.Millisecond*100, "시간 초과")
 
-	err = writer.Flush()
+	err := writer.Flush()
 	assert.NoError(t, err)
 
 	got := writer.String()
-	assert.Equal(t, want, got)
+	assert.Equal(t, p1934want, got)
 }
