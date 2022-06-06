@@ -72,7 +72,7 @@ func TestSolve2981_Performance(t *testing.T) {
 	assert.Eventually(t, func() bool {
 		p2900.Solve2981(scanner, writer)
 		return true
-	}, 60*time.Second, time.Millisecond*100, "시간 초과")
+	}, time.Second, time.Millisecond*100, "시간 초과")
 
 	err := writer.Flush()
 	assert.NoError(t, err)

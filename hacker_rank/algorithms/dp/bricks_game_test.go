@@ -181,18 +181,16 @@ func newFixture(tb testing.TB) fixture {
 }
 
 func TestBricksGamePerformance(t *testing.T) {
-	assert.Eventually(t, func() bool {
-		f := newFixture(t)
+	f := newFixture(t)
 
-		for i, arr := range f.arrays {
-			assert.Len(t, arr, f.want[i].len)
+	for i, arr := range f.arrays {
+		assert.Len(t, arr, f.want[i].len)
 
+		assert.Eventually(t, func() bool {
 			got := bricksGame(arr)
-			assert.EqualValues(t, f.want[i].val, got)
-		}
-
-		return true
-	}, time.Second, time.Millisecond*100, "시간 초과")
+			return assert.EqualValues(t, f.want[i].val, got)
+		}, time.Second, time.Millisecond*100, "시간 초과")
+	}
 }
 
 //goos: windows

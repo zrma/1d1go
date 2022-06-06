@@ -66,42 +66,40 @@ func TestFreqQuery(t *testing.T) {
 }
 
 func TestFreqQueryPerformance(t *testing.T) {
-	assert.Eventually(t, func() bool {
-		for _, tt := range []struct {
-			queriesFile string
-			queriesLen  int
-			wantFile    string
-			wantLen     int
-		}{
-			{
-				queriesFile: "./test_data/frequency_queries_0.csv",
-				queriesLen:  1000000,
-				wantFile:    "./test_data/frequency_queries_result_0.csv",
-				wantLen:     332855,
-			},
-			{
-				queriesFile: "./test_data/frequency_queries_1.csv",
-				queriesLen:  100000,
-				wantFile:    "./test_data/frequency_queries_result_1.csv",
-				wantLen:     33246,
-			},
-		} {
-			t.Run(tt.queriesFile, func(t *testing.T) {
-				queries, err := readInputCSV(tt.queriesFile)
-				assert.NoError(t, err)
-				assert.Len(t, queries, tt.queriesLen)
+	for _, tt := range []struct {
+		queriesFile string
+		queriesLen  int
+		wantFile    string
+		wantLen     int
+	}{
+		{
+			queriesFile: "./test_data/frequency_queries_0.csv",
+			queriesLen:  1000000,
+			wantFile:    "./test_data/frequency_queries_result_0.csv",
+			wantLen:     332855,
+		},
+		{
+			queriesFile: "./test_data/frequency_queries_1.csv",
+			queriesLen:  100000,
+			wantFile:    "./test_data/frequency_queries_result_1.csv",
+			wantLen:     33246,
+		},
+	} {
+		t.Run(tt.queriesFile, func(t *testing.T) {
+			queries, err := readInputCSV(tt.queriesFile)
+			assert.NoError(t, err)
+			assert.Len(t, queries, tt.queriesLen)
 
-				want, err := readResultCSV(tt.wantFile)
-				assert.NoError(t, err)
-				assert.Len(t, want, tt.wantLen)
+			want, err := readResultCSV(tt.wantFile)
+			assert.NoError(t, err)
+			assert.Len(t, want, tt.wantLen)
 
+			assert.Eventually(t, func() bool {
 				got := freqQuery(queries)
-				assert.Equal(t, want, got)
-			})
-		}
-
-		return true
-	}, time.Second*10, time.Millisecond*100, "시간 초과")
+				return assert.Equal(t, want, got)
+			}, time.Second*3, time.Millisecond*100, "시간 초과")
+		})
+	}
 }
 
 func readInputCSV(fileName string) (arr [][]int32, err error) {

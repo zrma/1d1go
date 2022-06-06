@@ -83,37 +83,35 @@ func TestEqualPrefix(t *testing.T) {
 }
 
 func TestPalindromeIndexPerformance(t *testing.T) {
-	assert.Eventually(t, func() bool {
-		file, err := os.Open("./test_data/palindrome_index.csv")
+	file, err := os.Open("./test_data/palindrome_index.csv")
+	assert.NoError(t, err)
+	defer func() {
+		err := file.Close()
 		assert.NoError(t, err)
-		defer func() {
-			err := file.Close()
-			assert.NoError(t, err)
-		}()
+	}()
 
-		r := csv.NewReader(bufio.NewReader(file))
-		rows, err := r.ReadAll()
-		assert.NoError(t, err)
+	r := csv.NewReader(bufio.NewReader(file))
+	rows, err := r.ReadAll()
+	assert.NoError(t, err)
 
-		var arr []string
-		for _, row := range rows {
-			arr = append(arr, row[0])
-		}
+	var arr []string
+	for _, row := range rows {
+		arr = append(arr, row[0])
+	}
 
-		want := []int32{
-			16722,
-			76661,
-			10035,
-			57089,
-			46674,
-		}
+	want := []int32{
+		16722,
+		76661,
+		10035,
+		57089,
+		46674,
+	}
 
-		assert.Len(t, arr, 5)
-		for i, s := range arr {
+	assert.Len(t, arr, 5)
+	for i, s := range arr {
+		assert.Eventually(t, func() bool {
 			got := palindromeIndex(s)
-			assert.EqualValues(t, want[i], got)
-		}
-
-		return true
-	}, time.Second, time.Millisecond*100, "시간 초과")
+			return assert.EqualValues(t, want[i], got)
+		}, time.Second, time.Millisecond*100, "시간 초과")
+	}
 }

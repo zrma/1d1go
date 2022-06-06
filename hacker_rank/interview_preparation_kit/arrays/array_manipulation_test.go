@@ -50,38 +50,36 @@ func TestArrayManipulation(t *testing.T) {
 }
 
 func TestArrayManipulationPerformance(t *testing.T) {
+	file, err := os.Open("./test_data/array_manipulation.csv")
+	assert.NoError(t, err)
+	defer func() {
+		err := file.Close()
+		assert.NoError(t, err)
+	}()
+
+	r := csv.NewReader(bufio.NewReader(file))
+	rows, err := r.ReadAll()
+	assert.NoError(t, err)
+
+	var arr [][]int32
+	for _, row := range rows {
+		begin, err := strconv.ParseInt(strings.TrimSpace(row[0]), 10, 64)
+		assert.NoError(t, err)
+
+		end, err := strconv.ParseInt(strings.TrimSpace(row[1]), 10, 64)
+		assert.NoError(t, err)
+
+		value, err := strconv.ParseInt(strings.TrimSpace(row[2]), 10, 64)
+		assert.NoError(t, err)
+
+		arr = append(arr, []int32{int32(begin), int32(end), int32(value)})
+	}
+
+	assert.Len(t, arr, 100000)
+	const want = 2506721627
+
 	assert.Eventually(t, func() bool {
-		file, err := os.Open("./test_data/array_manipulation.csv")
-		assert.NoError(t, err)
-		defer func() {
-			err := file.Close()
-			assert.NoError(t, err)
-		}()
-
-		r := csv.NewReader(bufio.NewReader(file))
-		rows, err := r.ReadAll()
-		assert.NoError(t, err)
-
-		var arr [][]int32
-		for _, row := range rows {
-			begin, err := strconv.ParseInt(strings.TrimSpace(row[0]), 10, 64)
-			assert.NoError(t, err)
-
-			end, err := strconv.ParseInt(strings.TrimSpace(row[1]), 10, 64)
-			assert.NoError(t, err)
-
-			value, err := strconv.ParseInt(strings.TrimSpace(row[2]), 10, 64)
-			assert.NoError(t, err)
-
-			arr = append(arr, []int32{int32(begin), int32(end), int32(value)})
-		}
-
-		assert.Len(t, arr, 100000)
-		const want = 2506721627
-
 		got := arrayManipulation(10000000, arr)
-		assert.EqualValues(t, want, got)
-
-		return true
-	}, time.Second*5, time.Millisecond*100, "시간 초과")
+		return assert.EqualValues(t, want, got)
+	}, time.Second*3, time.Millisecond*100, "시간 초과")
 }
