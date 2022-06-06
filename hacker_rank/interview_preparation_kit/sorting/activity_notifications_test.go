@@ -55,37 +55,36 @@ func TestActivityNotifications(t *testing.T) {
 }
 
 func TestActivityNotificationsPerformance(t *testing.T) {
+	file, err := os.Open("./test_data/activity_notifications.csv")
+	assert.NoError(t, err)
+	defer func() {
+		err := file.Close()
+		assert.NoError(t, err)
+	}()
+
+	r := csv.NewReader(bufio.NewReader(file))
+	rows, err := r.ReadAll()
+	assert.NoError(t, err)
+
+	var expenditure []int32
+	for _, row := range rows {
+		num, err := strconv.ParseInt(strings.TrimSpace(row[0]), 10, 32)
+		assert.NoError(t, err)
+
+		expenditure = append(expenditure, int32(num))
+	}
+
+	assert.Len(t, expenditure, 200000)
+
+	const (
+		d          = 40001
+		want int32 = 926
+	)
+
 	assert.Eventually(t, func() bool {
-		file, err := os.Open("./test_data/activity_notifications.csv")
-		assert.NoError(t, err)
-		defer func() {
-			err := file.Close()
-			assert.NoError(t, err)
-		}()
-
-		r := csv.NewReader(bufio.NewReader(file))
-		rows, err := r.ReadAll()
-		assert.NoError(t, err)
-
-		var expenditure []int32
-		for _, row := range rows {
-			num, err := strconv.ParseInt(strings.TrimSpace(row[0]), 10, 32)
-			assert.NoError(t, err)
-
-			expenditure = append(expenditure, int32(num))
-		}
-
-		assert.Len(t, expenditure, 200000)
-
-		const d = 40001
-
-		var want int32 = 926
 		got := activityNotifications(expenditure, d)
-
-		assert.Equal(t, want, got)
-
-		return true
-	}, time.Second*5, time.Millisecond*100, "시간 초과")
+		return assert.Equal(t, want, got)
+	}, time.Second*3, time.Millisecond*100, "시간 초과")
 }
 
 func TestMedianOdd(t *testing.T) {
