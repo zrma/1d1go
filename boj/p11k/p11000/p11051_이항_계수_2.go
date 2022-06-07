@@ -3,6 +3,8 @@ package p11000
 import (
 	"fmt"
 	"strconv"
+
+	"1d1go/utils/integer"
 )
 
 func Solve11051(scanner Scanner, writer Writer) {
@@ -12,36 +14,10 @@ func Solve11051(scanner Scanner, writer Writer) {
 	k, _ := strconv.Atoi(scanner.Text())
 
 	const maxLen = 1000 + 1
-	cache := make([][]int, maxLen)
-	for i := range cache {
-		cache[i] = make([]int, maxLen)
-		for j := range cache[i] {
-			cache[i][j] = -1
-		}
-	}
+	cache := integer.BuildCache2DArr(maxLen, -1)
 
-	res := binomialCoefficientWithCache(n, k, cache)
+	res := integer.CombinationDP(n, k, cache, func(v int) int {
+		return v % 10_007
+	})
 	_, _ = fmt.Fprint(writer, res)
-}
-
-func binomialCoefficientWithCache(n, k int, cache [][]int) int {
-	if n < k {
-		return 0
-	}
-	if n == k {
-		return 1
-	}
-	if k == 0 {
-		return 1
-	}
-
-	if v := cache[n][k]; v != -1 {
-		return v
-	}
-
-	res := binomialCoefficientWithCache(n-1, k-1, cache) + binomialCoefficientWithCache(n-1, k, cache)
-	res = res % 10_007
-	cache[n][k] = res
-
-	return res
 }
