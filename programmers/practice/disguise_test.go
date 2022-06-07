@@ -1,10 +1,12 @@
-package practice
+package practice_test
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"1d1go/programmers/practice"
 )
 
 func TestDisguise(t *testing.T) {
@@ -33,7 +35,7 @@ func TestDisguise(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := disguise(tt.clothes)
+			got := practice.Disguise(tt.clothes)
 			assert.Equal(t, tt.want, got)
 		})
 	}
