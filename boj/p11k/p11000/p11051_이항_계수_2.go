@@ -11,12 +11,20 @@ func Solve11051(scanner Scanner, writer Writer) {
 	scanner.Scan()
 	k, _ := strconv.Atoi(scanner.Text())
 
-	cache := make(map[int]map[int]int)
+	const maxLen = 1000 + 1
+	cache := make([][]int, maxLen)
+	for i := range cache {
+		cache[i] = make([]int, maxLen)
+		for j := range cache[i] {
+			cache[i][j] = -1
+		}
+	}
+
 	res := binomialCoefficientWithCache(n, k, cache)
 	_, _ = fmt.Fprint(writer, res)
 }
 
-func binomialCoefficientWithCache(n, k int, cache map[int]map[int]int) int {
+func binomialCoefficientWithCache(n, k int, cache [][]int) int {
 	if n < k {
 		return 0
 	}
@@ -27,18 +35,13 @@ func binomialCoefficientWithCache(n, k int, cache map[int]map[int]int) int {
 		return 1
 	}
 
-	c, ok := cache[n]
-	if !ok {
-		c = make(map[int]int)
-		cache[n] = c
-	}
-	if v, ok := cache[n][k]; ok {
+	if v := cache[n][k]; v != -1 {
 		return v
 	}
 
 	res := binomialCoefficientWithCache(n-1, k-1, cache) + binomialCoefficientWithCache(n-1, k, cache)
 	res = res % 10_007
-	c[k] = res
+	cache[n][k] = res
 
 	return res
 }
