@@ -1,7 +1,6 @@
 package tutorial30daysofcode
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -16,9 +15,9 @@ func dictionariesAndMaps(n int, ss []string) {
 
 	for _, s := range ss[n:] {
 		if contact, ok := m[s]; ok {
-			fmt.Printf("%s=%s\n", s, contact)
+			_, _ = funcPrintf("%s=%s\n", s, contact)
 		} else {
-			fmt.Println("Not found")
+			_, _ = funcPrintln("Not found")
 		}
 	}
 }

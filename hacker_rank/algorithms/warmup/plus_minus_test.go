@@ -1,6 +1,7 @@
 package warmup
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -11,14 +12,24 @@ import (
 func TestPlusMinus(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/plus-minus/problem")
 
-	want := []string{
-		"0.500000",
-		"0.333333",
-		"0.166667",
+	writer := utils.NewStringWriter()
+	funcPrintf = func(format string, a ...any) (n int, err error) {
+		return fmt.Fprintf(writer, format, a...)
 	}
-	got, err := utils.GetPrinted(func() {
-		plusMinus([]int32{-4, 3, -9, 0, 4, 1})
-	})
+	defer func() { funcPrintf = fmt.Printf }()
+
+	const (
+		want = `0.500000
+0.333333
+0.166667
+`
+	)
+
+	plusMinus([]int32{-4, 3, -9, 0, 4, 1})
+
+	err := writer.Flush()
 	assert.NoError(t, err)
+
+	got := writer.String()
 	assert.Equal(t, want, got)
 }

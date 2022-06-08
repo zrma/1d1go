@@ -1,7 +1,5 @@
 package tutorial30daysofcode
 
-import "fmt"
-
 func letsReview(s string) {
 	var even, odd string
 	for i := 0; i < len(s); i++ {
@@ -11,5 +9,5 @@ func letsReview(s string) {
 			odd += string(s[i])
 		}
 	}
-	fmt.Println(even, odd)
+	_, _ = funcPrintln(even, odd)
 }

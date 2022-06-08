@@ -1,7 +1,5 @@
 package tutorial30daysofcode
 
-import "fmt"
-
 func sorting(arr []int32) {
 
 	n := len(arr)
@@ -22,7 +20,7 @@ func sorting(arr []int32) {
 		total += numberOfSwaps
 	}
 
-	fmt.Printf("Array is sorted in %d swaps.\n", total)
-	fmt.Printf("First Element: %d\n", arr[0])
-	fmt.Printf("Last Element: %d\n", arr[n-1])
+	_, _ = funcPrintf("Array is sorted in %d swaps.\n", total)
+	_, _ = funcPrintf("First Element: %d\n", arr[0])
+	_, _ = funcPrintf("Last Element: %d\n", arr[n-1])
 }

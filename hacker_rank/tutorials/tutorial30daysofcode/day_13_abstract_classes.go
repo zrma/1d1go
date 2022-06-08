@@ -1,7 +1,5 @@
 package tutorial30daysofcode
 
-import "fmt"
-
 type viewer interface {
 	display()
 }
@@ -30,9 +28,9 @@ func newMyBook(title, author string, price int) *myBook {
 }
 
 func (b myBook) display() {
-	fmt.Println("Title:", b.title)
-	fmt.Println("Author:", b.author)
-	fmt.Println("Price:", b.price)
+	_, _ = funcPrintln("Title:", b.title)
+	_, _ = funcPrintln("Author:", b.author)
+	_, _ = funcPrintln("Price:", b.price)
 }
 
 func abstractClasses(title, author string, price int) {

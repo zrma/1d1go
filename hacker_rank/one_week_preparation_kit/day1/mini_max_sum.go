@@ -1,7 +1,6 @@
 package day1
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -19,5 +18,5 @@ func miniMaxSum(arr []int32) {
 			max = v
 		}
 	}
-	fmt.Printf("%d %d", sum-max, sum-min)
+	_, _ = funcPrintf("%d %d", sum-max, sum-min)
 }

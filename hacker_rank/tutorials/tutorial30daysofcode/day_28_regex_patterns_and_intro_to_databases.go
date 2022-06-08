@@ -1,7 +1,6 @@
 package tutorial30daysofcode
 
 import (
-	"fmt"
 	"sort"
 	"strings"
 
@@ -20,6 +19,6 @@ func filter(arr [][]string) {
 
 	sort.Sort(str.SortAdapter(output))
 	for _, s := range output {
-		fmt.Println(s)
+		_, _ = funcPrintln(s)
 	}
 }

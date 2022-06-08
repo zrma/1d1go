@@ -1,7 +1,5 @@
 package warmup
 
-import "fmt"
-
 func staircase(n int32) {
 	var i, j int32
 	for ; i < n; i++ {
@@ -13,6 +11,6 @@ func staircase(n int32) {
 				s += "#"
 			}
 		}
-		fmt.Println(s)
+		_, _ = funcPrintln(s)
 	}
 }

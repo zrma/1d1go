@@ -1,7 +1,7 @@
 package tutorial30daysofcode
 
 import (
-	"strconv"
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -12,14 +12,27 @@ import (
 func TestDisplayLinkedList(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-linked-list/problem")
 
-	var arr = []int{2, 3, 4, 1}
-	want := make([]string, len(arr))
-	for i, n := range arr {
-		want[i] = strconv.Itoa(n)
+	writer := utils.NewStringWriter()
+	funcPrintln = func(a ...any) (n int, err error) {
+		return fmt.Fprintln(writer, a...)
 	}
-	got, err := utils.GetPrinted(func() {
-		displayLinkedList(arr)
-	})
+	defer func() { funcPrintln = fmt.Println }()
+
+	const (
+		want = `2
+3
+4
+1
+`
+	)
+
+	var arr = []int{2, 3, 4, 1}
+
+	displayLinkedList(arr)
+
+	err := writer.Flush()
 	assert.NoError(t, err)
+
+	got := writer.String()
 	assert.Equal(t, want, got)
 }

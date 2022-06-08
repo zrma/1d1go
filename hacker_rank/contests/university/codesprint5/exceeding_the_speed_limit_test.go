@@ -14,17 +14,27 @@ func TestExceedingTheSpeedLimit(t *testing.T) {
 		n    int32
 		want string
 	}{
-		{100, "3000 Warning"},
-		{140, "25000 License removed"},
-		{85, "0 No punishment"},
+		{
+			100, "3000 Warning"},
+		{
+			140, "25000 License removed"},
+		{
+			85, "0 No punishment"},
 	} {
 		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
-			want := []string{tt.want}
-			got, err := utils.GetPrinted(func() {
-				exceedingTheSpeedLimit(tt.n)
-			})
+			writer := utils.NewStringWriter()
+			funcPrintf = func(format string, a ...any) (n int, err error) {
+				return fmt.Fprintf(writer, format, a...)
+			}
+			defer func() { funcPrintf = fmt.Printf }()
+
+			exceedingTheSpeedLimit(tt.n)
+
+			err := writer.Flush()
 			assert.NoError(t, err)
-			assert.Equal(t, want, got)
+
+			got := writer.String()
+			assert.Equal(t, tt.want, got)
 		})
 	}
 }

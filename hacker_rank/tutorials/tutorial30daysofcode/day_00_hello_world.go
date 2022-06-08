@@ -1,8 +1,6 @@
 package tutorial30daysofcode
 
-import "fmt"
-
 func helloWorld(s string) {
-	fmt.Println("Hello, World.")
-	fmt.Println(s)
+	_, _ = funcPrintln("Hello, World.")
+	_, _ = funcPrintln(s)
 }

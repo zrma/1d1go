@@ -1,7 +1,6 @@
 package warmup
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -22,5 +21,5 @@ func miniMaxSum(arr []int64) {
 		sum += n
 	}
 
-	fmt.Printf("%d %d", sum-max, sum-min)
+	_, _ = funcPrintf("%d %d", sum-max, sum-min)
 }

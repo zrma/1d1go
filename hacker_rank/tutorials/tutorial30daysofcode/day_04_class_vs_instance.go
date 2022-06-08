@@ -1,7 +1,5 @@
 package tutorial30daysofcode
 
-import "fmt"
-
 type simplePerson struct {
 	age int
 }
@@ -15,7 +13,7 @@ const (
 
 func (p simplePerson) NewPerson(initialAge int) simplePerson {
 	if initialAge < 0 {
-		fmt.Println(msgOfInvalid)
+		_, _ = funcPrintln(msgOfInvalid)
 		initialAge = 0
 	}
 	res := p
@@ -26,11 +24,11 @@ func (p simplePerson) NewPerson(initialAge int) simplePerson {
 func (p simplePerson) amIOld() {
 	switch {
 	case p.age < 13:
-		fmt.Println(msgOfYoung)
+		_, _ = funcPrintln(msgOfYoung)
 	case p.age < 18:
-		fmt.Println(msgOfTeenager)
+		_, _ = funcPrintln(msgOfTeenager)
 	default:
-		fmt.Println(msgOfOld)
+		_, _ = funcPrintln(msgOfOld)
 	}
 }
 
@@ -48,5 +46,4 @@ func classAndInstance(age int) {
 		p = p.yearPasses()
 	}
 	p.amIOld()
-	fmt.Println()
 }

@@ -1,9 +1,5 @@
 package arrays
 
-import (
-	"fmt"
-)
-
 type data struct {
 	val   int32
 	moved int
@@ -45,8 +41,8 @@ func minimumBribes(arr []int32) {
 
 	cnt, ok := bubbleSort(adapter, 2)
 	if !ok {
-		fmt.Println("Too chaotic")
+		_, _ = funcPrint("Too chaotic")
 		return
 	}
-	fmt.Println(cnt)
+	_, _ = funcPrint(cnt)
 }
