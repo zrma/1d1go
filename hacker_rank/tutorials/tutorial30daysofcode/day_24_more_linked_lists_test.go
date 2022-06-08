@@ -14,28 +14,44 @@ func TestLinkedListRemoveDuplicates(t *testing.T) {
 
 	for i, tt := range []struct {
 		values []int
-		want   []string
+		want   string
 	}{
 		{
 			values: []int{1, 2, 2, 3, 3, 4},
-			want:   []string{"1", "2", "3", "4"},
+			want: `1
+2
+3
+4
+`,
 		},
 		{
 			values: []int{1, 2, 2, 2, 3, 3, 3, 3, 4, 4},
-			want:   []string{"1", "2", "3", "4"},
+			want: `1
+2
+3
+4
+`,
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
+			writer := utils.NewStringWriter()
+			funcPrintln = func(a ...any) (n int, err error) {
+				return fmt.Fprintln(writer, a...)
+			}
+			defer func() { funcPrintln = fmt.Println }()
+
 			var list linkedList
 			for _, v := range tt.values {
 				list.head = list.insert(v)
 			}
 
 			list.head = removeDuplicates(list.head)
-			got, err := utils.GetPrinted(func() {
-				list.display()
-			})
+			list.display()
+
+			err := writer.Flush()
 			assert.NoError(t, err)
+
+			got := writer.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}

@@ -14,47 +14,47 @@ func TestClassAndInstance(t *testing.T) {
 
 	for _, tt := range []struct {
 		age  int
-		want []string
+		want string
 	}{
 		{
 			age: -1,
-			want: []string{
-				"Age is not valid, setting age to 0.",
-				"You are young.",
-				"You are young.",
-				"",
-			},
+			want: `Age is not valid, setting age to 0.
+You are young.
+You are young.
+`,
 		},
 		{
 			age: 10,
-			want: []string{
-				"You are young.",
-				"You are a teenager.",
-				"",
-			},
+			want: `You are young.
+You are a teenager.
+`,
 		},
 		{
 			age: 16,
-			want: []string{
-				"You are a teenager.",
-				"You are old.",
-				"",
-			},
+			want: `You are a teenager.
+You are old.
+`,
 		},
 		{
 			age: 18,
-			want: []string{
-				"You are old.",
-				"You are old.",
-				"",
-			},
+			want: `You are old.
+You are old.
+`,
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", tt.age), func(t *testing.T) {
-			got, err := utils.GetPrinted(func() {
-				classAndInstance(tt.age)
-			})
+			writer := utils.NewStringWriter()
+			funcPrintln = func(a ...any) (n int, err error) {
+				return fmt.Fprintln(writer, a...)
+			}
+			defer func() { funcPrintln = fmt.Println }()
+
+			classAndInstance(tt.age)
+
+			err := writer.Flush()
 			assert.NoError(t, err)
+
+			got := writer.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}

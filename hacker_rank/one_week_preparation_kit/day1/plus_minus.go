@@ -1,7 +1,5 @@
 package day1
 
-import "fmt"
-
 func plusMinus(arr []int32) {
 	var pos, neg, zero float64
 	// NOTE - time complexity O(n)
@@ -16,7 +14,7 @@ func plusMinus(arr []int32) {
 	}
 
 	const fmtStr = "%.6f\n"
-	fmt.Printf(fmtStr, pos/float64(len(arr)))
-	fmt.Printf(fmtStr, neg/float64(len(arr)))
-	fmt.Printf(fmtStr, zero/float64(len(arr)))
+	_, _ = funcPrintf(fmtStr, pos/float64(len(arr)))
+	_, _ = funcPrintf(fmtStr, neg/float64(len(arr)))
+	_, _ = funcPrintf(fmtStr, zero/float64(len(arr)))
 }

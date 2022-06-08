@@ -20,38 +20,43 @@ func TestCountSwaps(t *testing.T) {
 
 	for i, tt := range []struct {
 		arr  []int32
-		want []string
+		want string
 	}{
 		{
 			arr: []int32{6, 4, 1},
-			want: []string{
-				"Array is sorted in 3 swaps.",
-				"First Element: 1",
-				"Last Element: 6",
-			},
+			want: `Array is sorted in 3 swaps.
+First Element: 1
+Last Element: 6
+`,
 		},
 		{
 			arr: []int32{1, 2, 3},
-			want: []string{
-				"Array is sorted in 0 swaps.",
-				"First Element: 1",
-				"Last Element: 3",
-			},
+			want: `Array is sorted in 0 swaps.
+First Element: 1
+Last Element: 3
+`,
 		},
 		{
 			arr: []int32{3, 2, 1},
-			want: []string{
-				"Array is sorted in 3 swaps.",
-				"First Element: 1",
-				"Last Element: 3",
-			},
+			want: `Array is sorted in 3 swaps.
+First Element: 1
+Last Element: 3
+`,
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got, err := utils.GetPrinted(func() {
-				countSwaps(tt.arr)
-			})
+			writer := utils.NewStringWriter()
+			funcPrintf = func(format string, a ...any) (n int, err error) {
+				return fmt.Fprintf(writer, format, a...)
+			}
+			defer func() { funcPrintf = fmt.Printf }()
+
+			countSwaps(tt.arr)
+
+			err := writer.Flush()
 			assert.NoError(t, err)
+
+			got := writer.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -79,17 +84,25 @@ func TestCountSwapsPerformance(t *testing.T) {
 
 	assert.Len(t, arr, 528)
 
-	want := []string{
-		"Array is sorted in 68472 swaps.",
-		"First Element: 4842",
-		"Last Element: 1994569",
+	writer := utils.NewStringWriter()
+	funcPrintf = func(format string, a ...any) (n int, err error) {
+		return fmt.Fprintf(writer, format, a...)
 	}
+	defer func() { funcPrintf = fmt.Printf }()
 
+	const (
+		want = `Array is sorted in 68472 swaps.
+First Element: 4842
+Last Element: 1994569
+`
+	)
 	assert.Eventually(t, func() bool {
-		got, err := utils.GetPrinted(func() {
-			countSwaps(arr)
-		})
+		countSwaps(arr)
+
+		err := writer.Flush()
 		assert.NoError(t, err)
+
+		got := writer.String()
 		return assert.Equal(t, want, got)
 	}, time.Second, time.Millisecond*100, "시간 초과")
 }

@@ -20,12 +20,19 @@ func TestBinaryNumbers(t *testing.T) {
 		{13, "2"},
 	} {
 		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
-			want := []string{tt.want}
-			got, err := utils.GetPrinted(func() {
-				binaryNumbers(tt.n)
-			})
+			writer := utils.NewStringWriter()
+			funcPrint = func(a ...any) (n int, err error) {
+				return fmt.Fprint(writer, a...)
+			}
+			defer func() { funcPrint = fmt.Print }()
+
+			binaryNumbers(tt.n)
+
+			err := writer.Flush()
 			assert.NoError(t, err)
-			assert.Equal(t, want, got)
+
+			got := writer.String()
+			assert.Equal(t, tt.want, got)
 		})
 	}
 }

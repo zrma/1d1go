@@ -33,12 +33,19 @@ func TestCheckMagazine(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			want := []string{tt.want}
-			got, err := utils.GetPrinted(func() {
-				checkMagazine(tt.magazine, tt.note)
-			})
+			writer := utils.NewStringWriter()
+			funcPrint = func(a ...any) (n int, err error) {
+				return fmt.Fprint(writer, a...)
+			}
+			defer func() { funcPrint = fmt.Print }()
+
+			checkMagazine(tt.magazine, tt.note)
+
+			err := writer.Flush()
 			assert.NoError(t, err)
-			assert.Equal(t, want, got)
+
+			got := writer.String()
+			assert.Equal(t, tt.want, got)
 		})
 	}
 }
