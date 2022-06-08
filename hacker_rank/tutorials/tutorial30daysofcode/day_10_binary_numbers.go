@@ -1,7 +1,6 @@
 package tutorial30daysofcode
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -20,5 +19,5 @@ func binaryNumbers(n int32) {
 		}
 	}
 
-	fmt.Println(max)
+	_, _ = funcPrint(max)
 }

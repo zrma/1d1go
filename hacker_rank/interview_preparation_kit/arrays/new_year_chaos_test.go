@@ -23,12 +23,19 @@ func TestMinimumBribes(t *testing.T) {
 		{[]int32{1, 2, 5, 3, 4, 7, 8, 6}, "4"},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			want := []string{tt.want}
-			got, err := utils.GetPrinted(func() {
-				minimumBribes(tt.arr)
-			})
+			writer := utils.NewStringWriter()
+			funcPrint = func(a ...any) (n int, err error) {
+				return fmt.Fprint(writer, a...)
+			}
+			defer func() { funcPrint = fmt.Print }()
+
+			minimumBribes(tt.arr)
+
+			err := writer.Flush()
 			assert.NoError(t, err)
-			assert.Equal(t, want, got)
+
+			got := writer.String()
+			assert.Equal(t, tt.want, got)
 		})
 	}
 }

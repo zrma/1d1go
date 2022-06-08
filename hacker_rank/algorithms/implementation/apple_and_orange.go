@@ -1,7 +1,5 @@
 package implementation
 
-import "fmt"
-
 func countApplesAndOranges(s, t, a, b int32, apples, oranges []int32) {
 	containFrom := func(origin int32) func(int32) bool {
 		return func(distance int32) bool {
@@ -9,8 +7,8 @@ func countApplesAndOranges(s, t, a, b int32, apples, oranges []int32) {
 		}
 	}
 
-	fmt.Println(count(apples, containFrom(a)))
-	fmt.Println(count(oranges, containFrom(b)))
+	_, _ = funcPrintln(count(apples, containFrom(a)))
+	_, _ = funcPrintln(count(oranges, containFrom(b)))
 }
 
 func count(distances []int32, contain func(int32) bool) (sum int32) {

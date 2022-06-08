@@ -1,7 +1,6 @@
 package dictionariesandhashmaps
 
 import (
-	"fmt"
 	"sort"
 	"strings"
 
@@ -23,10 +22,10 @@ func checkMagazine(magazine, note []string) {
 			i--
 			j--
 		} else {
-			fmt.Println("No")
+			_, _ = funcPrint("No")
 			return
 		}
 	}
 
-	fmt.Println("Yes")
+	_, _ = funcPrint("Yes")
 }

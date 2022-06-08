@@ -1,7 +1,5 @@
 package tutorial30daysofcode
 
-import "fmt"
-
 type listNode struct {
 	data int
 	next *listNode
@@ -31,7 +29,7 @@ func (l *linkedList) insert(data int) *listNode {
 func (l linkedList) display() {
 	node := l.head
 	for node != nil {
-		fmt.Println(node.data)
+		_, _ = funcPrintln(node.data)
 		node = node.next
 	}
 }

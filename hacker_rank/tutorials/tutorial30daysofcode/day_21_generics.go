@@ -1,9 +1,7 @@
 package tutorial30daysofcode
 
-import "fmt"
-
 func printArray(args ...interface{}) {
 	for _, arg := range args {
-		fmt.Println(arg)
+		_, _ = funcPrintln(arg)
 	}
 }

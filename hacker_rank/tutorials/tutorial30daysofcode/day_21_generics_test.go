@@ -14,22 +14,35 @@ func TestPrintArray(t *testing.T) {
 
 	for i, tt := range []struct {
 		args []interface{}
-		want []string
+		want string
 	}{
 		{
 			args: []interface{}{1, 2, 3},
-			want: []string{"1", "2", "3"},
+			want: `1
+2
+3
+`,
 		},
 		{
 			args: []interface{}{"Hello", "World"},
-			want: []string{"Hello", "World"},
+			want: `Hello
+World
+`,
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got, err := utils.GetPrinted(func() {
-				printArray(tt.args...)
-			})
+			writer := utils.NewStringWriter()
+			funcPrintln = func(a ...interface{}) (n int, err error) {
+				return fmt.Fprintln(writer, a...)
+			}
+			defer func() { funcPrintln = fmt.Println }()
+
+			printArray(tt.args...)
+
+			err := writer.Flush()
 			assert.NoError(t, err)
+
+			got := writer.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}

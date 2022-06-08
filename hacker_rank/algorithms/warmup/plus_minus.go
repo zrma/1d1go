@@ -1,7 +1,5 @@
 package warmup
 
-import "fmt"
-
 func plusMinus(arr []int32) {
 	const fmtStr = "%0.6f\n"
 
@@ -20,7 +18,7 @@ func plusMinus(arr []int32) {
 		tot++
 	}
 
-	fmt.Printf(fmtStr, float64(pos)/float64(tot))
-	fmt.Printf(fmtStr, float64(nag)/float64(tot))
-	fmt.Printf(fmtStr, float64(zero)/float64(tot))
+	_, _ = funcPrintf(fmtStr, float64(pos)/float64(tot))
+	_, _ = funcPrintf(fmtStr, float64(nag)/float64(tot))
+	_, _ = funcPrintf(fmtStr, float64(zero)/float64(tot))
 }
