@@ -11,7 +11,7 @@ func exception(n, p int64) error {
 		return fmt.Errorf("n and p should be non-negative")
 	}
 
-	_, err := funcPrint(integer.PowInt64(n, p))
+	_, err := funcPrint(integer.Pow(n, p))
 	return err
 }
 

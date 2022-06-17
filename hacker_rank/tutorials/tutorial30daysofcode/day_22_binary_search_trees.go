@@ -30,5 +30,5 @@ func getHeight(root *treeNode) int32 {
 		return -1
 	}
 
-	return integer.MaxInt32(getHeight(root.left), getHeight(root.right)) + 1
+	return integer.Max(getHeight(root.left), getHeight(root.right)) + 1
 }

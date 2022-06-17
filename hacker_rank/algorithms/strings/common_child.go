@@ -22,7 +22,7 @@ func commonChild(s1, s2 string) int32 {
 			if c1 == c2 {
 				arr[i+1][j+1] = arr[i][j] + 1
 			} else {
-				arr[i+1][j+1] = integer.MaxInt32(arr[i+1][j], arr[i][j+1])
+				arr[i+1][j+1] = integer.Max(arr[i+1][j], arr[i][j+1])
 			}
 		}
 	}

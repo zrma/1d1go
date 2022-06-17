@@ -25,8 +25,8 @@ func Solve1149(scanner Scanner, writer Writer) {
 
 	for i := 1; i < n; i++ {
 		for j := 0; j < colorNum; j++ {
-			dp[i][j] = integer.MinInt(dp[i-1][(j+1)%colorNum], dp[i-1][(j+2)%colorNum]) + arr[i][j]
+			dp[i][j] = integer.Min(dp[i-1][(j+1)%colorNum], dp[i-1][(j+2)%colorNum]) + arr[i][j]
 		}
 	}
-	_, _ = fmt.Fprint(writer, integer.MinInt(dp[n-1][0], dp[n-1][1], dp[n-1][2]))
+	_, _ = fmt.Fprint(writer, integer.Min(dp[n-1][0], dp[n-1][1], dp[n-1][2]))
 }

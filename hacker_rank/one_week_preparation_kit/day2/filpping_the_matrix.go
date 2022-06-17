@@ -10,7 +10,7 @@ func flipMatrix(matrix [][]int32) int32 {
 	var res int32
 	for row := 0; row < n; row++ {
 		for col := 0; col < n; col++ {
-			res += integer.MaxInt32(
+			res += integer.Max(
 				matrix[row][col],                     // top left
 				matrix[row][lastIndex-col],           // top right
 				matrix[lastIndex-row][col],           // bottom left
