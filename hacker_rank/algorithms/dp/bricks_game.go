@@ -44,7 +44,7 @@ func bricksGame(arr []int32) int64 {
 
 		// 상대의 몫이 최소가 되도록
 		result[lastIndex-i] = total -
-			integer.MinInt64(
+			integer.Min(
 				result[lastIndex-i+1],
 				result[lastIndex-i+2],
 				result[lastIndex-i+3],
@@ -88,7 +88,7 @@ func bricksGameV2(arr []int32) int64 {
 		take2 := int64(arr[lastIndex-i]+arr[lastIndex-i+1]) + getPickNth(i-2)
 		take3 := int64(arr[lastIndex-i]+arr[lastIndex-i+1]+arr[lastIndex-i+2]) + getPickNth(i-3)
 
-		pick[i] = integer.MaxInt64(take1, take2, take3)
+		pick[i] = integer.Max(take1, take2, take3)
 	}
 	return pick[lastIndex]
 }
@@ -126,7 +126,7 @@ func playGameRecur(arr []int32, begin, end int, cache brickCache) int64 {
 	// 재귀 함수 탈출 조건
 	if length <= 3 {
 		var sum int64
-		for i := 0; i <= integer.MinInt(length, 2); i++ {
+		for i := 0; i <= integer.Min(length, 2); i++ {
 			sum += int64(arr[begin+i])
 		}
 
@@ -135,21 +135,21 @@ func playGameRecur(arr []int32, begin, end int, cache brickCache) int64 {
 	}
 
 	// 나는 최대한 점수를 많이 내려고 한다.
-	result := integer.MaxInt64(
+	result := integer.Max(
 		// 상대방은 내 점수를 최대한 적게 내도록 한다.
-		integer.MinInt64(
+		integer.Min(
 			int64(arr[begin])+playGameRecur(arr, begin+2, end, cache),
 			int64(arr[begin])+playGameRecur(arr, begin+3, end, cache),
 			int64(arr[begin])+playGameRecur(arr, begin+4, end, cache),
 		),
 		// 상대방은 내 점수를 최대한 적게 내도록 한다.
-		integer.MinInt64(
+		integer.Min(
 			int64(arr[begin])+int64(arr[begin+1])+playGameRecur(arr, begin+3, end, cache),
 			int64(arr[begin])+int64(arr[begin+1])+playGameRecur(arr, begin+4, end, cache),
 			int64(arr[begin])+int64(arr[begin+1])+playGameRecur(arr, begin+5, end, cache),
 		),
 		// 상대방은 내 점수를 최대한 적게 내도록 한다.
-		integer.MinInt64(
+		integer.Min(
 			int64(arr[begin])+int64(arr[begin+1])+int64(arr[begin+2])+playGameRecur(arr, begin+4, end, cache),
 			int64(arr[begin])+int64(arr[begin+1])+int64(arr[begin+2])+playGameRecur(arr, begin+5, end, cache),
 			int64(arr[begin])+int64(arr[begin+1])+int64(arr[begin+2])+playGameRecur(arr, begin+6, end, cache),

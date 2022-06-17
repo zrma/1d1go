@@ -29,12 +29,12 @@ func Solve2839(scanner Scanner, writer Writer) {
 		if arr[i+3] == -1 {
 			arr[i+3] = arr[i] + 1
 		} else {
-			arr[i+3] = integer.MinInt(arr[i+3], arr[i]+1)
+			arr[i+3] = integer.Min(arr[i+3], arr[i]+1)
 		}
 		if arr[i+5] == -1 {
 			arr[i+5] = arr[i] + 1
 		} else {
-			arr[i+5] = integer.MinInt(arr[i+5], arr[i]+1)
+			arr[i+5] = integer.Min(arr[i+5], arr[i]+1)
 		}
 	}
 	_, _ = fmt.Fprint(writer, arr[n])

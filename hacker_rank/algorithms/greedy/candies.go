@@ -39,7 +39,7 @@ func backward(result, arr []int32) []int32 {
 		} else {
 			candy = 1
 		}
-		result[i] = integer.MaxInt32(result[i], candy)
+		result[i] = integer.Max(result[i], candy)
 	}
 	return result
 }
