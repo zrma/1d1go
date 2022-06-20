@@ -14,14 +14,14 @@ func TestSolve1008(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1008")
 
 	for _, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"1 3", "0.33333333333333333333333333333333"},
 		{"4 5", "0.8"},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			scanner := utils.NewStringScanner(tt.give)
 			writer := utils.NewStringWriter()
 
 			p1000.Solve1008(scanner, writer)

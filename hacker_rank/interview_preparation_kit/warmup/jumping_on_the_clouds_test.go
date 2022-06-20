@@ -11,7 +11,7 @@ func TestJumpingOnClouds(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/jumping-on-the-clouds/problem")
 
 	for i, tt := range []struct {
-		arr  []int32
+		give []int32
 		want int32
 	}{
 		{[]int32{0, 0, 1, 0, 0, 1, 0}, 4},
@@ -23,7 +23,7 @@ func TestJumpingOnClouds(t *testing.T) {
 		{[]int32{0, 0, 0, 1, 0, 0}, 3},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := jumpingOnClouds(tt.arr)
+			got := jumpingOnClouds(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

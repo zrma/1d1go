@@ -13,7 +13,7 @@ func TestSolve1904(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1904")
 
 	for _, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"0", "1"},
@@ -24,8 +24,8 @@ func TestSolve1904(t *testing.T) {
 		{"5", "8"},
 		{"1000000", "7871"},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			scanner := utils.NewStringScanner(tt.give)
 			writer := utils.NewStringWriter()
 
 			assert.Eventually(t, func() bool {

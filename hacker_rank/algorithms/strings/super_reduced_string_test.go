@@ -11,7 +11,7 @@ func TestSuperReducedString(t *testing.T) {
 
 	//noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"aaabccddd", "abd"},
@@ -21,8 +21,8 @@ func TestSuperReducedString(t *testing.T) {
 		{"abccba", "Empty String"},
 		{"", "Empty String"},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			got := superReducedString(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			got := superReducedString(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

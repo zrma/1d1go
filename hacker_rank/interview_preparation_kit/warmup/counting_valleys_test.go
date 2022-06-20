@@ -11,15 +11,15 @@ func TestCountingValleys(t *testing.T) {
 
 	//noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		s    string
+		give string
 		want int32
 	}{
 		{"UDDDUDUU", 1},
 		{"", 0},
 		{"ABC", 0},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			got := countingValleys(int32(len(tt.s)), tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			got := countingValleys(int32(len(tt.give)), tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

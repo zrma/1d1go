@@ -11,7 +11,7 @@ func TestRotLeft(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/ctci-array-left-rotation/problem")
 
 	for i, tt := range []struct {
-		n    int32
+		give int32
 		want []int32
 	}{
 		{0, []int32{1, 2, 3, 4, 5}},
@@ -25,7 +25,7 @@ func TestRotLeft(t *testing.T) {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			arr := []int32{1, 2, 3, 4, 5}
 
-			got := rotLeft(arr, tt.n)
+			got := rotLeft(arr, tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

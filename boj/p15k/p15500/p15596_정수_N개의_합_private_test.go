@@ -9,7 +9,7 @@ import (
 
 func TestSum(t *testing.T) {
 	for i, tt := range []struct {
-		arr  []int
+		give []int
 		want int
 	}{
 		{
@@ -26,7 +26,7 @@ func TestSum(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := sum(tt.arr)
+			got := sum(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

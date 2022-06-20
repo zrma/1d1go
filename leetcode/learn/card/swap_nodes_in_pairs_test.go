@@ -11,32 +11,32 @@ func TestSwapPairs(t *testing.T) {
 	t.Log("https://leetcode.com/explore/learn/card/recursion-i/250/principle-of-recursion/1681/")
 
 	for i, tt := range []struct {
-		values []int
-		want   []int
+		give []int
+		want []int
 	}{
 		{
-			values: []int{1, 2, 3, 4},
-			want:   []int{2, 1, 4, 3},
+			give: []int{1, 2, 3, 4},
+			want: []int{2, 1, 4, 3},
 		},
 		{
-			values: []int{1, 2, 3},
-			want:   []int{2, 1, 3},
+			give: []int{1, 2, 3},
+			want: []int{2, 1, 3},
 		},
 		{
-			values: []int{1, 2},
-			want:   []int{2, 1},
+			give: []int{1, 2},
+			want: []int{2, 1},
 		},
 		{
-			values: []int{1},
-			want:   []int{1},
+			give: []int{1},
+			want: []int{1},
 		},
 		{
-			values: []int{},
-			want:   []int{},
+			give: []int{},
+			want: []int{},
 		},
 	} {
 		t.Run(fmt.Sprintf("%d/for", i), func(t *testing.T) {
-			head := buildLinkedList(tt.values)
+			head := buildLinkedList(tt.give)
 			got := swapPairs(head)
 			want := buildLinkedList(tt.want)
 
@@ -46,7 +46,7 @@ func TestSwapPairs(t *testing.T) {
 		})
 
 		t.Run(fmt.Sprintf("%d/recur", i), func(t *testing.T) {
-			head := buildLinkedList(tt.values)
+			head := buildLinkedList(tt.give)
 			got := swapPairsRecur(head)
 			want := buildLinkedList(tt.want)
 

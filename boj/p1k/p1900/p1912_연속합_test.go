@@ -13,7 +13,7 @@ func TestSolve1912(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1912")
 
 	for i, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{
@@ -33,7 +33,7 @@ func TestSolve1912(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.s)
+			scanner := utils.NewStringScanner(tt.give)
 			writer := utils.NewStringWriter()
 
 			p1900.Solve1912(scanner, writer)

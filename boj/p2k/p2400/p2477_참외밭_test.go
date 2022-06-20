@@ -14,7 +14,7 @@ func TestSolve2477(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/2477")
 
 	for i, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{
@@ -99,7 +99,7 @@ func TestSolve2477(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.s)
+			scanner := utils.NewStringScanner(tt.give)
 			writer := utils.NewStringWriter()
 
 			p2400.Solve2477(scanner, writer)

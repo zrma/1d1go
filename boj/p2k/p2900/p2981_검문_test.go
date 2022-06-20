@@ -17,7 +17,7 @@ func TestSolve2981(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/2981")
 
 	for i, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{
@@ -45,7 +45,7 @@ func TestSolve2981(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.s)
+			scanner := utils.NewStringScanner(tt.give)
 			writer := utils.NewStringWriter()
 
 			p2900.Solve2981(scanner, writer)
