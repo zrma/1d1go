@@ -11,7 +11,7 @@ func TestReverse(t *testing.T) {
 	t.Log("https://leetcode.com/problems/reverse-integer/")
 
 	for _, tt := range []struct {
-		n    int
+		give int
 		want int
 	}{
 		{123, 321},
@@ -19,8 +19,8 @@ func TestReverse(t *testing.T) {
 		{120, 21},
 		{1534236469, 0},
 	} {
-		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
-			got := reverse(tt.n)
+		t.Run(fmt.Sprintf("%d", tt.give), func(t *testing.T) {
+			got := reverse(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

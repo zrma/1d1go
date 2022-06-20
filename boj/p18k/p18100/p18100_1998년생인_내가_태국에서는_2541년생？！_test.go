@@ -13,14 +13,14 @@ func TestSolve18108(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/18108")
 
 	for _, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"2541", "1998"},
 		{"543", "0"},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			scanner := utils.NewStringScanner(tt.give)
 			writer := utils.NewStringWriter()
 
 			p18100.Solve18108(scanner, writer)

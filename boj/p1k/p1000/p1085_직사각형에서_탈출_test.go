@@ -13,7 +13,7 @@ func TestSolve1085(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1085")
 
 	for _, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"6 2 10 3", "1"},
@@ -21,8 +21,8 @@ func TestSolve1085(t *testing.T) {
 		{"653 375 1000 1000", "347"},
 		{"161 181 762 375", "161"},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			scanner := utils.NewStringScanner(tt.give)
 			writer := utils.NewStringWriter()
 
 			p1000.Solve1085(scanner, writer)

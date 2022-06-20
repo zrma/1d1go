@@ -16,7 +16,7 @@ func TestPalindromeIndex(t *testing.T) {
 
 	//noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		s    string
+		give string
 		want int32
 	}{
 		{"aaab", 3},
@@ -36,8 +36,8 @@ func TestPalindromeIndex(t *testing.T) {
 		{"prcoitfiptvcxrvoalqmfpnqyhrubxspplrftomfehbbhefmotfrlppsxburhyqnpfmqlaorxcvtpiftiocrp", 14},
 		{"kjowoemiduaaxasnqghxbxkiccikxbxhgqnsaxaaudimeowojk", -1},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			got := palindromeIndex(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			got := palindromeIndex(tt.give)
 			assert.EqualValues(t, tt.want, got)
 		})
 	}

@@ -17,36 +17,36 @@ func TestCanDies(t *testing.T) {
 
 	for _, tt := range []struct {
 		description string
-		arr         []int32
+		give        []int32
 		want        int64
 	}{
 		{
 			description: "test_0",
-			arr:         []int32{1, 2, 2},
+			give:        []int32{1, 2, 2},
 			want:        4,
 		},
 		{
 			description: "test_1",
-			arr:         []int32{2, 4, 2, 6, 1, 7, 8, 9, 2, 1},
+			give:        []int32{2, 4, 2, 6, 1, 7, 8, 9, 2, 1},
 			want:        19,
 		},
 		{
 			description: "test_2",
-			arr:         []int32{2, 4, 3, 5, 2, 6, 4, 5},
+			give:        []int32{2, 4, 3, 5, 2, 6, 4, 5},
 			want:        12,
 		},
 		{
 			description: "test_3",
-			arr:         []int32{1, 3, 3, 3, 2, 1},
+			give:        []int32{1, 3, 3, 3, 2, 1},
 			want:        10,
 		},
 		{
 			description: "test_4",
-			arr:         []int32{1, 3, 3, 3, 2, 2, 2, 3, 3, 3, 1},
+			give:        []int32{1, 3, 3, 3, 2, 2, 2, 3, 3, 3, 1},
 			want:        15,
 		},
 	} {
-		got := candies(int32(len(tt.arr)), tt.arr)
+		got := candies(int32(len(tt.give)), tt.give)
 		assert.Equal(t, tt.want, got)
 	}
 }

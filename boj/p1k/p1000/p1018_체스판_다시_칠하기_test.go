@@ -15,7 +15,7 @@ func TestSolve1018(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	for i, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{
@@ -112,7 +112,7 @@ WBWWBWBBWWBW`,
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.s)
+			scanner := utils.NewStringScanner(tt.give)
 			writer := utils.NewStringWriter()
 
 			p1000.Solve1018(scanner, writer)

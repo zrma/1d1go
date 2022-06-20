@@ -13,7 +13,7 @@ func TestMinimumBribes(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/new-year-chaos/problem")
 
 	for i, tt := range []struct {
-		arr  []int32
+		give []int32
 		want string
 	}{
 		{[]int32{2, 1, 5, 3, 4}, "3"},
@@ -29,7 +29,7 @@ func TestMinimumBribes(t *testing.T) {
 			}
 			defer func() { funcPrint = fmt.Print }()
 
-			minimumBribes(tt.arr)
+			minimumBribes(tt.give)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

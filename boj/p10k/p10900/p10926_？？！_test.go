@@ -14,14 +14,14 @@ func TestSolve10926(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"joonas", "joonas??!"},
 		{"baekjoon", "baekjoon??!"},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			scanner := utils.NewStringScanner(tt.give)
 			writer := utils.NewStringWriter()
 
 			p10900.Solve10926(scanner, writer)

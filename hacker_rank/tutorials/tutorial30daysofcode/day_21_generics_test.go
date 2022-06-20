@@ -13,18 +13,18 @@ func TestPrintArray(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-exceptions-string-to-integer/problem")
 
 	for i, tt := range []struct {
-		args []interface{}
+		give []interface{}
 		want string
 	}{
 		{
-			args: []interface{}{1, 2, 3},
+			give: []interface{}{1, 2, 3},
 			want: `1
 2
 3
 `,
 		},
 		{
-			args: []interface{}{"Hello", "World"},
+			give: []interface{}{"Hello", "World"},
 			want: `Hello
 World
 `,
@@ -37,7 +37,7 @@ World
 			}
 			defer func() { funcPrintln = fmt.Println }()
 
-			printArray(tt.args...)
+			printArray(tt.give...)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

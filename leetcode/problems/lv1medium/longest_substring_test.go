@@ -11,7 +11,7 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 
 	//noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		s    string
+		give string
 		want int
 	}{
 		{"abcabcbb", 3},
@@ -21,8 +21,8 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 		{"au", 2},
 		{"abba", 2},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			got := lengthOfLongestSubstring(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			got := lengthOfLongestSubstring(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}
