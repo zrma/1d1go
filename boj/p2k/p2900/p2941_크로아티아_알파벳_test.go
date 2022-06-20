@@ -15,7 +15,7 @@ func TestSolve2941(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"c", "1"},
@@ -41,8 +41,8 @@ func TestSolve2941(t *testing.T) {
 		{"dz=ak", "3"},
 		{"", "0"},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			reader := bufio.NewReader(strings.NewReader(tt.s))
+		t.Run(tt.give, func(t *testing.T) {
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
 			Solve2941(reader, writer)

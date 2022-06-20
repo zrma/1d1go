@@ -9,7 +9,7 @@ import (
 func TestSolve8958(t *testing.T) {
 	//goland:noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		s    string
+		give string
 		want int
 	}{
 		{"OOXXOXXOOO", 10},
@@ -18,8 +18,8 @@ func TestSolve8958(t *testing.T) {
 		{"OOOOOOOOOO", 55},
 		{"OOOOXOOOOXOOOOX", 30},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			got := acc(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			got := acc(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

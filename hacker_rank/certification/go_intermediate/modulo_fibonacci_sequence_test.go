@@ -15,12 +15,14 @@ func TestModuloFibonacciSequence(t *testing.T) {
 		want        []int
 	}{
 		{
-			0, 6,
-			[]int{1, 2, 3, 5, 8, 13},
+			skip:  0,
+			total: 6,
+			want:  []int{1, 2, 3, 5, 8, 13},
 		},
 		{
-			50, 4,
-			[]int{
+			skip:  50,
+			total: 4,
+			want: []int{
 				951280099,
 				316291173,
 				267571272,

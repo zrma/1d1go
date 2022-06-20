@@ -14,7 +14,7 @@ func TestSolve8393(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/8393")
 
 	for _, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"1", "1"},
@@ -25,8 +25,8 @@ func TestSolve8393(t *testing.T) {
 		{"1000", "500500"},
 		{"10000", "50005000"},
 	} {
-		t.Run(fmt.Sprintf("loop/%s", tt.s), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.s)
+		t.Run(fmt.Sprintf("loop/%s", tt.give), func(t *testing.T) {
+			scanner := utils.NewStringScanner(tt.give)
 			writer := utils.NewStringWriter()
 
 			p8300.Solve8393(scanner, writer)
@@ -38,8 +38,8 @@ func TestSolve8393(t *testing.T) {
 			assert.Equal(t, tt.want, got)
 		})
 
-		t.Run(fmt.Sprintf("arithmetic progression formula/%s", tt.s), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.s)
+		t.Run(fmt.Sprintf("arithmetic progression formula/%s", tt.give), func(t *testing.T) {
+			scanner := utils.NewStringScanner(tt.give)
 			writer := utils.NewStringWriter()
 
 			p8300.Solve8393AP(scanner, writer)

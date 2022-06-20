@@ -11,7 +11,7 @@ func TestMinimumSwaps(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/minimum-swaps-2/problem")
 
 	for i, tt := range []struct {
-		arr  []int32
+		give []int32
 		want int32
 	}{
 		{[]int32{4, 3, 1, 2}, 3},
@@ -21,7 +21,7 @@ func TestMinimumSwaps(t *testing.T) {
 		{[]int32{1, 3, 4, 5, 6}, -1},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := minimumSwaps(tt.arr)
+			got := minimumSwaps(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

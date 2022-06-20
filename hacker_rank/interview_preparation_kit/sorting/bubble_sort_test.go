@@ -19,25 +19,25 @@ func TestCountSwaps(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/ctci-bubble-sort/problem")
 
 	for i, tt := range []struct {
-		arr  []int32
+		give []int32
 		want string
 	}{
 		{
-			arr: []int32{6, 4, 1},
+			give: []int32{6, 4, 1},
 			want: `Array is sorted in 3 swaps.
 First Element: 1
 Last Element: 6
 `,
 		},
 		{
-			arr: []int32{1, 2, 3},
+			give: []int32{1, 2, 3},
 			want: `Array is sorted in 0 swaps.
 First Element: 1
 Last Element: 3
 `,
 		},
 		{
-			arr: []int32{3, 2, 1},
+			give: []int32{3, 2, 1},
 			want: `Array is sorted in 3 swaps.
 First Element: 1
 Last Element: 3
@@ -51,7 +51,7 @@ Last Element: 3
 			}
 			defer func() { funcPrintf = fmt.Printf }()
 
-			countSwaps(tt.arr)
+			countSwaps(tt.give)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

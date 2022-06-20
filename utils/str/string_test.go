@@ -14,15 +14,15 @@ func TestSort(t *testing.T) {
 	t.Log("Sort function sorts a string well")
 
 	//noinspection SpellCheckingInspection
-	for i, tt := range []struct {
-		s    string
+	for _, tt := range []struct {
+		give string
 		want string
 	}{
 		{"dcba", "abcd"},
 		{"ffbbaa", "aabbff"},
 	} {
-		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := Sort(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			got := Sort(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -34,8 +34,8 @@ func TestSortAdapter(t *testing.T) {
 	t.Log("SortAdapter structure sorts string slices well")
 
 	for i, tt := range []struct {
-		strArr []string
-		want   []string
+		give []string
+		want []string
 	}{
 		{
 			[]string{"a", "d", "b", "c"},
@@ -47,8 +47,8 @@ func TestSortAdapter(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := make([]string, len(tt.strArr))
-			copy(got, tt.strArr)
+			got := make([]string, len(tt.give))
+			copy(got, tt.give)
 			sort.Sort(SortAdapter(got))
 			assert.Equal(t, tt.want, got)
 		})

@@ -9,7 +9,7 @@ import (
 func TestIsGroupWord(t *testing.T) {
 	//goland:noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		s    string
+		give string
 		want bool
 	}{
 		{"happy", true},
@@ -24,8 +24,8 @@ func TestIsGroupWord(t *testing.T) {
 		{"ba", true},
 		{"bb", true},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			got := isGroupWord(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			got := isGroupWord(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

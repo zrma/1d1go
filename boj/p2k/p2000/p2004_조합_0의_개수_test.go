@@ -14,7 +14,7 @@ func TestSolve2004(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/2004")
 
 	for _, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"25 12", "2"},
@@ -25,8 +25,8 @@ func TestSolve2004(t *testing.T) {
 		{"2000000000 1000000000", "1"},
 		{"2000000000 1", "9"},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			scanner := utils.NewStringScanner(tt.give)
 			writer := utils.NewStringWriter()
 
 			p2000.Solve2004(scanner, writer)

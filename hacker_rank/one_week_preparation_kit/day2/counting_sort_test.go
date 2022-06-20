@@ -11,7 +11,7 @@ func TestCountingSort(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/one-week-preparation-kit-countingsort1/problem")
 
 	for i, tt := range []struct {
-		arr  []int32
+		give []int32
 		want []int32
 	}{
 		{
@@ -57,7 +57,7 @@ func TestCountingSort(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := countingSort(tt.arr)
+			got := countingSort(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

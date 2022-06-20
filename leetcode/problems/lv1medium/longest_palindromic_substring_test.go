@@ -11,7 +11,7 @@ func TestLongestPalindrome(t *testing.T) {
 
 	//noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"babad", "bab"},
@@ -32,8 +32,8 @@ func TestLongestPalindrome(t *testing.T) {
 		{"abbb", "bbb"},
 		{"aabbb", "bbb"},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			got := longestPalindrome(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			got := longestPalindrome(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

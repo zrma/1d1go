@@ -137,7 +137,7 @@ func TestMedianEven(t *testing.T) {
 
 func TestMedianOddWithSort(t *testing.T) {
 	for i, tt := range []struct {
-		arr  []int32
+		give []int32
 		want float64
 	}{
 		{
@@ -154,7 +154,7 @@ func TestMedianOddWithSort(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := medianOddWithSort(tt.arr, len(tt.arr)/2)
+			got := medianOddWithSort(tt.give, len(tt.give)/2)
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -162,7 +162,7 @@ func TestMedianOddWithSort(t *testing.T) {
 
 func TestMedianEvenWithSort(t *testing.T) {
 	for i, tt := range []struct {
-		arr  []int32
+		give []int32
 		want float64
 	}{
 		{
@@ -179,7 +179,7 @@ func TestMedianEvenWithSort(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := medianEvenWithSort(tt.arr, len(tt.arr)/2-1, len(tt.arr)/2)
+			got := medianEvenWithSort(tt.give, len(tt.give)/2-1, len(tt.give)/2)
 			assert.Equal(t, tt.want, got)
 		})
 	}

@@ -15,7 +15,7 @@ func TestSolve2292(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/2292")
 
 	for _, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"1", "1"},
@@ -34,8 +34,8 @@ func TestSolve2292(t *testing.T) {
 		{"1234567890", "20287"},
 		{"9876543210", "57379"},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			scanner := bufio.NewScanner(strings.NewReader(tt.s))
+		t.Run(tt.give, func(t *testing.T) {
+			scanner := bufio.NewScanner(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
 			p2200.Solve2292(scanner, writer)

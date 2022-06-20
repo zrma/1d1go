@@ -12,8 +12,8 @@ func TestLongestCommonPrefix(t *testing.T) {
 
 	//noinspection SpellCheckingInspection
 	for i, tt := range []struct {
-		input []string
-		want  string
+		give []string
+		want string
 	}{
 		{[]string{"flower", "flow", "flight"}, "fl"},
 		{[]string{"dog", "racecar", "car"}, ""},
@@ -25,7 +25,7 @@ func TestLongestCommonPrefix(t *testing.T) {
 		{[]string{"c", "c"}, "c"},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := longestCommonPrefix(tt.input)
+			got := longestCommonPrefix(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

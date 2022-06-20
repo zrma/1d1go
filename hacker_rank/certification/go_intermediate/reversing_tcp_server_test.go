@@ -13,8 +13,8 @@ import (
 func TestTCPServer(t *testing.T) {
 	//goland:noinspection SpellCheckingInspection
 	for i, tt := range []struct {
-		messages []string
-		want     []string
+		give []string
+		want []string
 	}{
 		{
 			[]string{"abc", "def", "ghi"},
@@ -33,7 +33,7 @@ func TestTCPServer(t *testing.T) {
 			logger := mockLogger{}
 
 			waitCh := TCPServer(ctx, listener, &logger)
-			got, err := tcpClient(addr, tt.messages)
+			got, err := tcpClient(addr, tt.give)
 			if err != nil {
 				t.Log(err.Error())
 			}
@@ -71,15 +71,15 @@ func parseAddr(original string) string {
 
 func TestParseAddr(t *testing.T) {
 	for i, tt := range []struct {
-		original string
-		want     string
+		give string
+		want string
 	}{
 		{"[::]:1234", "1234"},
 		{":1234", "1234"},
 		{"", ""},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := parseAddr(tt.original)
+			got := parseAddr(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

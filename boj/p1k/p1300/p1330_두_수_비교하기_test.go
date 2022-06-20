@@ -14,7 +14,7 @@ func TestSolve1330(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1330")
 
 	for i, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"1 2", "<"},
@@ -22,7 +22,7 @@ func TestSolve1330(t *testing.T) {
 		{"5 5", "=="},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.s)
+			scanner := utils.NewStringScanner(tt.give)
 			writer := utils.NewStringWriter()
 
 			p1300.Solve1330(scanner, writer)

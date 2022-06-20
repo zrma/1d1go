@@ -11,7 +11,7 @@ func TestAnagram(t *testing.T) {
 
 	//noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		s    string
+		give string
 		want int32
 	}{
 		{"", -1},
@@ -32,8 +32,8 @@ func TestAnagram(t *testing.T) {
 		{"xtnipeqhxvafqaggqoanvwkmthtfirwhmjrbphlmeluvoa", 13},
 		{"gqdvlchavotcykafyjzbbgmnlajiqlnwctrnvznspiwquxxsiwuldizqkkaawpyyisnftdzklwagv", -1},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			got := anagram(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			got := anagram(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

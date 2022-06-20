@@ -11,7 +11,7 @@ import (
 
 func TestExceedingTheSpeedLimit(t *testing.T) {
 	for _, tt := range []struct {
-		n    int32
+		give int32
 		want string
 	}{
 		{
@@ -21,14 +21,14 @@ func TestExceedingTheSpeedLimit(t *testing.T) {
 		{
 			85, "0 No punishment"},
 	} {
-		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", tt.give), func(t *testing.T) {
 			writer := utils.NewStringWriter()
 			funcPrintf = func(format string, a ...any) (n int, err error) {
 				return fmt.Fprintf(writer, format, a...)
 			}
 			defer func() { funcPrintf = fmt.Printf }()
 
-			exceedingTheSpeedLimit(tt.n)
+			exceedingTheSpeedLimit(tt.give)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

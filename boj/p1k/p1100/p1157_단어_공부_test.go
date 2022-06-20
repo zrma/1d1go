@@ -16,7 +16,7 @@ func TestSolve1157(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"Mississipi", "?"},
@@ -32,8 +32,8 @@ BB`, "?"},
 		{"AB\nBB", "?"},
 		{"AA\nBB", "A"},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			reader := bufio.NewReader(strings.NewReader(tt.s))
+		t.Run(tt.give, func(t *testing.T) {
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
 			p1100.Solve1157(reader, writer)

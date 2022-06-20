@@ -14,7 +14,7 @@ func TestSolve11478(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"ababc", "12"},
@@ -22,8 +22,8 @@ func TestSolve11478(t *testing.T) {
 		{"abcdefghij", "55"},
 		{"abcdefghab", "52"},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			scanner := utils.NewStringScanner(tt.give)
 			writer := utils.NewStringWriter()
 
 			p11400.Solve11478(scanner, writer)

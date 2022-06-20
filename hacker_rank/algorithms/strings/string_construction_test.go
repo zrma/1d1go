@@ -11,15 +11,15 @@ func TestStringConstruction(t *testing.T) {
 
 	//noinspection SpellCheckingInspection
 	for _, tt := range []struct {
-		s    string
+		give string
 		want int32
 	}{
 		{"abcd", 4},
 		{"abab", 2},
 		{"abcabc", 3},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			got := stringConstruction(tt.s)
+		t.Run(tt.give, func(t *testing.T) {
+			got := stringConstruction(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

@@ -15,7 +15,7 @@ func TestSolve1152(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1152")
 
 	for _, tt := range []struct {
-		s    string
+		give string
 		want string
 	}{
 		{"The Curious Case of Benjamin Button", "6"},
@@ -29,8 +29,8 @@ edge cases`, "3"},
 		{"These words are\n edge cases", "3"},
 		{"These words are \n edge cases", "3"},
 	} {
-		t.Run(tt.s, func(t *testing.T) {
-			reader := bufio.NewReader(strings.NewReader(tt.s))
+		t.Run(tt.give, func(t *testing.T) {
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
 			p1100.Solve1152(reader, writer)

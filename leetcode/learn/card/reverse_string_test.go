@@ -12,7 +12,7 @@ func TestReverseString(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	for i, tt := range []struct {
-		b    []byte
+		give []byte
 		want []byte
 	}{
 		{[]byte{}, []byte{}},
@@ -21,19 +21,19 @@ func TestReverseString(t *testing.T) {
 		{[]byte{'A', 'B'}, []byte{'B', 'A'}},
 	} {
 		t.Run(fmt.Sprintf("%d/for", i), func(t *testing.T) {
-			b := make([]byte, len(tt.b))
-			copy(b, tt.b)
+			give := make([]byte, len(tt.give))
+			copy(give, tt.give)
 
-			reverseString(b)
-			assert.Equal(t, tt.want, b)
+			reverseString(give)
+			assert.Equal(t, tt.want, give)
 		})
 
 		t.Run(fmt.Sprintf("%d/recur", i), func(t *testing.T) {
-			b := make([]byte, len(tt.b))
-			copy(b, tt.b)
+			give := make([]byte, len(tt.give))
+			copy(give, tt.give)
 
-			reverseStringRecur(b)
-			assert.Equal(t, tt.want, b)
+			reverseStringRecur(give)
+			assert.Equal(t, tt.want, give)
 		})
 	}
 }

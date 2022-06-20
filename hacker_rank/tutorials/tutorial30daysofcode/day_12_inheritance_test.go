@@ -11,8 +11,8 @@ func TestNewStudent(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-inheritance/problem")
 
 	for _, tt := range []struct {
-		score int
-		want  string
+		give int
+		want string
 	}{
 		{80, "E"},
 		{70, "A"},
@@ -20,7 +20,7 @@ func TestNewStudent(t *testing.T) {
 		{40, "D"},
 		{30, "T"},
 	} {
-		t.Run(fmt.Sprintf("%d", tt.score), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", tt.give), func(t *testing.T) {
 			//noinspection SpellCheckingInspection
 			const (
 				firstName      = "Heraldo"
@@ -37,7 +37,7 @@ func TestNewStudent(t *testing.T) {
 			const wantScore = "O"
 			assert.Equal(t, wantScore, gotScore)
 
-			s.testScores = []int{tt.score}
+			s.testScores = []int{tt.give}
 			got := s.calculate()
 			assert.Equal(t, tt.want, got)
 		})

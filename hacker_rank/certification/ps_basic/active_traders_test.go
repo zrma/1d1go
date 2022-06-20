@@ -11,18 +11,18 @@ func TestActiveTraders(t *testing.T) {
 	t.Log("https://www.hackerrank.com/skills-verification/problem_solving_basic")
 
 	for i, tt := range []struct {
-		customers []string
-		want      []string
+		give []string
+		want []string
 	}{
 		{
-			customers: []string{
+			give: []string{
 				"Omega", "Alpha", "Omega", "Alpha", "Omega", "Alpha", "Omega", "Alpha", "Omega", "Alpha",
 				"Omega", "Alpha", "Omega", "Alpha", "Omega", "Alpha", "Omega", "Alpha", "Omega", "Beta",
 			},
 			want: []string{"Alpha", "Beta", "Omega"},
 		},
 		{
-			customers: []string{
+			give: []string{
 				"Alpha", "Beta", "Zeta", "Beta", "Zeta", "Zeta", "Epsilon", "Beta", "Zeta", "Beta",
 				"Zeta", "Beta", "Delta", "Zeta", "Beta", "Zeta", "Beta", "Zeta", "Beta", "Zeta",
 				"Beta",
@@ -31,7 +31,7 @@ func TestActiveTraders(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := mostActive(tt.customers)
+			got := mostActive(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}
