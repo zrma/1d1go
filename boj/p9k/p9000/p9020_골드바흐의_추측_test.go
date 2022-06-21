@@ -13,11 +13,15 @@ func TestSolve9020(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/9020")
 
 	const (
-		s = `3
+		s = `5
+1
+4
 8
 10
 16`
-		want = `3 5
+		want = `0 1
+2 2
+3 5
 5 5
 5 11
 `

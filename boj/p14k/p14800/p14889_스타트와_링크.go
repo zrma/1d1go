@@ -52,9 +52,6 @@ func (h *startLinkHelper) startLink(offset, count int) {
 	}
 
 	for i := offset + 1; i < h.n; i++ {
-		if h.isInTeam0[i] {
-			continue
-		}
 		// 대상을 team0 에 추가해 봄
 		h.isInTeam0[i] = true
 		h.startLink(i, count+1)

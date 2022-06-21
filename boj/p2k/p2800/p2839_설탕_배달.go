@@ -11,10 +11,12 @@ func Solve2839(scanner Scanner, writer Writer) {
 	scanner.Scan()
 	n, _ := strconv.Atoi(scanner.Text())
 
-	arrSize := n + 6
-	if arrSize < 6 {
-		arrSize = 6
+	if n < 2 {
+		_, _ = fmt.Fprint(writer, -1)
+		return
 	}
+
+	arrSize := n + 6
 	arr := make([]int, arrSize)
 	for i := range arr {
 		arr[i] = -1
@@ -33,8 +35,6 @@ func Solve2839(scanner Scanner, writer Writer) {
 		}
 		if arr[i+5] == -1 {
 			arr[i+5] = arr[i] + 1
-		} else {
-			arr[i+5] = integer.Min(arr[i+5], arr[i]+1)
 		}
 	}
 	_, _ = fmt.Fprint(writer, arr[n])
