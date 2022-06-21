@@ -16,6 +16,7 @@ func TestSolve2839(t *testing.T) {
 		give string
 		want string
 	}{
+		{"0", "-1"},
 		{"1", "-1"},
 		{"2", "-1"},
 		{"3", "1"},
@@ -34,6 +35,7 @@ func TestSolve2839(t *testing.T) {
 		{"16", "4"},
 		{"17", "5"},
 		{"18", "4"},
+		{"100", "20"},
 	} {
 		t.Run(tt.give, func(t *testing.T) {
 			scanner := utils.NewStringScanner(tt.give)

@@ -13,15 +13,21 @@ func TestSolve1002(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1002")
 
 	const (
-		s = `4
+		s = `7
 0 0 13 40 0 37
 0 0 3 0 7 4
 1 1 1 1 1 5
-1 1 1 1 1 1`
+1 1 1 1 1 1
+0 0 3 0 1 1
+0 0 1 0 3 1
+0 0 2 0 1 1`
 		want = `2
 1
 0
 -1
+0
+0
+1
 `
 	)
 
