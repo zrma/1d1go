@@ -17,18 +17,6 @@ func Solve11053(scanner Scanner, writer Writer) {
 		arr[i], _ = strconv.Atoi(scanner.Text())
 	}
 
-	dp := make([]int, n)
-	for i := range dp {
-		dp[i] = 1
-	}
-	for i := 1; i < n; i++ {
-		for j := 0; j < i; j++ {
-			if arr[i] > arr[j] && dp[i] < dp[j]+1 {
-				dp[i] = dp[j] + 1
-			}
-		}
-	}
-
-	res := integer.Max(dp...)
+	res := integer.LongestIncSubSeqLen(arr)
 	_, _ = fmt.Fprint(writer, res)
 }
