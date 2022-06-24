@@ -38,8 +38,13 @@ func TestLongestIncSubSeqLen(t *testing.T) {
 			4,
 		},
 	} {
-		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := LongestIncSubSeqLen(tt.give)
+		t.Run(fmt.Sprintf("%d/O(n^2)", i), func(t *testing.T) {
+			got := LongestIncSubSeqLenSquare(tt.give)
+			assert.Equal(t, tt.want, got)
+		})
+
+		t.Run(fmt.Sprintf("%d/O(log n)", i), func(t *testing.T) {
+			got := LongestIncSubSeqLenLog(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

@@ -17,6 +17,6 @@ func Solve11053(scanner Scanner, writer Writer) {
 		arr[i], _ = strconv.Atoi(scanner.Text())
 	}
 
-	res := integer.LongestIncSubSeqLen(arr)
+	res := integer.LongestIncSubSeqLenSquare(arr)
 	_, _ = fmt.Fprint(writer, res)
 }

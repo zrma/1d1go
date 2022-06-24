@@ -29,7 +29,7 @@ func Solve2565(scanner Scanner, writer Writer) {
 		dp[i] = arr[i][1]
 	}
 
-	longestIncSubSeqLen := integer.LongestIncSubSeqLen(dp)
+	longestIncSubSeqLen := integer.LongestIncSubSeqLenSquare(dp)
 	res := n - longestIncSubSeqLen
 	_, _ = fmt.Fprint(writer, res)
 }
