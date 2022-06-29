@@ -1,6 +1,8 @@
 package p9300_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +16,7 @@ func TestSolve9375(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	const (
-		s = `2
+		give = `2
 3
 hat headgear
 sunglasses eyewear
@@ -28,10 +30,10 @@ makeup face`
 `
 	)
 
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p9300.Solve9375(scanner, writer)
+	p9300.Solve9375(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)

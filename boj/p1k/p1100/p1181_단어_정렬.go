@@ -3,12 +3,11 @@ package p1100
 import (
 	"fmt"
 	"sort"
-	"strconv"
 )
 
-func Solve1181(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve1181(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	ss := make([]string, 0, n)
 	notIn := func(target string) bool {
@@ -21,8 +20,9 @@ func Solve1181(scanner Scanner, writer Writer) {
 	}
 
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		if s := scanner.Text(); notIn(s) {
+		var s string
+		_, _ = fmt.Fscan(reader, &s)
+		if notIn(s) {
 			ss = append(ss, s)
 		}
 	}

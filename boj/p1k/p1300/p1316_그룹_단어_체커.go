@@ -2,16 +2,17 @@ package p1300
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve1316(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve1316(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	cnt := 0
 	for i := 0; i < n; i++ {
-		if scanner.Scan() && isGroupWord(scanner.Text()) {
+		var s string
+		_, _ = fmt.Fscan(reader, &s)
+		if isGroupWord(s) {
 			cnt++
 		}
 	}

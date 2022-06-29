@@ -2,14 +2,13 @@ package p1400
 
 import (
 	"fmt"
-	"strconv"
 
 	"1d1go/utils/integer"
 )
 
-func Solve1463(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve1463(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	arr := make([]int, n+1)
 	for i := 2; i <= n; i++ {

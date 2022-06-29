@@ -2,12 +2,11 @@ package p1400
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve1436(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve1436(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	res := 1
 	num := 666

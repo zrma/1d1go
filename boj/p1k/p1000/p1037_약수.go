@@ -3,18 +3,16 @@ package p1000
 import (
 	"fmt"
 	"math"
-	"strconv"
 )
 
-func Solve1037(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve1037(reader Reader, writer Writer) {
+	var n, v int
+	_, _ = fmt.Fscan(reader, &n)
 
 	min := math.MaxInt
 	max := math.MinInt
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		v, _ := strconv.Atoi(scanner.Text())
+		_, _ = fmt.Fscan(reader, &v)
 		if v < min {
 			min = v
 		}

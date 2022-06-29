@@ -2,18 +2,15 @@ package p2700
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve2775(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	cnt, _ := strconv.Atoi(scanner.Text())
+func Solve2775(reader Reader, writer Writer) {
+	var cnt int
+	_, _ = fmt.Fscan(reader, &cnt)
 
 	for i := 0; i < cnt; i++ {
-		scanner.Scan()
-		k, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		n, _ := strconv.Atoi(scanner.Text())
+		var k, n int
+		_, _ = fmt.Fscan(reader, &k, &n)
 
 		res := calcPeopleCounts(k, n)
 		_, _ = fmt.Fprintln(writer, res)

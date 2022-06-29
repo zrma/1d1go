@@ -5,9 +5,9 @@ import (
 	"sort"
 )
 
-func Solve1427(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	s := scanner.Text()
+func Solve1427(reader Reader, writer Writer) {
+	var s string
+	_, _ = fmt.Fscan(reader, &s)
 
 	b := []byte(s)
 	sort.Slice(b, func(i, j int) bool {

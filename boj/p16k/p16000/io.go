@@ -1,7 +1,8 @@
 package p16000
 
-type FastReader interface {
+type Reader interface {
 	Read(p []byte) (n int, err error)
+	ReadString(delim byte) (string, error)
 }
 
 type Writer interface {

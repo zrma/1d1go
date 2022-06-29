@@ -3,18 +3,16 @@ package p1500
 import (
 	"fmt"
 	"math"
-	"strconv"
 )
 
-func Solve1546(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve1546(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	arr := make([]int, n)
 	max := math.MinInt
 	for i := range arr {
-		scanner.Scan()
-		arr[i], _ = strconv.Atoi(scanner.Text())
+		_, _ = fmt.Fscan(reader, &arr[i])
 		if arr[i] > max {
 			max = arr[i]
 		}

@@ -2,23 +2,19 @@ package p1000
 
 import (
 	"fmt"
-	"strconv"
 
 	"1d1go/utils/integer"
 )
 
-func Solve1010(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve1010(reader Reader, writer Writer) {
+	var n, from, to int
+	_, _ = fmt.Fscan(reader, &n)
 
 	const maxLen = 30
 	cache := integer.BuildCache2DArr(maxLen, -1)
 
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		from, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		to, _ := strconv.Atoi(scanner.Text())
+		_, _ = fmt.Fscan(reader, &from, &to)
 
 		res := integer.CombinationDP(to, from, cache, func(v int) int {
 			return v

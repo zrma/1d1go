@@ -2,18 +2,11 @@ package p1000
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve1085(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	x, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	y, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	w, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	h, _ := strconv.Atoi(scanner.Text())
+func Solve1085(reader Reader, writer Writer) {
+	var x, y, w, h int
+	_, _ = fmt.Fscan(reader, &x, &y, &w, &h)
 
 	distance := x
 	if distance > y {

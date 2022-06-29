@@ -1,7 +1,9 @@
 package p1000_test
 
 import (
+	"bufio"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -112,10 +114,10 @@ WBWWBWBBWWBW`,
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p1000.Solve1018(scanner, writer)
+			p1000.Solve1018(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

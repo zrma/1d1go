@@ -35,10 +35,10 @@ func TestSolve2292(t *testing.T) {
 		{"9876543210", "57379"},
 	} {
 		t.Run(tt.give, func(t *testing.T) {
-			scanner := bufio.NewScanner(strings.NewReader(tt.give))
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p2200.Solve2292(scanner, writer)
+			p2200.Solve2292(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

@@ -3,19 +3,18 @@ package p1000
 import (
 	"fmt"
 	"math"
-	"strconv"
 )
 
-func Solve1018(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	m, _ := strconv.Atoi(scanner.Text())
+func Solve1018(reader Reader, writer Writer) {
+	var n, m int
+	_, _ = fmt.Fscan(reader, &n, &m)
 
 	board := make([]string, n)
 	for i := range board {
-		scanner.Scan()
-		board[i] = scanner.Text()[:m]
+		var s string
+		_, _ = fmt.Fscan(reader, &s)
+
+		board[i] = s[:m]
 	}
 
 	res := calcMinPaintingCount(board, m, n)

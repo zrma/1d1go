@@ -1,6 +1,8 @@
 package p2700_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -13,7 +15,7 @@ func TestSolve2739(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/2739")
 
 	const (
-		s    = "2"
+		give = "2"
 		want = `2 * 1 = 2
 2 * 2 = 4
 2 * 3 = 6
@@ -26,10 +28,10 @@ func TestSolve2739(t *testing.T) {
 `
 	)
 
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p2700.Solve2739(scanner, writer)
+	p2700.Solve2739(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)
