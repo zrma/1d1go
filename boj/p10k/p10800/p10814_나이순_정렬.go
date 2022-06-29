@@ -3,12 +3,11 @@ package p10800
 import (
 	"fmt"
 	"sort"
-	"strconv"
 )
 
-func Solve10814(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve10814(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	type pair struct {
 		age  int
@@ -17,10 +16,7 @@ func Solve10814(scanner Scanner, writer Writer) {
 
 	pairs := make([]pair, n)
 	for i := range pairs {
-		scanner.Scan()
-		pairs[i].age, _ = strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		pairs[i].name = scanner.Text()
+		_, _ = fmt.Fscan(reader, &pairs[i].age, &pairs[i].name)
 	}
 
 	sort.SliceStable(pairs, func(i, j int) bool {

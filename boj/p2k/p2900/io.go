@@ -1,6 +1,7 @@
 package p2900
 
 type Reader interface {
+	Read(p []byte) (n int, err error)
 	ReadString(delim byte) (string, error)
 }
 

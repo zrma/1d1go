@@ -1,6 +1,8 @@
 package p10800_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"1d1go/boj/p10k/p10800"
@@ -19,10 +21,10 @@ func TestSolve10844(t *testing.T) {
 		{"2", "17"},
 	} {
 		t.Run(tt.give, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p10800.Solve10844(scanner, writer)
+			p10800.Solve10844(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

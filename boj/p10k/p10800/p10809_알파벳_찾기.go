@@ -4,15 +4,15 @@ import (
 	"fmt"
 )
 
-func Solve10809(scanner Scanner, writer Writer) {
+func Solve10809(reader Reader, writer Writer) {
 	const notFound = -1
 	arr := [26]int{}
 	for i := range arr {
 		arr[i] = notFound
 	}
 
-	scanner.Scan()
-	s := scanner.Text()
+	var s string
+	_, _ = fmt.Fscan(reader, &s)
 
 	for i, c := range s {
 		if arr[c-'a'] == notFound {

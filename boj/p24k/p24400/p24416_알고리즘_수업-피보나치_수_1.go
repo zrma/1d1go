@@ -2,12 +2,11 @@ package p24400
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve24416(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve24416(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	res1 := countFibRecursive(n)
 	res2 := countFibLoop(n)

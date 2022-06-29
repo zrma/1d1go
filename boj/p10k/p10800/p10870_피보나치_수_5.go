@@ -2,12 +2,11 @@ package p10800
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve10870(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve10870(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	res := fibonacci(int64(n))
 	_, _ = fmt.Fprint(writer, res)

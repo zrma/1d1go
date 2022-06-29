@@ -2,21 +2,19 @@ package p1100
 
 import (
 	"fmt"
-	"strconv"
 
 	"1d1go/utils/integer"
 )
 
-func Solve1149(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve1149(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	const colorNum = 3
 	arr := make([][colorNum]int, n)
 	for i := range arr {
 		for j := 0; j < colorNum; j++ {
-			scanner.Scan()
-			arr[i][j], _ = strconv.Atoi(scanner.Text())
+			_, _ = fmt.Fscan(reader, &arr[i][j])
 		}
 	}
 
