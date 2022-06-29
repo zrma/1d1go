@@ -2,26 +2,23 @@ package p1200
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve1269(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	m, _ := strconv.Atoi(scanner.Text())
+func Solve1269(reader Reader, writer Writer) {
+	var n, m int
+	_, _ = fmt.Fscan(reader, &n, &m)
 
 	set := make(map[int]bool)
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		v, _ := strconv.Atoi(scanner.Text())
+		var v int
+		_, _ = fmt.Fscan(reader, &v)
 		set[v] = true
 	}
 
 	unionCount := 0
 	for i := 0; i < m; i++ {
-		scanner.Scan()
-		v, _ := strconv.Atoi(scanner.Text())
+		var v int
+		_, _ = fmt.Fscan(reader, &v)
 		if _, ok := set[v]; ok {
 			unionCount++
 		}

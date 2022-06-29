@@ -3,26 +3,14 @@ package p1000
 import (
 	"fmt"
 	"math"
-	"strconv"
 )
 
-func Solve1002(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve1002(reader Reader, writer Writer) {
+	var n, x0, y0, r0, x1, y1, r1 int
+	_, _ = fmt.Fscan(reader, &n)
 
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		x0, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		y0, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		r0, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		x1, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		y1, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		r1, _ := strconv.Atoi(scanner.Text())
+		_, _ = fmt.Fscan(reader, &x0, &y0, &r0, &x1, &y1, &r1)
 
 		res := countJunctionOfCircles(x0, y0, r0, x1, y1, r1)
 		_, _ = fmt.Fprintln(writer, res)

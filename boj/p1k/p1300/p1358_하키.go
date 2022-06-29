@@ -3,20 +3,11 @@ package p1300
 import (
 	"fmt"
 	"math"
-	"strconv"
 )
 
-func Solve1358(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	w, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	h, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	x, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	y, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	p, _ := strconv.Atoi(scanner.Text())
+func Solve1358(reader Reader, writer Writer) {
+	var w, h, x, y, p int
+	_, _ = fmt.Fscan(reader, &w, &h, &x, &y, &p)
 
 	cX0 := x
 	cY0 := y + h/2
@@ -28,10 +19,8 @@ func Solve1358(scanner Scanner, writer Writer) {
 
 	count := 0
 	for i := 0; i < p; i++ {
-		scanner.Scan()
-		pX, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		pY, _ := strconv.Atoi(scanner.Text())
+		var pX, pY int
+		_, _ = fmt.Fscan(reader, &pX, &pY)
 
 		if isInCircle(pX, pY, cX0, cY0, r) || isInCircle(pX, pY, cX1, cY1, r) {
 			count++

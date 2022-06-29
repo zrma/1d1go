@@ -3,39 +3,25 @@ package p1000
 import (
 	"fmt"
 	"math"
-	"strconv"
 )
 
-func Solve1004(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	t, _ := strconv.Atoi(scanner.Text())
+func Solve1004(reader Reader, writer Writer) {
+	var t int
+	_, _ = fmt.Fscan(reader, &t)
 
 	for i := 0; i < t; i++ {
-		countOrbitInOut(scanner, writer)
+		countOrbitInOut(reader, writer)
 	}
 }
 
-func countOrbitInOut(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	x0, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	y0, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	x1, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	y1, _ := strconv.Atoi(scanner.Text())
+func countOrbitInOut(reader Reader, writer Writer) {
+	var x0, y0, x1, y1, n, x, y, r int
 
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+	_, _ = fmt.Fscan(reader, &x0, &y0, &x1, &y1, &n)
 
 	count := 0
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		x, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		y, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		r, _ := strconv.Atoi(scanner.Text())
+		_, _ = fmt.Fscan(reader, &x, &y, &r)
 
 		contained0 := isInCircle(x0, y0, x, y, r)
 		contained1 := isInCircle(x1, y1, x, y, r)

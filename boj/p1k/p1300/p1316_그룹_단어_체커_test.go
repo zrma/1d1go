@@ -1,6 +1,8 @@
 package p1300_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -53,10 +55,10 @@ z`,
 		},
 	} {
 		t.Run(tt.give, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p1300.Solve1316(scanner, writer)
+			p1300.Solve1316(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

@@ -6,11 +6,9 @@ import (
 	"1d1go/utils/integer"
 )
 
-func Solve9251(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	s0 := scanner.Text()
-	scanner.Scan()
-	s1 := scanner.Text()
+func Solve9251(reader Reader, writer Writer) {
+	var s0, s1 string
+	_, _ = fmt.Fscan(reader, &s0, &s1)
 
 	res := LongestCommonSubSeqLen(s0, s1)
 	_, _ = fmt.Fprint(writer, res)

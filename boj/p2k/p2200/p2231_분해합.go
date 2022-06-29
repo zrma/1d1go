@@ -2,12 +2,11 @@ package p2200
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve2231(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve2231(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	res := findConstructor(n)
 	_, _ = fmt.Fprint(writer, res)

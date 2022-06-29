@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func Solve16139(reader FastReader, writer Writer) {
+func Solve16139(reader Reader, writer Writer) {
 	var s string
 	var n int
 	_, _ = fmt.Fscan(reader, &s, &n)

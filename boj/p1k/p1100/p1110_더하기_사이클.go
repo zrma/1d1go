@@ -2,12 +2,11 @@ package p1100
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve1110(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve1110(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	count := 1
 	for x := modify(n); x != n; x = modify(x) {

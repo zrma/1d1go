@@ -1,6 +1,8 @@
 package p10800_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,13 +16,13 @@ func TestSolve10809(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	const (
-		s    = `baekjoon`
+		give = `baekjoon`
 		want = `1 0 -1 -1 2 -1 -1 -1 -1 4 3 -1 -1 7 5 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 `
 	)
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p10800.Solve10809(scanner, writer)
+	p10800.Solve10809(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)

@@ -2,26 +2,26 @@ package p10800
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve10815(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve10815(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	exist := make(map[int]bool)
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		v, _ := strconv.Atoi(scanner.Text())
+		var v int
+		_, _ = fmt.Fscan(reader, &v)
 		exist[v] = true
 	}
 
-	scanner.Scan()
-	m, _ := strconv.Atoi(scanner.Text())
+	var m int
+	_, _ = fmt.Fscan(reader, &m)
 
 	for i := 0; i < m; i++ {
-		scanner.Scan()
-		v, _ := strconv.Atoi(scanner.Text())
+		var v int
+		_, _ = fmt.Fscan(reader, &v)
+
 		if exist[v] {
 			_, _ = fmt.Fprint(writer, "1 ")
 		} else {

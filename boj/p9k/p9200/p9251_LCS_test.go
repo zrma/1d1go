@@ -1,7 +1,9 @@
 package p9200_test
 
 import (
+	"bufio"
 	"fmt"
+	"strings"
 	"testing"
 
 	"1d1go/boj/p9k/p9200"
@@ -34,10 +36,10 @@ GBCDFE`,
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p9200.Solve9251(scanner, writer)
+			p9200.Solve9251(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
