@@ -2,17 +2,14 @@ package p3000
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve3009(scanner Scanner, writer Writer) {
+func Solve3009(reader Reader, writer Writer) {
 	resX := 0
 	resY := 0
 	for i := 0; i < 3; i++ {
-		scanner.Scan()
-		x, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		y, _ := strconv.Atoi(scanner.Text())
+		var x, y int
+		_, _ = fmt.Fscan(reader, &x, &y)
 		resX ^= x
 		resY ^= y
 	}

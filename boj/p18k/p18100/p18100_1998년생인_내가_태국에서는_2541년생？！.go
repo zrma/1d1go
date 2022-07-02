@@ -2,12 +2,11 @@ package p18100
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve18108(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	year, _ := strconv.Atoi(scanner.Text())
+func Solve18108(reader Reader, writer Writer) {
+	var year int
+	_, _ = fmt.Fscan(reader, &year)
 
 	res := year - 543
 	_, _ = fmt.Fprint(writer, res)

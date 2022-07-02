@@ -1,6 +1,8 @@
 package p1900_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 	"time"
 
@@ -25,11 +27,11 @@ func TestSolve1904(t *testing.T) {
 		{"1000000", "7871"},
 	} {
 		t.Run(tt.give, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
 			assert.Eventually(t, func() bool {
-				p1900.Solve1904(scanner, writer)
+				p1900.Solve1904(reader, writer)
 
 				err := writer.Flush()
 				assert.NoError(t, err)

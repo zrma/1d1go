@@ -1,7 +1,9 @@
 package p2500_test
 
 import (
+	"bufio"
 	"fmt"
+	"strings"
 	"testing"
 
 	"1d1go/boj/p2k/p2500"
@@ -54,10 +56,10 @@ func TestSolve2579(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p2500.Solve2579(scanner, writer)
+			p2500.Solve2579(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

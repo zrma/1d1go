@@ -2,14 +2,11 @@ package p11000
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve11050(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	k, _ := strconv.Atoi(scanner.Text())
+func Solve11050(reader Reader, writer Writer) {
+	var n, k int
+	_, _ = fmt.Fscan(reader, &n, &k)
 
 	res := binomialCoefficient(n, k)
 	_, _ = fmt.Fprint(writer, res)

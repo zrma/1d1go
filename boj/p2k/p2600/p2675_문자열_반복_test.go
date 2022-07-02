@@ -1,6 +1,8 @@
 package p2600_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +16,7 @@ func TestSolve2675(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	const (
-		s = `3
+		give = `3
 3 ABC
 5 /HTP
 2 \$%*+-./`
@@ -23,10 +25,10 @@ func TestSolve2675(t *testing.T) {
 \\$$%%**++--..//
 `
 	)
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p2600.Solve2675(scanner, writer)
+	p2600.Solve2675(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)

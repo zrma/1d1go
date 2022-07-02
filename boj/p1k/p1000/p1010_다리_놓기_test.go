@@ -15,7 +15,7 @@ func TestSolve1010(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1010")
 
 	const (
-		s = `3
+		give = `3
 2 2
 1 5
 13 29`
@@ -25,7 +25,7 @@ func TestSolve1010(t *testing.T) {
 `
 	)
 
-	reader := bufio.NewReader(strings.NewReader(s))
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
 	p1000.Solve1010(reader, writer)

@@ -26,10 +26,10 @@ func TestCountingValleys(t *testing.T) {
 
 	assert.NotPanics(t, func() {
 		const (
-			s    = "ABC"
+			give = "ABC"
 			want = 0
 		)
-		got := countingValleys(int32(len(s))+123, s)
+		got := countingValleys(int32(len(give))+123, give)
 		assert.EqualValues(t, want, got)
 	})
 }

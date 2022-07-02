@@ -2,25 +2,24 @@ package p14400
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve14425(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	m, _ := strconv.Atoi(scanner.Text())
+func Solve14425(reader Reader, writer Writer) {
+	var n, m int
+	_, _ = fmt.Fscan(reader, &n, &m)
 
 	exist := make(map[string]bool)
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		exist[scanner.Text()] = true
+		var s string
+		_, _ = fmt.Fscan(reader, &s)
+		exist[s] = true
 	}
 
 	cnt := 0
 	for i := 0; i < m; i++ {
-		scanner.Scan()
-		if exist[scanner.Text()] {
+		var s string
+		_, _ = fmt.Fscan(reader, &s)
+		if exist[s] {
 			cnt++
 		}
 	}

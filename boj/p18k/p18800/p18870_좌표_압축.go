@@ -3,20 +3,18 @@ package p18800
 import (
 	"fmt"
 	"sort"
-	"strconv"
 )
 
-func Solve18870(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve18870(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	exist := make(map[int]bool)
 	set := make([]int, 0, n)
 	arr := make([]int, n)
 	for i := range arr {
-		scanner.Scan()
-		v, _ := strconv.Atoi(scanner.Text())
-		arr[i] = v
+		_, _ = fmt.Fscan(reader, &arr[i])
+		v := arr[i]
 		if _, ok := exist[v]; !ok {
 			set = append(set, v)
 			exist[v] = true

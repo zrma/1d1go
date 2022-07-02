@@ -2,12 +2,11 @@ package p1900
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve1904(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve1904(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	maxLen := n + 2
 	arr := make([]int64, maxLen)

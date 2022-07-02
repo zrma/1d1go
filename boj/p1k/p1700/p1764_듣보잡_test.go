@@ -1,6 +1,8 @@
 package p1700_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +16,7 @@ func TestSolve1764(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	const (
-		s = `3 4
+		give = `3 4
 ohhenrie
 charlie
 baesangwook
@@ -28,10 +30,10 @@ ohhenrie
 `
 	)
 
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p1700.Solve1764(scanner, writer)
+	p1700.Solve1764(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)

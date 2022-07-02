@@ -2,19 +2,19 @@ package p2600
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve2675(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve2675(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		r, _ := strconv.Atoi(scanner.Text())
+		var r int
+		_, _ = fmt.Fscan(reader, &r)
 
-		scanner.Scan()
-		for _, c := range scanner.Text() {
+		var s string
+		_, _ = fmt.Fscan(reader, &s)
+		for _, c := range s {
 			for j := 0; j < r; j++ {
 				_, _ = fmt.Fprint(writer, string(c))
 			}

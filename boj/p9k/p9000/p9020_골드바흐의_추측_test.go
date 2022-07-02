@@ -1,6 +1,8 @@
 package p9000_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -13,7 +15,7 @@ func TestSolve9020(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/9020")
 
 	const (
-		s = `5
+		give = `5
 1
 4
 8
@@ -27,10 +29,10 @@ func TestSolve9020(t *testing.T) {
 `
 	)
 
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p9000.Solve9020(scanner, writer)
+	p9000.Solve9020(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)
