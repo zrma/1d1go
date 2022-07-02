@@ -17,28 +17,28 @@ func TestArrayManipulation(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/crush/problem")
 
 	for i, tt := range []struct {
-		n       int32
-		queries [][]int32
+		n       int
+		queries [][]int
 		want    int64
 	}{
 		{
 			n:       10,
-			queries: [][]int32{{1, 5, 3}, {4, 8, 7}, {6, 9, 1}},
+			queries: [][]int{{1, 5, 3}, {4, 8, 7}, {6, 9, 1}},
 			want:    10,
 		},
 		{
 			n:       5,
-			queries: [][]int32{{1, 2, 100}, {2, 5, 100}, {3, 4, 100}},
+			queries: [][]int{{1, 2, 100}, {2, 5, 100}, {3, 4, 100}},
 			want:    200,
 		},
 		{
 			n:       10,
-			queries: [][]int32{{2, 6, 8}, {3, 5, 7}, {1, 8, 1}, {5, 9, 15}},
+			queries: [][]int{{2, 6, 8}, {3, 5, 7}, {1, 8, 1}, {5, 9, 15}},
 			want:    31,
 		},
 		{
 			n:       10,
-			queries: [][]int32{{3, 5, 7}, {2, 6, 8}, {1, 8, 1}, {5, 9, 15}},
+			queries: [][]int{{3, 5, 7}, {2, 6, 8}, {1, 8, 1}, {5, 9, 15}},
 			want:    31,
 		},
 	} {
@@ -61,18 +61,18 @@ func TestArrayManipulationPerformance(t *testing.T) {
 	rows, err := r.ReadAll()
 	assert.NoError(t, err)
 
-	var arr [][]int32
+	var arr [][]int
 	for _, row := range rows {
-		begin, err := strconv.ParseInt(strings.TrimSpace(row[0]), 10, 64)
+		begin, err := strconv.Atoi(strings.TrimSpace(row[0]))
 		assert.NoError(t, err)
 
-		end, err := strconv.ParseInt(strings.TrimSpace(row[1]), 10, 64)
+		end, err := strconv.Atoi(strings.TrimSpace(row[1]))
 		assert.NoError(t, err)
 
-		value, err := strconv.ParseInt(strings.TrimSpace(row[2]), 10, 64)
+		value, err := strconv.Atoi(strings.TrimSpace(row[2]))
 		assert.NoError(t, err)
 
-		arr = append(arr, []int32{int32(begin), int32(end), int32(value)})
+		arr = append(arr, []int{begin, end, value})
 	}
 
 	assert.Len(t, arr, 100000)

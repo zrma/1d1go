@@ -17,7 +17,7 @@ func TestSubStrings(t *testing.T) {
 	for _, tt := range []struct {
 		description string
 		give        string
-		want        int32
+		want        int
 	}{
 		{
 			description: "1 + 6 + 16",
