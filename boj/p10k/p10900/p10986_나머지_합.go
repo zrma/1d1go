@@ -9,10 +9,10 @@ func Solve10986(reader Reader, writer Writer) {
 	_, _ = fmt.Fscan(reader, &n, &m)
 
 	arr := make([]int, m)
-	var v int
 	sum := 0
 	res := 0
 	for i := 0; i < n; i++ {
+		var v int
 		_, _ = fmt.Fscan(reader, &v)
 		sum += v
 		res += arr[sum%m]

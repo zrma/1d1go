@@ -1,11 +1,5 @@
 package p10900
 
-type Scanner interface {
-	Scan() bool
-	Text() string
-	Err() error
-}
-
 type Reader interface {
 	Read(p []byte) (n int, err error)
 	ReadString(delim byte) (string, error)

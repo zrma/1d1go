@@ -2,16 +2,11 @@ package p2800
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve2869(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	a, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	b, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	v, _ := strconv.Atoi(scanner.Text())
+func Solve2869(reader Reader, writer Writer) {
+	var a, b, v int
+	_, _ = fmt.Fscan(reader, &a, &b, &v)
 
 	if v <= a {
 		_, _ = fmt.Fprint(writer, 1)

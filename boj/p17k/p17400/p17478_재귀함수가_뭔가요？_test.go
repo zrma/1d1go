@@ -1,6 +1,8 @@
 package p17400_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -65,10 +67,10 @@ ____라고 답변하였지.
 		},
 	} {
 		t.Run(tt.give, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p17400.Solve17478(scanner, writer)
+			p17400.Solve17478(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

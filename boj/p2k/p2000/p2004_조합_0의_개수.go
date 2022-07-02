@@ -2,14 +2,11 @@ package p2000
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve2004(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	m, _ := strconv.Atoi(scanner.Text())
+func Solve2004(reader Reader, writer Writer) {
+	var n, m int
+	_, _ = fmt.Fscan(reader, &n, &m)
 
 	// nCm = n! / (m! * (n-m)!)
 	countOfTwo := countNumInFactorial(n, 2) -

@@ -3,14 +3,11 @@ package p2500
 import (
 	"fmt"
 	"math"
-	"strconv"
 )
 
-func Solve2581(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	m, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve2581(reader Reader, writer Writer) {
+	var m, n int
+	_, _ = fmt.Fscan(reader, &m, &n)
 
 	min := math.MaxInt
 	sum := 0

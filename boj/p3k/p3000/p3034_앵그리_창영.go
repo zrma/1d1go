@@ -2,22 +2,17 @@ package p3000
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve3034(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	w, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	h, _ := strconv.Atoi(scanner.Text())
+func Solve3034(reader Reader, writer Writer) {
+	var n, w, h int
+	_, _ = fmt.Fscan(reader, &n, &w, &h)
 
 	limit := w*w + h*h
 
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		v, _ := strconv.Atoi(scanner.Text())
+		var v int
+		_, _ = fmt.Fscan(reader, &v)
 
 		if v*v <= limit {
 			_, _ = fmt.Fprintln(writer, "DA")

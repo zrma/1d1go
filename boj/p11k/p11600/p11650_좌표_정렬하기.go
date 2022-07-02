@@ -3,19 +3,15 @@ package p11600
 import (
 	"fmt"
 	"sort"
-	"strconv"
 )
 
-func Solve11650(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve11650(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	arr := make([][2]int, n)
 	for i := range arr {
-		scanner.Scan()
-		arr[i][0], _ = strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		arr[i][1], _ = strconv.Atoi(scanner.Text())
+		_, _ = fmt.Fscan(reader, &arr[i][0], &arr[i][1])
 	}
 
 	sort.Slice(arr, func(i, j int) bool {

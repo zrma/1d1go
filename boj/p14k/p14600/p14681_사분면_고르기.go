@@ -2,14 +2,11 @@ package p14600
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve14681(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	x, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	y, _ := strconv.Atoi(scanner.Text())
+func Solve14681(reader Reader, writer Writer) {
+	var x, y int
+	_, _ = fmt.Fscan(reader, &x, &y)
 
 	res := posToQuadrant(x, y)
 	_, _ = fmt.Fprint(writer, res)

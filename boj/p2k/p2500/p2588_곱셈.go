@@ -2,14 +2,11 @@ package p2500
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve2588(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	a, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	b, _ := strconv.Atoi(scanner.Text())
+func Solve2588(reader Reader, writer Writer) {
+	var a, b int
+	_, _ = fmt.Fscan(reader, &a, &b)
 
 	third := a * (b % 10)
 	fourth := a * (b / 10 % 10)

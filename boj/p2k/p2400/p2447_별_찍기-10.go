@@ -2,12 +2,11 @@ package p2400
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve2447(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve2447(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	board := make([][]rune, n)
 	for i := 0; i < n; i++ {

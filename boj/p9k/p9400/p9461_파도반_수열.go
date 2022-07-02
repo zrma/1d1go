@@ -2,12 +2,11 @@ package p9400
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve9461(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve9461(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	const maxLen = 100 + 1
 	arr := make([]int, maxLen)
@@ -23,8 +22,8 @@ func Solve9461(scanner Scanner, writer Writer) {
 	}
 
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		v, _ := strconv.Atoi(scanner.Text())
+		var v int
+		_, _ = fmt.Fscan(reader, &v)
 
 		res := arr[v]
 		_, _ = fmt.Fprintln(writer, res)

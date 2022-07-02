@@ -2,12 +2,11 @@ package p9400
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve9498(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	score, _ := strconv.Atoi(scanner.Text())
+func Solve9498(reader Reader, writer Writer) {
+	var score int
+	_, _ = fmt.Fscan(reader, &score)
 	_, _ = fmt.Fprint(writer, scoreToGrade(score))
 }
 

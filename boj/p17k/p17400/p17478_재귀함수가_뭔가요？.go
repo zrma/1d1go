@@ -2,13 +2,12 @@ package p17400
 
 import (
 	"fmt"
-	"strconv"
 	"strings"
 )
 
-func Solve17478(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve17478(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	//goland:noinspection SpellCheckingInspection
 	const msg = "어느 한 컴퓨터공학과 학생이 유명한 교수님을 찾아가 물었다."

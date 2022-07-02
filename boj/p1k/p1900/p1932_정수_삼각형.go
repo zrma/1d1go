@@ -2,14 +2,13 @@ package p1900
 
 import (
 	"fmt"
-	"strconv"
 
 	"1d1go/utils/integer"
 )
 
-func Solve1932(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve1932(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	sumMatrix := make([][]int, n)
 	for i := range sumMatrix {
@@ -21,8 +20,7 @@ func Solve1932(scanner Scanner, writer Writer) {
 		inputMatrix[i] = make([]int, n)
 		for j := 0; j < n; j++ {
 			if j <= i {
-				scanner.Scan()
-				inputMatrix[i][j], _ = strconv.Atoi(scanner.Text())
+				_, _ = fmt.Fscan(reader, &inputMatrix[i][j])
 			}
 		}
 	}

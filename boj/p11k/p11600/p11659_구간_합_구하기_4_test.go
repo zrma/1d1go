@@ -1,6 +1,8 @@
 package p11600_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"1d1go/boj/p11k/p11600"
@@ -23,10 +25,10 @@ func TestSolve11659(t *testing.T) {
 `
 	)
 
-	scanner := utils.NewStringScanner(give)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p11600.Solve11659(scanner, writer)
+	p11600.Solve11659(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)

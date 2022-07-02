@@ -1,6 +1,8 @@
 package p1700_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -21,10 +23,10 @@ func TestSolve1712(t *testing.T) {
 		{"2100000000 9 10", "2100000001"},
 	} {
 		t.Run(tt.give, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p1700.Solve1712(scanner, writer)
+			p1700.Solve1712(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

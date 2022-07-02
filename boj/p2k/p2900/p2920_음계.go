@@ -3,16 +3,14 @@ package p2900
 import (
 	"fmt"
 	"sort"
-	"strconv"
 )
 
-func Solve2920(scanner Scanner, writer Writer) {
+func Solve2920(reader Reader, writer Writer) {
 	const n = 8
 	arr := make([]int, n)
 
 	for i := range arr {
-		scanner.Scan()
-		arr[i], _ = strconv.Atoi(scanner.Text())
+		_, _ = fmt.Fscan(reader, &arr[i])
 	}
 
 	if sort.SliceIsSorted(arr, func(i, j int) bool { return arr[i] < arr[j] }) {

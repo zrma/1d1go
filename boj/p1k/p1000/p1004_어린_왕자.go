@@ -15,12 +15,13 @@ func Solve1004(reader Reader, writer Writer) {
 }
 
 func countOrbitInOut(reader Reader, writer Writer) {
-	var x0, y0, x1, y1, n, x, y, r int
+	var x0, y0, x1, y1, n int
 
 	_, _ = fmt.Fscan(reader, &x0, &y0, &x1, &y1, &n)
 
 	count := 0
 	for i := 0; i < n; i++ {
+		var x, y, r int
 		_, _ = fmt.Fscan(reader, &x, &y, &r)
 
 		contained0 := isInCircle(x0, y0, x, y, r)

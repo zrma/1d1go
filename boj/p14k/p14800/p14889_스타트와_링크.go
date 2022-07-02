@@ -2,19 +2,17 @@ package p14800
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve14889(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve14889(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	scores := make([][]int, n)
 	for i := range scores {
 		scores[i] = make([]int, n)
 		for j := range scores[i] {
-			scanner.Scan()
-			scores[i][j], _ = strconv.Atoi(scanner.Text())
+			_, _ = fmt.Fscan(reader, &scores[i][j])
 		}
 	}
 

@@ -5,11 +5,11 @@ import (
 	"strconv"
 )
 
-func Solve2908(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	a, _ := strconv.Atoi(revStr(scanner.Text()))
-	scanner.Scan()
-	b, _ := strconv.Atoi(revStr(scanner.Text()))
+func Solve2908(reader Reader, writer Writer) {
+	var s0, s1 string
+	_, _ = fmt.Fscan(reader, &s0, &s1)
+	a, _ := strconv.Atoi(revStr(s0))
+	b, _ := strconv.Atoi(revStr(s1))
 
 	max := a
 	if b > max {

@@ -1,6 +1,8 @@
 package p8900_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/golang/mock/gomock"
@@ -18,7 +20,7 @@ func TestSolve8958(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	const (
-		s = `5
+		give = `5
 OOXXOXXOOO
 OOXXOOXXOO
 OXOXOXOXOXOXOX
@@ -31,10 +33,10 @@ OOOOXOOOOXOOOOX`
 30
 `
 	)
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p8900.Solve8958(scanner, writer)
+	p8900.Solve8958(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)

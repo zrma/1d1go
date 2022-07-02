@@ -2,19 +2,18 @@ package p3000
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve3036(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve3036(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
-	scanner.Scan()
-	arr0, _ := strconv.Atoi(scanner.Text())
+	var arr0 int
+	_, _ = fmt.Fscan(reader, &arr0)
 
 	for i := 1; i < n; i++ {
-		scanner.Scan()
-		v, _ := strconv.Atoi(scanner.Text())
+		var v int
+		_, _ = fmt.Fscan(reader, &v)
 
 		div := gcd(arr0, v)
 		_, _ = fmt.Fprintf(writer, "%d/%d\n", arr0/div, v/div)

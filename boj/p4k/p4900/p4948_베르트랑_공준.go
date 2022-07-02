@@ -2,13 +2,15 @@ package p4900
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve4948(scanner Scanner, writer Writer) {
+func Solve4948(reader Reader, writer Writer) {
 	sieveOfEratosthenes := buildSieveOfEratosthenes()
-	for scanner.Scan() {
-		n, _ := strconv.Atoi(scanner.Text())
+	for {
+		var n int
+		if _, err := fmt.Fscan(reader, &n); err != nil {
+			break
+		}
 		if n == 0 {
 			return
 		}

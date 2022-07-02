@@ -1,6 +1,8 @@
 package p10900_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/golang/mock/gomock"
@@ -17,7 +19,7 @@ func TestSolve10952(t *testing.T) {
 	defer ctrl.Finish()
 
 	const (
-		s = `1 1
+		give = `1 1
 2 3
 3 4
 9 8
@@ -30,10 +32,10 @@ func TestSolve10952(t *testing.T) {
 7
 `
 	)
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p10900.Solve10952(scanner, writer)
+	p10900.Solve10952(reader, writer)
 
 	got := writer.String()
 	assert.Equal(t, want, got)
@@ -44,11 +46,11 @@ func TestSolve10952_StopAbnormally(t *testing.T) {
 		ctrl := gomock.NewController(t)
 		defer ctrl.Finish()
 
-		const s = ``
-		scanner := utils.NewStringScanner(s)
+		const give = ``
+		reader := bufio.NewReader(strings.NewReader(give))
 		writer := utils.NewStringWriter()
 
-		p10900.Solve10952(scanner, writer)
+		p10900.Solve10952(reader, writer)
 
 		got := writer.String()
 		assert.Empty(t, got)
@@ -58,11 +60,11 @@ func TestSolve10952_StopAbnormally(t *testing.T) {
 		ctrl := gomock.NewController(t)
 		defer ctrl.Finish()
 
-		const s = `1`
-		scanner := utils.NewStringScanner(s)
+		const give = `1`
+		reader := bufio.NewReader(strings.NewReader(give))
 		writer := utils.NewStringWriter()
 
-		p10900.Solve10952(scanner, writer)
+		p10900.Solve10952(reader, writer)
 
 		got := writer.String()
 		assert.Empty(t, got)

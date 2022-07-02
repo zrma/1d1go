@@ -2,14 +2,11 @@ package p15600
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve15650(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	m, _ := strconv.Atoi(scanner.Text())
+func Solve15650(reader Reader, writer Writer) {
+	var n, m int
+	_, _ = fmt.Fscan(reader, &n, &m)
 
 	arr := make([]int, 0, m)
 	combinationDFS(arr, 0, n, m, writer)

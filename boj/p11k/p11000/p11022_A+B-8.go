@@ -2,19 +2,15 @@ package p11000
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve11022(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve11022(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		a, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		b, _ := strconv.Atoi(scanner.Text())
-
+		var a, b int
+		_, _ = fmt.Fscan(reader, &a, &b)
 		_, _ = fmt.Fprintf(writer, "Case #%d: %d + %d = %d\n", i+1, a, b, a+b)
 	}
 }

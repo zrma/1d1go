@@ -2,17 +2,16 @@ package p1900
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve1978(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve1978(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	cnt := 0
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		v, _ := strconv.Atoi(scanner.Text())
+		var v int
+		_, _ = fmt.Fscan(reader, &v)
 		if isPrimeNumber(v) {
 			cnt++
 		}

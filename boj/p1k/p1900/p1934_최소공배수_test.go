@@ -1,7 +1,9 @@
 package p1900_test
 
 import (
+	"bufio"
 	_ "embed"
+	"strings"
 	"testing"
 	"time"
 
@@ -15,7 +17,7 @@ func TestSolve1934(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1934")
 
 	const (
-		s = `4
+		give = `4
 1 45000
 6 10
 13 17
@@ -27,10 +29,10 @@ func TestSolve1934(t *testing.T) {
 `
 	)
 
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p1900.Solve1934(scanner, writer)
+	p1900.Solve1934(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)
@@ -46,11 +48,11 @@ var p1934give string
 var p1934want string
 
 func TestSolve1934_Performance(t *testing.T) {
-	scanner := utils.NewStringScanner(p1934give)
+	reader := bufio.NewReader(strings.NewReader(p1934give))
 	writer := utils.NewStringWriter()
 
 	assert.Eventually(t, func() bool {
-		p1900.Solve1934(scanner, writer)
+		p1900.Solve1934(reader, writer)
 		return true
 	}, time.Second, time.Millisecond*100, "시간 초과")
 

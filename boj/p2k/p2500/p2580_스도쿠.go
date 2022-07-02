@@ -2,18 +2,16 @@ package p2500
 
 import (
 	"fmt"
-	"strconv"
 )
 
 const maxLen = 8 + 1
 
-func Solve2580(scanner Scanner, writer Writer) {
+func Solve2580(reader Reader, writer Writer) {
 	var blanks [][2]int
 	board := [maxLen][maxLen]int{}
 	for y := 0; y < maxLen; y++ {
 		for x := 0; x < maxLen; x++ {
-			scanner.Scan()
-			board[y][x], _ = strconv.Atoi(scanner.Text())
+			_, _ = fmt.Fscan(reader, &board[y][x])
 
 			if board[y][x] == 0 {
 				blanks = append(blanks, [2]int{y, x})

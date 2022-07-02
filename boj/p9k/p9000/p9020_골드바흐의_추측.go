@@ -2,18 +2,17 @@ package p9000
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve9020(scanner Scanner, writer Writer) {
+func Solve9020(reader Reader, writer Writer) {
 	sieveOfEratosthenes := buildSieveOfEratosthenes()
 
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		v, _ := strconv.Atoi(scanner.Text())
+		var v int
+		_, _ = fmt.Fscan(reader, &v)
 
 		res0, res1 := findGoldbachPartitions(v, sieveOfEratosthenes)
 		_, _ = fmt.Fprintln(writer, res0, res1)

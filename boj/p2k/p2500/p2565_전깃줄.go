@@ -3,21 +3,17 @@ package p2500
 import (
 	"fmt"
 	"sort"
-	"strconv"
 
 	"1d1go/utils/integer"
 )
 
-func Solve2565(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve2565(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	arr := make([][2]int, n)
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		arr[i][0], _ = strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		arr[i][1], _ = strconv.Atoi(scanner.Text())
+		_, _ = fmt.Fscan(reader, &arr[i][0], &arr[i][1])
 	}
 
 	sort.Slice(arr, func(i, j int) bool {

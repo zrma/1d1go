@@ -1,7 +1,9 @@
 package p8300_test
 
 import (
+	"bufio"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -26,10 +28,10 @@ func TestSolve8393(t *testing.T) {
 		{"10000", "50005000"},
 	} {
 		t.Run(fmt.Sprintf("loop/%s", tt.give), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p8300.Solve8393(scanner, writer)
+			p8300.Solve8393(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
@@ -39,10 +41,10 @@ func TestSolve8393(t *testing.T) {
 		})
 
 		t.Run(fmt.Sprintf("arithmetic progression formula/%s", tt.give), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p8300.Solve8393AP(scanner, writer)
+			p8300.Solve8393AP(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

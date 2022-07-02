@@ -2,16 +2,11 @@ package p1700
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve1712(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	a, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	b, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	c, _ := strconv.Atoi(scanner.Text())
+func Solve1712(reader Reader, writer Writer) {
+	var a, b, c int
+	_, _ = fmt.Fscan(reader, &a, &b, &c)
 
 	res := calcBreakEvenPoint(a, b, c)
 	_, _ = fmt.Fprint(writer, res)

@@ -1,6 +1,8 @@
 package p2500_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/golang/mock/gomock"
@@ -16,7 +18,7 @@ func TestSolve2577(t *testing.T) {
 	defer ctrl.Finish()
 
 	const (
-		s = `150
+		give = `150
 266
 427`
 		want = `3
@@ -31,10 +33,10 @@ func TestSolve2577(t *testing.T) {
 0
 `
 	)
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p2500.Solve2577(scanner, writer)
+	p2500.Solve2577(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)

@@ -6,10 +6,11 @@ import (
 )
 
 func Solve1002(reader Reader, writer Writer) {
-	var n, x0, y0, r0, x1, y1, r1 int
+	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
 	for i := 0; i < n; i++ {
+		var x0, y0, r0, x1, y1, r1 int
 		_, _ = fmt.Fscan(reader, &x0, &y0, &r0, &x1, &y1, &r1)
 
 		res := countJunctionOfCircles(x0, y0, r0, x1, y1, r1)

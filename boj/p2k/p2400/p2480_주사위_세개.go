@@ -2,16 +2,11 @@ package p2400
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve2480(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	a, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	b, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	c, _ := strconv.Atoi(scanner.Text())
+func Solve2480(reader Reader, writer Writer) {
+	var a, b, c int
+	_, _ = fmt.Fscan(reader, &a, &b, &c)
 
 	price := calcPrice(a, b, c)
 

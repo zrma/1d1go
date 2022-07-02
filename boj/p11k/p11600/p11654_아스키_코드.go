@@ -4,8 +4,8 @@ import (
 	"fmt"
 )
 
-func Solve11654(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	s := scanner.Text()
+func Solve11654(reader Reader, writer Writer) {
+	var s string
+	_, _ = fmt.Fscan(reader, &s)
 	_, _ = fmt.Fprint(writer, int(s[0]))
 }

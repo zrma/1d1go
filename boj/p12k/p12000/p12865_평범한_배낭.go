@@ -2,23 +2,17 @@ package p12000
 
 import (
 	"fmt"
-	"strconv"
 
 	"1d1go/utils/integer"
 )
 
-func Solve12865(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	k, _ := strconv.Atoi(scanner.Text())
+func Solve12865(reader Reader, writer Writer) {
+	var n, k int
+	_, _ = fmt.Fscan(reader, &n, &k)
 
 	arr := make([][2]int, n+1)
 	for i := 1; i <= n; i++ {
-		scanner.Scan()
-		arr[i][0], _ = strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		arr[i][1], _ = strconv.Atoi(scanner.Text())
+		_, _ = fmt.Fscan(reader, &arr[i][0], &arr[i][1])
 	}
 
 	res := knapsack(arr, n, k)

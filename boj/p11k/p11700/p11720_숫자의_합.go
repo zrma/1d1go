@@ -2,15 +2,14 @@ package p11700
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve11720(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve11720(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
-	scanner.Scan()
-	s := scanner.Text()
+	var s string
+	_, _ = fmt.Fscan(reader, &s)
 
 	var sum int
 	for i := 0; i < n && i < len(s); i++ {

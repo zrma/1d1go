@@ -5,8 +5,8 @@ import (
 )
 
 func Solve1259(reader Reader, writer Writer) {
-	var s string
 	for {
+		var s string
 		_, _ = fmt.Fscan(reader, &s)
 		if s == "0" {
 			break

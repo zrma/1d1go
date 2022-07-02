@@ -2,16 +2,13 @@ package p11000
 
 import (
 	"fmt"
-	"strconv"
 
 	"1d1go/utils/integer"
 )
 
-func Solve11051(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	k, _ := strconv.Atoi(scanner.Text())
+func Solve11051(reader Reader, writer Writer) {
+	var n, k int
+	_, _ = fmt.Fscan(reader, &n, &k)
 
 	const maxLen = 1000 + 1
 	cache := integer.BuildCache2DArr(maxLen, -1)

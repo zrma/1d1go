@@ -16,7 +16,7 @@ func TestSolve9184(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/9184")
 
 	const (
-		s = `21 0 0
+		give = `21 0 0
 1 1 1
 2 2 2
 10 4 6
@@ -36,7 +36,7 @@ w(19, 20, 21) = 1048576
 `
 	)
 
-	reader := bufio.NewReader(strings.NewReader(s))
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
 	assert.Eventually(t, func() bool {

@@ -2,15 +2,12 @@ package p5000
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve5086(scanner Scanner, writer Writer) {
+func Solve5086(reader Reader, writer Writer) {
 	for {
-		scanner.Scan()
-		a, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		b, _ := strconv.Atoi(scanner.Text())
+		var a, b int
+		_, _ = fmt.Fscan(reader, &a, &b)
 
 		if a == 0 && b == 0 {
 			break

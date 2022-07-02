@@ -1,6 +1,8 @@
 package p5000_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -13,7 +15,7 @@ func TestSolve5086(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/5086")
 
 	const (
-		s = `8 16
+		give = `8 16
 32 4
 17 5
 0 0`
@@ -23,10 +25,10 @@ neither
 `
 	)
 
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p5000.Solve5086(scanner, writer)
+	p5000.Solve5086(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)

@@ -4,11 +4,9 @@ import (
 	"fmt"
 )
 
-func Solve10757(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	a := scanner.Text()
-	scanner.Scan()
-	b := scanner.Text()
+func Solve10757(reader Reader, writer Writer) {
+	var a, b string
+	_, _ = fmt.Fscan(reader, &a, &b)
 
 	const maxLength = 10000 + 1
 	res := [maxLength]int{}

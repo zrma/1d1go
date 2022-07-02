@@ -1,6 +1,8 @@
 package p2000_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 	"time"
 
@@ -26,10 +28,10 @@ func TestSolve2004(t *testing.T) {
 		{"2000000000 1", "9"},
 	} {
 		t.Run(tt.give, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p2000.Solve2004(scanner, writer)
+			p2000.Solve2004(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
@@ -42,15 +44,15 @@ func TestSolve2004(t *testing.T) {
 
 func TestSolve2004_Performance(t *testing.T) {
 	const (
-		s    = "2000000000 1"
+		give = "2000000000 1"
 		want = "9"
 	)
 
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
 	assert.Eventually(t, func() bool {
-		p2000.Solve2004(scanner, writer)
+		p2000.Solve2004(reader, writer)
 
 		err := writer.Flush()
 		assert.NoError(t, err)

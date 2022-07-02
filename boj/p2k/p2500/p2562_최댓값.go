@@ -3,16 +3,15 @@ package p2500
 import (
 	"fmt"
 	"math"
-	"strconv"
 )
 
-func Solve2562(scanner Scanner, writer Writer) {
+func Solve2562(reader Reader, writer Writer) {
 	const count = 9
 	var max = math.MinInt
 	var pos int
 	for i := 1; i <= count; i++ {
-		scanner.Scan()
-		n, _ := strconv.Atoi(scanner.Text())
+		var n int
+		_, _ = fmt.Fscan(reader, &n)
 		if n > max {
 			max = n
 			pos = i

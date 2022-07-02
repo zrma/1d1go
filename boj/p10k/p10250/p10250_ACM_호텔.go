@@ -2,20 +2,15 @@ package p10250
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve10250(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve10250(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		h, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		w, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		k, _ := strconv.Atoi(scanner.Text())
+		var h, w, k int
+		_, _ = fmt.Fscan(reader, &h, &w, &k)
 
 		res := calcNearestRoom(h, w, k)
 		_, _ = fmt.Fprintln(writer, res)

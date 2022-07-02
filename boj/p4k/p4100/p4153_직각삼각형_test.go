@@ -1,6 +1,8 @@
 package p4100_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -13,7 +15,7 @@ func TestSolve4153(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/4153")
 
 	const (
-		s = `6 8 10
+		give = `6 8 10
 25 52 60
 5 12 13
 0 0 0`
@@ -23,10 +25,10 @@ right
 `
 	)
 
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p4100.Solve4153(scanner, writer)
+	p4100.Solve4153(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)

@@ -1,6 +1,8 @@
 package p15600_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -40,10 +42,10 @@ func TestSolve15650(t *testing.T) {
 		},
 	} {
 		t.Run(tt.give, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p15600.Solve15650(scanner, writer)
+			p15600.Solve15650(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
