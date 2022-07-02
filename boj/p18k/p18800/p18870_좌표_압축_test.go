@@ -1,7 +1,9 @@
 package p18800_test
 
 import (
+	"bufio"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -29,10 +31,10 @@ func TestSolve18870(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p18800.Solve18870(scanner, writer)
+			p18800.Solve18870(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

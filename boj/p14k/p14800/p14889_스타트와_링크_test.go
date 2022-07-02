@@ -1,7 +1,9 @@
 package p14800_test
 
 import (
+	"bufio"
 	"fmt"
+	"strings"
 	"testing"
 	"time"
 
@@ -70,11 +72,11 @@ func TestSolve14889(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
 			assert.Eventually(t, func() bool {
-				p14800.Solve14889(scanner, writer)
+				p14800.Solve14889(reader, writer)
 
 				err := writer.Flush()
 				assert.NoError(t, err)

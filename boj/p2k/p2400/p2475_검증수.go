@@ -2,16 +2,15 @@ package p2400
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve2475(scanner Scanner, writer Writer) {
+func Solve2475(reader Reader, writer Writer) {
 	const n = 5
 
 	sum := 0
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		v, _ := strconv.Atoi(scanner.Text())
+		var v int
+		_, _ = fmt.Fscan(reader, &v)
 		sum += v * v
 	}
 	res := sum % 10

@@ -1,6 +1,8 @@
 package p10900_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/golang/mock/gomock"
@@ -17,7 +19,7 @@ func TestSolve10950(t *testing.T) {
 	defer ctrl.Finish()
 
 	const (
-		s = `5
+		give = `5
 1 1
 2 3
 3 4
@@ -30,10 +32,10 @@ func TestSolve10950(t *testing.T) {
 7
 `
 	)
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p10900.Solve10950(scanner, writer)
+	p10900.Solve10950(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)

@@ -2,12 +2,11 @@ package p11600
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve11653(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve11653(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	res := factorization(n)
 	for _, v := range res {

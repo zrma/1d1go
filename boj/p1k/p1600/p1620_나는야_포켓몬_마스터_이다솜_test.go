@@ -1,6 +1,8 @@
 package p1600_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +16,7 @@ func TestSolve1620(t *testing.T) {
 
 	//goland:noinspection SpellCheckingInspection
 	const (
-		s = `26 5
+		give = `26 5
 Bulbasaur
 Ivysaur
 Venusaur
@@ -54,10 +56,10 @@ Venusaur
 `
 	)
 
-	scanner := utils.NewStringScanner(s)
+	reader := bufio.NewReader(strings.NewReader(give))
 	writer := utils.NewStringWriter()
 
-	p1600.Solve1620(scanner, writer)
+	p1600.Solve1620(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)

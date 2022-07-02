@@ -2,21 +2,18 @@ package p2400
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve2477(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	ratio, _ := strconv.Atoi(scanner.Text())
+func Solve2477(reader Reader, writer Writer) {
+	var ratio int
+	_, _ = fmt.Fscan(reader, &ratio)
 
 	const pointCount = 6
 	prev := point{}
 	points := [pointCount]point{}
 	for i := range points {
-		scanner.Scan()
-		direction, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		distance, _ := strconv.Atoi(scanner.Text())
+		var direction, distance int
+		_, _ = fmt.Fscan(reader, &direction, &distance)
 		switch direction {
 		case 1:
 			prev.x += distance

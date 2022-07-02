@@ -2,14 +2,11 @@ package p15600
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve15649(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	m, _ := strconv.Atoi(scanner.Text())
+func Solve15649(reader Reader, writer Writer) {
+	var n, m int
+	_, _ = fmt.Fscan(reader, &n, &m)
 
 	visited := make([]bool, n)
 	arr := make([]int, m)

@@ -60,10 +60,10 @@ func TestReverse(t *testing.T) {
 
 	t.Run("Reverse function reverses given string", func(t *testing.T) {
 		const (
-			s    = "abc"
+			give = "abc"
 			want = "cba"
 		)
-		got := Reverse(s)
+		got := Reverse(give)
 		assert.Equal(t, want, got)
 	})
 

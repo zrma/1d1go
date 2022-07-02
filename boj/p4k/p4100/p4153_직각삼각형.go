@@ -2,16 +2,12 @@ package p4100
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve4153(scanner Scanner, writer Writer) {
-	for scanner.Scan() {
-		a, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		b, _ := strconv.Atoi(scanner.Text())
-		scanner.Scan()
-		c, _ := strconv.Atoi(scanner.Text())
+func Solve4153(reader Reader, writer Writer) {
+	for {
+		var a, b, c int
+		_, _ = fmt.Fscan(reader, &a, &b, &c)
 
 		if a == 0 && b == 0 && c == 0 {
 			return

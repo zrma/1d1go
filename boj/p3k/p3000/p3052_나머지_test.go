@@ -1,7 +1,9 @@
 package p3000_test
 
 import (
+	"bufio"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -58,10 +60,10 @@ func TestSolve3052(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p3000.Solve3052(scanner, writer)
+			p3000.Solve3052(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

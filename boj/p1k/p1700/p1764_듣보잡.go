@@ -3,19 +3,17 @@ package p1700
 import (
 	"fmt"
 	"sort"
-	"strconv"
 )
 
-func Solve1764(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	m, _ := strconv.Atoi(scanner.Text())
+func Solve1764(reader Reader, writer Writer) {
+	var n, m int
+	_, _ = fmt.Fscan(reader, &n, &m)
 
 	names := make(map[string]bool)
 	for i := 0; i < n; i++ {
-		scanner.Scan()
-		names[scanner.Text()] = true
+		var name string
+		_, _ = fmt.Fscan(reader, &name)
+		names[name] = true
 	}
 
 	size := n
@@ -24,8 +22,8 @@ func Solve1764(scanner Scanner, writer Writer) {
 	}
 	res := make([]string, 0, size)
 	for i := 0; i < m; i++ {
-		scanner.Scan()
-		name := scanner.Text()
+		var name string
+		_, _ = fmt.Fscan(reader, &name)
 		if _, ok := names[name]; ok {
 			res = append(res, name)
 		}

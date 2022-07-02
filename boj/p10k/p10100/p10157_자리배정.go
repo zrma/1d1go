@@ -2,16 +2,11 @@ package p10100
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve10157(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	col, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	row, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	k, _ := strconv.Atoi(scanner.Text())
+func Solve10157(reader Reader, writer Writer) {
+	var col, row, k int
+	_, _ = fmt.Fscan(reader, &col, &row, &k)
 
 	x, y, ok := calcSeatNumber(col, row, k)
 	if ok {

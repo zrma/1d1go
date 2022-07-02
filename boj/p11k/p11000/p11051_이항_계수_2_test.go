@@ -1,6 +1,8 @@
 package p11000_test
 
 import (
+	"bufio"
+	"strings"
 	"testing"
 	"time"
 
@@ -29,11 +31,11 @@ func TestSolve11051(t *testing.T) {
 		{"1000 500", "5418"},
 	} {
 		t.Run(tt.give, func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
 			assert.Eventually(t, func() bool {
-				p11000.Solve11051(scanner, writer)
+				p11000.Solve11051(reader, writer)
 				return true
 			}, time.Second, time.Millisecond*100, "시간 초과")
 

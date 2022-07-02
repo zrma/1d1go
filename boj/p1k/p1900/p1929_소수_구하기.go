@@ -2,14 +2,11 @@ package p1900
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve1929(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	min, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	max, _ := strconv.Atoi(scanner.Text())
+func Solve1929(reader Reader, writer Writer) {
+	var min, max int
+	_, _ = fmt.Fscan(reader, &min, &max)
 
 	const maxLen = 1000000
 	sieveOfEratosthenes := [maxLen + 1]bool{}

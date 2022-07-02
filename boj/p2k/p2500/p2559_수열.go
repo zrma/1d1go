@@ -2,27 +2,21 @@ package p2500
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve2559(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	k, _ := strconv.Atoi(scanner.Text())
+func Solve2559(reader Reader, writer Writer) {
+	var n, k int
+	_, _ = fmt.Fscan(reader, &n, &k)
 
 	arr := make([]int, n)
-	max := 0
 	sum := 0
 	for i := 0; i < k; i++ {
-		scanner.Scan()
-		arr[i], _ = strconv.Atoi(scanner.Text())
+		_, _ = fmt.Fscan(reader, &arr[i])
 		sum += arr[i]
 	}
-	max = sum
+	max := sum
 	for i := k; i < n; i++ {
-		scanner.Scan()
-		arr[i], _ = strconv.Atoi(scanner.Text())
+		_, _ = fmt.Fscan(reader, &arr[i])
 
 		sum -= arr[i-k]
 		sum += arr[i]

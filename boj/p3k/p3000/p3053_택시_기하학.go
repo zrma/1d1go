@@ -3,12 +3,11 @@ package p3000
 import (
 	"fmt"
 	"math"
-	"strconv"
 )
 
-func Solve3053(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	r, _ := strconv.Atoi(scanner.Text())
+func Solve3053(reader Reader, writer Writer) {
+	var r int
+	_, _ = fmt.Fscan(reader, &r)
 
 	areaOfCircleEuclid := float64(r) * float64(r) * math.Pi
 	areaOfCircleTaxi := float64(r) * float64(r) * 2.0

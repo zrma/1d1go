@@ -1,6 +1,7 @@
 package p2900_test
 
 import (
+	"bufio"
 	_ "embed"
 	"fmt"
 	"strings"
@@ -45,10 +46,10 @@ func TestSolve2981(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			scanner := utils.NewStringScanner(tt.give)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p2900.Solve2981(scanner, writer)
+			p2900.Solve2981(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
@@ -66,11 +67,11 @@ var p2981give string
 var p2981want string
 
 func TestSolve2981_Performance(t *testing.T) {
-	scanner := utils.NewStringScanner(p2981give)
+	reader := bufio.NewReader(strings.NewReader(p2981give))
 	writer := utils.NewStringWriter()
 
 	assert.Eventually(t, func() bool {
-		p2900.Solve2981(scanner, writer)
+		p2900.Solve2981(reader, writer)
 		return true
 	}, time.Second, time.Millisecond*100, "시간 초과")
 

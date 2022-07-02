@@ -2,14 +2,11 @@ package p15600
 
 import (
 	"fmt"
-	"strconv"
 )
 
-func Solve15651(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
-	scanner.Scan()
-	m, _ := strconv.Atoi(scanner.Text())
+func Solve15651(reader Reader, writer Writer) {
+	var n, m int
+	_, _ = fmt.Fscan(reader, &n, &m)
 
 	arr := make([]int, m)
 	permutationWithRepetitionDFS(arr, 0, n, m, writer)

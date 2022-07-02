@@ -3,12 +3,11 @@ package p11700
 import (
 	"fmt"
 	"math"
-	"strconv"
 )
 
-func Solve11729(scanner Scanner, writer Writer) {
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
+func Solve11729(reader Reader, writer Writer) {
+	var n int
+	_, _ = fmt.Fscan(reader, &n)
 
 	step := int64(math.Pow(2, float64(n))) - 1
 	_, _ = fmt.Fprintln(writer, step)
