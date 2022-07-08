@@ -106,10 +106,10 @@ func TestTCPServerAcceptFailure(t *testing.T) {
 }
 
 type mockLogger struct {
-	got [][]interface{}
+	got [][]any
 }
 
-func (m *mockLogger) Error(arg ...interface{}) {
+func (m *mockLogger) Error(arg ...any) {
 	m.got = append(m.got, arg)
 }
 

@@ -12,7 +12,7 @@ import (
 func TestEncodeManager(t *testing.T) {
 	for i, tt := range []struct {
 		manager *Manager
-		marshal func(interface{}) ([]byte, error)
+		marshal func(any) ([]byte, error)
 		err     error
 		want    string
 	}{
@@ -41,7 +41,7 @@ func TestEncodeManager(t *testing.T) {
 				Age:            123,
 				YearsInCompany: 456,
 			},
-			marshal: func(got interface{}) ([]byte, error) {
+			marshal: func(got any) ([]byte, error) {
 				m, ok := got.(*Manager)
 				assert.True(t, ok)
 				assert.Equal(t, "abc", m.FullName)
