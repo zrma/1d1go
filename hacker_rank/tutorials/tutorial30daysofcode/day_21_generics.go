@@ -1,6 +1,6 @@
 package tutorial30daysofcode
 
-func printArray(args ...interface{}) {
+func printArray(args ...any) {
 	for _, arg := range args {
 		_, _ = funcPrintln(arg)
 	}

@@ -24,7 +24,7 @@ func TestMinimumIndex(t *testing.T) {
 		seq := uniqueValues()
 		assert.GreaterOrEqual(t, len(seq), 2)
 
-		m := make(map[int]interface{})
+		m := make(map[int]any)
 		for _, num := range seq {
 			_, ok := m[num]
 			assert.False(t, ok)

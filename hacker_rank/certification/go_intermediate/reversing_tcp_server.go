@@ -16,11 +16,11 @@ type TCPAcceptor interface {
 }
 
 type Logger interface {
-	Error(args ...interface{})
+	Error(args ...any)
 }
 
-func TCPServer(ctx context.Context, acceptor TCPAcceptor, logger Logger) chan interface{} {
-	waitCh := make(chan interface{})
+func TCPServer(ctx context.Context, acceptor TCPAcceptor, logger Logger) chan any {
+	waitCh := make(chan any)
 	go func() {
 		defer close(waitCh)
 		for ctx.Err() == nil {

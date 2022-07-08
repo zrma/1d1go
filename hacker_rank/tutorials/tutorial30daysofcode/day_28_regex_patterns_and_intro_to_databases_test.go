@@ -13,7 +13,7 @@ func TestFilter(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-regex-patterns/problem")
 
 	writer := utils.NewStringWriter()
-	funcPrintln = func(a ...interface{}) (n int, err error) {
+	funcPrintln = func(a ...any) (n int, err error) {
 		return fmt.Fprintln(writer, a...)
 	}
 	defer func() { funcPrintln = fmt.Println }()

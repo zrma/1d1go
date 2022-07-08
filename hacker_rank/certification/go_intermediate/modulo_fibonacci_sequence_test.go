@@ -64,7 +64,7 @@ func TestModuloFibonacciSequenceReqFalse(t *testing.T) {
 	requestChan := make(chan bool)
 	go ModuloFibonacciSequence(requestChan, resultChan)
 
-	waitChan := make(chan interface{})
+	waitChan := make(chan any)
 	go func() {
 		defer close(waitChan)
 
