@@ -17,8 +17,6 @@ func TestPlayWithBook(t *testing.T) {
 	//noinspection SpellCheckingInspection
 	t.Run("gomock", func(t *testing.T) {
 		ctrl := gomock.NewController(t)
-		defer ctrl.Finish()
-
 		m := mocks.NewMockBook(ctrl)
 
 		m.EXPECT().Read(gomock.Eq("a")).Return(true).AnyTimes()
