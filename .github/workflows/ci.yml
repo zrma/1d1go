@@ -51,6 +51,12 @@ jobs:
           path: |
             coverage.lcov
             coverage.out
+      - run: go test -json ./... > test.json
+      - name: Annotate tests
+        if: always()
+        uses: guyarb/golang-test-annotations@v0.5.1
+        with:
+          test-results: test.json
 
   report:
     needs: test
