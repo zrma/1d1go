@@ -5,7 +5,6 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p10k/p10900"
@@ -14,9 +13,6 @@ import (
 
 func TestSolve10952(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/10952")
-
-	ctrl := gomock.NewController(t)
-	defer ctrl.Finish()
 
 	const (
 		give = `1 1
@@ -37,34 +33,37 @@ func TestSolve10952(t *testing.T) {
 
 	p10900.Solve10952(reader, writer)
 
+	err := writer.Flush()
+	assert.NoError(t, err)
+
 	got := writer.String()
 	assert.Equal(t, want, got)
 }
 
 func TestSolve10952_StopAbnormally(t *testing.T) {
 	t.Run("first scan returns false", func(t *testing.T) {
-		ctrl := gomock.NewController(t)
-		defer ctrl.Finish()
-
 		const give = ``
 		reader := bufio.NewReader(strings.NewReader(give))
 		writer := utils.NewStringWriter()
 
 		p10900.Solve10952(reader, writer)
 
+		err := writer.Flush()
+		assert.NoError(t, err)
+
 		got := writer.String()
 		assert.Empty(t, got)
 	})
 
 	t.Run("second scan returns false", func(t *testing.T) {
-		ctrl := gomock.NewController(t)
-		defer ctrl.Finish()
-
 		const give = `1`
 		reader := bufio.NewReader(strings.NewReader(give))
 		writer := utils.NewStringWriter()
 
 		p10900.Solve10952(reader, writer)
+
+		err := writer.Flush()
+		assert.NoError(t, err)
 
 		got := writer.String()
 		assert.Empty(t, got)
