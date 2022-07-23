@@ -5,7 +5,6 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p2k/p2500"
@@ -14,9 +13,6 @@ import (
 
 func TestSolve2588(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/2588")
-
-	ctrl := gomock.NewController(t)
-	defer ctrl.Finish()
 
 	const give = `472
 385`

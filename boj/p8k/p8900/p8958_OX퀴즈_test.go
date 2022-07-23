@@ -5,7 +5,6 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p8k/p8900"
@@ -14,9 +13,6 @@ import (
 
 func TestSolve8958(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/8958")
-
-	ctrl := gomock.NewController(t)
-	defer ctrl.Finish()
 
 	//goland:noinspection SpellCheckingInspection
 	const (

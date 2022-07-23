@@ -16,5 +16,4 @@ func Solve10952(reader Reader, writer Writer) {
 
 		_, _ = fmt.Fprintln(writer, a+b)
 	}
-	_ = writer.Flush()
 }
