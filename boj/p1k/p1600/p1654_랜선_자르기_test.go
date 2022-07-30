@@ -27,6 +27,33 @@ func TestSolve1654(t *testing.T) {
 539`,
 			"200",
 		},
+		{
+			`4 4
+200
+200
+200
+1`,
+			"100",
+		},
+		{
+			`5 6
+1
+1
+1
+1
+11`,
+			"1",
+		},
+		{
+			`1 4
+5`,
+			"1",
+		},
+		{
+			`1 2
+9`,
+			"4",
+		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
