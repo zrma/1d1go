@@ -3,7 +3,7 @@ package go_basic
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -64,7 +64,7 @@ func TestEncodeManager(t *testing.T) {
 			assert.Equal(t, tt.err, err)
 
 			if err == nil {
-				got, err2 := ioutil.ReadAll(reader)
+				got, err2 := io.ReadAll(reader)
 				assert.NoError(t, err2)
 				assert.Equal(t, tt.want, string(got))
 			}
