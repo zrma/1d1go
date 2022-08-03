@@ -1,7 +1,6 @@
 package main
 
 import (
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -17,7 +16,7 @@ const (
 )
 
 func main() {
-	files, err := ioutil.ReadDir(targetPath)
+	files, err := os.ReadDir(targetPath)
 	if err != nil {
 		panic(err)
 	}
