@@ -3,8 +3,6 @@ package p2500
 import (
 	"fmt"
 	"sort"
-
-	"1d1go/utils/integer"
 )
 
 func Solve2565(reader Reader, writer Writer) {
@@ -20,12 +18,21 @@ func Solve2565(reader Reader, writer Writer) {
 		return arr[i][0] < arr[j][0]
 	})
 
-	dp := make([]int, n)
-	for i := range arr {
-		dp[i] = arr[i][1]
+	dp := make([]int, 1, n)
+	dp[0] = arr[0][1]
+
+	for i := 1; i < n; i++ {
+		v := arr[i][1]
+
+		if dp[len(dp)-1] < v {
+			dp = append(dp, v)
+			continue
+		}
+
+		idx := sort.SearchInts(dp, v)
+		dp[idx] = v
 	}
 
-	longestIncSubSeqLen := integer.LongestIncSubSeqLenSquare(dp)
-	res := n - longestIncSubSeqLen
+	res := n - len(dp)
 	_, _ = fmt.Fprint(writer, res)
 }
