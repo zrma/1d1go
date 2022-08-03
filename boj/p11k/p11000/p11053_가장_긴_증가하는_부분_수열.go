@@ -2,19 +2,28 @@ package p11000
 
 import (
 	"fmt"
-
-	"1d1go/utils/integer"
+	"sort"
 )
 
 func Solve11053(reader Reader, writer Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
-	arr := make([]int, n)
-	for i := range arr {
-		_, _ = fmt.Fscan(reader, &arr[i])
+	dp := make([]int, 1, n)
+	_, _ = fmt.Fscan(reader, &dp[0])
+
+	for i := 1; i < n; i++ {
+		var v int
+		_, _ = fmt.Fscan(reader, &v)
+
+		if dp[len(dp)-1] < v {
+			dp = append(dp, v)
+			continue
+		}
+
+		idx := sort.SearchInts(dp, v)
+		dp[idx] = v
 	}
 
-	res := integer.LongestIncSubSeqLenSquare(arr)
-	_, _ = fmt.Fprint(writer, res)
+	_, _ = fmt.Fprint(writer, len(dp))
 }
