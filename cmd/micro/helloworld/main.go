@@ -1,7 +1,6 @@
 package main
 
 import (
-	"go-micro.dev/v4"
 	"go-micro.dev/v4/logger"
 )
 

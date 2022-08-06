@@ -128,67 +128,67 @@ func TestGetVal(t *testing.T) {
 	}
 }
 
-//goos: windows
-//goarch: amd64
-//pkg: 1d1go/leetcode/problems/lv2hard
-//cpu: AMD Ryzen 7 3700X 8-Core Processor
-//BenchmarkFindMedian1/By_merge-16                          93229951                14.35 ns/op
-//BenchmarkFindMedian1/By_index-16                        1000000000               0.6978 ns/op
-//BenchmarkFindMedian1/By_bin_search-16                    867582799                1.346 ns/op
-//BenchmarkFindMedian1/By_bin_search_solution-16          1000000000               0.9351 ns/op
-//BenchmarkFindMedian2/By_merge-16                          19999832                57.21 ns/op
-//BenchmarkFindMedian2/By_index-16                         612280555                1.731 ns/op
-//BenchmarkFindMedian2/By_bin_search-16                   1000000000                1.090 ns/op
-//BenchmarkFindMedian2/By_bin_search_solution-16          1000000000               0.9409 ns/op
-//BenchmarkFindMedian4/By_merge-16                          25208694                48.17 ns/op
-//BenchmarkFindMedian4/By_index-16                         676985428                1.746 ns/op
-//BenchmarkFindMedian4/By_bin_search-16                    482554848                2.585 ns/op
-//BenchmarkFindMedian4/By_bin_search_solution-16           794007878                1.414 ns/op
-//BenchmarkFindMedian8/By_merge-16                          16084474                70.82 ns/op
-//BenchmarkFindMedian8/By_index-16                         646136136                1.593 ns/op
-//BenchmarkFindMedian8/By_bin_search-16                   1000000000                1.055 ns/op
-//BenchmarkFindMedian8/By_bin_search_solution-16          1000000000               0.8970 ns/op
-//BenchmarkFindMedian16/By_merge-16                          8572186                140.2 ns/op
-//BenchmarkFindMedian16/By_index-16                        335440082                3.452 ns/op
-//BenchmarkFindMedian16/By_bin_search-16                   633400027                1.899 ns/op
-//BenchmarkFindMedian16/By_bin_search_solution-16          681747295                1.792 ns/op
-//BenchmarkFindMedian32/By_merge-16                          7271400                165.8 ns/op
-//BenchmarkFindMedian32/By_index-16                        298076437                3.985 ns/op
-//BenchmarkFindMedian32/By_bin_search-16                   673297515                1.839 ns/op
-//BenchmarkFindMedian32/By_bin_search_solution-16          854694588                1.333 ns/op
-//BenchmarkFindMedian64/By_merge-16                          4225348                278.0 ns/op
-//BenchmarkFindMedian64/By_index-16                        161114265                6.852 ns/op
-//BenchmarkFindMedian64/By_bin_search-16                   397667810                3.016 ns/op
-//BenchmarkFindMedian64/By_bin_search_solution-16          693510532                1.804 ns/op
-//BenchmarkFindMedian128/By_merge-16                         3281581                374.8 ns/op
-//BenchmarkFindMedian128/By_index-16                       560939364                2.078 ns/op
-//BenchmarkFindMedian128/By_bin_search-16                  683299036                1.685 ns/op
-//BenchmarkFindMedian128/By_bin_search_solution-16        1000000000                1.029 ns/op
-//BenchmarkFindMedian256/By_merge-16                         1952606                579.3 ns/op
-//BenchmarkFindMedian256/By_index-16                       128957961                7.988 ns/op
-//BenchmarkFindMedian256/By_bin_search-16                  917845316                1.333 ns/op
-//BenchmarkFindMedian256/By_bin_search_solution-16         979635819                1.197 ns/op
-//BenchmarkFindMedian512/By_merge-16                          857203                 1252 ns/op
-//BenchmarkFindMedian512/By_index-16                       539345961                1.983 ns/op
-//BenchmarkFindMedian512/By_bin_search-16                  411230214                2.848 ns/op
-//BenchmarkFindMedian512/By_bin_search_solution-16         725652381                1.692 ns/op
-//BenchmarkFindMedian1024/By_merge-16                         499945                 2264 ns/op
-//BenchmarkFindMedian1024/By_index-16                      500163594                2.145 ns/op
-//BenchmarkFindMedian1024/By_bin_search-16                 592210534                2.024 ns/op
-//BenchmarkFindMedian1024/By_bin_search_solution-16       1000000000                1.057 ns/op
-//BenchmarkFindMedian2048/By_merge-16                         272257                 4373 ns/op
-//BenchmarkFindMedian2048/By_index-16                      958722748                1.206 ns/op
-//BenchmarkFindMedian2048/By_bin_search-16                 519023497                2.345 ns/op
-//BenchmarkFindMedian2048/By_bin_search_solution-16        780124360                1.655 ns/op
-//BenchmarkFindMedian4096/By_merge-16                         108961                10165 ns/op
-//BenchmarkFindMedian4096/By_index-16                      228664723                5.168 ns/op
-//BenchmarkFindMedian4096/By_bin_search-16                 461453269                2.657 ns/op
-//BenchmarkFindMedian4096/By_bin_search_solution-16       1000000000                1.177 ns/op
-//BenchmarkFindMedian8192/By_merge-16                          69519                17916 ns/op
-//BenchmarkFindMedian8192/By_index-16                     1000000000                1.093 ns/op
-//BenchmarkFindMedian8192/By_bin_search-16                1000000000                1.080 ns/op
-//BenchmarkFindMedian8192/By_bin_search_solution-16       1000000000               0.9189 ns/op
-//PASS
+// goos: windows
+// goarch: amd64
+// pkg: 1d1go/leetcode/problems/lv2hard
+// cpu: AMD Ryzen 7 3700X 8-Core Processor
+// BenchmarkFindMedian1/By_merge-16                          93229951                14.35 ns/op
+// BenchmarkFindMedian1/By_index-16                        1000000000               0.6978 ns/op
+// BenchmarkFindMedian1/By_bin_search-16                    867582799                1.346 ns/op
+// BenchmarkFindMedian1/By_bin_search_solution-16          1000000000               0.9351 ns/op
+// BenchmarkFindMedian2/By_merge-16                          19999832                57.21 ns/op
+// BenchmarkFindMedian2/By_index-16                         612280555                1.731 ns/op
+// BenchmarkFindMedian2/By_bin_search-16                   1000000000                1.090 ns/op
+// BenchmarkFindMedian2/By_bin_search_solution-16          1000000000               0.9409 ns/op
+// BenchmarkFindMedian4/By_merge-16                          25208694                48.17 ns/op
+// BenchmarkFindMedian4/By_index-16                         676985428                1.746 ns/op
+// BenchmarkFindMedian4/By_bin_search-16                    482554848                2.585 ns/op
+// BenchmarkFindMedian4/By_bin_search_solution-16           794007878                1.414 ns/op
+// BenchmarkFindMedian8/By_merge-16                          16084474                70.82 ns/op
+// BenchmarkFindMedian8/By_index-16                         646136136                1.593 ns/op
+// BenchmarkFindMedian8/By_bin_search-16                   1000000000                1.055 ns/op
+// BenchmarkFindMedian8/By_bin_search_solution-16          1000000000               0.8970 ns/op
+// BenchmarkFindMedian16/By_merge-16                          8572186                140.2 ns/op
+// BenchmarkFindMedian16/By_index-16                        335440082                3.452 ns/op
+// BenchmarkFindMedian16/By_bin_search-16                   633400027                1.899 ns/op
+// BenchmarkFindMedian16/By_bin_search_solution-16          681747295                1.792 ns/op
+// BenchmarkFindMedian32/By_merge-16                          7271400                165.8 ns/op
+// BenchmarkFindMedian32/By_index-16                        298076437                3.985 ns/op
+// BenchmarkFindMedian32/By_bin_search-16                   673297515                1.839 ns/op
+// BenchmarkFindMedian32/By_bin_search_solution-16          854694588                1.333 ns/op
+// BenchmarkFindMedian64/By_merge-16                          4225348                278.0 ns/op
+// BenchmarkFindMedian64/By_index-16                        161114265                6.852 ns/op
+// BenchmarkFindMedian64/By_bin_search-16                   397667810                3.016 ns/op
+// BenchmarkFindMedian64/By_bin_search_solution-16          693510532                1.804 ns/op
+// BenchmarkFindMedian128/By_merge-16                         3281581                374.8 ns/op
+// BenchmarkFindMedian128/By_index-16                       560939364                2.078 ns/op
+// BenchmarkFindMedian128/By_bin_search-16                  683299036                1.685 ns/op
+// BenchmarkFindMedian128/By_bin_search_solution-16        1000000000                1.029 ns/op
+// BenchmarkFindMedian256/By_merge-16                         1952606                579.3 ns/op
+// BenchmarkFindMedian256/By_index-16                       128957961                7.988 ns/op
+// BenchmarkFindMedian256/By_bin_search-16                  917845316                1.333 ns/op
+// BenchmarkFindMedian256/By_bin_search_solution-16         979635819                1.197 ns/op
+// BenchmarkFindMedian512/By_merge-16                          857203                 1252 ns/op
+// BenchmarkFindMedian512/By_index-16                       539345961                1.983 ns/op
+// BenchmarkFindMedian512/By_bin_search-16                  411230214                2.848 ns/op
+// BenchmarkFindMedian512/By_bin_search_solution-16         725652381                1.692 ns/op
+// BenchmarkFindMedian1024/By_merge-16                         499945                 2264 ns/op
+// BenchmarkFindMedian1024/By_index-16                      500163594                2.145 ns/op
+// BenchmarkFindMedian1024/By_bin_search-16                 592210534                2.024 ns/op
+// BenchmarkFindMedian1024/By_bin_search_solution-16       1000000000                1.057 ns/op
+// BenchmarkFindMedian2048/By_merge-16                         272257                 4373 ns/op
+// BenchmarkFindMedian2048/By_index-16                      958722748                1.206 ns/op
+// BenchmarkFindMedian2048/By_bin_search-16                 519023497                2.345 ns/op
+// BenchmarkFindMedian2048/By_bin_search_solution-16        780124360                1.655 ns/op
+// BenchmarkFindMedian4096/By_merge-16                         108961                10165 ns/op
+// BenchmarkFindMedian4096/By_index-16                      228664723                5.168 ns/op
+// BenchmarkFindMedian4096/By_bin_search-16                 461453269                2.657 ns/op
+// BenchmarkFindMedian4096/By_bin_search_solution-16       1000000000                1.177 ns/op
+// BenchmarkFindMedian8192/By_merge-16                          69519                17916 ns/op
+// BenchmarkFindMedian8192/By_index-16                     1000000000                1.093 ns/op
+// BenchmarkFindMedian8192/By_bin_search-16                1000000000                1.080 ns/op
+// BenchmarkFindMedian8192/By_bin_search_solution-16       1000000000               0.9189 ns/op
+// PASS
 func BenchmarkFindMedian1(b *testing.B)    { benchmarkFindMedianSortedArrays(b, 1) }
 func BenchmarkFindMedian2(b *testing.B)    { benchmarkFindMedianSortedArrays(b, 2) }
 func BenchmarkFindMedian4(b *testing.B)    { benchmarkFindMedianSortedArrays(b, 4) }

@@ -52,22 +52,22 @@ func (q *queue) pop() int {
 	return v
 }
 
-func (q queue) size() int {
+func (q *queue) size() int {
 	return len(q.data)
 }
 
-func (q queue) empty() bool {
+func (q *queue) empty() bool {
 	return q.size() == 0
 }
 
-func (q queue) front() int {
+func (q *queue) front() int {
 	if q.empty() {
 		return -1
 	}
 	return q.data[0]
 }
 
-func (q queue) back() int {
+func (q *queue) back() int {
 	if q.empty() {
 		return -1
 	}
