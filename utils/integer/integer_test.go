@@ -5,8 +5,9 @@ import (
 	"math"
 	"testing"
 
-	"1d1go/utils/integer"
 	"github.com/stretchr/testify/assert"
+
+	"1d1go/utils/integer"
 )
 
 func TestMin(t *testing.T) {

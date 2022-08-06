@@ -13,7 +13,6 @@
 
 1 day 1 coding with Golang
 
-
 ## Requirement
 
 - [Go](https://golang.org) (v1.18+)

@@ -36,7 +36,7 @@ func TestListNode(t *testing.T) {
 	}
 }
 
-//noinspection GoNilness
+// noinspection GoNilness
 func TestListNodeNil(t *testing.T) {
 	assert.NotPanics(t, func() {
 		var node *ListNode

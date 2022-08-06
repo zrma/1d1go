@@ -6,9 +6,10 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
+
 	"1d1go/boj/p2k/p2100"
 	"1d1go/utils"
-	"github.com/stretchr/testify/assert"
 )
 
 func TestSolve2164(t *testing.T) {

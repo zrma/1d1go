@@ -9,7 +9,7 @@ import (
 	MQTT "github.com/eclipse/paho.mqtt.golang"
 )
 
-//define a function for the default message handler
+// define a function for the default message handler
 var f MQTT.MessageHandler = func(client MQTT.Client, msg MQTT.Message) {
 	fmt.Printf("TOPIC: %s\n", msg.Topic())
 	fmt.Printf("MSG: %s\n", msg.Payload())
