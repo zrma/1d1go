@@ -21,30 +21,34 @@ func Solve4949(reader Reader, writer Writer) {
 }
 
 func checkBalancedParenthesis(s string) bool {
-	stack0 := make([]rune, 0, len(s))
-	stack1 := make([]rune, 0, len(s))
+	stack := make([]rune, 0, len(s))
 	for _, c := range s {
 		if c == '(' || c == '[' {
-			stack0 = append(stack0, c)
+			stack = append(stack, c)
 		} else if c == ')' {
-			if len(stack0) == 0 {
+			var ok bool
+			stack, ok = pop(stack, '(')
+			if !ok {
 				return false
 			}
-			pop := stack0[len(stack0)-1]
-			if pop != '(' {
-				return false
-			}
-			stack0 = stack0[:len(stack0)-1]
 		} else if c == ']' {
-			if len(stack0) == 0 {
+			var ok bool
+			stack, ok = pop(stack, '[')
+			if !ok {
 				return false
 			}
-			pop := stack0[len(stack0)-1]
-			if pop != '[' {
-				return false
-			}
-			stack0 = stack0[:len(stack0)-1]
 		}
 	}
-	return len(stack0) == 0 && len(stack1) == 0
+	return len(stack) == 0
+}
+
+func pop(stack []rune, comparator rune) ([]rune, bool) {
+	if len(stack) == 0 {
+		return stack, false
+	}
+	top := stack[len(stack)-1]
+	if top != comparator {
+		return stack, false
+	}
+	return stack[:len(stack)-1], true
 }
