@@ -1,9 +1,9 @@
 module helloworld
 
-go 1.18
+go 1.19
 
 require (
-	go-micro.dev/v4 v4.7.0
+	go-micro.dev/v4 v4.8.0
 	google.golang.org/grpc v1.47.0
 	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.2.0
 	google.golang.org/protobuf v1.28.0
