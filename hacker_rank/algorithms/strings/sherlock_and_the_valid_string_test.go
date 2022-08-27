@@ -1,6 +1,7 @@
 package strings
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -10,7 +11,7 @@ func TestIsValid(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/sherlock-and-valid-string/problem")
 
 	//noinspection SpellCheckingInspection
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want string
 	}{
@@ -28,7 +29,7 @@ func TestIsValid(t *testing.T) {
 		{"aabbccd", "YES"},
 		{"abbc", "YES"},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got := isValid(tt.give)
 			assert.Equal(t, tt.want, got)
 		})

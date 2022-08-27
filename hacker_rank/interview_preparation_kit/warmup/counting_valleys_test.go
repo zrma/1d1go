@@ -1,6 +1,7 @@
 package warmup
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -10,7 +11,7 @@ func TestCountingValleys(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/counting-valleys/problem")
 
 	//noinspection SpellCheckingInspection
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want int32
 	}{
@@ -18,7 +19,7 @@ func TestCountingValleys(t *testing.T) {
 		{"", 0},
 		{"ABC", 0},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got := countingValleys(int32(len(tt.give)), tt.give)
 			assert.Equal(t, tt.want, got)
 		})

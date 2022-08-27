@@ -1,6 +1,7 @@
 package dictionariesandhashmaps
 
 import (
+	"fmt"
 	"testing"
 	"time"
 
@@ -11,7 +12,7 @@ func TestSherlockAndAnagrams(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/sherlock-and-anagrams/problem")
 
 	//goland:noinspection SpellCheckingInspection
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want int32
 	}{
@@ -21,7 +22,7 @@ func TestSherlockAndAnagrams(t *testing.T) {
 		{"kkkk", 10},
 		{"cdcd", 5},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got := sherlockAndAnagrams(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
@@ -30,7 +31,7 @@ func TestSherlockAndAnagrams(t *testing.T) {
 
 func TestSherlockAndAnagramsPerformance(t *testing.T) {
 	//goland:noinspection SpellCheckingInspection
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want int32
 	}{
@@ -45,7 +46,7 @@ func TestSherlockAndAnagramsPerformance(t *testing.T) {
 		{"bahdcafcdadbdgagdddcidaaicggcfdbfeeeghiibbdhabdhffddhffcdccfdddhgiceciffhgdibfdacbidgagdadhdceibbbcc", 1571},
 		{"dichcagakdajjhhdhegiifiiggjebejejciaabbifkcbdeigajhgfcfdgekfajbcdifikafkgjjjfefkdbeicgiccgkjheeiefje", 1042},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			assert.Eventually(t, func() bool {
 				got := sherlockAndAnagrams(tt.give)
 				return assert.Equal(t, tt.want, got)

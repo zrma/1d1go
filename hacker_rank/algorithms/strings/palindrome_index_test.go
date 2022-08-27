@@ -15,7 +15,7 @@ func TestPalindromeIndex(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/palindrome-index/problem")
 
 	//noinspection SpellCheckingInspection
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want int32
 	}{
@@ -36,7 +36,7 @@ func TestPalindromeIndex(t *testing.T) {
 		{"prcoitfiptvcxrvoalqmfpnqyhrubxspplrftomfehbbhefmotfrlppsxburhyqnpfmqlaorxcvtpiftiocrp", 14},
 		{"kjowoemiduaaxasnqghxbxkiccikxbxhgqnsaxaaudimeowojk", -1},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got := palindromeIndex(tt.give)
 			assert.EqualValues(t, tt.want, got)
 		})
@@ -45,7 +45,7 @@ func TestPalindromeIndex(t *testing.T) {
 
 func TestEqualPrefix(t *testing.T) {
 	//noinspection SpellCheckingInspection
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		description string
 		s1, s2      string
 		want        bool
@@ -75,9 +75,9 @@ func TestEqualPrefix(t *testing.T) {
 			want:        false,
 		},
 	} {
-		t.Run(fmt.Sprintf("%s %s, %s", tt.description, tt.s1, tt.s2), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got := equalPrefix(tt.s1, tt.s2)
-			assert.Equal(t, tt.want, got)
+			assert.Equal(t, tt.want, got, tt.description)
 		})
 	}
 }

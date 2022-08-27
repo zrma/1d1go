@@ -1,6 +1,7 @@
 package lv0easy
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -10,7 +11,7 @@ func TestRomanToInteger(t *testing.T) {
 	t.Log("https://leetcode.com/problems/roman-to-integer/")
 
 	//goland:noinspection SpellCheckingInspection
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want int
 	}{
@@ -34,7 +35,7 @@ func TestRomanToInteger(t *testing.T) {
 		{"MCMXCIV", 1994},
 		{"MMMCMXCIX", 3999},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got := romanToInt(tt.give)
 			assert.Equal(t, tt.want, got)
 		})

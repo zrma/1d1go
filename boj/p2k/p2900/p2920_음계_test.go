@@ -2,6 +2,7 @@ package p2900_test
 
 import (
 	"bufio"
+	"fmt"
 	"strings"
 	"testing"
 
@@ -14,7 +15,7 @@ import (
 func TestSolve2920(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/2920")
 
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want string
 	}{
@@ -22,7 +23,7 @@ func TestSolve2920(t *testing.T) {
 		{"8 7 6 5 4 3 2 1", "descending"},
 		{"8 1 7 2 6 3 5 4", "mixed"},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 

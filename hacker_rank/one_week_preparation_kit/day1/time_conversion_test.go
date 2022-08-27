@@ -1,6 +1,7 @@
 package day1
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -10,7 +11,7 @@ func TestTimeConversion(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/time-conversion/problem")
 	t.Log("https://www.hackerrank.com/challenges/one-week-preparation-kit-time-conversion/problem")
 
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want string
 	}{
@@ -20,7 +21,7 @@ func TestTimeConversion(t *testing.T) {
 		{"11:59:59AM", "11:59:59"},
 		{"11:59:59PM", "23:59:59"},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			assert.NotPanics(t, func() {
 				got := timeConversion(tt.give)
 				assert.Equal(t, tt.want, got)

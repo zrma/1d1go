@@ -1,6 +1,7 @@
 package p1300
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -8,7 +9,7 @@ import (
 
 func TestIsGroupWord(t *testing.T) {
 	//goland:noinspection SpellCheckingInspection
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want bool
 	}{
@@ -24,7 +25,7 @@ func TestIsGroupWord(t *testing.T) {
 		{"ba", true},
 		{"bb", true},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got := isGroupWord(tt.give)
 			assert.Equal(t, tt.want, got)
 		})

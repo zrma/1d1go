@@ -10,7 +10,7 @@ import (
 func TestFindMedian(t *testing.T) {
 	t.Log("https://www.hackerrank.com/test/eoipgdk427n/questions/a8taf02a12a")
 
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give []int32
 		want int32
 	}{
@@ -27,7 +27,7 @@ func TestFindMedian(t *testing.T) {
 			3,
 		},
 	} {
-		t.Run(fmt.Sprintf("%v", tt.give), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got := findMedian(tt.give)
 			assert.Equal(t, tt.want, got)
 		})

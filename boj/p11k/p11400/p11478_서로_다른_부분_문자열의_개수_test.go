@@ -2,6 +2,7 @@ package p11400_test
 
 import (
 	"bufio"
+	"fmt"
 	"strings"
 	"testing"
 
@@ -15,7 +16,7 @@ func TestSolve11478(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/11478")
 
 	//goland:noinspection SpellCheckingInspection
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want string
 	}{
@@ -24,7 +25,7 @@ func TestSolve11478(t *testing.T) {
 		{"abcdefghij", "55"},
 		{"abcdefghab", "52"},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
