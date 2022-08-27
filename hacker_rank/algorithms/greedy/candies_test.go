@@ -46,8 +46,10 @@ func TestCanDies(t *testing.T) {
 			want:        15,
 		},
 	} {
-		got := candies(int32(len(tt.give)), tt.give)
-		assert.Equal(t, tt.want, got)
+		t.Run(tt.description, func(t *testing.T) {
+			got := candies(int32(len(tt.give)), tt.give)
+			assert.Equal(t, tt.want, got)
+		})
 	}
 }
 

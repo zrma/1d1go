@@ -2,6 +2,7 @@ package p1900_test
 
 import (
 	"bufio"
+	"fmt"
 	"strings"
 	"testing"
 	"time"
@@ -15,7 +16,7 @@ import (
 func TestSolve1904(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1904")
 
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want string
 	}{
@@ -27,7 +28,7 @@ func TestSolve1904(t *testing.T) {
 		{"5", "8"},
 		{"1000000", "7871"},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 

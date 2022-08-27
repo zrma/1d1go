@@ -14,14 +14,14 @@ func TestSort(t *testing.T) {
 	t.Log("Sort function sorts a string well")
 
 	//noinspection SpellCheckingInspection
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want string
 	}{
 		{"dcba", "abcd"},
 		{"ffbbaa", "aabbff"},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got := Sort(tt.give)
 			assert.Equal(t, tt.want, got)
 		})

@@ -2,6 +2,7 @@ package p10800_test
 
 import (
 	"bufio"
+	"fmt"
 	"strings"
 	"testing"
 
@@ -14,14 +15,14 @@ import (
 func TestSolve10872(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/10872")
 
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want string
 	}{
 		{"10", "3628800"},
 		{"0", "1"},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 

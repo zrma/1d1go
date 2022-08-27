@@ -38,14 +38,16 @@ func TestMin(t *testing.T) {
 }
 
 func TestPow(t *testing.T) {
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		n, p, want int64
 	}{
 		{3, 5, int64(math.Pow(3, 5))},
 		{0, 5, 0},
 		{10, 0, 1},
 	} {
-		actual := integer.Pow(tt.n, tt.p)
-		assert.Equal(t, actual, tt.want)
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
+			actual := integer.Pow(tt.n, tt.p)
+			assert.Equal(t, actual, tt.want)
+		})
 	}
 }

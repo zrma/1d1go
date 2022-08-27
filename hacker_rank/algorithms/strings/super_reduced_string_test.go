@@ -1,6 +1,7 @@
 package strings
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -10,7 +11,7 @@ func TestSuperReducedString(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/reduced-string/problem")
 
 	//noinspection SpellCheckingInspection
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want string
 	}{
@@ -21,7 +22,7 @@ func TestSuperReducedString(t *testing.T) {
 		{"abccba", "Empty String"},
 		{"", "Empty String"},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got := superReducedString(tt.give)
 			assert.Equal(t, tt.want, got)
 		})

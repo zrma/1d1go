@@ -1,6 +1,7 @@
 package strings
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -10,7 +11,7 @@ func TestAnagram(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/anagram/problem")
 
 	//noinspection SpellCheckingInspection
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want int32
 	}{
@@ -32,7 +33,7 @@ func TestAnagram(t *testing.T) {
 		{"xtnipeqhxvafqaggqoanvwkmthtfirwhmjrbphlmeluvoa", 13},
 		{"gqdvlchavotcykafyjzbbgmnlajiqlnwctrnvznspiwquxxsiwuldizqkkaawpyyisnftdzklwagv", -1},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got := anagram(tt.give)
 			assert.Equal(t, tt.want, got)
 		})

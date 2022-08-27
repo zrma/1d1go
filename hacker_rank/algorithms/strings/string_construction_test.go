@@ -1,6 +1,7 @@
 package strings
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -10,7 +11,7 @@ func TestStringConstruction(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/string-construction/problem")
 
 	//noinspection SpellCheckingInspection
-	for _, tt := range []struct {
+	for i, tt := range []struct {
 		give string
 		want int32
 	}{
@@ -18,7 +19,7 @@ func TestStringConstruction(t *testing.T) {
 		{"abab", 2},
 		{"abcabc", 3},
 	} {
-		t.Run(tt.give, func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got := stringConstruction(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
