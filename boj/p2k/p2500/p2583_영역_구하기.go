@@ -5,11 +5,11 @@ import (
 	"sort"
 )
 
-type Rect [4]int
-
 func Solve2583(reader Reader, writer Writer) {
 	var row, col, k int
 	_, _ = fmt.Fscan(reader, &row, &col, &k)
+
+	type Rect [4]int
 
 	var rects []Rect
 	for i := 0; i < k; i++ {
@@ -30,11 +30,21 @@ func Solve2583(reader Reader, writer Writer) {
 		}
 	}
 
+	res := CountGroupsInTable(table, row, col)
+	sort.Ints(res)
+	_, _ = fmt.Fprintln(writer, len(res))
+	for _, v := range res {
+		_, _ = fmt.Fprintf(writer, "%d ", v)
+	}
+}
+
+func CountGroupsInTable(table [][]bool, row, col int) []int {
 	type pos struct {
 		x, y int
 	}
 	var res []int
-	var queue []pos
+	queue := make([]pos, 0, row*col)
+
 	for y := 0; y < row; y++ {
 		for x := 0; x < col; x++ {
 			if table[y][x] {
@@ -66,10 +76,5 @@ func Solve2583(reader Reader, writer Writer) {
 			res = append(res, cnt)
 		}
 	}
-	sort.Ints(res)
-
-	_, _ = fmt.Fprintln(writer, len(res))
-	for _, n := range res {
-		_, _ = fmt.Fprintf(writer, "%d ", n)
-	}
+	return res
 }

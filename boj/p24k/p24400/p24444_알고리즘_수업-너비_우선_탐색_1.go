@@ -6,6 +6,18 @@ import (
 )
 
 func Solve24444(reader Reader, writer Writer) {
+	traverse := func(n, r int) {
+		for i := 0; i <= n; i++ {
+			sort.Ints(graph[i])
+		}
+		bfs(r)
+	}
+	solveGraphTraversal(traverse, reader, writer)
+}
+
+type traversalFunc func(n, r int)
+
+func solveGraphTraversal(traverse traversalFunc, reader Reader, writer Writer) {
 	var n, m, r int
 	_, _ = fmt.Fscan(reader, &n, &m, &r)
 
@@ -18,17 +30,17 @@ func Solve24444(reader Reader, writer Writer) {
 		graph[a] = append(graph[a], b)
 		graph[b] = append(graph[b], a)
 	}
-
-	for i := 0; i <= n; i++ {
-		sort.Ints(graph[i])
-	}
-
-	bfs(r)
+	traverse(n, r)
 
 	for i := 1; i <= n; i++ {
 		_, _ = fmt.Fprintln(writer, seq[i])
 	}
 }
+
+var (
+	graph [][]int
+	seq   []int
+)
 
 func bfs(r int) {
 	seqIdx := 1
