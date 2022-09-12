@@ -23,11 +23,15 @@ func Solve1655(reader Reader, writer Writer) {
 			minH.Push(v)
 		}
 
-		if maxH.Peek() > minH.Peek() {
-			maxP, minP := maxH.Pop(), minH.Pop()
+		max, _ := maxH.Peek()
+		min, _ := minH.Peek()
+		if max > min {
+			maxP, _ := maxH.Pop()
+			minP, _ := minH.Pop()
 			maxH.Push(minP)
 			minH.Push(maxP)
 		}
-		_, _ = fmt.Fprintln(writer, maxH.Peek())
+		res, _ := maxH.Peek()
+		_, _ = fmt.Fprintln(writer, res)
 	}
 }

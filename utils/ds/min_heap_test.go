@@ -1,6 +1,7 @@
 package ds
 
 import (
+	"math"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -13,40 +14,85 @@ func TestNewMinHeap(t *testing.T) {
 	assert.Equal(t, 0, h.Size())
 
 	assert.Equal(t, size, cap(h.data))
-	assert.Equal(t, maxVal, h.Peek())
-	assert.Equal(t, 0, h.Pop())
+
+	{
+		top, ok := h.Peek()
+		assert.False(t, ok)
+		assert.Equal(t, math.MaxInt32, top)
+		assert.Equal(t, 0, h.Size())
+
+		v, ok := h.Pop()
+		assert.False(t, ok)
+		assert.Equal(t, 0, v)
+	}
 
 	for i := 1; i < 100; i++ {
 		h.Push(i)
 		assert.Equal(t, i, h.Size())
-		assert.Equal(t, 1, h.Peek())
+
+		top, ok := h.Peek()
+		assert.True(t, ok)
+		assert.Equal(t, 1, top)
 	}
 
 	for i := 1; i < 99; i++ {
-		assert.Equal(t, i, h.Pop())
+		v, ok := h.Pop()
+		assert.True(t, ok)
+		assert.Equal(t, i, v)
 		assert.Equal(t, 99-i, h.Size())
-		assert.Equal(t, i+1, h.Peek())
+
+		top, ok := h.Peek()
+		assert.True(t, ok)
+		assert.Equal(t, i+1, top)
 	}
 
-	assert.Equal(t, 99, h.Pop())
-	assert.Equal(t, 0, h.Size())
-	assert.Equal(t, maxVal, h.Peek())
-	assert.Equal(t, 0, h.Pop())
+	{
+		v, ok := h.Pop()
+		assert.True(t, ok)
+		assert.Equal(t, 99, v)
+		assert.Equal(t, 0, h.Size())
+
+		top, ok := h.Peek()
+		assert.False(t, ok)
+		assert.Equal(t, math.MaxInt32, top)
+
+		v, ok = h.Pop()
+		assert.False(t, ok)
+		assert.Equal(t, 0, v)
+	}
 
 	for i := 99; i > 0; i-- {
 		h.Push(i)
 		assert.Equal(t, 100-i, h.Size())
-		assert.Equal(t, i, h.Peek())
+
+		top, ok := h.Peek()
+		assert.True(t, ok)
+		assert.Equal(t, i, top)
 	}
 
 	for i := 1; i < 99; i++ {
-		assert.Equal(t, i, h.Pop())
+		v, ok := h.Pop()
+		assert.True(t, ok)
+		assert.Equal(t, i, v)
 		assert.Equal(t, 99-i, h.Size())
-		assert.Equal(t, i+1, h.Peek())
+
+		top, ok := h.Peek()
+		assert.True(t, ok)
+		assert.Equal(t, i+1, top)
 	}
 
-	assert.Equal(t, 99, h.Pop())
-	assert.Equal(t, 0, h.Size())
-	assert.Equal(t, maxVal, h.Peek())
-	assert.Equal(t, 0, h.Pop())
+	{
+		v, ok := h.Pop()
+		assert.True(t, ok)
+		assert.Equal(t, 99, v)
+		assert.Equal(t, 0, h.Size())
+
+		top, ok := h.Peek()
+		assert.False(t, ok)
+		assert.Equal(t, math.MaxInt32, top)
+
+		v, ok = h.Pop()
+		assert.False(t, ok)
+		assert.Equal(t, 0, v)
+	}
 }

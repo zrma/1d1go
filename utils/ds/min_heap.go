@@ -1,5 +1,9 @@
 package ds
 
+import (
+	"math"
+)
+
 func NewMinHeap(size int) *MinHeap {
 	return &MinHeap{data: make([]int, 0, size)}
 }
@@ -13,18 +17,16 @@ func (h *MinHeap) Push(v int) {
 	h.up(len(h.data) - 1)
 }
 
-const maxVal = 1_234_567_891
-
-func (h *MinHeap) Peek() int {
+func (h *MinHeap) Peek() (int, bool) {
 	if len(h.data) == 0 {
-		return maxVal
+		return math.MaxInt32, false
 	}
-	return h.data[0]
+	return h.data[0], true
 }
 
-func (h *MinHeap) Pop() int {
+func (h *MinHeap) Pop() (int, bool) {
 	if len(h.data) == 0 {
-		return 0
+		return 0, false
 	}
 
 	v := h.data[0]
@@ -32,7 +34,7 @@ func (h *MinHeap) Pop() int {
 	h.data = h.data[:len(h.data)-1]
 	h.down(0)
 
-	return v
+	return v, true
 }
 
 func (h *MinHeap) Size() int {
