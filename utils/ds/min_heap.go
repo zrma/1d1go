@@ -1,67 +1,42 @@
 package ds
 
 import (
+	"container/heap"
 	"math"
 )
 
 func NewMinHeap(size int) *MinHeap {
-	return &MinHeap{data: make([]int, 0, size)}
+	return &MinHeap{pq: NewPriorityQueue(size)}
 }
 
 type MinHeap struct {
-	data []int
+	pq *PriorityQueue
 }
 
 func (h *MinHeap) Push(v int) {
-	h.data = append(h.data, v)
-	h.up(len(h.data) - 1)
+	heap.Push(h.pq, minHeapItem{v})
 }
 
 func (h *MinHeap) Peek() (int, bool) {
-	if len(h.data) == 0 {
+	if h.pq.Len() == 0 {
 		return math.MaxInt32, false
 	}
-	return h.data[0], true
+	return h.pq.items[0].(minHeapItem).v, true
 }
 
 func (h *MinHeap) Pop() (int, bool) {
-	if len(h.data) == 0 {
+	if h.pq.Len() == 0 {
 		return 0, false
 	}
-
-	v := h.data[0]
-	h.data[0] = h.data[len(h.data)-1]
-	h.data = h.data[:len(h.data)-1]
-	h.down(0)
-
-	return v, true
+	return heap.Pop(h.pq).(minHeapItem).v, true
 }
 
 func (h *MinHeap) Size() int {
-	return len(h.data)
+	return h.pq.Len()
 }
 
-func (h *MinHeap) up(cur int) {
-	for cur > 0 {
-		parent := (cur - 1) / 2
-		if h.data[parent] < h.data[cur] {
-			break
-		}
-		h.data[parent], h.data[cur] = h.data[cur], h.data[parent]
-		cur = parent
-	}
-}
+var _ Priority = (*minHeapItem)(nil)
 
-func (h *MinHeap) down(cur int) {
-	for cur*2+1 < len(h.data) {
-		child := cur*2 + 1
-		if child+1 < len(h.data) && h.data[child+1] < h.data[child] {
-			child++
-		}
-		if h.data[cur] <= h.data[child] {
-			break
-		}
-		h.data[cur], h.data[child] = h.data[child], h.data[cur]
-		cur = child
-	}
-}
+type minHeapItem struct{ v int }
+
+func (m minHeapItem) Priority() int { return m.v }

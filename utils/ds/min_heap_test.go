@@ -13,8 +13,6 @@ func TestNewMinHeap(t *testing.T) {
 	assert.NotNil(t, h)
 	assert.Equal(t, 0, h.Size())
 
-	assert.Equal(t, size, cap(h.data))
-
 	{
 		top, ok := h.Peek()
 		assert.False(t, ok)
