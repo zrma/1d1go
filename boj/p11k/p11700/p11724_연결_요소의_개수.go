@@ -8,7 +8,7 @@ func Solve11724(reader Reader, writer Writer) {
 	var n, m int
 	_, _ = fmt.Fscan(reader, &n, &m)
 
-	graph = make([][]int, n+1)
+	graph := make([][]int, n+1)
 	for i := range graph {
 		graph[i] = make([]int, 0)
 	}
@@ -20,27 +20,22 @@ func Solve11724(reader Reader, writer Writer) {
 		graph[v] = append(graph[v], u)
 	}
 
-	visited = make([]bool, n+1)
+	visited := make([]bool, n+1)
 	var count int
 	for i := 1; i <= n; i++ {
 		if !visited[i] {
-			dfs(i)
+			dfs(i, graph, visited)
 			count++
 		}
 	}
 	_, _ = fmt.Fprint(writer, count)
 }
 
-var (
-	graph   [][]int
-	visited []bool
-)
-
-func dfs(r int) {
+func dfs(r int, graph [][]int, visited []bool) {
 	visited[r] = true
 	for _, visit := range graph[r] {
 		if !visited[visit] {
-			dfs(visit)
+			dfs(visit, graph, visited)
 		}
 	}
 }
