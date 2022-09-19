@@ -9,8 +9,8 @@ func Solve1260(reader Reader, writer Writer) {
 	var n, m, r int
 	_, _ = fmt.Fscan(reader, &n, &m, &r)
 
-	graph = make([][]int, n+1)
-	visited = make([]bool, n+1)
+	graph := make([][]int, n+1)
+	visited := make([]bool, n+1)
 	for i := 0; i < m; i++ {
 		var a, b int
 		_, _ = fmt.Fscan(reader, &a, &b)
@@ -22,19 +22,14 @@ func Solve1260(reader Reader, writer Writer) {
 		sort.Ints(graph[i])
 	}
 
-	dfs(r, writer)
+	dfs(r, writer, graph, visited)
 	_, _ = fmt.Fprintln(writer)
 
 	visited = make([]bool, n+1)
-	bfs(r, writer)
+	bfs(r, writer, graph, visited)
 }
 
-var (
-	graph   [][]int
-	visited []bool
-)
-
-func dfs(r int, writer Writer) {
+func dfs(r int, writer Writer, graph [][]int, visited []bool) {
 	visited[r] = true
 	_, _ = fmt.Fprint(writer, r)
 
@@ -43,11 +38,11 @@ func dfs(r int, writer Writer) {
 			continue
 		}
 		_, _ = fmt.Fprint(writer, " ")
-		dfs(v, writer)
+		dfs(v, writer, graph, visited)
 	}
 }
 
-func bfs(r int, writer Writer) {
+func bfs(r int, writer Writer, graph [][]int, visited []bool) {
 	queue := make([]int, 0, len(visited))
 	queueIdx := 0
 
