@@ -26,7 +26,7 @@ func Solve1389(reader Reader, writer Writer) {
 		graph[to][from] = 1
 	}
 
-	floydWarshall(graph, n)
+	FloydWarshall(graph, n)
 
 	var min = math.MaxInt32
 	var res = 1
@@ -44,7 +44,7 @@ func Solve1389(reader Reader, writer Writer) {
 	_, _ = fmt.Fprint(writer, res)
 }
 
-func floydWarshall(graph [][]int, n int) {
+func FloydWarshall(graph [][]int, n int) {
 	for k := 1; k <= n; k++ {
 		for i := 1; i <= n; i++ {
 			for j := 1; j <= n; j++ {

@@ -33,7 +33,7 @@ func TestSolve1389(t *testing.T) {
 			"1",
 		},
 	} {
-		t.Run(fmt.Sprintf("%d/floydWarshall", i), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%d/FloydWarshall", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
