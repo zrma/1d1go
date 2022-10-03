@@ -2,10 +2,13 @@ package p4900
 
 import (
 	"fmt"
+
+	"1d1go/utils/integer"
 )
 
 func Solve4948(reader Reader, writer Writer) {
-	sieveOfEratosthenes := buildSieveOfEratosthenes()
+	const maxLen = 123456*2 + 1
+	sieveOfEratosthenes := integer.BuildSieveOfEratosthenes(maxLen)
 	for {
 		var n int
 		if _, err := fmt.Fscan(reader, &n); err != nil {
@@ -22,20 +25,4 @@ func Solve4948(reader Reader, writer Writer) {
 		}
 		_, _ = fmt.Fprintln(writer, cnt)
 	}
-}
-
-const maxLen = 123456*2 + 1
-
-func buildSieveOfEratosthenes() [maxLen]bool {
-	sieveOfEratosthenes := [maxLen]bool{}
-	for i := 2; i*i < maxLen; i++ {
-		if !sieveOfEratosthenes[i] {
-			for j := i * i; j < maxLen; j += i {
-				sieveOfEratosthenes[j] = true
-			}
-		}
-	}
-	sieveOfEratosthenes[0] = true
-	sieveOfEratosthenes[1] = true
-	return sieveOfEratosthenes
 }

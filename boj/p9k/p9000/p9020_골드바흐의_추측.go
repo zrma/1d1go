@@ -2,10 +2,13 @@ package p9000
 
 import (
 	"fmt"
+
+	"1d1go/utils/integer"
 )
 
 func Solve9020(reader Reader, writer Writer) {
-	sieveOfEratosthenes := buildSieveOfEratosthenes()
+	const maxLen = 10000 + 1
+	sieveOfEratosthenes := integer.BuildSieveOfEratosthenes(maxLen)
 
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
@@ -19,7 +22,7 @@ func Solve9020(reader Reader, writer Writer) {
 	}
 }
 
-func findGoldbachPartitions(n int, sieveOfEratosthenes [maxLen]bool) (int, int) {
+func findGoldbachPartitions(n int, sieveOfEratosthenes []bool) (int, int) {
 	for i := n / 2; i > 1; i-- {
 		if sieveOfEratosthenes[i] {
 			continue
@@ -30,20 +33,4 @@ func findGoldbachPartitions(n int, sieveOfEratosthenes [maxLen]bool) (int, int) 
 		}
 	}
 	return 0, n
-}
-
-const maxLen = 10000 + 1
-
-func buildSieveOfEratosthenes() [maxLen]bool {
-	sieveOfEratosthenes := [maxLen]bool{}
-	for i := 2; i*i < maxLen; i++ {
-		if !sieveOfEratosthenes[i] {
-			for j := i * i; j < maxLen; j += i {
-				sieveOfEratosthenes[j] = true
-			}
-		}
-	}
-	sieveOfEratosthenes[0] = true
-	sieveOfEratosthenes[1] = true
-	return sieveOfEratosthenes
 }
