@@ -2,6 +2,8 @@ package p1900
 
 import (
 	"fmt"
+
+	"1d1go/utils/integer"
 )
 
 func Solve1929(reader Reader, writer Writer) {
@@ -9,17 +11,7 @@ func Solve1929(reader Reader, writer Writer) {
 	_, _ = fmt.Fscan(reader, &min, &max)
 
 	const maxLen = 1000000
-	sieveOfEratosthenes := [maxLen + 1]bool{}
-
-	for i := 2; i*i <= max; i++ {
-		if !sieveOfEratosthenes[i] {
-			for j := i * i; j <= max; j += i {
-				sieveOfEratosthenes[j] = true
-			}
-		}
-	}
-	sieveOfEratosthenes[0] = true
-	sieveOfEratosthenes[1] = true
+	sieveOfEratosthenes := integer.BuildSieveOfEratosthenes(maxLen)
 
 	for i := min; i <= max; i++ {
 		if !sieveOfEratosthenes[i] {
