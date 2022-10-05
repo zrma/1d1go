@@ -1,4 +1,4 @@
-package p12000_test
+package p12800_test
 
 import (
 	"bufio"
@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"1d1go/boj/p12k/p12000"
+	"1d1go/boj/p12k/p12800"
 	"1d1go/utils"
 )
 
@@ -32,7 +32,7 @@ func TestSolve12865(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p12000.Solve12865(reader, writer)
+			p12800.Solve12865(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
