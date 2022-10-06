@@ -1,4 +1,4 @@
-package p12000_test
+package p14000_test
 
 import (
 	"bufio"
@@ -8,12 +8,12 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"1d1go/boj/p12k/p12000"
+	"1d1go/boj/p14k/p14000"
 	"1d1go/utils"
 )
 
-func TestSolve12015(t *testing.T) {
-	t.Log("https://www.acmicpc.net/problem/12015")
+func TestSolve14002(t *testing.T) {
+	t.Log("https://www.acmicpc.net/problem/14002")
 
 	for i, tt := range []struct {
 		give string
@@ -22,24 +22,39 @@ func TestSolve12015(t *testing.T) {
 		{
 			`6
 10 20 10 30 20 50`,
-			"4",
+			`4
+10 20 30 50 `,
 		},
 		{
 			`8
 30 1 9 40 7 5 4 90`,
-			"4",
+			`4
+1 9 40 90 `,
 		},
 		{
 			`5
 1 3 5 2 6`,
-			"4",
+			`4
+1 3 5 6 `,
+		},
+		{
+			`10
+1 5 3 4 5 6 7 4 9 10`,
+			`8
+1 3 4 5 6 7 9 10 `,
+		},
+		{
+			`7
+3 1 5 2 3 6 4`,
+			`4
+1 2 3 4 `,
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
 			writer := utils.NewStringWriter()
 
-			p12000.Solve12015(reader, writer)
+			p14000.Solve14002(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

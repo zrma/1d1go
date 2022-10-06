@@ -1,10 +1,10 @@
-package p12000
+package p14000
 
 import (
 	"fmt"
 )
 
-func Solve12015(reader Reader, writer Writer) {
+func Solve14002(reader Reader, writer Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
@@ -30,5 +30,17 @@ func Solve12015(reader Reader, writer Writer) {
 		}
 	}
 
-	_, _ = fmt.Fprint(writer, max)
+	_, _ = fmt.Fprintln(writer, max)
+
+	res := make([]int, max)
+	for i := n - 1; i >= 0; i-- {
+		if dp[i] == max {
+			res[max-1] = arr[i]
+			max--
+		}
+	}
+
+	for i := 0; i < len(res); i++ {
+		_, _ = fmt.Fprintf(writer, "%d ", res[i])
+	}
 }
