@@ -2,28 +2,33 @@ package p11000
 
 import (
 	"fmt"
-	"sort"
 )
 
 func Solve11053(reader Reader, writer Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
-	dp := make([]int, 1, n)
-	_, _ = fmt.Fscan(reader, &dp[0])
-
-	for i := 1; i < n; i++ {
-		var v int
-		_, _ = fmt.Fscan(reader, &v)
-
-		if dp[len(dp)-1] < v {
-			dp = append(dp, v)
-			continue
-		}
-
-		idx := sort.SearchInts(dp, v)
-		dp[idx] = v
+	arr := make([]int, n)
+	dp := make([]int, n)
+	for i := 0; i < n; i++ {
+		_, _ = fmt.Fscan(reader, &arr[i])
+		dp[i] = 1
 	}
 
-	_, _ = fmt.Fprint(writer, len(dp))
+	max := 1
+	for i := 0; i < n; i++ {
+		for j := 0; j < i; j++ {
+			if arr[i] <= arr[j] {
+				continue
+			}
+			if dp[i] < dp[j]+1 {
+				dp[i] = dp[j] + 1
+				if max < dp[i] {
+					max = dp[i]
+				}
+			}
+		}
+	}
+
+	_, _ = fmt.Fprint(writer, max)
 }
