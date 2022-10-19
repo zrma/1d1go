@@ -20,6 +20,6 @@ func (s *StringWriter) Flush() error {
 	return nil
 }
 
-func (s StringWriter) String() string {
+func (s *StringWriter) String() string {
 	return s.result
 }
