@@ -2,6 +2,8 @@ package p4800
 
 import (
 	"fmt"
+
+	"1d1go/utils/ds"
 )
 
 type solve4803Func func(int, int, Reader) int
@@ -28,31 +30,28 @@ func Solve4803(reader Reader, writer Writer, f solve4803Func) {
 }
 
 func Solve4803UnionFind(n, m int, reader Reader) int {
-	parents := make([]int, n+1)
-	for i := 1; i <= n; i++ {
-		parents[i] = -1
-	}
+	uf := ds.NewUnionFind(n)
 
 	cycles := make([]int, 0, m)
 	for i := 1; i <= m; i++ {
 		var a, b int
 		_, _ = fmt.Fscan(reader, &a, &b)
-		if find(parents, a) == find(parents, b) {
+		if uf.Find(a) == uf.Find(b) {
 			cycles = append(cycles, a)
 		} else {
-			union(parents, a, b)
+			uf.Union(a, b)
 		}
 	}
 
 	visited := make([]bool, n+1)
 	for _, cycle := range cycles {
-		root := find(parents, cycle)
+		root := uf.Find(cycle)
 		visited[root] = true
 	}
 
 	cnt := 0
 	for i := 1; i <= n; i++ {
-		root := find(parents, i)
+		root := uf.Find(i)
 		if visited[root] {
 			continue
 		}
@@ -60,30 +59,6 @@ func Solve4803UnionFind(n, m int, reader Reader) int {
 		cnt++
 	}
 	return cnt
-}
-
-func find(parents []int, x int) int {
-	if parents[x] < 0 {
-		return x
-	}
-	parents[x] = find(parents, parents[x])
-	return parents[x]
-}
-
-func union(parents []int, a, b int) {
-	a = find(parents, a)
-	b = find(parents, b)
-	if a == b {
-		return
-	}
-
-	if parents[a] < parents[b] {
-		parents[a] += parents[b]
-		parents[b] = a
-	} else {
-		parents[b] += parents[a]
-		parents[a] = b
-	}
 }
 
 func Solve4803DFS(n, m int, reader Reader) int {
