@@ -24,6 +24,10 @@ func (uf *UnionFind) Find(a int) int {
 	return uf.parents[a]
 }
 
+func (uf *UnionFind) Size(a int) int {
+	return -uf.parents[uf.Find(a)]
+}
+
 func (uf *UnionFind) Union(a int, b int) {
 	a = uf.Find(a)
 	b = uf.Find(b)
