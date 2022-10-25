@@ -56,28 +56,7 @@ func Solve1976UnionFind(n, m int, reader Reader) bool {
 }
 
 func Solve1976DFS(n, m int, reader Reader) bool {
-	graph := make([][]int, n+1)
-	for i := 1; i <= n; i++ {
-		graph[i] = make([]int, 0, n)
-	}
-
-	for i := 1; i <= n; i++ {
-		for j := 1; j <= n; j++ {
-			var x int
-			_, _ = fmt.Fscan(reader, &x)
-
-			if i <= j {
-				continue
-			}
-
-			if x == 0 {
-				continue
-			}
-
-			graph[i] = append(graph[i], j)
-			graph[j] = append(graph[j], i)
-		}
-	}
+	graph := scanGraph(n, reader)
 
 	var start int
 	_, _ = fmt.Fscan(reader, &start)
@@ -109,28 +88,7 @@ func dfs1976(graph [][]int, visited []bool, start int) {
 }
 
 func Solve1976BFS(n, m int, reader Reader) bool {
-	graph := make([][]int, n+1)
-	for i := 1; i <= n; i++ {
-		graph[i] = make([]int, 0, n)
-	}
-
-	for i := 1; i <= n; i++ {
-		for j := 1; j <= n; j++ {
-			var x int
-			_, _ = fmt.Fscan(reader, &x)
-
-			if i <= j {
-				continue
-			}
-
-			if x == 0 {
-				continue
-			}
-
-			graph[i] = append(graph[i], j)
-			graph[j] = append(graph[j], i)
-		}
-	}
+	graph := scanGraph(n, reader)
 
 	var start int
 	_, _ = fmt.Fscan(reader, &start)
@@ -167,4 +125,30 @@ func bfs1976(graph [][]int, visited []bool, start int) {
 			queue = append(queue, next)
 		}
 	}
+}
+
+func scanGraph(n int, reader Reader) [][]int {
+	graph := make([][]int, n+1)
+	for i := 1; i <= n; i++ {
+		graph[i] = make([]int, 0, n)
+	}
+
+	for i := 1; i <= n; i++ {
+		for j := 1; j <= n; j++ {
+			var x int
+			_, _ = fmt.Fscan(reader, &x)
+
+			if i <= j {
+				continue
+			}
+
+			if x == 0 {
+				continue
+			}
+
+			graph[i] = append(graph[i], j)
+			graph[j] = append(graph[j], i)
+		}
+	}
+	return graph
 }

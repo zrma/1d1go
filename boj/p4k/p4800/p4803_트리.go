@@ -62,13 +62,7 @@ func Solve4803UnionFind(n, m int, reader Reader) int {
 }
 
 func Solve4803DFS(n, m int, reader Reader) int {
-	graph := make([][]int, n+1)
-	for i := 1; i <= m; i++ {
-		var a, b int
-		_, _ = fmt.Fscan(reader, &a, &b)
-		graph[a] = append(graph[a], b)
-		graph[b] = append(graph[b], a)
-	}
+	graph := scanGraph(n, m, reader)
 
 	visited := make([]bool, n+1)
 	cnt := 0
@@ -102,13 +96,7 @@ func dfs4803(graph [][]int, visited []bool, before, curr int) bool {
 }
 
 func Solve4803BFS(n, m int, reader Reader) int {
-	graph := make([][]int, n+1)
-	for i := 1; i <= m; i++ {
-		var a, b int
-		_, _ = fmt.Fscan(reader, &a, &b)
-		graph[a] = append(graph[a], b)
-		graph[b] = append(graph[b], a)
-	}
+	graph := scanGraph(n, m, reader)
 
 	visited := make([]bool, n+1)
 	cnt := 0
@@ -146,4 +134,15 @@ func bfs4803(graph [][]int, visited []bool, i int) bool {
 		}
 	}
 	return nodeCnt-1 == edgeCnt/2
+}
+
+func scanGraph(n, m int, reader Reader) [][]int {
+	graph := make([][]int, n+1)
+	for i := 1; i <= m; i++ {
+		var a, b int
+		_, _ = fmt.Fscan(reader, &a, &b)
+		graph[a] = append(graph[a], b)
+		graph[b] = append(graph[b], a)
+	}
+	return graph
 }

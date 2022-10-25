@@ -2,6 +2,8 @@ package p14000
 
 import (
 	"fmt"
+
+	"1d1go/boj/p11k/p11000"
 )
 
 func Solve14002(reader Reader, writer Writer) {
@@ -15,21 +17,7 @@ func Solve14002(reader Reader, writer Writer) {
 		dp[i] = 1
 	}
 
-	max := 1
-	for i := 0; i < n; i++ {
-		for j := 0; j < i; j++ {
-			if arr[i] <= arr[j] {
-				continue
-			}
-			if dp[i] < dp[j]+1 {
-				dp[i] = dp[j] + 1
-				if max < dp[i] {
-					max = dp[i]
-				}
-			}
-		}
-	}
-
+	max := p11000.LongestIncreasingSubsequence(n, arr, dp)
 	_, _ = fmt.Fprintln(writer, max)
 
 	res := make([]int, max)

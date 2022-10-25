@@ -15,6 +15,11 @@ func Solve11053(reader Reader, writer Writer) {
 		dp[i] = 1
 	}
 
+	res := LongestIncreasingSubsequence(n, arr, dp)
+	_, _ = fmt.Fprint(writer, res)
+}
+
+func LongestIncreasingSubsequence(n int, arr, dp []int) int {
 	max := 1
 	for i := 0; i < n; i++ {
 		for j := 0; j < i; j++ {
@@ -29,6 +34,5 @@ func Solve11053(reader Reader, writer Writer) {
 			}
 		}
 	}
-
-	_, _ = fmt.Fprint(writer, max)
+	return max
 }
