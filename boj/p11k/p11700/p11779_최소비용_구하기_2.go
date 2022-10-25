@@ -25,7 +25,7 @@ func Solve11779(reader Reader, writer Writer) {
 	start -= 1
 	end -= 1
 
-	dist := Dijkstra(n, m, start, graph)
+	dist := dijkstra(n, m, start, graph)
 
 	path := make([]int, 0, n)
 	for i := end; i != start; i = dist[i].prev {
@@ -40,7 +40,7 @@ func Solve11779(reader Reader, writer Writer) {
 	}
 }
 
-func Dijkstra(n int, m int, start int, graph [][]edge) []dist {
+func dijkstra(n int, m int, start int, graph [][]edge) []dist {
 	const inf = 1_000_000_000
 	dist := make([]dist, n)
 	for i := 0; i < n; i++ {
