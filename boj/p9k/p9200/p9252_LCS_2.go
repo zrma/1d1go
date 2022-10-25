@@ -14,19 +14,8 @@ func Solve9252(reader Reader, writer Writer) {
 		dp[i] = make([]int, n1+1)
 	}
 
-	for i := 1; i <= n0; i++ {
-		for j := 1; j <= n1; j++ {
-			if s0[i-1] == s1[j-1] {
-				dp[i][j] = dp[i-1][j-1] + 1
-			} else {
-				if dp[i-1][j] > dp[i][j-1] {
-					dp[i][j] = dp[i-1][j]
-				} else {
-					dp[i][j] = dp[i][j-1]
-				}
-			}
-		}
-	}
+	LongestCommonSubsequence(n0, n1, s0, s1, dp)
+
 	_, _ = fmt.Fprintln(writer, dp[n0][n1])
 
 	res := make([]rune, 0, dp[n0][n1])
