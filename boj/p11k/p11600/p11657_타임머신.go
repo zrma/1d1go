@@ -13,7 +13,7 @@ func Solve11657(reader Reader, writer Writer) {
 		_, _ = fmt.Fscan(reader, &edges[i].u, &edges[i].v, &edges[i].w)
 	}
 
-	dist, hasCycle := bellmanFord(n, m, edges)
+	dist, hasCycle := bellmanFord(n, edges)
 	if hasCycle {
 		_, _ = fmt.Fprintln(writer, -1)
 		return
@@ -34,7 +34,7 @@ type edge struct {
 
 const inf = 1_000_000_000
 
-func bellmanFord(n, m int, edges []edge) ([]int, bool) {
+func bellmanFord(n int, edges []edge) ([]int, bool) {
 	dist := make([]int, n+1)
 	for i := range dist {
 		dist[i] = inf
