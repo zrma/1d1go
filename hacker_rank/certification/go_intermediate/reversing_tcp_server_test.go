@@ -257,9 +257,7 @@ func (b bufferImpl) Write(p []byte) (n int, err error) {
 	panic("implement me")
 }
 
-func (b bufferImpl) Close() error {
-	return nil
-}
+func (_ bufferImpl) Close() error { return nil }
 
 func tcpClient(addr string, messages []string) ([]string, error) {
 	if !strings.Contains(addr, ":") {
