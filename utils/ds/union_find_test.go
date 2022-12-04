@@ -53,6 +53,38 @@ func TestUnionFind_Size(t *testing.T) {
 	assert.Equal(t, []int{0, -5, 1, 1, 1, 1, 1}, uf.parents)
 }
 
+func TestUnionFind_Children(t *testing.T) {
+	uf := NewUnionFind(10)
+	assert.Equal(t, []int{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, uf.Children())
+
+	uf.Union(1, 2)
+	assert.Equal(t, []int{2, 1, 1, 1, 1, 1, 1, 1, 1}, uf.Children())
+
+	uf.Union(5, 6)
+	assert.Equal(t, []int{2, 1, 1, 2, 1, 1, 1, 1}, uf.Children())
+
+	uf.Union(1, 5)
+	assert.Equal(t, []int{4, 1, 1, 1, 1, 1, 1}, uf.Children())
+
+	uf.Union(3, 4)
+	assert.Equal(t, []int{4, 2, 1, 1, 1, 1}, uf.Children())
+
+	uf.Union(9, 10)
+	assert.Equal(t, []int{4, 2, 1, 1, 2}, uf.Children())
+
+	uf.Union(7, 8)
+	assert.Equal(t, []int{4, 2, 2, 2}, uf.Children())
+
+	uf.Union(8, 9)
+	assert.Equal(t, []int{4, 2, 4}, uf.Children())
+
+	uf.Union(3, 10)
+	assert.Equal(t, []int{4, 6}, uf.Children())
+
+	uf.Union(1, 7)
+	assert.Equal(t, []int{10}, uf.Children())
+}
+
 func TestUnion(t *testing.T) {
 	uf := NewUnionFind(10)
 	assert.Equal(t, []int{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}, uf.parents)

@@ -28,6 +28,16 @@ func (uf *UnionFind) Size(a int) int {
 	return -uf.parents[uf.Find(a)]
 }
 
+func (uf *UnionFind) Children() []int {
+	children := make([]int, 0, len(uf.parents))
+	for _, p := range uf.parents[1:] {
+		if p < 0 {
+			children = append(children, -p)
+		}
+	}
+	return children
+}
+
 func (uf *UnionFind) Union(a int, b int) {
 	a = uf.Find(a)
 	b = uf.Find(b)
