@@ -8,6 +8,7 @@ require (
 	github.com/eclipse/paho.mqtt.golang v1.4.1
 	github.com/emitter-io/go v1.0.0
 	github.com/golang/mock v1.6.0
+	github.com/oddg/hungarian-algorithm v0.0.0-20170809162819-9567cbc363de
 	github.com/panjf2000/ants/v2 v2.5.0
 	github.com/spf13/afero v1.8.2
 	github.com/stretchr/testify v1.8.0
