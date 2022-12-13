@@ -2,13 +2,13 @@ package p10800_test
 
 import (
 	"bufio"
+	"bytes"
 	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p10k/p10800"
-	"1d1go/utils"
 )
 
 func TestSolve10869(t *testing.T) {
@@ -25,13 +25,14 @@ func TestSolve10869(t *testing.T) {
 	)
 
 	reader := bufio.NewReader(strings.NewReader(give))
-	writer := utils.NewStringWriter()
+	buf := new(bytes.Buffer)
+	writer := bufio.NewWriter(buf)
 
 	p10800.Solve10869(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)
 
-	got := writer.String()
+	got := buf.String()
 	assert.Equal(t, want, got)
 }

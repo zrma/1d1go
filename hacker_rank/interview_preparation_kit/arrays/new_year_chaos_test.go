@@ -1,12 +1,12 @@
 package arrays
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/utils"
 )
 
 func TestMinimumBribes(t *testing.T) {
@@ -23,7 +23,8 @@ func TestMinimumBribes(t *testing.T) {
 		{[]int32{1, 2, 5, 3, 4, 7, 8, 6}, "4"},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 			funcPrint = func(a ...any) (n int, err error) {
 				return fmt.Fprint(writer, a...)
 			}
@@ -34,7 +35,7 @@ func TestMinimumBribes(t *testing.T) {
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}

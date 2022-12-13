@@ -1,12 +1,12 @@
 package tutorial30daysofcode
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/utils"
 )
 
 func TestLinkedListRemoveDuplicates(t *testing.T) {
@@ -34,7 +34,8 @@ func TestLinkedListRemoveDuplicates(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 			funcPrintln = func(a ...any) (n int, err error) {
 				return fmt.Fprintln(writer, a...)
 			}
@@ -51,7 +52,7 @@ func TestLinkedListRemoveDuplicates(t *testing.T) {
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}

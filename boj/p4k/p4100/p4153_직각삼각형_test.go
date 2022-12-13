@@ -2,13 +2,13 @@ package p4100_test
 
 import (
 	"bufio"
+	"bytes"
 	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p4k/p4100"
-	"1d1go/utils"
 )
 
 func TestSolve4153(t *testing.T) {
@@ -26,13 +26,14 @@ right
 	)
 
 	reader := bufio.NewReader(strings.NewReader(give))
-	writer := utils.NewStringWriter()
+	buf := new(bytes.Buffer)
+	writer := bufio.NewWriter(buf)
 
 	p4100.Solve4153(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)
 
-	got := writer.String()
+	got := buf.String()
 	assert.Equal(t, want, got)
 }

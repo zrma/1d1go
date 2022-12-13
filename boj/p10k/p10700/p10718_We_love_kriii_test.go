@@ -1,12 +1,13 @@
 package p10700_test
 
 import (
+	"bufio"
+	"bytes"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p10k/p10700"
-	"1d1go/utils"
 )
 
 func TestSolve10718(t *testing.T) {
@@ -16,12 +17,13 @@ func TestSolve10718(t *testing.T) {
 	const want = `강한친구 대한육군
 강한친구 대한육군
 `
-	writer := utils.NewStringWriter()
+	buf := new(bytes.Buffer)
+	writer := bufio.NewWriter(buf)
 	p10700.Solve10718(writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)
 
-	got := writer.String()
+	got := buf.String()
 	assert.Equal(t, want, got)
 }

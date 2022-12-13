@@ -2,6 +2,7 @@ package p1900_test
 
 import (
 	"bufio"
+	"bytes"
 	_ "embed"
 	"strings"
 	"testing"
@@ -10,7 +11,6 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p1k/p1900"
-	"1d1go/utils"
 )
 
 func TestSolve1934(t *testing.T) {
@@ -30,14 +30,15 @@ func TestSolve1934(t *testing.T) {
 	)
 
 	reader := bufio.NewReader(strings.NewReader(give))
-	writer := utils.NewStringWriter()
+	buf := new(bytes.Buffer)
+	writer := bufio.NewWriter(buf)
 
 	p1900.Solve1934(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)
 
-	got := writer.String()
+	got := buf.String()
 	assert.Equal(t, want, got)
 }
 
@@ -49,7 +50,8 @@ var p1934want string
 
 func TestSolve1934_Performance(t *testing.T) {
 	reader := bufio.NewReader(strings.NewReader(p1934give))
-	writer := utils.NewStringWriter()
+	buf := new(bytes.Buffer)
+	writer := bufio.NewWriter(buf)
 
 	assert.Eventually(t, func() bool {
 		p1900.Solve1934(reader, writer)
@@ -59,6 +61,6 @@ func TestSolve1934_Performance(t *testing.T) {
 	err := writer.Flush()
 	assert.NoError(t, err)
 
-	got := writer.String()
+	got := buf.String()
 	assert.Equal(t, p1934want, got)
 }

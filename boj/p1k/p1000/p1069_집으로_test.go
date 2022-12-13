@@ -1,14 +1,16 @@
 package p1000_test
 
 import (
-	"1d1go/boj/p1k/p1000"
-	"1d1go/utils"
 	"bufio"
+	"bytes"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"strconv"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p1k/p1000"
 )
 
 func TestSolve1069(t *testing.T) {
@@ -27,7 +29,8 @@ func TestSolve1069(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 
 			p1000.Solve1069(reader, writer)
 
@@ -37,7 +40,7 @@ func TestSolve1069(t *testing.T) {
 			want, err := strconv.ParseFloat(tt.want, 64)
 			assert.NoError(t, err)
 
-			writen := writer.String()
+			writen := buf.String()
 			got, err := strconv.ParseFloat(writen, 64)
 			assert.NoError(t, err)
 

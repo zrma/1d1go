@@ -2,13 +2,13 @@ package p2500_test
 
 import (
 	"bufio"
+	"bytes"
 	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p2k/p2500"
-	"1d1go/utils"
 )
 
 func TestSolve2577(t *testing.T) {
@@ -30,13 +30,14 @@ func TestSolve2577(t *testing.T) {
 `
 	)
 	reader := bufio.NewReader(strings.NewReader(give))
-	writer := utils.NewStringWriter()
+	buf := new(bytes.Buffer)
+	writer := bufio.NewWriter(buf)
 
 	p2500.Solve2577(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)
 
-	got := writer.String()
+	got := buf.String()
 	assert.Equal(t, want, got)
 }

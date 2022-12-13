@@ -2,6 +2,7 @@ package p16900_test
 
 import (
 	"bufio"
+	"bytes"
 	_ "embed"
 	"fmt"
 	"strings"
@@ -10,7 +11,6 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p16k/p16900"
-	"1d1go/utils"
 )
 
 //go:embed test_data/p16928_want.txt
@@ -90,14 +90,15 @@ func TestSolve16928(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 
 			p16900.Solve16928(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}
