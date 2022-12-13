@@ -1,12 +1,12 @@
 package tutorial30daysofcode
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/utils"
 )
 
 func TestBinaryNumbers(t *testing.T) {
@@ -20,7 +20,8 @@ func TestBinaryNumbers(t *testing.T) {
 		{13, "2"},
 	} {
 		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 			funcPrint = func(a ...any) (n int, err error) {
 				return fmt.Fprint(writer, a...)
 			}
@@ -31,7 +32,7 @@ func TestBinaryNumbers(t *testing.T) {
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}

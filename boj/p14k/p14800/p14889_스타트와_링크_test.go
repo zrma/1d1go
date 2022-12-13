@@ -2,6 +2,7 @@ package p14800_test
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"strings"
 	"testing"
@@ -10,7 +11,6 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p14k/p14800"
-	"1d1go/utils"
 )
 
 func TestSolve14889(t *testing.T) {
@@ -73,7 +73,8 @@ func TestSolve14889(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 
 			assert.Eventually(t, func() bool {
 				p14800.Solve14889(reader, writer)
@@ -81,7 +82,7 @@ func TestSolve14889(t *testing.T) {
 				err := writer.Flush()
 				assert.NoError(t, err)
 
-				got := writer.String()
+				got := buf.String()
 				return assert.Equal(t, tt.want, got)
 			}, time.Second, time.Millisecond*100, "시간 초과")
 		})

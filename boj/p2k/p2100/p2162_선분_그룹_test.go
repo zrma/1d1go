@@ -1,13 +1,15 @@
 package p2100_test
 
 import (
-	"1d1go/boj/p2k/p2100"
-	"1d1go/utils"
 	"bufio"
+	"bytes"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p2k/p2100"
 )
 
 func TestSolve2162(t *testing.T) {
@@ -38,14 +40,15 @@ func TestSolve2162(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 
 			p2100.Solve2162(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}

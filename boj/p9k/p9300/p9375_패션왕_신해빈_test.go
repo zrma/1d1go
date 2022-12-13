@@ -2,13 +2,13 @@ package p9300_test
 
 import (
 	"bufio"
+	"bytes"
 	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p9k/p9300"
-	"1d1go/utils"
 )
 
 func TestSolve9375(t *testing.T) {
@@ -31,13 +31,14 @@ makeup face`
 	)
 
 	reader := bufio.NewReader(strings.NewReader(give))
-	writer := utils.NewStringWriter()
+	buf := new(bytes.Buffer)
+	writer := bufio.NewWriter(buf)
 
 	p9300.Solve9375(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)
 
-	got := writer.String()
+	got := buf.String()
 	assert.Equal(t, want, got)
 }

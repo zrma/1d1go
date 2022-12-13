@@ -1,9 +1,10 @@
 package p2100
 
 import (
+	"fmt"
+
 	"1d1go/boj/p17k/p17300"
 	"1d1go/utils/ds"
-	"fmt"
 )
 
 func Solve2162(reader Reader, writer Writer) {

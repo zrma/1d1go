@@ -11,7 +11,7 @@ func Solve1463(reader Reader, writer Writer) {
 	_, _ = fmt.Fscan(reader, &n)
 
 	dp := MoveToOne(n)
-	
+
 	_, _ = fmt.Fprint(writer, dp[n])
 }
 

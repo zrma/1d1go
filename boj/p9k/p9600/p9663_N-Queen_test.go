@@ -2,6 +2,7 @@ package p9600_test
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"strings"
 	"testing"
@@ -9,7 +10,6 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p9k/p9600"
-	"1d1go/utils"
 )
 
 func TestSolve9663(t *testing.T) {
@@ -34,14 +34,15 @@ func TestSolve9663(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 
 			p9600.Solve9663(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}

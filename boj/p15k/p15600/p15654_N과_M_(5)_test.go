@@ -1,13 +1,15 @@
 package p15600_test
 
 import (
-	"1d1go/boj/p15k/p15600"
-	"1d1go/utils"
 	"bufio"
+	"bytes"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p15k/p15600"
 )
 
 func TestSolve15654(t *testing.T) {
@@ -74,14 +76,15 @@ func TestSolve15654(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 
 			p15600.Solve15654(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}

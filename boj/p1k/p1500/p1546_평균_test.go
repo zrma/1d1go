@@ -2,6 +2,7 @@ package p1500_test
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"strconv"
 	"strings"
@@ -10,7 +11,6 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p1k/p1500"
-	"1d1go/utils"
 )
 
 func TestSolve1546(t *testing.T) {
@@ -63,7 +63,8 @@ func TestSolve1546(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 
 			p1500.Solve1546(reader, writer)
 
@@ -73,7 +74,7 @@ func TestSolve1546(t *testing.T) {
 			want, err := strconv.ParseFloat(tt.want, 64)
 			assert.NoError(t, err)
 
-			writen := writer.String()
+			writen := buf.String()
 			got, err := strconv.ParseFloat(writen, 64)
 			assert.NoError(t, err)
 

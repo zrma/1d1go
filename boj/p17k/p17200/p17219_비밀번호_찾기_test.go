@@ -1,13 +1,15 @@
 package p17200_test
 
 import (
-	"1d1go/boj/p17k/p17200"
-	"1d1go/utils"
 	"bufio"
+	"bytes"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p17k/p17200"
 )
 
 func TestSolve17219(t *testing.T) {
@@ -49,14 +51,15 @@ ADREAMER
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 
 			p17200.Solve17219(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}

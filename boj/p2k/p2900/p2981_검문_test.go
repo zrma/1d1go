@@ -2,6 +2,7 @@ package p2900_test
 
 import (
 	"bufio"
+	"bytes"
 	_ "embed"
 	"fmt"
 	"strings"
@@ -11,7 +12,6 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p2k/p2900"
-	"1d1go/utils"
 )
 
 func TestSolve2981(t *testing.T) {
@@ -47,14 +47,15 @@ func TestSolve2981(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 
 			p2900.Solve2981(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -68,7 +69,8 @@ var p2981want string
 
 func TestSolve2981_Performance(t *testing.T) {
 	reader := bufio.NewReader(strings.NewReader(p2981give))
-	writer := utils.NewStringWriter()
+	buf := new(bytes.Buffer)
+	writer := bufio.NewWriter(buf)
 
 	assert.Eventually(t, func() bool {
 		p2900.Solve2981(reader, writer)
@@ -78,7 +80,7 @@ func TestSolve2981_Performance(t *testing.T) {
 	err := writer.Flush()
 	assert.NoError(t, err)
 
-	got := writer.String()
+	got := buf.String()
 	got = strings.TrimRight(got, " ") + "\n"
 	assert.Equal(t, p2981want, got)
 }

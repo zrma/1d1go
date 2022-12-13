@@ -1,12 +1,12 @@
 package codesprint5
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/utils"
 )
 
 func TestExceedingTheSpeedLimit(t *testing.T) {
@@ -22,7 +22,8 @@ func TestExceedingTheSpeedLimit(t *testing.T) {
 			85, "0 No punishment"},
 	} {
 		t.Run(fmt.Sprintf("%d", tt.give), func(t *testing.T) {
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 			funcPrintf = func(format string, a ...any) (n int, err error) {
 				return fmt.Fprintf(writer, format, a...)
 			}
@@ -33,7 +34,7 @@ func TestExceedingTheSpeedLimit(t *testing.T) {
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}

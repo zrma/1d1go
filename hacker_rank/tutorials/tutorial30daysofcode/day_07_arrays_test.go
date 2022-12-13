@@ -1,18 +1,19 @@
 package tutorial30daysofcode
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/utils"
 )
 
 func TestPrintReverse(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-arrays/problem")
 
-	writer := utils.NewStringWriter()
+	buf := new(bytes.Buffer)
+	writer := bufio.NewWriter(buf)
 	funcPrintf = func(format string, a ...any) (n int, err error) {
 		return fmt.Fprintf(writer, format, a...)
 	}
@@ -25,6 +26,6 @@ func TestPrintReverse(t *testing.T) {
 	err := writer.Flush()
 	assert.NoError(t, err)
 
-	got := writer.String()
+	got := buf.String()
 	assert.Equal(t, want, got)
 }

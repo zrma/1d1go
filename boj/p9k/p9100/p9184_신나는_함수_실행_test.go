@@ -2,6 +2,7 @@ package p9100_test
 
 import (
 	"bufio"
+	"bytes"
 	"strings"
 	"testing"
 	"time"
@@ -9,7 +10,6 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p9k/p9100"
-	"1d1go/utils"
 )
 
 func TestSolve9184(t *testing.T) {
@@ -37,7 +37,8 @@ w(19, 20, 21) = 1048576
 	)
 
 	reader := bufio.NewReader(strings.NewReader(give))
-	writer := utils.NewStringWriter()
+	buf := new(bytes.Buffer)
+	writer := bufio.NewWriter(buf)
 
 	assert.Eventually(t, func() bool {
 		p9100.Solve9184(reader, writer)
@@ -45,7 +46,7 @@ w(19, 20, 21) = 1048576
 		err := writer.Flush()
 		assert.NoError(t, err)
 
-		got := writer.String()
+		got := buf.String()
 		return assert.Equal(t, want, got)
 	}, time.Second, time.Millisecond*100, "시간 초과")
 }

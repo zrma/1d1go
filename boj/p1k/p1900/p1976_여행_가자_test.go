@@ -2,6 +2,7 @@ package p1900_test
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"strings"
 	"testing"
@@ -9,7 +10,6 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p1k/p1900"
-	"1d1go/utils"
 )
 
 func TestSolve1976(t *testing.T) {
@@ -55,40 +55,43 @@ func TestSolve1976(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d/UnionFind", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 
 			p1900.Solve1976(reader, writer, p1900.Solve1976UnionFind)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 
 		t.Run(fmt.Sprintf("%d/DFS", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 
 			p1900.Solve1976(reader, writer, p1900.Solve1976DFS)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 
 		t.Run(fmt.Sprintf("%d/BFS", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 
 			p1900.Solve1976(reader, writer, p1900.Solve1976BFS)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}

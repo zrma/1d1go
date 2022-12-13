@@ -2,6 +2,7 @@ package p2500_test
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"strings"
 	"testing"
@@ -10,7 +11,6 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p2k/p2500"
-	"1d1go/utils"
 )
 
 func TestSolve2580(t *testing.T) {
@@ -87,7 +87,8 @@ func TestSolve2580(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 
 			assert.Eventually(t, func() bool {
 				p2500.Solve2580(reader, writer)
@@ -95,7 +96,7 @@ func TestSolve2580(t *testing.T) {
 				err := writer.Flush()
 				assert.NoError(t, err)
 
-				got := writer.String()
+				got := buf.String()
 				return assert.Equal(t, tt.want, got)
 			}, time.Second, time.Millisecond*100, "시간 초과")
 		})

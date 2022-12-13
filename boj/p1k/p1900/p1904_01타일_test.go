@@ -2,6 +2,7 @@ package p1900_test
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"strings"
 	"testing"
@@ -10,7 +11,6 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"1d1go/boj/p1k/p1900"
-	"1d1go/utils"
 )
 
 func TestSolve1904(t *testing.T) {
@@ -30,7 +30,8 @@ func TestSolve1904(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 
 			assert.Eventually(t, func() bool {
 				p1900.Solve1904(reader, writer)
@@ -38,7 +39,7 @@ func TestSolve1904(t *testing.T) {
 				err := writer.Flush()
 				assert.NoError(t, err)
 
-				got := writer.String()
+				got := buf.String()
 				return assert.Equal(t, tt.want, got)
 			}, time.Second, time.Millisecond*100, "시간 초과")
 		})

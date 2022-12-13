@@ -1,9 +1,10 @@
 package p1000
 
 import (
-	"1d1go/utils/integer"
 	"fmt"
 	"math"
+
+	"1d1go/utils/integer"
 )
 
 func Solve1069(reader Reader, writer Writer) {

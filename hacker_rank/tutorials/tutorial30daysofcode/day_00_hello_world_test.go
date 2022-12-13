@@ -1,18 +1,19 @@
 package tutorial30daysofcode
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/utils"
 )
 
 func TestHelloWorld(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-hello-world/problem")
 
-	writer := utils.NewStringWriter()
+	buf := new(bytes.Buffer)
+	writer := bufio.NewWriter(buf)
 	funcPrintln = func(a ...any) (n int, err error) {
 		return fmt.Fprintln(writer, a...)
 	}
@@ -29,6 +30,6 @@ Welcome to 30 Days of Code!
 	err := writer.Flush()
 	assert.NoError(t, err)
 
-	got := writer.String()
+	got := buf.String()
 	assert.Equal(t, want, got)
 }

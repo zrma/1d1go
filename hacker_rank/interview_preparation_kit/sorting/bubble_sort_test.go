@@ -2,6 +2,7 @@ package sorting
 
 import (
 	"bufio"
+	"bytes"
 	"encoding/csv"
 	"fmt"
 	"os"
@@ -11,8 +12,6 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/utils"
 )
 
 func TestCountSwaps(t *testing.T) {
@@ -45,7 +44,8 @@ Last Element: 3
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 			funcPrintf = func(format string, a ...any) (n int, err error) {
 				return fmt.Fprintf(writer, format, a...)
 			}
@@ -56,7 +56,7 @@ Last Element: 3
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}
@@ -84,7 +84,8 @@ func TestCountSwapsPerformance(t *testing.T) {
 
 	assert.Len(t, arr, 528)
 
-	writer := utils.NewStringWriter()
+	buf := new(bytes.Buffer)
+	writer := bufio.NewWriter(buf)
 	funcPrintf = func(format string, a ...any) (n int, err error) {
 		return fmt.Fprintf(writer, format, a...)
 	}
@@ -102,7 +103,7 @@ Last Element: 1994569
 		err := writer.Flush()
 		assert.NoError(t, err)
 
-		got := writer.String()
+		got := buf.String()
 		return assert.Equal(t, want, got)
 	}, time.Second, time.Millisecond*100, "시간 초과")
 }

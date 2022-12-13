@@ -1,12 +1,12 @@
 package tutorial30daysofcode
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/utils"
 )
 
 func TestMoreException(t *testing.T) {
@@ -22,7 +22,8 @@ func TestMoreException(t *testing.T) {
 		{-1, 3, "n and p should be non-negative"},
 	} {
 		t.Run(fmt.Sprintf("%d %d", tt.n, tt.p), func(t *testing.T) {
-			writer := utils.NewStringWriter()
+			buf := new(bytes.Buffer)
+			writer := bufio.NewWriter(buf)
 			funcPrint = func(a ...any) (n int, err error) {
 				return fmt.Fprint(writer, a...)
 			}
@@ -33,7 +34,7 @@ func TestMoreException(t *testing.T) {
 			err := writer.Flush()
 			assert.NoError(t, err)
 
-			got := writer.String()
+			got := buf.String()
 			assert.Equal(t, tt.want, got)
 		})
 	}
