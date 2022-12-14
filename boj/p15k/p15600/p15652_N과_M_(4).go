@@ -9,10 +9,10 @@ func Solve15652(reader Reader, writer Writer) {
 	_, _ = fmt.Fscan(reader, &n, &m)
 
 	arr := make([]int, 0, m)
-	combinationWithRepetitionDFS(arr, 1, n, m, writer)
+	combinationWithRepetitionDFS15652(arr, 1, n, m, writer)
 }
 
-func combinationWithRepetitionDFS(arr []int, depth, n, m int, writer Writer) {
+func combinationWithRepetitionDFS15652(arr []int, depth, n, m int, writer Writer) {
 	if len(arr) == m {
 		for i, v := range arr {
 			_, _ = fmt.Fprint(writer, v)
@@ -26,7 +26,7 @@ func combinationWithRepetitionDFS(arr []int, depth, n, m int, writer Writer) {
 
 	for i := depth - 1; i < n; i++ {
 		arr = append(arr, i+1)
-		combinationWithRepetitionDFS(arr, i+1, n, m, writer)
+		combinationWithRepetitionDFS15652(arr, i+1, n, m, writer)
 		arr = arr[:len(arr)-1]
 	}
 }
