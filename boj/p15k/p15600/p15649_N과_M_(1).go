@@ -11,10 +11,10 @@ func Solve15649(reader Reader, writer Writer) {
 	visited := make([]bool, n)
 	arr := make([]int, m)
 
-	permutationDFS(arr, visited, 0, n, m, writer)
+	permutationDFS15649(arr, visited, 0, n, m, writer)
 }
 
-func permutationDFS(arr []int, visited []bool, depth, n, m int, writer Writer) {
+func permutationDFS15649(arr []int, visited []bool, depth, n, m int, writer Writer) {
 	if depth == m {
 		for i, v := range arr {
 			_, _ = fmt.Fprint(writer, v)
@@ -33,7 +33,7 @@ func permutationDFS(arr []int, visited []bool, depth, n, m int, writer Writer) {
 
 		visited[i] = true
 		arr[depth] = i + 1
-		permutationDFS(arr, visited, depth+1, n, m, writer)
+		permutationDFS15649(arr, visited, depth+1, n, m, writer)
 		visited[i] = false
 	}
 }
