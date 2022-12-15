@@ -1,10 +1,30 @@
 package integer
 
-import (
-	"golang.org/x/exp/constraints"
-)
+type Signed interface {
+	~int | ~int8 | ~int16 | ~int32 | ~int64
+}
 
-func Min[T constraints.Integer](arr ...T) T {
+type Unsigned interface {
+	~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64 | ~uintptr
+}
+
+type Integer interface {
+	Signed | Unsigned
+}
+
+type Float interface {
+	~float32 | ~float64
+}
+
+type Complex interface {
+	~complex64 | ~complex128
+}
+
+type Ordered interface {
+	Integer | Float | ~string
+}
+
+func Min[T Integer](arr ...T) T {
 	if len(arr) == 0 {
 		var zero T
 		return zero
@@ -18,7 +38,7 @@ func Min[T constraints.Integer](arr ...T) T {
 	return min
 }
 
-func Max[T constraints.Integer](arr ...T) T {
+func Max[T Integer](arr ...T) T {
 	if len(arr) == 0 {
 		var zero T
 		return zero
@@ -32,7 +52,7 @@ func Max[T constraints.Integer](arr ...T) T {
 	return max
 }
 
-func Pow[T constraints.Integer](n, p T) T {
+func Pow[T Integer](n, p T) T {
 	if n == 0 {
 		return 0
 	}
