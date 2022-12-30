@@ -2,7 +2,7 @@ package p25000_test
 
 import (
 	"bufio"
-	"bytes"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -22,7 +22,7 @@ func TestSolve25083(t *testing.T) {
 			"      |"
 	)
 
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
 	p25000.Solve25083(writer)

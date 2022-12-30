@@ -2,7 +2,6 @@ package sorting
 
 import (
 	"bufio"
-	"bytes"
 	"encoding/csv"
 	"fmt"
 	"os"
@@ -44,7 +43,7 @@ Last Element: 3
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 			funcPrintf = func(format string, a ...any) (n int, err error) {
 				return fmt.Fprintf(writer, format, a...)
@@ -84,7 +83,7 @@ func TestCountSwapsPerformance(t *testing.T) {
 
 	assert.Len(t, arr, 528)
 
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 	funcPrintf = func(format string, a ...any) (n int, err error) {
 		return fmt.Fprintf(writer, format, a...)

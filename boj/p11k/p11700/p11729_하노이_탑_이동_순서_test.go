@@ -2,7 +2,6 @@ package p11700_test
 
 import (
 	"bufio"
-	"bytes"
 	"strings"
 	"testing"
 
@@ -28,7 +27,7 @@ func TestSolve11729(t *testing.T) {
 	)
 
 	reader := bufio.NewReader(strings.NewReader(give))
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
 	p11700.Solve11729(reader, writer)

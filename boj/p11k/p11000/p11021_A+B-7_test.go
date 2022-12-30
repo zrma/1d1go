@@ -2,7 +2,6 @@ package p11000_test
 
 import (
 	"bufio"
-	"bytes"
 	"strings"
 	"testing"
 
@@ -30,7 +29,7 @@ Case #5: 7
 	)
 
 	reader := bufio.NewReader(strings.NewReader(give))
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
 	p11000.Solve11021(reader, writer)

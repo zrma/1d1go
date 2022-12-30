@@ -2,8 +2,8 @@ package p4400_test
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -35,8 +35,8 @@ Fido`,
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			reader := bufio.NewReader(bytes.NewBufferString(tt.give))
-			buf := new(bytes.Buffer)
+			reader := bufio.NewReader(strings.NewReader(tt.give))
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
 			p4400.Solve4470(reader, writer)

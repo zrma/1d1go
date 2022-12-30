@@ -2,8 +2,8 @@ package tutorial30daysofcode
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -12,7 +12,7 @@ import (
 func TestAbstractClasses(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-abstract-classes/problem")
 
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 	funcPrintln = func(a ...any) (n int, err error) {
 		return fmt.Fprintln(writer, a...)

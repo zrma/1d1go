@@ -2,8 +2,8 @@ package tutorial30daysofcode
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -12,7 +12,7 @@ import (
 func TestDictionariesAndMaps(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-dictionaries-and-maps/problem")
 
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 	funcPrintf = func(format string, a ...any) (n int, err error) {
 		return fmt.Fprintf(writer, format, a...)

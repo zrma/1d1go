@@ -2,7 +2,6 @@ package p9400_test
 
 import (
 	"bufio"
-	"bytes"
 	"strings"
 	"testing"
 
@@ -42,7 +41,7 @@ func TestSolve9461(t *testing.T) {
 	)
 
 	reader := bufio.NewReader(strings.NewReader(give))
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
 	p9400.Solve9461(reader, writer)

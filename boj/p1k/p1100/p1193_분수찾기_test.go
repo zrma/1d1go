@@ -2,7 +2,6 @@ package p1100_test
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
 	"strings"
 	"testing"
@@ -44,7 +43,7 @@ func TestSolve1193(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
 			p1100.Solve1193(reader, writer)

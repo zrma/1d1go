@@ -2,8 +2,8 @@ package day1
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -13,7 +13,7 @@ func TestPlusMinus(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/plus-minus/problem")
 	t.Log("https://www.hackerrank.com/challenges/one-week-preparation-kit-plus-minus/problem")
 
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 	funcPrintf = func(format string, a ...any) (n int, err error) {
 		return fmt.Fprintf(writer, format, a...)

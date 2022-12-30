@@ -2,8 +2,8 @@ package tutorial30daysofcode
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -34,7 +34,7 @@ func TestLinkedListRemoveDuplicates(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 			funcPrintln = func(a ...any) (n int, err error) {
 				return fmt.Fprintln(writer, a...)

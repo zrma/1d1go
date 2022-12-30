@@ -2,7 +2,6 @@ package p1900_test
 
 import (
 	"bufio"
-	"bytes"
 	_ "embed"
 	"strings"
 	"testing"
@@ -30,7 +29,7 @@ func TestSolve1934(t *testing.T) {
 	)
 
 	reader := bufio.NewReader(strings.NewReader(give))
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
 	p1900.Solve1934(reader, writer)
@@ -50,7 +49,7 @@ var p1934want string
 
 func TestSolve1934_Performance(t *testing.T) {
 	reader := bufio.NewReader(strings.NewReader(p1934give))
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
 	assert.Eventually(t, func() bool {

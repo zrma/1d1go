@@ -2,7 +2,6 @@ package p3200_test
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
 	"strings"
 	"testing"
@@ -46,7 +45,7 @@ func TestSolve3273(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d/counting", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
 			p3200.Solve3273(reader, writer)
@@ -60,7 +59,7 @@ func TestSolve3273(t *testing.T) {
 
 		t.Run(fmt.Sprintf("%d/two point", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
 			p3200.Solve3273WithTwoPoints(reader, writer)

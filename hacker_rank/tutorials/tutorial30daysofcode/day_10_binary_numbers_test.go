@@ -2,8 +2,8 @@ package tutorial30daysofcode
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -20,7 +20,7 @@ func TestBinaryNumbers(t *testing.T) {
 		{13, "2"},
 	} {
 		t.Run(fmt.Sprintf("%d", tt.n), func(t *testing.T) {
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 			funcPrint = func(a ...any) (n int, err error) {
 				return fmt.Fprint(writer, a...)

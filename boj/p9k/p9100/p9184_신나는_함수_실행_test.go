@@ -2,7 +2,6 @@ package p9100_test
 
 import (
 	"bufio"
-	"bytes"
 	"strings"
 	"testing"
 	"time"
@@ -37,7 +36,7 @@ w(19, 20, 21) = 1048576
 	)
 
 	reader := bufio.NewReader(strings.NewReader(give))
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
 	assert.Eventually(t, func() bool {

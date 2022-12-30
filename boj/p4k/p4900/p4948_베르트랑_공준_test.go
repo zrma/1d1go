@@ -2,7 +2,6 @@ package p4900_test
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
 	"strings"
 	"testing"
@@ -50,7 +49,7 @@ invalid`,
 	} {
 		t.Run(fmt.Sprintf("test-%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
 			p4900.Solve4948(reader, writer)

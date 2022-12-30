@@ -2,7 +2,6 @@ package p10900_test
 
 import (
 	"bufio"
-	"bytes"
 	"strings"
 	"testing"
 
@@ -40,7 +39,7 @@ func TestSolve10989(t *testing.T) {
 	)
 
 	reader := bufio.NewReader(strings.NewReader(give))
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
 	p10900.Solve10989(reader, writer)

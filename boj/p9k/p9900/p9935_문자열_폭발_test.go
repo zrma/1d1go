@@ -2,7 +2,6 @@ package p9900_test
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
 	"strings"
 	"testing"
@@ -33,7 +32,7 @@ C4`,
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
 			p9900.Solve9935(reader, writer)

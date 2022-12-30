@@ -2,8 +2,8 @@ package tutorial30daysofcode
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -22,7 +22,7 @@ func TestMoreException(t *testing.T) {
 		{-1, 3, "n and p should be non-negative"},
 	} {
 		t.Run(fmt.Sprintf("%d %d", tt.n, tt.p), func(t *testing.T) {
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 			funcPrint = func(a ...any) (n int, err error) {
 				return fmt.Fprint(writer, a...)

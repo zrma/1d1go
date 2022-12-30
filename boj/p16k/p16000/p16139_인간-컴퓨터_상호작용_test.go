@@ -2,7 +2,6 @@ package p16000_test
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
 	"strings"
 	"testing"
@@ -42,7 +41,7 @@ a 0 0`,
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
 			p16000.Solve16139(reader, writer)

@@ -2,7 +2,6 @@ package p1300_test
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
 	"strings"
 	"testing"
@@ -35,7 +34,7 @@ func TestSolve1389(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("%d/FloydWarshall", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
 			p1300.Solve1389(reader, writer)
@@ -49,7 +48,7 @@ func TestSolve1389(t *testing.T) {
 
 		t.Run(fmt.Sprintf("%d/bfs", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
 			p1300.Solve1389WithBFS(reader, writer)

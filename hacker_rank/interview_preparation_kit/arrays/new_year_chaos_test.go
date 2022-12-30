@@ -2,8 +2,8 @@ package arrays
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -23,7 +23,7 @@ func TestMinimumBribes(t *testing.T) {
 		{[]int32{1, 2, 5, 3, 4, 7, 8, 6}, "4"},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 			funcPrint = func(a ...any) (n int, err error) {
 				return fmt.Fprint(writer, a...)

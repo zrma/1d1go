@@ -2,7 +2,7 @@ package p2500_test
 
 import (
 	"bufio"
-	"bytes"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +14,7 @@ func TestSolve2557(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/2557")
 
 	const want = `Hello World!`
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
 	p2500.Solve2557(writer)

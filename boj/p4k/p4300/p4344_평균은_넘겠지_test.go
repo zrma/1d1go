@@ -2,7 +2,6 @@ package p4300_test
 
 import (
 	"bufio"
-	"bytes"
 	"strings"
 	"testing"
 
@@ -29,7 +28,7 @@ func TestSolve4344(t *testing.T) {
 `
 	)
 	reader := bufio.NewReader(strings.NewReader(give))
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
 	p4300.Solve4344(reader, writer)
