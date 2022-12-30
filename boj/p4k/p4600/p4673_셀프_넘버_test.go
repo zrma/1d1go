@@ -2,8 +2,8 @@ package p4600_test
 
 import (
 	"bufio"
-	"bytes"
 	_ "embed"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -17,7 +17,7 @@ var p4673want string
 func TestSolve4673(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/4673")
 
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 	p4600.Solve4673(writer)
 

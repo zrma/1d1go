@@ -2,8 +2,8 @@ package tutorial30daysofcode
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -12,7 +12,7 @@ import (
 func TestOperators(t *testing.T) {
 	t.Log("https://www.hackerrank.com/challenges/30-operators/problem")
 
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 	funcPrint = func(a ...any) (n int, err error) {
 		return fmt.Fprint(writer, a...)

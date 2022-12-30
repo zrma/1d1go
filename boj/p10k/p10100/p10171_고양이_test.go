@@ -2,7 +2,7 @@ package p10100_test
 
 import (
 	"bufio"
-	"bytes"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -18,7 +18,7 @@ func TestSolve10171(t *testing.T) {
 (  /  )
  \(__)|`
 
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
 	p10100.Solve10171(writer)

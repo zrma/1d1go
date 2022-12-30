@@ -2,7 +2,6 @@ package p2500_test
 
 import (
 	"bufio"
-	"bytes"
 	"strings"
 	"testing"
 
@@ -22,7 +21,7 @@ func TestSolve2588(t *testing.T) {
 181720
 `
 	reader := bufio.NewReader(strings.NewReader(give))
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
 	p2500.Solve2588(reader, writer)

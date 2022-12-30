@@ -2,7 +2,6 @@ package p4800_test
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
 	"strings"
 	"testing"
@@ -68,7 +67,7 @@ Case 3: No trees.
 	} {
 		t.Run(fmt.Sprintf("%d/UnionFind", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
 			p4800.Solve4803(reader, writer, p4800.Solve4803UnionFind)
@@ -82,7 +81,7 @@ Case 3: No trees.
 
 		t.Run(fmt.Sprintf("%d/DFS", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
 			p4800.Solve4803(reader, writer, p4800.Solve4803DFS)
@@ -96,7 +95,7 @@ Case 3: No trees.
 
 		t.Run(fmt.Sprintf("%d/BFS", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
-			buf := new(bytes.Buffer)
+			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
 			p4800.Solve4803(reader, writer, p4800.Solve4803BFS)

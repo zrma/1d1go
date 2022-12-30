@@ -2,7 +2,6 @@ package p10900_test
 
 import (
 	"bufio"
-	"bytes"
 	"strings"
 	"testing"
 
@@ -29,7 +28,7 @@ func TestSolve10952(t *testing.T) {
 `
 	)
 	reader := bufio.NewReader(strings.NewReader(give))
-	buf := new(bytes.Buffer)
+	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
 	p10900.Solve10952(reader, writer)
@@ -45,7 +44,7 @@ func TestSolve10952_StopAbnormally(t *testing.T) {
 	t.Run("first scan returns false", func(t *testing.T) {
 		const give = ``
 		reader := bufio.NewReader(strings.NewReader(give))
-		buf := new(bytes.Buffer)
+		buf := new(strings.Builder)
 		writer := bufio.NewWriter(buf)
 
 		p10900.Solve10952(reader, writer)
@@ -60,7 +59,7 @@ func TestSolve10952_StopAbnormally(t *testing.T) {
 	t.Run("second scan returns false", func(t *testing.T) {
 		const give = `1`
 		reader := bufio.NewReader(strings.NewReader(give))
-		buf := new(bytes.Buffer)
+		buf := new(strings.Builder)
 		writer := bufio.NewWriter(buf)
 
 		p10900.Solve10952(reader, writer)
