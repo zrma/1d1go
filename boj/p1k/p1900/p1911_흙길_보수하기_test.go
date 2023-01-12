@@ -1,12 +1,14 @@
 package p1900_test
 
 import (
-	"1d1go/boj/p1k/p1900"
 	"bufio"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+
+	"1d1go/boj/p1k/p1900"
 )
 
 func TestSolve1911(t *testing.T) {
@@ -22,6 +24,13 @@ func TestSolve1911(t *testing.T) {
 13 17
 8 12`,
 			"5",
+		},
+		{
+			`3 1
+1 3
+2 3
+2 2`,
+			"2",
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
