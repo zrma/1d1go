@@ -18,6 +18,7 @@ func TestSolve16953(t *testing.T) {
 		give string
 		want string
 	}{
+		{"2 3", "-1"},
 		{"2 162", "5"},
 		{"4 42", "-1"},
 		{"100 40021", "5"},
