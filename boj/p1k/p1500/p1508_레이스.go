@@ -18,7 +18,7 @@ func Solve1508(reader Reader, writer Writer) {
 	lo := 0
 	hi := n
 	for lo <= hi {
-		term := (lo + hi) / 2
+		term := lo + (hi-lo)/2
 
 		layout := "1"
 		pick := 1

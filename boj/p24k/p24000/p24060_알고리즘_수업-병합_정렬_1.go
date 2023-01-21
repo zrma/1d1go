@@ -60,7 +60,7 @@ func Solve24060(reader Reader, writer Writer) {
 		if p >= r {
 			return
 		}
-		q := (p + r) / 2
+		q := p + (r-p)/2
 		mergeSort(p, q)
 		mergeSort(q+1, r)
 		merge(p, q, r)

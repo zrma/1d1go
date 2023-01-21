@@ -35,6 +35,6 @@ func solve1802(s string, start, end int) bool {
 		hi--
 	}
 
-	mid := (start + end) / 2
+	mid := start + (end-start)/2
 	return solve1802(s, start, mid-1) && solve1802(s, mid+1, end)
 }

@@ -11,7 +11,7 @@ func Solve4299(reader Reader, writer Writer) {
 		return
 	}
 
-	a := (sum + diff) / 2
+	a := sum + (diff-sum)/2
 	b := (sum - diff) / 2
 
 	if a+b != sum || a-b != diff {
