@@ -31,7 +31,7 @@ func findMaxArea(left, right int) int64 {
 	if left == right {
 		return heights[left]
 	}
-	mid := (left + right) / 2
+	mid := left + (right-left)/2
 	res := integer.Max(findMaxArea(left, mid), findMaxArea(mid+1, right))
 
 	lo := mid

@@ -13,7 +13,7 @@ func Solve1300(reader Reader, writer Writer) {
 	res := int64(0)
 
 	for lo <= hi {
-		mid := (lo + hi) / 2
+		mid := lo + (hi-lo)/2
 
 		cnt := int64(0)
 		for i := int64(1); i <= n; i++ {

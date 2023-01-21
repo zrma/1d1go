@@ -23,7 +23,7 @@ func Solve2110(reader Reader, writer Writer) {
 	var res int64
 
 	for lo <= hi {
-		mid := (lo + hi) / 2
+		mid := lo + (hi-lo)/2
 
 		cnt := int64(1)
 		prev := arr[0]

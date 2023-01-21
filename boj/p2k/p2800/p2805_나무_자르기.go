@@ -20,7 +20,7 @@ func Solve2805(reader Reader, writer Writer) {
 	var res int64
 
 	for lo <= hi {
-		mid := (lo + hi) / 2
+		mid := lo + (hi-lo)/2
 
 		var tot int64
 		for _, v := range arr {

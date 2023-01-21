@@ -107,9 +107,9 @@ func (a arr) getVal(idx int) int {
 
 func findBoundary(nums1, nums2 []int, totalCount int) (leftMax, rightMin side) {
 	// range of binary search target in nums1
-	low, high := 0, len(nums1)
+	lo, hi := 0, len(nums1)
 
-	for low <= high {
+	for lo <= hi {
 		// nums1:  1 2 4 | 5 6 7
 		// nums2:  3 5   | 8 9
 		//
@@ -122,7 +122,7 @@ func findBoundary(nums1, nums2 []int, totalCount int) (leftMax, rightMin side) {
 		// 좌측의 nums1에서 먼저 3개를 가져가면 nums2는 2개만 가져갈 수 있음
 		//
 		// it makes both side(left and right) being equal count
-		cut1 := (low + high) / 2
+		cut1 := lo + (hi-lo)/2
 		cut2 := (totalCount+1)/2 - cut1
 
 		leftMax.nums1 = arr(nums1).getVal(cut1 - 1)
@@ -135,9 +135,9 @@ func findBoundary(nums1, nums2 []int, totalCount int) (leftMax, rightMin side) {
 		}
 
 		if leftMax.nums1 >= rightMin.nums2 {
-			high = cut1 - 1
+			hi = cut1 - 1
 		} else {
-			low = cut1 + 1
+			lo = cut1 + 1
 		}
 	}
 	return
@@ -154,7 +154,7 @@ func findMedianSortedArraysWithBinSearch(nums1, nums2 []int) float64 {
 	leftMaxVal := math.Max(float64(leftMax.nums1), float64(leftMax.nums2))
 	if totalCount%2 == 0 {
 		rightMinVal := math.Min(float64(rightMin.nums1), float64(rightMin.nums2))
-		return (leftMaxVal + rightMinVal) / 2
+		return leftMaxVal + (rightMinVal-leftMaxVal)/2
 	} else {
 		return leftMaxVal
 	}
@@ -167,7 +167,7 @@ func findMedianSortedArraysWithBinSearchSolution(nums1, nums2 []int) float64 {
 	half := (len(nums1) + len(nums2) - 1) / 2
 
 	l, r := 0, len(nums1)
-	i := (l + r) / 2
+	i := l + (r-l)/2
 	j := half - i
 	for l < r {
 		if nums1[i] < nums2[j] {
@@ -177,7 +177,7 @@ func findMedianSortedArraysWithBinSearchSolution(nums1, nums2 []int) float64 {
 		} else {
 			break
 		}
-		i = (l + r) / 2
+		i = l + (r-l)/2
 		j = half - i
 	}
 
@@ -199,5 +199,5 @@ func findMedianSortedArraysWithBinSearchSolution(nums1, nums2 []int) float64 {
 	} else {
 		medianRight = math.Min(float64(nums1[i]), float64(nums2[j+1]))
 	}
-	return (medianLeft + medianRight) / 2
+	return medianLeft + (medianRight-medianLeft)/2
 }
