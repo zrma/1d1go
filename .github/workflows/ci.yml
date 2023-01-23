@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        go: [ '1.19', '1.19.2' ]
+        go: [ '1.19', '1.19.5' ]
     name: action test
     steps:
       - uses: actions/checkout@v3
@@ -42,9 +42,9 @@ jobs:
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
         with:
-          version: v1.48
+          version: v1.50.1
       - name: Convert coverage to lcov
-        uses: jandelgado/gcov2lcov-action@v1.0.8
+        uses: jandelgado/gcov2lcov-action@v1.0.9
       - uses: actions/upload-artifact@v3
         with:
           name: coverage
@@ -54,7 +54,7 @@ jobs:
       - run: go test -json ./... > test.json
       - name: Annotate tests
         if: always()
-        uses: guyarb/golang-test-annotations@v0.5.1
+        uses: guyarb/golang-test-annotations@v0.6.0
         with:
           test-results: test.json
 
