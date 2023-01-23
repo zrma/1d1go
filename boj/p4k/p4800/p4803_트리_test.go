@@ -1,4 +1,4 @@
-package p4800_test
+package p4800
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p4k/p4800"
 )
 
 func TestSolve4803(t *testing.T) {
@@ -70,7 +68,7 @@ Case 3: No trees.
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p4800.Solve4803(reader, writer, p4800.Solve4803UnionFind)
+			Solve4803(reader, writer, Solve4803UnionFind)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
@@ -84,7 +82,7 @@ Case 3: No trees.
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p4800.Solve4803(reader, writer, p4800.Solve4803DFS)
+			Solve4803(reader, writer, Solve4803DFS)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
@@ -98,7 +96,7 @@ Case 3: No trees.
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p4800.Solve4803(reader, writer, p4800.Solve4803BFS)
+			Solve4803(reader, writer, Solve4803BFS)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

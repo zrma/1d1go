@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 
-	. "1d1go/practice/mocking/book"
+	"1d1go/practice/mocking/book"
 	"1d1go/practice/mocking/mocks"
 )
 
@@ -26,13 +26,13 @@ func TestPlayWithBook(t *testing.T) {
 		m.EXPECT().Page(gomock.Eq("b")).Return(0).AnyTimes()
 
 		t.Run("name a", func(t *testing.T) {
-			cnt, ok := PlayWithBook(m, "a")
+			cnt, ok := book.PlayWithBook(m, "a")
 			assert.True(t, ok)
 			assert.Equal(t, cnt, 123)
 		})
 
 		t.Run("name b", func(t *testing.T) {
-			cnt, ok := PlayWithBook(m, "b")
+			cnt, ok := book.PlayWithBook(m, "b")
 			assert.False(t, ok)
 			assert.Equal(t, cnt, 0)
 		})
@@ -47,13 +47,13 @@ func TestPlayWithBook(t *testing.T) {
 		m.On("Page", "b").Return(0)
 
 		t.Run("name a", func(t *testing.T) {
-			cnt, ok := PlayWithBook(m, "a")
+			cnt, ok := book.PlayWithBook(m, "a")
 			assert.True(t, ok)
 			assert.Equal(t, cnt, 123)
 		})
 
 		t.Run("name b", func(t *testing.T) {
-			cnt, ok := PlayWithBook(m, "b")
+			cnt, ok := book.PlayWithBook(m, "b")
 			assert.False(t, ok)
 			assert.Equal(t, cnt, 0)
 		})

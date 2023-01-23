@@ -1,4 +1,4 @@
-package p2900_test
+package p2900
 
 import (
 	"bufio"
@@ -9,8 +9,6 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p2k/p2900"
 )
 
 func TestSolve2981(t *testing.T) {
@@ -49,7 +47,7 @@ func TestSolve2981(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p2900.Solve2981(reader, writer)
+			Solve2981(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
@@ -72,7 +70,7 @@ func TestSolve2981_Performance(t *testing.T) {
 	writer := bufio.NewWriter(buf)
 
 	assert.Eventually(t, func() bool {
-		p2900.Solve2981(reader, writer)
+		Solve2981(reader, writer)
 		return true
 	}, time.Second, time.Millisecond*100, "시간 초과")
 

@@ -1,4 +1,4 @@
-package p2000_test
+package p2000
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p2k/p2000"
 )
 
 func TestSolve2083(t *testing.T) {
@@ -36,7 +34,7 @@ Sam Senior
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p2000.Solve2083(reader, writer)
+			Solve2083(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

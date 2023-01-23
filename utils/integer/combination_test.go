@@ -1,12 +1,10 @@
-package integer_test
+package integer
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/utils/integer"
 )
 
 func TestCombinationDP(t *testing.T) {
@@ -25,8 +23,8 @@ func TestCombinationDP(t *testing.T) {
 		{1000, 1, 1000},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			cache := integer.BuildCache2DArr(tt.n+1, -1)
-			got := integer.CombinationDP(tt.n, tt.r, cache, func(v int) int { return v })
+			cache := BuildCache2DArr(tt.n+1, -1)
+			got := CombinationDP(tt.n, tt.r, cache, func(v int) int { return v })
 			if got != tt.want {
 				t.Errorf("got %d, want %d", got, tt.want)
 			}
@@ -41,8 +39,8 @@ func TestCombinationDP_Modifier(t *testing.T) {
 		want = 5418
 	)
 	modifier := func(v int) int { return v % 10_007 }
-	cache := integer.BuildCache2DArr(n+1, -1)
-	got := integer.CombinationDP(n, r, cache, modifier)
+	cache := BuildCache2DArr(n+1, -1)
+	got := CombinationDP(n, r, cache, modifier)
 	assert.Equal(t, want, got)
 }
 
@@ -69,7 +67,7 @@ func TestBuildCache2DArr(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := integer.BuildCache2DArr(tt.maxLen, tt.initVal)
+			got := BuildCache2DArr(tt.maxLen, tt.initVal)
 			assert.Equal(t, tt.want, got)
 		})
 	}

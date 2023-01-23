@@ -1,4 +1,4 @@
-package p3200_test
+package p3200
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p3k/p3200"
 )
 
 func TestSolve3273(t *testing.T) {
@@ -48,7 +46,7 @@ func TestSolve3273(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p3200.Solve3273(reader, writer)
+			Solve3273(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
@@ -62,7 +60,7 @@ func TestSolve3273(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p3200.Solve3273WithTwoPoints(reader, writer)
+			Solve3273WithTwoPoints(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

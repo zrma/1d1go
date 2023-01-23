@@ -1,4 +1,4 @@
-package p9100_test
+package p9100
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p9k/p9100"
 )
 
 func TestSolve9184(t *testing.T) {
@@ -40,7 +38,7 @@ w(19, 20, 21) = 1048576
 	writer := bufio.NewWriter(buf)
 
 	assert.Eventually(t, func() bool {
-		p9100.Solve9184(reader, writer)
+		Solve9184(reader, writer)
 
 		err := writer.Flush()
 		assert.NoError(t, err)

@@ -1,4 +1,4 @@
-package p2000_test
+package p2000
 
 import (
 	"bufio"
@@ -8,8 +8,6 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p2k/p2000"
 )
 
 func TestSolve2004(t *testing.T) {
@@ -32,7 +30,7 @@ func TestSolve2004(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p2000.Solve2004(reader, writer)
+			Solve2004(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
@@ -54,7 +52,7 @@ func TestSolve2004_Performance(t *testing.T) {
 	writer := bufio.NewWriter(buf)
 
 	assert.Eventually(t, func() bool {
-		p2000.Solve2004(reader, writer)
+		Solve2004(reader, writer)
 
 		err := writer.Flush()
 		assert.NoError(t, err)

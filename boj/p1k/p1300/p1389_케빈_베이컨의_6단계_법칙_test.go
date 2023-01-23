@@ -1,4 +1,4 @@
-package p1300_test
+package p1300
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p1k/p1300"
 )
 
 func TestSolve1389(t *testing.T) {
@@ -37,7 +35,7 @@ func TestSolve1389(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p1300.Solve1389(reader, writer)
+			Solve1389(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
@@ -51,7 +49,7 @@ func TestSolve1389(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p1300.Solve1389WithBFS(reader, writer)
+			Solve1389WithBFS(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

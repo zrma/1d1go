@@ -1,4 +1,4 @@
-package p9300_test
+package p9300
 
 import (
 	"bufio"
@@ -8,8 +8,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p9k/p9300"
 )
 
 func TestSolve9370(t *testing.T) {
@@ -53,7 +51,7 @@ func TestSolve9370(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p9300.Solve9370(reader, writer)
+			Solve9370(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
