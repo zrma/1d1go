@@ -1,4 +1,4 @@
-package p4200_test
+package p4200
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p4k/p4200"
 )
 
 func TestSolve4299(t *testing.T) {
@@ -28,7 +26,7 @@ func TestSolve4299(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p4200.Solve4299(reader, writer)
+			Solve4299(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

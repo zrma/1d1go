@@ -1,4 +1,4 @@
-package p3000_test
+package p3000
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p3k/p3000"
 )
 
 func TestSolve3052(t *testing.T) {
@@ -63,7 +61,7 @@ func TestSolve3052(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p3000.Solve3052(reader, writer)
+			Solve3052(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

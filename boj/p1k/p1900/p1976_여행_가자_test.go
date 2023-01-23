@@ -1,4 +1,4 @@
-package p1900_test
+package p1900
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p1k/p1900"
 )
 
 func TestSolve1976(t *testing.T) {
@@ -57,7 +55,7 @@ func TestSolve1976(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p1900.Solve1976(reader, writer, p1900.Solve1976UnionFind)
+			Solve1976(reader, writer, Solve1976UnionFind)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
@@ -71,7 +69,7 @@ func TestSolve1976(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p1900.Solve1976(reader, writer, p1900.Solve1976DFS)
+			Solve1976(reader, writer, Solve1976DFS)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
@@ -85,7 +83,7 @@ func TestSolve1976(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p1900.Solve1976(reader, writer, p1900.Solve1976BFS)
+			Solve1976(reader, writer, Solve1976BFS)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

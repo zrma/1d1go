@@ -1,4 +1,4 @@
-package p2500_test
+package p2500
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p2k/p2500"
 )
 
 func TestSolve2562(t *testing.T) {
@@ -35,7 +33,7 @@ func TestSolve2562(t *testing.T) {
 	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
-	p2500.Solve2562(reader, writer)
+	Solve2562(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)

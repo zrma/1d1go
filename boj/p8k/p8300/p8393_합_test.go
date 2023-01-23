@@ -1,4 +1,4 @@
-package p8300_test
+package p8300
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p8k/p8300"
 )
 
 func TestSolve8393(t *testing.T) {
@@ -31,7 +29,7 @@ func TestSolve8393(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p8300.Solve8393(reader, writer)
+			Solve8393(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
@@ -45,7 +43,7 @@ func TestSolve8393(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p8300.Solve8393AP(reader, writer)
+			Solve8393AP(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

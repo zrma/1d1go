@@ -1,4 +1,4 @@
-package p9000_test
+package p9000
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p9k/p9000"
 )
 
 func TestSolve9095(t *testing.T) {
@@ -34,7 +32,7 @@ func TestSolve9095(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p9000.Solve9095(reader, writer)
+			Solve9095(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

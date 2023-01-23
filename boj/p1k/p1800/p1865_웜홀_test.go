@@ -1,4 +1,4 @@
-package p1800_test
+package p1800
 
 import (
 	"bufio"
@@ -8,8 +8,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p1k/p1800"
 )
 
 //go:embed test_data/p1865_give.txt
@@ -67,7 +65,7 @@ NO
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p1800.Solve1865(reader, writer)
+			Solve1865(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

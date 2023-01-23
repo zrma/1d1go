@@ -1,4 +1,4 @@
-package p6000_test
+package p6000
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p6k/p6000"
 )
 
 func TestSolve6064(t *testing.T) {
@@ -104,7 +102,7 @@ func TestSolve6064(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p6000.Solve6064(reader, writer)
+			Solve6064(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

@@ -1,4 +1,4 @@
-package integer_test
+package integer
 
 import (
 	"fmt"
@@ -6,8 +6,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/utils/integer"
 )
 
 func TestMin(t *testing.T) {
@@ -26,12 +24,12 @@ func TestMin(t *testing.T) {
 		{give: []int{}, wantMin: 0, wantMax: 0},
 	} {
 		t.Run(fmt.Sprintf("%d/Min", i), func(t *testing.T) {
-			got := integer.Min(tt.give...)
+			got := Min(tt.give...)
 			assert.Equal(t, tt.wantMin, got)
 		})
 
 		t.Run(fmt.Sprintf("%d/Max", i), func(t *testing.T) {
-			got := integer.Max(tt.give...)
+			got := Max(tt.give...)
 			assert.Equal(t, tt.wantMax, got)
 		})
 	}
@@ -46,7 +44,7 @@ func TestPow(t *testing.T) {
 		{10, 0, 1},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			actual := integer.Pow(tt.n, tt.p)
+			actual := Pow(tt.n, tt.p)
 			assert.Equal(t, actual, tt.want)
 		})
 	}

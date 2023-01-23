@@ -1,4 +1,4 @@
-package p14800_test
+package p14800
 
 import (
 	"bufio"
@@ -8,8 +8,6 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p14k/p14800"
 )
 
 func TestSolve14889(t *testing.T) {
@@ -76,7 +74,7 @@ func TestSolve14889(t *testing.T) {
 			writer := bufio.NewWriter(buf)
 
 			assert.Eventually(t, func() bool {
-				p14800.Solve14889(reader, writer)
+				Solve14889(reader, writer)
 
 				err := writer.Flush()
 				assert.NoError(t, err)

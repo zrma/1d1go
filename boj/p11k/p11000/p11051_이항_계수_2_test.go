@@ -1,4 +1,4 @@
-package p11000_test
+package p11000
 
 import (
 	"bufio"
@@ -8,8 +8,6 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p11k/p11000"
 )
 
 func TestSolve11051(t *testing.T) {
@@ -36,7 +34,7 @@ func TestSolve11051(t *testing.T) {
 			writer := bufio.NewWriter(buf)
 
 			assert.Eventually(t, func() bool {
-				p11000.Solve11051(reader, writer)
+				Solve11051(reader, writer)
 				return true
 			}, time.Second, time.Millisecond*100, "시간 초과")
 

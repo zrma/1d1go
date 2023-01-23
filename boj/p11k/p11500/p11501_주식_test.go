@@ -1,4 +1,4 @@
-package p11500_test
+package p11500
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p11k/p11500"
 )
 
 func TestSolve11501(t *testing.T) {
@@ -37,7 +35,7 @@ func TestSolve11501(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p11500.Solve11501(reader, writer)
+			Solve11501(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)

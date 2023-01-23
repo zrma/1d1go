@@ -1,12 +1,10 @@
-package integer_test
+package integer
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/utils/integer"
 )
 
 func TestBuildSieveOfEratosthenes(t *testing.T) {
@@ -22,7 +20,7 @@ func TestBuildSieveOfEratosthenes(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			got := integer.BuildSieveOfEratosthenes(tt.give)
+			got := BuildSieveOfEratosthenes(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

@@ -1,4 +1,4 @@
-package p5000_test
+package p5000
 
 import (
 	"bufio"
@@ -6,8 +6,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p5k/p5000"
 )
 
 func TestSolve5086(t *testing.T) {
@@ -28,7 +26,7 @@ neither
 	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
-	p5000.Solve5086(reader, writer)
+	Solve5086(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)

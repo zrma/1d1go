@@ -1,4 +1,4 @@
-package p1900_test
+package p1900
 
 import (
 	"bufio"
@@ -8,8 +8,6 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p1k/p1900"
 )
 
 func TestSolve1934(t *testing.T) {
@@ -32,7 +30,7 @@ func TestSolve1934(t *testing.T) {
 	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
 
-	p1900.Solve1934(reader, writer)
+	Solve1934(reader, writer)
 
 	err := writer.Flush()
 	assert.NoError(t, err)
@@ -53,7 +51,7 @@ func TestSolve1934_Performance(t *testing.T) {
 	writer := bufio.NewWriter(buf)
 
 	assert.Eventually(t, func() bool {
-		p1900.Solve1934(reader, writer)
+		Solve1934(reader, writer)
 		return true
 	}, time.Second, time.Millisecond*100, "시간 초과")
 

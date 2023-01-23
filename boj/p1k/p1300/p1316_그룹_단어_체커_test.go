@@ -1,4 +1,4 @@
-package p1300_test
+package p1300
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p1k/p1300"
 )
 
 func TestSolve1316(t *testing.T) {
@@ -59,12 +57,37 @@ z`,
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p1300.Solve1316(reader, writer)
+			Solve1316(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
 
 			got := buf.String()
+			assert.Equal(t, tt.want, got)
+		})
+	}
+}
+
+func TestIsGroupWord(t *testing.T) {
+	//goland:noinspection SpellCheckingInspection
+	for i, tt := range []struct {
+		give string
+		want bool
+	}{
+		{"happy", true},
+		{"new", true},
+		{"year", true},
+		{"aba", false},
+		{"abab", false},
+		{"abcabc", false},
+		{"a", true},
+		{"aa", true},
+		{"aca", false},
+		{"ba", true},
+		{"bb", true},
+	} {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
+			got := isGroupWord(tt.give)
 			assert.Equal(t, tt.want, got)
 		})
 	}

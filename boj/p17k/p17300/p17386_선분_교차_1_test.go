@@ -1,4 +1,4 @@
-package p17300_test
+package p17300
 
 import (
 	"bufio"
@@ -7,8 +7,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"1d1go/boj/p17k/p17300"
 )
 
 func TestSolve17386(t *testing.T) {
@@ -89,7 +87,7 @@ func TestSolve17386(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			p17300.Solve17386(reader, writer)
+			Solve17386(reader, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
@@ -102,27 +100,27 @@ func TestSolve17386(t *testing.T) {
 
 func TestPoint_LessThan(t *testing.T) {
 	for i, tt := range []struct {
-		give []p17300.Point
+		give []Point
 		want bool
 	}{
 		{
-			[]p17300.Point{{1, 1}, {5, 5}},
+			[]Point{{1, 1}, {5, 5}},
 			true,
 		},
 		{
-			[]p17300.Point{{5, 5}, {1, 1}},
+			[]Point{{5, 5}, {1, 1}},
 			false,
 		},
 		{
-			[]p17300.Point{{1, 1}, {1, 1}},
+			[]Point{{1, 1}, {1, 1}},
 			false,
 		},
 		{
-			[]p17300.Point{{1, 1}, {1, 2}},
+			[]Point{{1, 1}, {1, 2}},
 			true,
 		},
 		{
-			[]p17300.Point{{1, 2}, {1, 1}},
+			[]Point{{1, 2}, {1, 1}},
 			false,
 		},
 	} {
