@@ -2,10 +2,11 @@ package p1300
 
 import (
 	"fmt"
+	"io"
 	"math"
 )
 
-func Solve1389(reader Reader, writer Writer) {
+func Solve1389(reader io.Reader, writer io.Writer) {
 	var n, m int
 	_, _ = fmt.Fscan(reader, &n, &m)
 
@@ -56,7 +57,7 @@ func FloydWarshall(graph [][]int, n int) {
 	}
 }
 
-func Solve1389WithBFS(reader Reader, writer Writer) {
+func Solve1389WithBFS(reader io.Reader, writer io.Writer) {
 	var n, m int
 	_, _ = fmt.Fscan(reader, &n, &m)
 

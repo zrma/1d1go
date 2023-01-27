@@ -2,9 +2,10 @@ package p9400
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve9498(reader Reader, writer Writer) {
+func Solve9498(reader io.Reader, writer io.Writer) {
 	var score int
 	_, _ = fmt.Fscan(reader, &score)
 	_, _ = fmt.Fprint(writer, scoreToGrade(score))

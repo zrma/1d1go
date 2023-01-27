@@ -20,7 +20,7 @@ func sorting(arr []int32) {
 		total += numberOfSwaps
 	}
 
-	_, _ = funcPrintf("Array is sorted in %d swaps.\n", total)
-	_, _ = funcPrintf("First Element: %d\n", arr[0])
-	_, _ = funcPrintf("Last Element: %d\n", arr[n-1])
+	_, _ = fmtPrintf("Array is sorted in %d swaps.\n", total)
+	_, _ = fmtPrintf("First Element: %d\n", arr[0])
+	_, _ = fmtPrintf("Last Element: %d\n", arr[n-1])
 }

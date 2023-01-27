@@ -2,9 +2,10 @@ package p18200
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve18258(reader Reader, writer Writer) {
+func Solve18258(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 

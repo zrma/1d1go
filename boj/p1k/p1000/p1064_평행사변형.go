@@ -2,10 +2,11 @@ package p1000
 
 import (
 	"fmt"
+	"io"
 	"math"
 )
 
-func Solve1064(reader Reader, writer Writer) {
+func Solve1064(reader io.Reader, writer io.Writer) {
 	var ax, ay, bx, by, cx, cy float64
 	_, _ = fmt.Fscan(reader, &ax, &ay, &bx, &by, &cx, &cy)
 

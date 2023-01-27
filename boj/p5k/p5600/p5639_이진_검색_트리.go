@@ -5,7 +5,7 @@ import (
 	"io"
 )
 
-func Solve5639(reader Reader, writer Writer) {
+func Solve5639(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 	var root = &node{val: n}
@@ -43,7 +43,7 @@ func (n *node) insert(val int) {
 	}
 }
 
-func (n *node) traversePostOrder(writer Writer) {
+func (n *node) traversePostOrder(writer io.Writer) {
 	if n == nil {
 		return
 	}

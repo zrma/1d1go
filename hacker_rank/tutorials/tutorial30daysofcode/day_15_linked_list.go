@@ -29,7 +29,7 @@ func (l *linkedList) insert(data int) *listNode {
 func (l linkedList) display() {
 	node := l.head
 	for node != nil {
-		_, _ = funcPrintln(node.data)
+		_, _ = fmtPrintln(node.data)
 		node = node.next
 	}
 }

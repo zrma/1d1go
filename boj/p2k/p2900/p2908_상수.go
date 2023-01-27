@@ -2,10 +2,11 @@ package p2900
 
 import (
 	"fmt"
+	"io"
 	"strconv"
 )
 
-func Solve2908(reader Reader, writer Writer) {
+func Solve2908(reader io.Reader, writer io.Writer) {
 	var s0, s1 string
 	_, _ = fmt.Fscan(reader, &s0, &s1)
 	a, _ := strconv.Atoi(revStr(s0))

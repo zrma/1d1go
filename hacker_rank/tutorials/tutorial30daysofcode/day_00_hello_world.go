@@ -1,6 +1,12 @@
 package tutorial30daysofcode
 
+import (
+	"fmt"
+)
+
+var fmtPrintln = fmt.Println
+
 func helloWorld(s string) {
-	_, _ = funcPrintln("Hello, World.")
-	_, _ = funcPrintln(s)
+	_, _ = fmtPrintln("Hello, World.")
+	_, _ = fmtPrintln(s)
 }

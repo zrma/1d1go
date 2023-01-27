@@ -1,11 +1,13 @@
 package p2000
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"strings"
 )
 
-func Solve2083(reader Reader, writer Writer) {
+func Solve2083(reader *bufio.Reader, writer io.Writer) {
 	for {
 		const delim = '\n'
 		line, _ := reader.ReadString(delim)

@@ -2,10 +2,11 @@ package p2500
 
 import (
 	"fmt"
+	"io"
 	"sort"
 )
 
-func Solve2587(reader Reader, writer Writer) {
+func Solve2587(reader io.Reader, writer io.Writer) {
 	const size = 5
 	arr := make([]int, size)
 	for i := 0; i < size; i++ {

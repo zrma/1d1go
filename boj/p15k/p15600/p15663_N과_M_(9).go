@@ -2,10 +2,11 @@ package p15600
 
 import (
 	"fmt"
+	"io"
 	"sort"
 )
 
-func Solve15663(reader Reader, writer Writer) {
+func Solve15663(reader io.Reader, writer io.Writer) {
 	var n, m int
 	_, _ = fmt.Fscan(reader, &n, &m)
 
@@ -22,7 +23,7 @@ func Solve15663(reader Reader, writer Writer) {
 	permutationDFS15663(arr, visited, res, 0, n, m, writer)
 }
 
-func permutationDFS15663(arr []int, visited []bool, res []int, depth, n, m int, writer Writer) {
+func permutationDFS15663(arr []int, visited []bool, res []int, depth, n, m int, writer io.Writer) {
 	if depth == m {
 		for i, v := range res {
 			_, _ = fmt.Fprint(writer, v)

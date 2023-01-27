@@ -15,9 +15,9 @@ func dictionariesAndMaps(n int, ss []string) {
 
 	for _, s := range ss[n:] {
 		if contact, ok := m[s]; ok {
-			_, _ = funcPrintf("%s=%s\n", s, contact)
+			_, _ = fmtPrintf("%s=%s\n", s, contact)
 		} else {
-			_, _ = funcPrintln("Not found")
+			_, _ = fmtPrintln("Not found")
 		}
 	}
 }

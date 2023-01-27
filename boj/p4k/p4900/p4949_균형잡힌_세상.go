@@ -1,10 +1,12 @@
 package p4900
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 )
 
-func Solve4949(reader Reader, writer Writer) {
+func Solve4949(reader *bufio.Reader, writer io.Writer) {
 	for {
 		const delim = '\n'
 		line, _ := reader.ReadString(delim)

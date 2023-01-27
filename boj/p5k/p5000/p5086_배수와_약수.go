@@ -2,9 +2,10 @@ package p5000
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve5086(reader Reader, writer Writer) {
+func Solve5086(reader io.Reader, writer io.Writer) {
 	for {
 		var a, b int
 		_, _ = fmt.Fscan(reader, &a, &b)

@@ -2,9 +2,10 @@ package p1000
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve1012(reader Reader, writer Writer) {
+func Solve1012(reader io.Reader, writer io.Writer) {
 	var t int
 	_, _ = fmt.Fscan(reader, &t)
 
@@ -13,7 +14,7 @@ func Solve1012(reader Reader, writer Writer) {
 	}
 }
 
-func countGroups(reader Reader, writer Writer) {
+func countGroups(reader io.Reader, writer io.Writer) {
 	var m, n, k int
 	_, _ = fmt.Fscan(reader, &m, &n, &k)
 

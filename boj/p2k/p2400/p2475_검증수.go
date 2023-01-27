@@ -2,9 +2,10 @@ package p2400
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve2475(reader Reader, writer Writer) {
+func Solve2475(reader io.Reader, writer io.Writer) {
 	const n = 5
 
 	sum := 0

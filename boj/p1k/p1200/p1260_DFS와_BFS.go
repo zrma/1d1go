@@ -2,10 +2,11 @@ package p1200
 
 import (
 	"fmt"
+	"io"
 	"sort"
 )
 
-func Solve1260(reader Reader, writer Writer) {
+func Solve1260(reader io.Reader, writer io.Writer) {
 	var n, m, r int
 	_, _ = fmt.Fscan(reader, &n, &m, &r)
 
@@ -29,7 +30,7 @@ func Solve1260(reader Reader, writer Writer) {
 	bfs(r, writer, graph, visited)
 }
 
-func dfs(r int, writer Writer, graph [][]int, visited []bool) {
+func dfs(r int, writer io.Writer, graph [][]int, visited []bool) {
 	visited[r] = true
 	_, _ = fmt.Fprint(writer, r)
 
@@ -42,7 +43,7 @@ func dfs(r int, writer Writer, graph [][]int, visited []bool) {
 	}
 }
 
-func bfs(r int, writer Writer, graph [][]int, visited []bool) {
+func bfs(r int, writer io.Writer, graph [][]int, visited []bool) {
 	queue := make([]int, 0, len(visited))
 	queueIdx := 0
 

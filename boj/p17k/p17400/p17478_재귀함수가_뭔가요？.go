@@ -2,10 +2,11 @@ package p17400
 
 import (
 	"fmt"
+	"io"
 	"strings"
 )
 
-func Solve17478(reader Reader, writer Writer) {
+func Solve17478(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
@@ -16,7 +17,7 @@ func Solve17478(reader Reader, writer Writer) {
 	recursive(writer, n, 0)
 }
 
-func recursive(writer Writer, n, cur int) {
+func recursive(writer io.Writer, n, cur int) {
 	const underlines = "____"
 	ss := make([]string, cur)
 	for i := range ss {

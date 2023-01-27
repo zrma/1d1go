@@ -13,7 +13,7 @@ const (
 
 func (p simplePerson) NewPerson(initialAge int) simplePerson {
 	if initialAge < 0 {
-		_, _ = funcPrintln(msgOfInvalid)
+		_, _ = fmtPrintln(msgOfInvalid)
 		initialAge = 0
 	}
 	res := p
@@ -24,11 +24,11 @@ func (p simplePerson) NewPerson(initialAge int) simplePerson {
 func (p simplePerson) amIOld() {
 	switch {
 	case p.age < 13:
-		_, _ = funcPrintln(msgOfYoung)
+		_, _ = fmtPrintln(msgOfYoung)
 	case p.age < 18:
-		_, _ = funcPrintln(msgOfTeenager)
+		_, _ = fmtPrintln(msgOfTeenager)
 	default:
-		_, _ = funcPrintln(msgOfOld)
+		_, _ = fmtPrintln(msgOfOld)
 	}
 }
 

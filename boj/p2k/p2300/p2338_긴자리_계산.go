@@ -2,10 +2,11 @@ package p2300
 
 import (
 	"fmt"
+	"io"
 	"math/big"
 )
 
-func Solve2338(reader Reader, writer Writer) {
+func Solve2338(reader io.Reader, writer io.Writer) {
 	var a, b big.Int
 	_, _ = fmt.Fscan(reader, &a, &b)
 

@@ -2,11 +2,12 @@ package p9400
 
 import (
 	"fmt"
+	"io"
 
 	"1d1go/utils/integer"
 )
 
-func Solve9465(reader Reader, writer Writer) {
+func Solve9465(reader io.Reader, writer io.Writer) {
 	var t int
 	_, _ = fmt.Fscan(reader, &t)
 

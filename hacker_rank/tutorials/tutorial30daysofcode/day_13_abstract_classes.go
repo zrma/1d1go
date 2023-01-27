@@ -28,9 +28,9 @@ func newMyBook(title, author string, price int) *myBook {
 }
 
 func (b myBook) display() {
-	_, _ = funcPrintln("Title:", b.title)
-	_, _ = funcPrintln("Author:", b.author)
-	_, _ = funcPrintln("Price:", b.price)
+	_, _ = fmtPrintln("Title:", b.title)
+	_, _ = fmtPrintln("Author:", b.author)
+	_, _ = fmtPrintln("Price:", b.price)
 }
 
 func abstractClasses(title, author string, price int) {

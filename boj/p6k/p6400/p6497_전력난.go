@@ -2,12 +2,13 @@ package p6400
 
 import (
 	"fmt"
+	"io"
 	"sort"
 
 	"1d1go/utils/ds"
 )
 
-func Solve6497(reader Reader, writer Writer) {
+func Solve6497(reader io.Reader, writer io.Writer) {
 	for {
 		var m, n int
 		_, _ = fmt.Fscan(reader, &m, &n)

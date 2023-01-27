@@ -2,10 +2,11 @@ package p24400
 
 import (
 	"fmt"
+	"io"
 	"sort"
 )
 
-func Solve24444(reader Reader, writer Writer) {
+func Solve24444(reader io.Reader, writer io.Writer) {
 	traverse := func(n, r int, graph [][]int, seq []int) {
 		for i := 0; i <= n; i++ {
 			sort.Ints(graph[i])
@@ -17,7 +18,7 @@ func Solve24444(reader Reader, writer Writer) {
 
 type traversalFunc func(n, r int, graph [][]int, seq []int)
 
-func solveGraphTraversal(traverse traversalFunc, reader Reader, writer Writer) {
+func solveGraphTraversal(traverse traversalFunc, reader io.Reader, writer io.Writer) {
 	var n, m, r int
 	_, _ = fmt.Fscan(reader, &n, &m, &r)
 

@@ -1,11 +1,13 @@
 package p5600
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"strings"
 )
 
-func Solve5622(reader Reader, writer Writer) {
+func Solve5622(reader *bufio.Reader, writer io.Writer) {
 	const delim = '\n'
 	line, _ := reader.ReadString(delim)
 	s := strings.Trim(line, "\n")

@@ -2,10 +2,11 @@ package p1000
 
 import (
 	"fmt"
+	"io"
 	"math"
 )
 
-func Solve1004(reader Reader, writer Writer) {
+func Solve1004(reader io.Reader, writer io.Writer) {
 	var t int
 	_, _ = fmt.Fscan(reader, &t)
 
@@ -14,7 +15,7 @@ func Solve1004(reader Reader, writer Writer) {
 	}
 }
 
-func countOrbitInOut(reader Reader, writer Writer) {
+func countOrbitInOut(reader io.Reader, writer io.Writer) {
 	var x0, y0, x1, y1, n int
 
 	_, _ = fmt.Fscan(reader, &x0, &y0, &x1, &y1, &n)

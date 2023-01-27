@@ -2,9 +2,10 @@ package p2500
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve2563(reader Reader, writer Writer) {
+func Solve2563(reader io.Reader, writer io.Writer) {
 	const (
 		maxSize = 100
 		boxSize = 10

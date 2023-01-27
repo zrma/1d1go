@@ -2,9 +2,10 @@ package p2500
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve2566(reader Reader, writer Writer) {
+func Solve2566(reader io.Reader, writer io.Writer) {
 	const n = 9
 
 	var maxVal int

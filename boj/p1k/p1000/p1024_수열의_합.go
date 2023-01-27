@@ -1,8 +1,11 @@
 package p1000
 
-import "fmt"
+import (
+	"fmt"
+	"io"
+)
 
-func Solve1024(reader Reader, writer Writer) {
+func Solve1024(reader io.Reader, writer io.Writer) {
 	var n, l int
 	_, _ = fmt.Fscan(reader, &n, &l)
 

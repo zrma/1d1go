@@ -1,11 +1,13 @@
 package p1100
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"strings"
 )
 
-func Solve1157(reader Reader, writer Writer) {
+func Solve1157(reader *bufio.Reader, writer io.Writer) {
 	arr := [26]int{}
 
 	const delim = '\n'

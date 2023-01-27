@@ -2,9 +2,10 @@ package p10800
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve10866(reader Reader, writer Writer) {
+func Solve10866(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
@@ -78,22 +79,22 @@ func (d *deque) popBack() int {
 	return v
 }
 
-func (d deque) size() int {
+func (d *deque) size() int {
 	return len(d.data)
 }
 
-func (d deque) empty() bool {
+func (d *deque) empty() bool {
 	return d.size() == 0
 }
 
-func (d deque) front() int {
+func (d *deque) front() int {
 	if d.empty() {
 		return -1
 	}
 	return d.data[0]
 }
 
-func (d deque) back() int {
+func (d *deque) back() int {
 	if d.empty() {
 		return -1
 	}

@@ -2,10 +2,11 @@ package p11700
 
 import (
 	"fmt"
+	"io"
 	"math"
 )
 
-func Solve11729(reader Reader, writer Writer) {
+func Solve11729(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
@@ -19,7 +20,7 @@ func Solve11729(reader Reader, writer Writer) {
 
 }
 
-func hanoi(writer Writer, n int, from, to, other int) {
+func hanoi(writer io.Writer, n int, from, to, other int) {
 	if n == 1 {
 		_, _ = fmt.Fprintln(writer, from, to)
 		return

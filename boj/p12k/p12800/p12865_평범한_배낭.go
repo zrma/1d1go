@@ -2,12 +2,12 @@ package p12800
 
 import (
 	"fmt"
+	"io"
 
-	"1d1go/boj/p12k/p12000"
 	"1d1go/utils/integer"
 )
 
-func Solve12865(reader p12000.Reader, writer p12000.Writer) {
+func Solve12865(reader io.Reader, writer io.Writer) {
 	var n, k int
 	_, _ = fmt.Fscan(reader, &n, &k)
 

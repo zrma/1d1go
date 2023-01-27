@@ -1,8 +1,11 @@
 package p4200
 
-import "fmt"
+import (
+	"fmt"
+	"io"
+)
 
-func Solve4299(reader Reader, writer Writer) {
+func Solve4299(reader io.Reader, writer io.Writer) {
 	var sum, diff int
 	_, _ = fmt.Fscan(reader, &sum, &diff)
 

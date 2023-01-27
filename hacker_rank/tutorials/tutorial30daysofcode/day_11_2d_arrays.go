@@ -6,5 +6,5 @@ import (
 
 func hourGlassSum(arr2D [][]int32) {
 	result := arrays.HourGlassSum(arr2D)
-	_, _ = funcPrint(result)
+	_, _ = fmtPrint(result)
 }

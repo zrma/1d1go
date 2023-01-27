@@ -2,12 +2,13 @@ package p17300
 
 import (
 	"fmt"
+	"io"
 	"math"
 
 	"1d1go/utils/integer"
 )
 
-func Solve17386(reader Reader, writer Writer) {
+func Solve17386(reader io.Reader, writer io.Writer) {
 	const pointCount = 4
 	var points [pointCount]Point
 	for i := range points {

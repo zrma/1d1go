@@ -11,12 +11,12 @@ func exception(n, p int64) error {
 		return fmt.Errorf("n and p should be non-negative")
 	}
 
-	_, err := funcPrint(integer.Pow(n, p))
+	_, err := fmtPrint(integer.Pow(n, p))
 	return err
 }
 
 func moreException(n, p int64) {
 	if err := exception(n, p); err != nil {
-		_, _ = funcPrint(err)
+		_, _ = fmtPrint(err)
 	}
 }

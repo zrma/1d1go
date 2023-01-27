@@ -2,13 +2,14 @@ package p1900
 
 import (
 	"fmt"
+	"io"
 
 	"1d1go/utils/ds"
 )
 
-type solve1976Func func(int, int, Reader) bool
+type solve1976Func func(int, int, io.Reader) bool
 
-func Solve1976(reader Reader, writer Writer, f solve1976Func) {
+func Solve1976(reader io.Reader, writer io.Writer, f solve1976Func) {
 	var n, m int
 	_, _ = fmt.Fscan(reader, &n, &m)
 
@@ -19,7 +20,7 @@ func Solve1976(reader Reader, writer Writer, f solve1976Func) {
 	}
 }
 
-func Solve1976UnionFind(n, m int, reader Reader) bool {
+func Solve1976UnionFind(n, m int, reader io.Reader) bool {
 	uf := ds.NewUnionFind(n)
 
 	for i := 1; i <= n; i++ {
@@ -55,7 +56,7 @@ func Solve1976UnionFind(n, m int, reader Reader) bool {
 	return true
 }
 
-func Solve1976DFS(n, m int, reader Reader) bool {
+func Solve1976DFS(n, m int, reader io.Reader) bool {
 	graph := scanGraph(n, reader)
 
 	var start int
@@ -87,7 +88,7 @@ func dfs1976(graph [][]int, visited []bool, start int) {
 	}
 }
 
-func Solve1976BFS(n, m int, reader Reader) bool {
+func Solve1976BFS(n, m int, reader io.Reader) bool {
 	graph := scanGraph(n, reader)
 
 	var start int
@@ -127,7 +128,7 @@ func bfs1976(graph [][]int, visited []bool, start int) {
 	}
 }
 
-func scanGraph(n int, reader Reader) [][]int {
+func scanGraph(n int, reader io.Reader) [][]int {
 	graph := make([][]int, n+1)
 	for i := 1; i <= n; i++ {
 		graph[i] = make([]int, 0, n)

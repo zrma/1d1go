@@ -2,13 +2,14 @@ package p4800
 
 import (
 	"fmt"
+	"io"
 
 	"1d1go/utils/ds"
 )
 
-type solve4803Func func(int, int, Reader) int
+type solve4803Func func(int, int, io.Reader) int
 
-func Solve4803(reader Reader, writer Writer, f solve4803Func) {
+func Solve4803(reader io.Reader, writer io.Writer, f solve4803Func) {
 	var n, m int
 
 	for cnt := 1; ; cnt++ {
@@ -29,7 +30,7 @@ func Solve4803(reader Reader, writer Writer, f solve4803Func) {
 	}
 }
 
-func Solve4803UnionFind(n, m int, reader Reader) int {
+func Solve4803UnionFind(n, m int, reader io.Reader) int {
 	uf := ds.NewUnionFind(n)
 
 	cycles := make([]int, 0, m)
@@ -61,7 +62,7 @@ func Solve4803UnionFind(n, m int, reader Reader) int {
 	return cnt
 }
 
-func Solve4803DFS(n, m int, reader Reader) int {
+func Solve4803DFS(n, m int, reader io.Reader) int {
 	graph := scanGraph(n, m, reader)
 
 	visited := make([]bool, n+1)
@@ -95,7 +96,7 @@ func dfs4803(graph [][]int, visited []bool, before, curr int) bool {
 	return true
 }
 
-func Solve4803BFS(n, m int, reader Reader) int {
+func Solve4803BFS(n, m int, reader io.Reader) int {
 	graph := scanGraph(n, m, reader)
 
 	visited := make([]bool, n+1)
@@ -136,7 +137,7 @@ func bfs4803(graph [][]int, visited []bool, i int) bool {
 	return nodeCnt-1 == edgeCnt/2
 }
 
-func scanGraph(n, m int, reader Reader) [][]int {
+func scanGraph(n, m int, reader io.Reader) [][]int {
 	graph := make([][]int, n+1)
 	for i := 1; i <= m; i++ {
 		var a, b int

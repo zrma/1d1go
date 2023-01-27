@@ -2,12 +2,13 @@ package p2600
 
 import (
 	"fmt"
+	"io"
 	"sort"
 
 	"1d1go/boj/p2k/p2500"
 )
 
-func Solve2667(reader Reader, writer Writer) {
+func Solve2667(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 

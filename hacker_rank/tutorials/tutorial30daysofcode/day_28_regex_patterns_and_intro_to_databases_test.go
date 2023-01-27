@@ -14,10 +14,10 @@ func TestFilter(t *testing.T) {
 
 	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
-	funcPrintln = func(a ...any) (n int, err error) {
+	fmtPrintln = func(a ...any) (n int, err error) {
 		return fmt.Fprintln(writer, a...)
 	}
-	defer func() { funcPrintln = fmt.Println }()
+	defer func() { fmtPrintln = fmt.Println }()
 
 	//noinspection SpellCheckingInspection
 	const (

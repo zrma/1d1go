@@ -2,11 +2,12 @@ package p7600
 
 import (
 	"fmt"
+	"io"
 
 	"1d1go/utils/ds"
 )
 
-func Solve7662(reader Reader, writer Writer) {
+func Solve7662(reader io.Reader, writer io.Writer) {
 	var t int
 	_, _ = fmt.Fscan(reader, &t)
 
@@ -15,7 +16,7 @@ func Solve7662(reader Reader, writer Writer) {
 	}
 }
 
-func solve7662(reader Reader, writer Writer) {
+func solve7662(reader io.Reader, writer io.Writer) {
 	var k int
 	_, _ = fmt.Fscan(reader, &k)
 

@@ -14,14 +14,14 @@ func TestDictionariesAndMaps(t *testing.T) {
 
 	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
-	funcPrintf = func(format string, a ...any) (n int, err error) {
+	fmtPrintf = func(format string, a ...any) (n int, err error) {
 		return fmt.Fprintf(writer, format, a...)
 	}
-	defer func() { funcPrintf = fmt.Printf }()
-	funcPrintln = func(a ...any) (n int, err error) {
+	defer func() { fmtPrintf = fmt.Printf }()
+	fmtPrintln = func(a ...any) (n int, err error) {
 		return fmt.Fprintln(writer, a...)
 	}
-	defer func() { funcPrintln = fmt.Println }()
+	defer func() { fmtPrintln = fmt.Println }()
 
 	const (
 		want = `sam=99912222

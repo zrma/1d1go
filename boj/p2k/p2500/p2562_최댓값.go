@@ -2,10 +2,11 @@ package p2500
 
 import (
 	"fmt"
+	"io"
 	"math"
 )
 
-func Solve2562(reader Reader, writer Writer) {
+func Solve2562(reader io.Reader, writer io.Writer) {
 	const count = 9
 	var max = math.MinInt
 	var pos int

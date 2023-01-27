@@ -1,8 +1,11 @@
 package warmup
 
 import (
+	"fmt"
 	"math"
 )
+
+var fmtPrintf = fmt.Printf
 
 func miniMaxSum(arr []int64) {
 	var min, max, sum int64
@@ -21,5 +24,5 @@ func miniMaxSum(arr []int64) {
 		sum += n
 	}
 
-	_, _ = funcPrintf("%d %d", sum-max, sum-min)
+	_, _ = fmtPrintf("%d %d", sum-max, sum-min)
 }
