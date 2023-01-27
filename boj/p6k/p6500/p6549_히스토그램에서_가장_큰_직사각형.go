@@ -2,11 +2,12 @@ package p6500
 
 import (
 	"fmt"
+	"io"
 
 	"1d1go/utils/integer"
 )
 
-func Solve6549(reader Reader, writer Writer) {
+func Solve6549(reader io.Reader, writer io.Writer) {
 	for {
 		var n int64
 		_, _ = fmt.Fscan(reader, &n)

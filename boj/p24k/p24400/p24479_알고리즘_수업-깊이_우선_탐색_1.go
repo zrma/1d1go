@@ -1,10 +1,11 @@
 package p24400
 
 import (
+	"io"
 	"sort"
 )
 
-func Solve24479(reader Reader, writer Writer) {
+func Solve24479(reader io.Reader, writer io.Writer) {
 	traverse := func(n, r int, graph [][]int, seq []int) {
 		for i := 0; i <= n; i++ {
 			sort.Ints(graph[i])

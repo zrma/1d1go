@@ -2,11 +2,12 @@ package p1600
 
 import (
 	"fmt"
+	"io"
 
 	"1d1go/utils/ds"
 )
 
-func Solve1655(reader Reader, writer Writer) {
+func Solve1655(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 

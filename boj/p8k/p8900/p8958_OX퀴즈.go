@@ -2,9 +2,10 @@ package p8900
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve8958(reader Reader, writer Writer) {
+func Solve8958(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 

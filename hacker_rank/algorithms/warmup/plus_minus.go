@@ -18,7 +18,7 @@ func plusMinus(arr []int32) {
 		tot++
 	}
 
-	_, _ = funcPrintf(fmtStr, float64(pos)/float64(tot))
-	_, _ = funcPrintf(fmtStr, float64(nag)/float64(tot))
-	_, _ = funcPrintf(fmtStr, float64(zero)/float64(tot))
+	_, _ = fmtPrintf(fmtStr, float64(pos)/float64(tot))
+	_, _ = fmtPrintf(fmtStr, float64(nag)/float64(tot))
+	_, _ = fmtPrintf(fmtStr, float64(zero)/float64(tot))
 }

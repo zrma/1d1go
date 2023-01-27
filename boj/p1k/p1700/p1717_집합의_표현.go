@@ -2,11 +2,12 @@ package p1700
 
 import (
 	"fmt"
+	"io"
 
 	"1d1go/utils/ds"
 )
 
-func Solve1717(reader Reader, writer Writer) {
+func Solve1717(reader io.Reader, writer io.Writer) {
 	var n, m int
 	_, _ = fmt.Fscan(reader, &n, &m)
 

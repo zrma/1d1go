@@ -2,10 +2,11 @@ package p7800
 
 import (
 	"fmt"
+	"io"
 	"math"
 )
 
-func Solve7869(reader Reader, writer Writer) {
+func Solve7869(reader io.Reader, writer io.Writer) {
 	var x1, y1, r1, x2, y2, r2 float64
 	_, _ = fmt.Fscan(reader, &x1, &y1, &r1, &x2, &y2, &r2)
 

@@ -1,8 +1,11 @@
 package p1400
 
-import "fmt"
+import (
+	"fmt"
+	"io"
+)
 
-func Solve1459(reader Reader, writer Writer) {
+func Solve1459(reader io.Reader, writer io.Writer) {
 	var x, y, w, s int
 	_, _ = fmt.Fscan(reader, &x, &y, &w, &s)
 

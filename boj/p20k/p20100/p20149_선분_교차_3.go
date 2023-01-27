@@ -2,12 +2,13 @@ package p20100
 
 import (
 	"fmt"
+	"io"
 	"math"
 
 	"1d1go/boj/p17k/p17300"
 )
 
-func Solve20149(reader Reader, writer Writer) {
+func Solve20149(reader io.Reader, writer io.Writer) {
 	const pointCount = 4
 	var points [pointCount]p17300.Point
 	for i := range points {
@@ -24,7 +25,7 @@ func Solve20149(reader Reader, writer Writer) {
 	}
 }
 
-func intersectPos(p0, p1, p2, p3 p17300.Point, equalLine bool, writer Writer) {
+func intersectPos(p0, p1, p2, p3 p17300.Point, equalLine bool, writer io.Writer) {
 	x1, y1, x2, y2 := float64(p0.X), float64(p0.Y), float64(p1.X), float64(p1.Y)
 	x3, y3, x4, y4 := float64(p2.X), float64(p2.Y), float64(p3.X), float64(p3.Y)
 

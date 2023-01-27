@@ -2,9 +2,10 @@ package p1900
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve1991(reader Reader, writer Writer) {
+func Solve1991(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
@@ -32,7 +33,7 @@ type node struct {
 	right string
 }
 
-func traversePreOrder(root string, arr []node, writer Writer) {
+func traversePreOrder(root string, arr []node, writer io.Writer) {
 	if root == "." {
 		return
 	}
@@ -42,7 +43,7 @@ func traversePreOrder(root string, arr []node, writer Writer) {
 	traversePreOrder(arr[idx].right, arr, writer)
 }
 
-func traverseInOrder(root string, arr []node, writer Writer) {
+func traverseInOrder(root string, arr []node, writer io.Writer) {
 	if root == "." {
 		return
 	}
@@ -52,7 +53,7 @@ func traverseInOrder(root string, arr []node, writer Writer) {
 	traverseInOrder(arr[idx].right, arr, writer)
 }
 
-func traversePostOrder(root string, arr []node, writer Writer) {
+func traversePostOrder(root string, arr []node, writer io.Writer) {
 	if root == "." {
 		return
 	}

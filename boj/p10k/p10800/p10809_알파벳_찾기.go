@@ -2,9 +2,10 @@ package p10800
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve10809(reader Reader, writer Writer) {
+func Solve10809(reader io.Reader, writer io.Writer) {
 	const notFound = -1
 	arr := [26]int{}
 	for i := range arr {

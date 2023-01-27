@@ -2,9 +2,10 @@ package p10900
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve10951(reader Reader, writer Writer) {
+func Solve10951(reader io.Reader, writer io.Writer) {
 	for {
 		var a, b int
 		if _, err := fmt.Fscan(reader, &a, &b); err != nil {

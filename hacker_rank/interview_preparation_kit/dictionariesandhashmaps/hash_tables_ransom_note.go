@@ -1,11 +1,14 @@
 package dictionariesandhashmaps
 
 import (
+	"fmt"
 	"sort"
 	"strings"
 
 	"1d1go/utils/str"
 )
+
+var fmtPrint = fmt.Print
 
 func checkMagazine(magazine, note []string) {
 	sort.Sort(str.SortAdapter(magazine))
@@ -22,10 +25,10 @@ func checkMagazine(magazine, note []string) {
 			i--
 			j--
 		} else {
-			_, _ = funcPrint("No")
+			_, _ = fmtPrint("No")
 			return
 		}
 	}
 
-	_, _ = funcPrint("Yes")
+	_, _ = fmtPrint("Yes")
 }

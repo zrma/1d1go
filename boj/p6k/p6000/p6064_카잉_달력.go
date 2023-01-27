@@ -2,9 +2,10 @@ package p6000
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve6064(reader Reader, writer Writer) {
+func Solve6064(reader io.Reader, writer io.Writer) {
 	var t int
 	_, _ = fmt.Fscan(reader, &t)
 	for i := 0; i < t; i++ {

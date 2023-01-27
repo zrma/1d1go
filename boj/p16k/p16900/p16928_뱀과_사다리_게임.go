@@ -2,9 +2,10 @@ package p16900
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve16928(reader Reader, writer Writer) {
+func Solve16928(reader io.Reader, writer io.Writer) {
 	var n, m int
 	_, _ = fmt.Fscan(reader, &n, &m)
 
@@ -29,7 +30,7 @@ func Solve16928(reader Reader, writer Writer) {
 	solve16928(ladder, queue, board, writer)
 }
 
-func solve16928(ladder, queue, board []int, writer Writer) {
+func solve16928(ladder, queue, board []int, writer io.Writer) {
 	for len(queue) > 0 {
 		q := queue[0]
 		queue = queue[1:]

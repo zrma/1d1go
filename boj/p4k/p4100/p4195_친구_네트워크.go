@@ -2,11 +2,12 @@ package p4100
 
 import (
 	"fmt"
+	"io"
 
 	"1d1go/utils/ds"
 )
 
-func Solve4195(reader Reader, writer Writer) {
+func Solve4195(reader io.Reader, writer io.Writer) {
 	var tc int
 	_, _ = fmt.Fscan(reader, &tc)
 
@@ -15,7 +16,7 @@ func Solve4195(reader Reader, writer Writer) {
 	}
 }
 
-func solve4195(reader Reader, writer Writer) {
+func solve4195(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 

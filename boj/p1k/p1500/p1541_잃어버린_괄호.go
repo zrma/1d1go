@@ -2,11 +2,12 @@ package p1500
 
 import (
 	"fmt"
+	"io"
 	"strconv"
 	"strings"
 )
 
-func Solve1541(reader Reader, writer Writer) {
+func Solve1541(reader io.Reader, writer io.Writer) {
 	var input string
 	_, _ = fmt.Fscan(reader, &input)
 

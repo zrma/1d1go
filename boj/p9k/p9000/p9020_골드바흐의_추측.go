@@ -2,11 +2,12 @@ package p9000
 
 import (
 	"fmt"
+	"io"
 
 	"1d1go/utils/integer"
 )
 
-func Solve9020(reader Reader, writer Writer) {
+func Solve9020(reader io.Reader, writer io.Writer) {
 	const maxLen = 10000 + 1
 	sieveOfEratosthenes := integer.BuildSieveOfEratosthenes(maxLen)
 

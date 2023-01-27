@@ -2,9 +2,10 @@ package p3000
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve3052(reader Reader, write Writer) {
+func Solve3052(reader io.Reader, write io.Writer) {
 	m := make(map[int]bool)
 	for i := 0; i < 10; i++ {
 		var n int

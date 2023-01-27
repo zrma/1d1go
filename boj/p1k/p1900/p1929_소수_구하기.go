@@ -2,11 +2,12 @@ package p1900
 
 import (
 	"fmt"
+	"io"
 
 	"1d1go/utils/integer"
 )
 
-func Solve1929(reader Reader, writer Writer) {
+func Solve1929(reader io.Reader, writer io.Writer) {
 	var min, max int
 	_, _ = fmt.Fscan(reader, &min, &max)
 

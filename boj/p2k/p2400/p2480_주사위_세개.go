@@ -2,9 +2,10 @@ package p2400
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve2480(reader Reader, writer Writer) {
+func Solve2480(reader io.Reader, writer io.Writer) {
 	var a, b, c int
 	_, _ = fmt.Fscan(reader, &a, &b, &c)
 

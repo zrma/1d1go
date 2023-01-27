@@ -2,11 +2,12 @@ package p2500
 
 import (
 	"fmt"
+	"io"
 )
 
 const maxLen = 8 + 1
 
-func Solve2580(reader Reader, writer Writer) {
+func Solve2580(reader io.Reader, writer io.Writer) {
 	var blanks [][2]int
 	board := [maxLen][maxLen]int{}
 	for y := 0; y < maxLen; y++ {
@@ -22,7 +23,7 @@ func Solve2580(reader Reader, writer Writer) {
 	sudoku(board, blanks, 0, writer)
 }
 
-func sudoku(board [maxLen][maxLen]int, blanks [][2]int, depth int, writer Writer) bool {
+func sudoku(board [maxLen][maxLen]int, blanks [][2]int, depth int, writer io.Writer) bool {
 	if depth == len(blanks) {
 		printBoard(board, writer)
 		return true
@@ -58,7 +59,7 @@ func isValid(board [maxLen][maxLen]int, y, x, v int) bool {
 	return true
 }
 
-func printBoard(board [maxLen][maxLen]int, writer Writer) {
+func printBoard(board [maxLen][maxLen]int, writer io.Writer) {
 	for y := 0; y < maxLen; y++ {
 		for x := 0; x < maxLen; x++ {
 			v := board[y][x]

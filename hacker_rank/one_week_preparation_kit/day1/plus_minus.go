@@ -14,7 +14,7 @@ func plusMinus(arr []int32) {
 	}
 
 	const fmtStr = "%.6f\n"
-	_, _ = funcPrintf(fmtStr, pos/float64(len(arr)))
-	_, _ = funcPrintf(fmtStr, neg/float64(len(arr)))
-	_, _ = funcPrintf(fmtStr, zero/float64(len(arr)))
+	_, _ = fmtPrintf(fmtStr, pos/float64(len(arr)))
+	_, _ = fmtPrintf(fmtStr, neg/float64(len(arr)))
+	_, _ = fmtPrintf(fmtStr, zero/float64(len(arr)))
 }

@@ -2,9 +2,10 @@ package p5500
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve5597(reader Reader, writer Writer) {
+func Solve5597(reader io.Reader, writer io.Writer) {
 	var arr [30]bool
 	for i := 0; i < 28; i++ {
 		var v int

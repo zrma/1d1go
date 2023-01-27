@@ -25,10 +25,10 @@ func TestMinimumBribes(t *testing.T) {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
-			funcPrint = func(a ...any) (n int, err error) {
+			fmtPrint = func(a ...any) (n int, err error) {
 				return fmt.Fprint(writer, a...)
 			}
-			defer func() { funcPrint = fmt.Print }()
+			defer func() { fmtPrint = fmt.Print }()
 
 			minimumBribes(tt.give)
 

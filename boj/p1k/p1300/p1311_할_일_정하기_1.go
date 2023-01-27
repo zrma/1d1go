@@ -2,11 +2,12 @@ package p1300
 
 import (
 	"fmt"
+	"io"
 
 	hungarian "github.com/oddg/hungarian-algorithm"
 )
 
-func Solve1311(reader Reader, writer Writer) {
+func Solve1311(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
@@ -56,7 +57,7 @@ func solve1311WithDFS(cur, flag, n int, costs, dp [][]int) int {
 // NOTE - https://en.wikipedia.org/wiki/Hungarian_algorithm
 // NOTE - https://github.com/oddg/hungarian-algorithm
 // NOTE - https://www.acmicpc.net/problem/14216
-func Solve1311WithHungarianAlgorithm(reader Reader, writer Writer) {
+func Solve1311WithHungarianAlgorithm(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 

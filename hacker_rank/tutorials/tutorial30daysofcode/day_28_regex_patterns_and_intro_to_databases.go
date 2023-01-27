@@ -19,6 +19,6 @@ func filter(arr [][]string) {
 
 	sort.Sort(str.SortAdapter(output))
 	for _, s := range output {
-		_, _ = funcPrintln(s)
+		_, _ = fmtPrintln(s)
 	}
 }

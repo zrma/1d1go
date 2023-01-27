@@ -2,9 +2,10 @@ package p2200
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve2263(reader Reader, writer Writer) {
+func Solve2263(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
@@ -35,7 +36,7 @@ func getPreorder(
 	inorder, inorderIndices, postorder []int,
 	inorderStart int, inorderEnd int,
 	postorderStart int, postorderEnd int,
-	writer Writer,
+	writer io.Writer,
 ) {
 	if inorderStart > inorderEnd || postorderStart > postorderEnd {
 		return

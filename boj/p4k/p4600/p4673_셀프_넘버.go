@@ -2,9 +2,10 @@ package p4600
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve4673(writer Writer) {
+func Solve4673(writer io.Writer) {
 	const n = 10000
 
 	arr := make([]bool, n+1)

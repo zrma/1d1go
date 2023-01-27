@@ -2,9 +2,10 @@ package p3000
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve3009(reader Reader, writer Writer) {
+func Solve3009(reader io.Reader, writer io.Writer) {
 	resX := 0
 	resY := 0
 	for i := 0; i < 3; i++ {

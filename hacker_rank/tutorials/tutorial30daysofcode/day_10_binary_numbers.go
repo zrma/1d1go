@@ -1,8 +1,11 @@
 package tutorial30daysofcode
 
 import (
+	"fmt"
 	"strconv"
 )
+
+var fmtPrint = fmt.Print
 
 func binaryNumbers(n int32) {
 	s := strconv.FormatInt(int64(n), 2)
@@ -19,5 +22,5 @@ func binaryNumbers(n int32) {
 		}
 	}
 
-	_, _ = funcPrint(max)
+	_, _ = fmtPrint(max)
 }

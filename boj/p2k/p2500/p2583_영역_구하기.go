@@ -2,10 +2,11 @@ package p2500
 
 import (
 	"fmt"
+	"io"
 	"sort"
 )
 
-func Solve2583(reader Reader, writer Writer) {
+func Solve2583(reader io.Reader, writer io.Writer) {
 	var row, col, k int
 	_, _ = fmt.Fscan(reader, &row, &col, &k)
 

@@ -2,10 +2,11 @@ package p10800
 
 import (
 	"fmt"
+	"io"
 	"sort"
 )
 
-func Solve10816(reader Reader, writer Writer) {
+func Solve10816(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
@@ -35,7 +36,7 @@ func Solve10816(reader Reader, writer Writer) {
 	}
 }
 
-func Solve10816WithMap(reader Reader, writer Writer) {
+func Solve10816WithMap(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 

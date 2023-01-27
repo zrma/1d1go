@@ -2,9 +2,10 @@ package p1700
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve1707(reader Reader, writer Writer) {
+func Solve1707(reader io.Reader, writer io.Writer) {
 	var k int
 	_, _ = fmt.Fscan(reader, &k)
 
@@ -17,7 +18,7 @@ func Solve1707(reader Reader, writer Writer) {
 	}
 }
 
-func isBipartiteGraph(reader Reader) bool {
+func isBipartiteGraph(reader io.Reader) bool {
 	var v, e int
 	_, _ = fmt.Fscan(reader, &v, &e)
 

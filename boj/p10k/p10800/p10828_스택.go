@@ -2,9 +2,10 @@ package p10800
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve10828(reader Reader, writer Writer) {
+func Solve10828(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
@@ -57,15 +58,15 @@ func (s *stack) pop() int {
 	return v
 }
 
-func (s stack) size() int {
+func (s *stack) size() int {
 	return len(s.data)
 }
 
-func (s stack) empty() bool {
+func (s *stack) empty() bool {
 	return s.size() == 0
 }
 
-func (s stack) top() int {
+func (s *stack) top() int {
 	if s.empty() {
 		return -1
 	}

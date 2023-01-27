@@ -2,10 +2,11 @@ package p5400
 
 import (
 	"fmt"
+	"io"
 	"strings"
 )
 
-func Solve5430(reader Reader, writer Writer) {
+func Solve5430(reader io.Reader, writer io.Writer) {
 	var t int
 	_, _ = fmt.Fscan(reader, &t)
 
@@ -14,7 +15,7 @@ func Solve5430(reader Reader, writer Writer) {
 	}
 }
 
-func processAC(reader Reader, writer Writer) {
+func processAC(reader io.Reader, writer io.Writer) {
 	var code string
 	_, _ = fmt.Fscan(reader, &code)
 	var n int

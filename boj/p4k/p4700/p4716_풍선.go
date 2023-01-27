@@ -2,10 +2,11 @@ package p4700
 
 import (
 	"fmt"
+	"io"
 	"sort"
 )
 
-func Solve4716(reader Reader, writer Writer) {
+func Solve4716(reader io.Reader, writer io.Writer) {
 	for {
 		var n, a, b int
 		_, _ = fmt.Fscan(reader, &n, &a, &b)

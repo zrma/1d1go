@@ -1,5 +1,11 @@
 package sorting
 
+import (
+	"fmt"
+)
+
+var fmtPrintf = fmt.Printf
+
 func countSwaps(arr []int32) {
 	swapCount := 0
 	n := len(arr)
@@ -12,7 +18,7 @@ func countSwaps(arr []int32) {
 		}
 	}
 
-	_, _ = funcPrintf("Array is sorted in %d swaps.\n", swapCount)
-	_, _ = funcPrintf("First Element: %d\n", arr[0])
-	_, _ = funcPrintf("Last Element: %d\n", arr[n-1])
+	_, _ = fmtPrintf("Array is sorted in %d swaps.\n", swapCount)
+	_, _ = fmtPrintf("First Element: %d\n", arr[0])
+	_, _ = fmtPrintf("Last Element: %d\n", arr[n-1])
 }

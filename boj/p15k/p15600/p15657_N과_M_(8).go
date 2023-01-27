@@ -2,10 +2,11 @@ package p15600
 
 import (
 	"fmt"
+	"io"
 	"sort"
 )
 
-func Solve15657(reader Reader, writer Writer) {
+func Solve15657(reader io.Reader, writer io.Writer) {
 	var n, m int
 	_, _ = fmt.Fscan(reader, &n, &m)
 
@@ -21,7 +22,7 @@ func Solve15657(reader Reader, writer Writer) {
 	combinationWithRepetitionDFS15657(arr, res, 0, 0, n, m, writer)
 }
 
-func combinationWithRepetitionDFS15657(arr []int, res []int, depth, start, n, m int, writer Writer) {
+func combinationWithRepetitionDFS15657(arr []int, res []int, depth, start, n, m int, writer io.Writer) {
 	if depth == m {
 		for i, v := range res {
 			_, _ = fmt.Fprint(writer, v)

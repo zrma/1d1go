@@ -2,9 +2,10 @@ package p3000
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve3003(reader Reader, writer Writer) {
+func Solve3003(reader io.Reader, writer io.Writer) {
 	var king, queen, rook, bishop, knight, pawn int
 	_, _ = fmt.Fscan(reader, &king, &queen, &rook, &bishop, &knight, &pawn)
 

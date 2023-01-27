@@ -2,12 +2,13 @@ package p9300
 
 import (
 	"fmt"
+	"io"
 	"sort"
 
 	"1d1go/boj/p1k/p1700"
 )
 
-func Solve9370(reader Reader, writer Writer) {
+func Solve9370(reader io.Reader, writer io.Writer) {
 	var t int
 	_, _ = fmt.Fscan(reader, &t)
 
@@ -16,7 +17,7 @@ func Solve9370(reader Reader, writer Writer) {
 	}
 }
 
-func solve9370(reader Reader, writer Writer) {
+func solve9370(reader io.Reader, writer io.Writer) {
 	var n, m, t int
 	_, _ = fmt.Fscan(reader, &n, &m, &t)
 

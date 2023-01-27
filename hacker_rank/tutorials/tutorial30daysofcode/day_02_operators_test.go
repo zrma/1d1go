@@ -14,10 +14,10 @@ func TestOperators(t *testing.T) {
 
 	buf := new(strings.Builder)
 	writer := bufio.NewWriter(buf)
-	funcPrint = func(a ...any) (n int, err error) {
+	fmtPrint = func(a ...any) (n int, err error) {
 		return fmt.Fprint(writer, a...)
 	}
-	defer func() { funcPrint = fmt.Print }()
+	defer func() { fmtPrint = fmt.Print }()
 
 	const want = "15"
 

@@ -24,10 +24,10 @@ func TestMoreException(t *testing.T) {
 		t.Run(fmt.Sprintf("%d %d", tt.n, tt.p), func(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
-			funcPrint = func(a ...any) (n int, err error) {
+			fmtPrint = func(a ...any) (n int, err error) {
 				return fmt.Fprint(writer, a...)
 			}
-			defer func() { funcPrint = fmt.Print }()
+			defer func() { fmtPrint = fmt.Print }()
 
 			moreException(tt.n, tt.p)
 

@@ -1,12 +1,14 @@
 package p9100
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"strconv"
 	"strings"
 )
 
-func Solve9184(reader Reader, writer Writer) {
+func Solve9184(reader *bufio.Reader, writer io.Writer) {
 	const maxLen = 20 + 1
 	cache := make([][][]int, maxLen)
 	for i := range cache {

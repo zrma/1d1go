@@ -2,11 +2,12 @@ package p25300
 
 import (
 	"fmt"
+	"io"
 )
 
 const maxLen = 8
 
-func Solve25308(reader Reader, writer Writer) {
+func Solve25308(reader io.Reader, writer io.Writer) {
 	var arr [maxLen]int
 	for i := 0; i < maxLen; i++ {
 		_, _ = fmt.Fscan(reader, &arr[i])

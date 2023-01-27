@@ -2,10 +2,11 @@ package p3200
 
 import (
 	"fmt"
+	"io"
 	"sort"
 )
 
-func Solve3273(reader Reader, writer Writer) {
+func Solve3273(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
@@ -38,7 +39,7 @@ func Solve3273(reader Reader, writer Writer) {
 	_, _ = fmt.Fprint(writer, res)
 }
 
-func Solve3273WithTwoPoints(reader Reader, writer Writer) {
+func Solve3273WithTwoPoints(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 

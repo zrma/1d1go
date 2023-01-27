@@ -2,9 +2,10 @@ package p11400
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve11478(reader Reader, writer Writer) {
+func Solve11478(reader io.Reader, writer io.Writer) {
 	m := make(map[string]bool)
 
 	var s string

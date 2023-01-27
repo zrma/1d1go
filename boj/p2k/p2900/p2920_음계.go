@@ -2,10 +2,11 @@ package p2900
 
 import (
 	"fmt"
+	"io"
 	"sort"
 )
 
-func Solve2920(reader Reader, writer Writer) {
+func Solve2920(reader io.Reader, writer io.Writer) {
 	const n = 8
 	arr := make([]int, n)
 

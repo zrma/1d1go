@@ -2,9 +2,10 @@ package p15600
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve15651(reader Reader, writer Writer) {
+func Solve15651(reader io.Reader, writer io.Writer) {
 	var n, m int
 	_, _ = fmt.Fscan(reader, &n, &m)
 
@@ -12,7 +13,7 @@ func Solve15651(reader Reader, writer Writer) {
 	permutationWithRepetitionDFS15651(arr, 0, n, m, writer)
 }
 
-func permutationWithRepetitionDFS15651(arr []int, depth, n, m int, writer Writer) {
+func permutationWithRepetitionDFS15651(arr []int, depth, n, m int, writer io.Writer) {
 	if depth >= m {
 		for i, v := range arr {
 			_, _ = fmt.Fprint(writer, v)

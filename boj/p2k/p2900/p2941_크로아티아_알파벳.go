@@ -1,11 +1,13 @@
 package p2900
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"strings"
 )
 
-func Solve2941(reader Reader, writer Writer) {
+func Solve2941(reader *bufio.Reader, writer io.Writer) {
 	const delim = '\n'
 	line, _ := reader.ReadString(delim)
 	s := strings.Trim(line, "\n")

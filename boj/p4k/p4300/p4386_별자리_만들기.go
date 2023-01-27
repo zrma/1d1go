@@ -2,13 +2,14 @@ package p4300
 
 import (
 	"fmt"
+	"io"
 	"math"
 	"sort"
 
 	"1d1go/utils/ds"
 )
 
-func Solve4386(reader Reader, writer Writer) {
+func Solve4386(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 

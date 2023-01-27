@@ -2,9 +2,10 @@ package p15600
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve15650(reader Reader, writer Writer) {
+func Solve15650(reader io.Reader, writer io.Writer) {
 	var n, m int
 	_, _ = fmt.Fscan(reader, &n, &m)
 
@@ -12,7 +13,7 @@ func Solve15650(reader Reader, writer Writer) {
 	combinationDFS15650(arr, 0, n, m, writer)
 }
 
-func combinationDFS15650(arr []int, depth, n, m int, writer Writer) {
+func combinationDFS15650(arr []int, depth, n, m int, writer io.Writer) {
 	if len(arr) == m {
 		for i, v := range arr {
 			_, _ = fmt.Fprint(writer, v)

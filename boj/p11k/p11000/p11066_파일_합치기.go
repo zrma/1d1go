@@ -2,9 +2,10 @@ package p11000
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve11066(reader Reader, writer Writer) {
+func Solve11066(reader io.Reader, writer io.Writer) {
 	var t int
 	_, _ = fmt.Fscan(reader, &t)
 
@@ -13,7 +14,7 @@ func Solve11066(reader Reader, writer Writer) {
 	}
 }
 
-func mergeFile(reader Reader, writer Writer) {
+func mergeFile(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 

@@ -2,9 +2,10 @@ package p1900
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve1966(reader Reader, writer Writer) {
+func Solve1966(reader io.Reader, writer io.Writer) {
 	var count int
 	_, _ = fmt.Fscan(reader, &count)
 
@@ -13,7 +14,7 @@ func Solve1966(reader Reader, writer Writer) {
 	}
 }
 
-func printerQueue(reader Reader, writer Writer) {
+func printerQueue(reader io.Reader, writer io.Writer) {
 	var n, target int
 	_, _ = fmt.Fscan(reader, &n, &target)
 

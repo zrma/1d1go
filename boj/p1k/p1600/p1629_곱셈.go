@@ -2,9 +2,10 @@ package p1600
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve1629(reader Reader, writer Writer) {
+func Solve1629(reader io.Reader, writer io.Writer) {
 	var a, b, c int64
 	_, _ = fmt.Fscan(reader, &a, &b, &c)
 

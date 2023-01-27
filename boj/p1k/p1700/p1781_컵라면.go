@@ -3,11 +3,12 @@ package p1700
 import (
 	"container/heap"
 	"fmt"
+	"io"
 
 	"1d1go/utils/ds"
 )
 
-func Solve1781(reader Reader, writer Writer) {
+func Solve1781(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 

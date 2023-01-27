@@ -2,9 +2,10 @@ package p8300
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve8393(reader Reader, writer Writer) {
+func Solve8393(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
@@ -16,7 +17,7 @@ func Solve8393(reader Reader, writer Writer) {
 	_, _ = fmt.Fprint(writer, sum)
 }
 
-func Solve8393AP(reader Reader, writer Writer) {
+func Solve8393AP(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 

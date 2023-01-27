@@ -1,8 +1,11 @@
 package p5500
 
-import "fmt"
+import (
+	"fmt"
+	"io"
+)
 
-func Solve5585(reader Reader, writer Writer) {
+func Solve5585(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 

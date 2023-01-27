@@ -2,9 +2,10 @@ package p4300
 
 import (
 	"fmt"
+	"io"
 )
 
-func Solve4344(reader Reader, writer Writer) {
+func Solve4344(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 
@@ -13,7 +14,7 @@ func Solve4344(reader Reader, writer Writer) {
 	}
 }
 
-func countOverAvg(reader Reader, writer Writer) {
+func countOverAvg(reader io.Reader, writer io.Writer) {
 	var n int
 	_, _ = fmt.Fscan(reader, &n)
 

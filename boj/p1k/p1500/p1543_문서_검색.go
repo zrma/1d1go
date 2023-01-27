@@ -3,9 +3,10 @@ package p1500
 import (
 	"bufio"
 	"fmt"
+	"io"
 )
 
-func Solve1543(scanner *bufio.Scanner, writer Writer) {
+func Solve1543(scanner *bufio.Scanner, writer io.Writer) {
 	scanner.Split(bufio.ScanLines)
 
 	scanner.Scan()

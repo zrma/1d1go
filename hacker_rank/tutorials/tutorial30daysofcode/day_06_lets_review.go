@@ -9,5 +9,5 @@ func letsReview(s string) {
 			odd += string(s[i])
 		}
 	}
-	_, _ = funcPrintln(even, odd)
+	_, _ = fmtPrintln(even, odd)
 }

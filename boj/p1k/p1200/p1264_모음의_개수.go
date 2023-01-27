@@ -1,10 +1,12 @@
 package p1200
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 )
 
-func Solve1264(reader Reader, writer Writer) {
+func Solve1264(reader *bufio.Reader, writer io.Writer) {
 	for {
 		const delim = '\n'
 		line, _ := reader.ReadString(delim)

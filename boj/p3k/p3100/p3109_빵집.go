@@ -2,6 +2,7 @@ package p3100
 
 import (
 	"fmt"
+	"io"
 )
 
 type gridState int
@@ -12,7 +13,7 @@ const (
 	visited
 )
 
-func Solve3109(reader Reader, writer Writer) {
+func Solve3109(reader io.Reader, writer io.Writer) {
 	var r, c int
 	_, _ = fmt.Fscan(reader, &r, &c)
 

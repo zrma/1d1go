@@ -34,10 +34,10 @@ Last Element: 3
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
-			funcPrintf = func(format string, a ...any) (n int, err error) {
+			fmtPrintf = func(format string, a ...any) (n int, err error) {
 				return fmt.Fprintf(writer, format, a...)
 			}
-			defer func() { funcPrintf = fmt.Printf }()
+			defer func() { fmtPrintf = fmt.Printf }()
 
 			sorting(tt.give)
 
