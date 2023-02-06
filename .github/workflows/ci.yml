@@ -83,3 +83,7 @@ jobs:
       - uses: shogo82148/actions-goveralls@v1
         with:
           path-to-profile: coverage.out
+      - name: 'Qodana Scan'
+        uses: JetBrains/qodana-action@main
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
