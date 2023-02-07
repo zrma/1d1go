@@ -53,11 +53,11 @@ ababc`,
 		},
 	} {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			reader := bufio.NewScanner(strings.NewReader(tt.give))
+			scanner := bufio.NewScanner(strings.NewReader(tt.give))
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			Solve1543(reader, writer)
+			Solve1543(scanner, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
