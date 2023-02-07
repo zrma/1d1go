@@ -1,4 +1,4 @@
-package p11700
+package p9000
 
 import (
 	"bufio"
@@ -9,8 +9,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestSolve11718(t *testing.T) {
-	t.Log("https://www.acmicpc.net/problem/11718")
+func TestSolve9093(t *testing.T) {
+	t.Log("https://www.acmicpc.net/problem/9093")
 
 	//goland:noinspection SpellCheckingInspection
 	for i, tt := range []struct {
@@ -18,12 +18,11 @@ func TestSolve11718(t *testing.T) {
 		want string
 	}{
 		{
-			`Hello
-Baekjoon
-Online Judge`,
-			`Hello
-Baekjoon
-Online Judge
+			`2
+I am happy today
+We want to win the first prize`,
+			`I ma yppah yadot
+eW tnaw ot niw eht tsrif ezirp
 `,
 		},
 	} {
@@ -32,7 +31,7 @@ Online Judge
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			Solve11718(scanner, writer)
+			Solve9093(scanner, writer)
 
 			err := writer.Flush()
 			assert.NoError(t, err)
