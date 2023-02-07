@@ -26,7 +26,7 @@ func (l *linkedList) insert(data int) *listNode {
 	return l.head
 }
 
-func (l linkedList) display() {
+func (l *linkedList) display() {
 	node := l.head
 	for node != nil {
 		_, _ = fmtPrintln(node.data)
