@@ -12,7 +12,7 @@ import (
 func TestSolve2407(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/2407")
 
-	for i, tt := range []struct {
+	tests := []struct {
 		give string
 		want string
 	}{
@@ -27,7 +27,9 @@ func TestSolve2407(t *testing.T) {
 		{"1000 0", "1"},
 		{"1000 1", "1000"},
 		{"1000 500", "270288240945436569515614693625975275496152008446548287007392875106625428705522193898612483924502370165362606085021546104802209750050679917549894219699518475423665484263751733356162464079737887344364574161119497604571044985756287880514600994219426752366915856603136862602484428109296905863799821216320"},
-	} {
+	}
+
+	for i, tt := range tests {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
 			buf := new(strings.Builder)

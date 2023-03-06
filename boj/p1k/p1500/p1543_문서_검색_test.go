@@ -13,7 +13,7 @@ func TestSolve1543(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1543")
 
 	//goland:noinspection SpellCheckingInspection
-	for i, tt := range []struct {
+	tests := []struct {
 		give string
 		want string
 	}{
@@ -51,7 +51,9 @@ md`,
 ababc`,
 			"1",
 		},
-	} {
+	}
+
+	for i, tt := range tests {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			scanner := bufio.NewScanner(strings.NewReader(tt.give))
 			buf := new(strings.Builder)

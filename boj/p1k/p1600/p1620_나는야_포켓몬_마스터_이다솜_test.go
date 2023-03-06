@@ -2,6 +2,7 @@ package p1600
 
 import (
 	"bufio"
+	"fmt"
 	"strings"
 	"testing"
 
@@ -12,8 +13,12 @@ func TestSolve1620(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1620")
 
 	//goland:noinspection SpellCheckingInspection
-	const (
-		give = `26 5
+	tests := []struct {
+		give string
+		want string
+	}{
+		{
+			`26 5
 Bulbasaur
 Ivysaur
 Venusaur
@@ -44,24 +49,29 @@ Raichu
 Raichu
 3
 Pidgey
-Kakuna`
-		want = `Pikachu
+Kakuna`,
+			`Pikachu
 26
 Venusaur
 16
 14
-`
-	)
+`,
+		},
+	}
 
-	reader := bufio.NewReader(strings.NewReader(give))
-	buf := new(strings.Builder)
-	writer := bufio.NewWriter(buf)
+	for i, tt := range tests {
+		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
+			reader := bufio.NewReader(strings.NewReader(tt.give))
+			buf := new(strings.Builder)
+			writer := bufio.NewWriter(buf)
 
-	Solve1620(reader, writer)
+			Solve1620(reader, writer)
 
-	err := writer.Flush()
-	assert.NoError(t, err)
+			err := writer.Flush()
+			assert.NoError(t, err)
 
-	got := buf.String()
-	assert.Equal(t, want, got)
+			got := buf.String()
+			assert.Equal(t, tt.want, got)
+		})
+	}
 }

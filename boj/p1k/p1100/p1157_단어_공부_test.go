@@ -13,7 +13,7 @@ func TestSolve1157(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1157")
 
 	//goland:noinspection SpellCheckingInspection
-	for i, tt := range []struct {
+	tests := []struct {
 		give string
 		want string
 	}{
@@ -29,7 +29,9 @@ BB`, "A"},
 BB`, "?"},
 		{"AB\nBB", "?"},
 		{"AA\nBB", "A"},
-	} {
+	}
+
+	for i, tt := range tests {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
 			buf := new(strings.Builder)

@@ -12,7 +12,7 @@ import (
 func TestSolve1212(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1212")
 
-	for i, tt := range []struct {
+	tests := []struct {
 		give string
 		want string
 	}{
@@ -24,7 +24,9 @@ func TestSolve1212(t *testing.T) {
 		{"4", "100"},
 		{"1", "1"},
 		{"0", "0"},
-	} {
+	}
+
+	for i, tt := range tests {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
 			buf := new(strings.Builder)
@@ -42,7 +44,7 @@ func TestSolve1212(t *testing.T) {
 }
 
 func TestToBinary(t *testing.T) {
-	for i, tt := range []struct {
+	tests := []struct {
 		give byte
 		want string
 	}{
@@ -55,7 +57,9 @@ func TestToBinary(t *testing.T) {
 		{'6', "110"},
 		{'7', "111"},
 		{'8', ""},
-	} {
+	}
+
+	for i, tt := range tests {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			got := toBinary(tt.give)
 			assert.Equal(t, tt.want, got)

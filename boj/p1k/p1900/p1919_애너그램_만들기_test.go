@@ -24,6 +24,7 @@ xxyybb`,
 			"8",
 		},
 	}
+
 	for i, tt := range tests {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
