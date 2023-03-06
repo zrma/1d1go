@@ -13,7 +13,7 @@ func TestSolve11365(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/11365")
 
 	//goland:noinspection SpellCheckingInspection
-	for i, tt := range []struct {
+	tests := []struct {
 		give string
 		want string
 	}{
@@ -29,7 +29,9 @@ We intend to begin on the first of February unrestricted submarine warfare
 Concealed within his fortress, the lord of Mordor sees all
 `,
 		},
-	} {
+	}
+
+	for i, tt := range tests {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			scanner := bufio.NewScanner(strings.NewReader(tt.give))
 			buf := new(strings.Builder)

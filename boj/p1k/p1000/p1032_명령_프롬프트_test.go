@@ -12,7 +12,8 @@ import (
 func TestSolve1032(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1032")
 
-	for i, tt := range []struct {
+	//goland:noinspection SpellCheckingInspection
+	tests := []struct {
 		give string
 		want string
 	}{
@@ -49,7 +50,9 @@ b`,
 onlyonefile`,
 			`onlyonefile`,
 		},
-	} {
+	}
+
+	for i, tt := range tests {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
 			buf := new(strings.Builder)
