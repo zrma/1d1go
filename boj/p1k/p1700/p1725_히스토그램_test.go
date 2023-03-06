@@ -12,7 +12,7 @@ import (
 func TestSolve1725(t *testing.T) {
 	t.Log("https://www.acmicpc.net/problem/1725")
 
-	for i, tt := range []struct {
+	tests := []struct {
 		give string
 		want string
 	}{
@@ -35,7 +35,9 @@ func TestSolve1725(t *testing.T) {
 		{"4 8 9 10 1", "24"},
 		{"1 1", "1"},
 		{"1 100", "100"},
-	} {
+	}
+
+	for i, tt := range tests {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			reader := bufio.NewReader(strings.NewReader(tt.give))
 			buf := new(strings.Builder)
