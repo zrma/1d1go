@@ -21,86 +21,86 @@ func SmartCalc(scanner *bufio.Scanner, writer io.Writer) {
 	for scanner.Scan() {
 		s := scanner.Text()
 
-		switch s {
-		case "/help":
-			_, _ = fmt.Fprintln(writer, "The program calculates the sum of numbers")
-		case "/exit":
-			_, _ = fmt.Fprintln(writer, "Bye!")
-			return
-		default:
+		if strings.HasPrefix(s, "/") {
+			switch s {
+			case "/help":
+				_, _ = fmt.Fprintln(writer, "The program calculates the sum of numbers")
+			case "/exit":
+				_, _ = fmt.Fprintln(writer, "Bye!")
+				return
+			default:
+				_, _ = fmt.Fprintln(writer, "Unknown command")
+			}
+		} else {
 			process(s, writer)
 		}
 	}
 }
 
+// process implements calculator logic, if invalid input, print "Invalid expression"
 func process(input string, writer io.Writer) {
-	ss := strings.Split(input, " ")
-	tokens := trimTokens(ss)
+	tokens := strings.Split(input, " ")
+
+	// remove empty tokens
+	for i := 0; i < len(tokens); i++ {
+		if tokens[i] == "" {
+			tokens = append(tokens[:i], tokens[i+1:]...)
+			i--
+		}
+	}
 
 	if len(tokens) == 0 {
 		return
 	}
 
-	res := calc(tokens)
-	_, _ = fmt.Fprintln(writer, res)
-}
-
-func trimTokens(token []string) []string {
-	var res []string
-	for _, s := range token {
-		s = strings.Trim(s, " ")
-		if s == "" {
-			continue
-		}
-
-		if isOperator(s) {
-			s = pruneOperator(s)
-		}
-		res = append(res, s)
-	}
-	return res
-}
-
-func pruneOperator(s string) string {
-	res := s
-	for len(res) > 1 {
-		if res[0] == res[1] {
-			res = "+" + res[2:]
-		} else {
-			res = "-" + res[2:]
-		}
-	}
-	return res
-}
-
-func calc(tokens []string) int {
 	var res int
-	var op string
-
-	for _, token := range tokens {
-		if isOperator(token) {
-			op = token
-			continue
-		}
-
-		n, err := strconv.Atoi(token)
-		if err != nil {
-			continue
-		}
-
-		switch op {
-		case "+":
-			res += n
-		case "-":
-			res -= n
-		default:
-			res = n
+	var err error
+	var minus bool
+	for i, token := range tokens {
+		if i%2 == 0 {
+			// number
+			var n int
+			n, err = strconv.Atoi(token)
+			if err != nil {
+				break
+			}
+			if minus {
+				res -= n
+			} else {
+				res += n
+			}
+		} else {
+			// operator
+			op, err0 := pruneOperator(token)
+			if err0 != nil {
+				err = err0
+				break
+			}
+			minus = op == "-"
 		}
 	}
 
-	return res
+	if err != nil {
+		_, _ = fmt.Fprintln(writer, "Invalid expression")
+	} else {
+		_, _ = fmt.Fprintln(writer, res)
+	}
 }
 
-func isOperator(token string) bool {
-	return !strings.ContainsAny(token, "0123456789")
+func pruneOperator(s string) (string, error) {
+	res := "+"
+	for _, c := range s {
+		switch c {
+		case '+':
+		case '-':
+			if res == "+" {
+				res = "-"
+			} else {
+				res = "+"
+			}
+		default:
+			return "", fmt.Errorf("invalid operator: %c", c)
+		}
+	}
+	return res, nil
 }
