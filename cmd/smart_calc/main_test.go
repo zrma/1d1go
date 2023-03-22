@@ -17,17 +17,26 @@ func TestCalc(t *testing.T) {
 		want string
 	}{
 		{
-			`8
--2 + 4 - 5 + 6
-9 +++ 10 -- 8
-3 --- 5
-14       -   12
+			`8 + 7 - 4
+abc
+123+
++15
+18 22
+
+-22
+22-
+8 --- 3
+/go
 /exit`,
-			`8
-3
-27
--2
-2
+			`11
+Invalid expression
+Invalid expression
+15
+Invalid expression
+-22
+Invalid expression
+5
+Unknown command
 Bye!
 `,
 		},
