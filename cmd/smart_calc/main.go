@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 )
@@ -17,6 +18,8 @@ func main() {
 
 func SmartCalc(scanner *bufio.Scanner, writer io.Writer) {
 	scanner.Split(bufio.ScanLines)
+
+	variables := make(map[string]int)
 
 	for scanner.Scan() {
 		s := scanner.Text()
@@ -31,14 +34,52 @@ func SmartCalc(scanner *bufio.Scanner, writer io.Writer) {
 			default:
 				_, _ = fmt.Fprintln(writer, "Unknown command")
 			}
+		} else if strings.Contains(s, "=") {
+			assignment(s, variables, writer)
 		} else {
-			process(s, writer)
+			process(s, variables, writer)
 		}
 	}
 }
 
+func assignment(input string, variables map[string]int, writer io.Writer) {
+	input = strings.TrimSpace(input)
+
+	tokens := strings.Split(input, "=")
+	if len(tokens) != 2 {
+		_, _ = fmt.Fprintln(writer, "Invalid assignment")
+		return
+	}
+
+	variable := strings.TrimSpace(tokens[0])
+	value := strings.TrimSpace(tokens[1])
+
+	regex := regexp.MustCompile(`^[a-zA-Z]+$`)
+	if !regex.MatchString(variable) {
+		_, _ = fmt.Fprintln(writer, "Invalid identifier")
+		return
+	}
+
+	if regex.MatchString(value) {
+		// variable
+		if v, ok := variables[value]; ok {
+			variables[variable] = v
+		} else {
+			_, _ = fmt.Fprintln(writer, "Unknown variable")
+		}
+	} else {
+		// number
+		n, err := strconv.Atoi(value)
+		if err != nil {
+			_, _ = fmt.Fprintln(writer, "Invalid assignment")
+			return
+		}
+		variables[variable] = n
+	}
+}
+
 // process implements calculator logic, if invalid input, print "Invalid expression"
-func process(input string, writer io.Writer) {
+func process(input string, variables map[string]int, writer io.Writer) {
 	tokens := strings.Split(input, " ")
 
 	// remove empty tokens
@@ -62,7 +103,26 @@ func process(input string, writer io.Writer) {
 			var n int
 			n, err = strconv.Atoi(token)
 			if err != nil {
-				break
+				// variable
+				if v, ok := variables[token]; ok {
+					n = v
+					err = nil
+				} else {
+					regex := regexp.MustCompile(`^[a-zA-Z]+$`)
+					if regex.MatchString(token) {
+						_, _ = fmt.Fprintln(writer, "Unknown variable")
+						return
+					}
+
+					//goland:noinspection SpellCheckingInspection
+					const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+					if strings.ContainsAny(token, alphabet) {
+						_, _ = fmt.Fprintln(writer, "Invalid identifier")
+						return
+					}
+					break
+				}
 			}
 			if minus {
 				res -= n

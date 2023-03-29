@@ -29,7 +29,7 @@ abc
 /go
 /exit`,
 			`11
-Invalid expression
+Unknown variable
 Invalid expression
 15
 Invalid expression
@@ -38,6 +38,59 @@ Invalid expression
 5
 Unknown command
 Bye!
+`,
+		},
+		{
+			`n = 3
+m=4
+a  =   5
+b = a
+v=   7
+n =9
+count = 10
+a = 1
+a = 2
+a = 3
+a
+X = 10
+X
+Y= 5
+Y
+z = X
+Z = Y
+z
+Z`,
+			`3
+10
+5
+10
+5
+`,
+		},
+		{
+			`a2a
+n22`,
+			`Invalid identifier
+Invalid identifier
+`,
+		},
+		{
+			`a = 8
+b = c
+e`,
+			`Unknown variable
+Unknown variable
+`,
+		},
+		{
+			`a1 = 8
+n1 = a2a
+n = a2a
+a = 7 = 8`,
+			`Invalid identifier
+Invalid identifier
+Invalid assignment
+Invalid assignment
 `,
 		},
 	}
