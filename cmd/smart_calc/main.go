@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -34,133 +35,310 @@ func SmartCalc(scanner *bufio.Scanner, writer io.Writer) {
 			default:
 				_, _ = fmt.Fprintln(writer, "Unknown command")
 			}
-		} else if strings.Contains(s, "=") {
-			assignment(s, variables, writer)
 		} else {
-			process(s, variables, writer)
+			n, ok, err := process(s, variables, writer)
+			if err != nil {
+				_, _ = fmt.Fprintln(writer, err.Error())
+				continue
+			}
+			if ok {
+				_, _ = fmt.Fprintln(writer, n)
+			}
 		}
 	}
 }
 
-func assignment(input string, variables map[string]int, writer io.Writer) {
-	input = strings.TrimSpace(input)
+func process(input string, variables map[string]int, writer io.Writer) (int, bool, error) {
+	if input == "" {
+		return 0, false, nil
+	}
 
+	if strings.Contains(input, "=") {
+		if err := processAssignment(input, variables, writer); err != nil {
+			return 0, false, err
+		}
+		return 0, false, nil
+	}
+
+	v, ok, err := processUnary(input, variables)
+	if err != nil {
+		return 0, false, err
+	}
+	if ok {
+		return v, true, nil
+	}
+
+	res, err := processExpression(input, variables)
+	if err != nil {
+		return 0, false, err
+	}
+	return res, true, nil
+}
+
+//goland:noinspection GoErrorStringFormat
+var (
+	errInvalidAssignment = errors.New("Invalid assignment")
+	errInvalidIdentifier = errors.New("Invalid identifier")
+	errInvalidExpression = errors.New("Invalid expression")
+	errUnknownVariable   = errors.New("Unknown variable")
+	errUnknownOperator   = errors.New("Unknown operator")
+)
+
+func processAssignment(input string, variables map[string]int, writer io.Writer) error {
 	tokens := strings.Split(input, "=")
 	if len(tokens) != 2 {
-		_, _ = fmt.Fprintln(writer, "Invalid assignment")
-		return
+		return errInvalidAssignment
 	}
 
-	variable := strings.TrimSpace(tokens[0])
-	value := strings.TrimSpace(tokens[1])
+	lhs := strings.TrimSpace(tokens[0])
+	rhs := strings.TrimSpace(tokens[1])
 
-	regex := regexp.MustCompile(`^[a-zA-Z]+$`)
-	if !regex.MatchString(variable) {
-		_, _ = fmt.Fprintln(writer, "Invalid identifier")
-		return
+	if !isValidVariable(lhs) {
+		return errInvalidIdentifier
 	}
 
-	if regex.MatchString(value) {
-		// variable
-		if v, ok := variables[value]; ok {
-			variables[variable] = v
-		} else {
-			_, _ = fmt.Fprintln(writer, "Unknown variable")
+	n, err := strconv.Atoi(rhs)
+	if err == nil {
+		variables[lhs] = n
+		return nil
+	}
+
+	n, ok, err := process(rhs, variables, writer)
+	if err != nil {
+		if errors.Is(err, errInvalidIdentifier) {
+			return errInvalidAssignment
 		}
-	} else {
-		// number
-		n, err := strconv.Atoi(value)
-		if err != nil {
-			_, _ = fmt.Fprintln(writer, "Invalid assignment")
-			return
-		}
-		variables[variable] = n
+		return err
 	}
+	if ok {
+		variables[lhs] = n
+	}
+	return nil
 }
 
-// process implements calculator logic, if invalid input, print "Invalid expression"
-func process(input string, variables map[string]int, writer io.Writer) {
-	tokens := strings.Split(input, " ")
+func processUnary(input string, variables map[string]int) (int, bool, error) {
+	input = strings.TrimSpace(input)
 
-	// remove empty tokens
-	for i := 0; i < len(tokens); i++ {
-		if tokens[i] == "" {
-			tokens = append(tokens[:i], tokens[i+1:]...)
-			i--
+	if v, ok := variables[input]; ok {
+		return v, true, nil
+	}
+
+	if isValidVariable(input) {
+		return 0, false, errUnknownVariable
+	}
+
+	n, err := strconv.Atoi(input)
+	if err == nil {
+		return n, true, nil
+	}
+
+	for _, op := range operators {
+		if strings.Contains(input, op) {
+			return 0, false, nil
 		}
 	}
 
-	if len(tokens) == 0 {
-		return
+	if strings.Contains(input, " ") {
+		return 0, false, nil
 	}
 
-	var res int
-	var err error
-	var minus bool
-	for i, token := range tokens {
-		if i%2 == 0 {
-			// number
-			var n int
-			n, err = strconv.Atoi(token)
+	return 0, false, errInvalidIdentifier
+}
+
+func processExpression(input string, variables map[string]int) (int, error) {
+	expr, err := infixToPostfix(input, variables)
+	if err != nil {
+		return 0, err
+	}
+	return calcPostfix(expr)
+}
+
+var operatorsPriority = map[string]int{
+	"+": 1,
+	"-": 1,
+	"*": 2,
+	"/": 2,
+	"^": 3,
+}
+
+func calcPostfix(queue []string) (int, error) {
+	stack := make([]int, 0)
+
+	for len(queue) > 0 {
+		token := queue[0]
+		queue = queue[1:]
+
+		if _, ok := operatorsPriority[token]; ok {
+			if len(stack) < 2 {
+				return 0, errInvalidExpression
+			}
+
+			b := stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
+			a := stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
+
+			switch token {
+			case "+":
+				stack = append(stack, a+b)
+			case "-":
+				stack = append(stack, a-b)
+			case "*":
+				stack = append(stack, a*b)
+			case "/":
+				stack = append(stack, a/b)
+			case "^":
+				res := 1
+				for i := 0; i < b; i++ {
+					res *= a
+				}
+				stack = append(stack, res)
+			default:
+				return 0, errUnknownOperator
+			}
+		} else {
+			n, err := strconv.Atoi(token)
 			if err != nil {
-				// variable
-				if v, ok := variables[token]; ok {
-					n = v
-					err = nil
-				} else {
-					regex := regexp.MustCompile(`^[a-zA-Z]+$`)
-					if regex.MatchString(token) {
-						_, _ = fmt.Fprintln(writer, "Unknown variable")
-						return
-					}
+				return 0, errUnknownOperator
+			}
+			stack = append(stack, n)
+		}
+	}
 
-					//goland:noinspection SpellCheckingInspection
-					const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	if len(stack) != 1 {
+		return 0, errInvalidExpression
+	}
 
-					if strings.ContainsAny(token, alphabet) {
-						_, _ = fmt.Fprintln(writer, "Invalid identifier")
-						return
-					}
+	return stack[0], nil
+}
+
+func infixToPostfix(input string, variables map[string]int) ([]string, error) {
+	stack := make([]string, 0)
+	output := make([]string, 0)
+
+	tokens, err := parseExpr(input)
+	if err != nil {
+		return nil, err
+	}
+
+	for len(tokens) > 0 {
+		token := tokens[0]
+		tokens = tokens[1:]
+
+		token = strings.TrimSpace(token)
+		if token == "" {
+			continue
+		}
+
+		if token == "(" {
+			stack = append(stack, token)
+			continue
+		}
+
+		if token == ")" {
+			for len(stack) > 0 && stack[len(stack)-1] != "(" {
+				output = append(output, stack[len(stack)-1])
+				stack = stack[:len(stack)-1]
+			}
+
+			if len(stack) > 0 && stack[len(stack)-1] == "(" {
+				stack = stack[:len(stack)-1]
+			} else {
+				return nil, errInvalidExpression
+			}
+			continue
+		}
+
+		if _, ok := operatorsPriority[token]; ok {
+			if len(stack) == 0 {
+				stack = append(stack, token)
+				continue
+			}
+
+			for {
+				if len(stack) == 0 {
 					break
 				}
+				if _, ok := operatorsPriority[stack[len(stack)-1]]; !ok {
+					break
+				}
+				if operatorsPriority[token] > operatorsPriority[stack[len(stack)-1]] {
+					break
+				}
+
+				output = append(output, stack[len(stack)-1])
+				stack = stack[:len(stack)-1]
 			}
-			if minus {
-				res -= n
-			} else {
-				res += n
-			}
-		} else {
-			// operator
-			op, err0 := pruneOperator(token)
-			if err0 != nil {
-				err = err0
-				break
-			}
-			minus = op == "-"
+
+			stack = append(stack, token)
+			continue
 		}
+
+		n, err := strconv.Atoi(token)
+		if err != nil {
+			if !isValidVariable(token) {
+				return nil, errInvalidAssignment
+			}
+
+			v, ok := variables[token]
+			if !ok {
+				return nil, errUnknownVariable
+			}
+			n = v
+		}
+
+		output = append(output, strconv.Itoa(n))
 	}
 
-	if err != nil {
-		_, _ = fmt.Fprintln(writer, "Invalid expression")
-	} else {
-		_, _ = fmt.Fprintln(writer, res)
+	for len(stack) > 0 {
+		if stack[len(stack)-1] == "(" {
+			return nil, errInvalidExpression
+		}
+		output = append(output, stack[len(stack)-1])
+		stack = stack[:len(stack)-1]
 	}
+
+	return output, nil
 }
 
-func pruneOperator(s string) (string, error) {
-	res := "+"
-	for _, c := range s {
-		switch c {
-		case '+':
-		case '-':
-			if res == "+" {
-				res = "-"
-			} else {
-				res = "+"
-			}
-		default:
-			return "", fmt.Errorf("invalid operator: %c", c)
+var operators = []string{
+	"^", "*", "/", "(", ")", "+", "-",
+}
+
+func parseExpr(input string) ([]string, error) {
+	for _, op := range operators {
+		for strings.Contains(input, " "+op) {
+			input = strings.ReplaceAll(input, " "+op, op)
+		}
+		for strings.Contains(input, op+" ") {
+			input = strings.ReplaceAll(input, op+" ", op)
 		}
 	}
-	return res, nil
+
+	if strings.Contains(input, "**") || strings.Contains(input, "//") {
+		return nil, errInvalidExpression
+	}
+
+	input = removeDuplicatedOps(input)
+
+	for _, op := range operators {
+		input = strings.ReplaceAll(input, op, " "+op+" ")
+	}
+	return strings.Split(input, " "), nil
+}
+
+func removeDuplicatedOps(input string) string {
+	s := input
+	for strings.Contains(s, "++") || strings.Contains(s, "--") || strings.Contains(s, "+-") || strings.Contains(s, "-+") {
+		s = strings.ReplaceAll(s, "++", "+")
+		s = strings.ReplaceAll(s, "--", "+")
+		s = strings.ReplaceAll(s, "+-", "-")
+		s = strings.ReplaceAll(s, "-+", "-")
+	}
+	return s
+}
+
+func isValidVariable(s string) bool {
+	regex := regexp.MustCompile(`^[a-zA-Z]+$`)
+	return regex.MatchString(s)
 }
