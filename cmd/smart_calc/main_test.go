@@ -93,6 +93,39 @@ Invalid assignment
 Invalid assignment
 `,
 		},
+		{
+			`2^2
+2*2^3`,
+			`4
+16
+`,
+		},
+		{
+			`8 * 3 + 12 * (4 - 2)
+2 - 2 + 3
+4 * (2 + 3
+-10
+a=4
+b=5
+c=6
+a*2+b*3+c*(2+3)
+1 +++ 2 * 3 -- 4
+3 *** 5
+4+3)
+/command
+/exit`,
+			`48
+3
+Invalid expression
+-10
+53
+11
+Invalid expression
+Invalid expression
+Unknown command
+Bye!
+`,
+		},
 	}
 
 	for i, tt := range tests {
