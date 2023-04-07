@@ -17,11 +17,17 @@ func TestPlay(t *testing.T) {
 		want string
 	}{
 		{
-			``,
-			`Card:
-purchase
-Definition:
-buy
+			`print()
+outputs text
+outputs text`,
+			`Your answer is right!
+`,
+		},
+		{
+			`Jetbrains
+A place for people who love to code
+A place for people who hate to code`,
+			`Your answer is wrong...
 `,
 		},
 	}
