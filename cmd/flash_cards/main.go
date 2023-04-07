@@ -16,8 +16,18 @@ func main() {
 func FlashCards(scanner *bufio.Scanner, writer io.Writer) {
 	scanner.Split(bufio.ScanLines)
 
-	_, _ = fmt.Fprintln(writer, "Card:")
-	_, _ = fmt.Fprintln(writer, "purchase")
-	_, _ = fmt.Fprintln(writer, "Definition:")
-	_, _ = fmt.Fprintln(writer, "buy")
+	scanner.Scan()
+	//label := scanner.Text()
+
+	scanner.Scan()
+	question := scanner.Text()
+
+	scanner.Scan()
+	answer := scanner.Text()
+
+	if question == answer {
+		_, _ = fmt.Fprintln(writer, "Your answer is right!")
+	} else {
+		_, _ = fmt.Fprintln(writer, "Your answer is wrong...")
+	}
 }
