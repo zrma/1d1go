@@ -17,17 +17,22 @@ func TestPlay(t *testing.T) {
 		want string
 	}{
 		{
-			`print()
+			`2
+print()
+outputs text
+str()
+converts to a string
 outputs text
 outputs text`,
-			`Your answer is right!
-`,
-		},
-		{
-			`Jetbrains
-A place for people who love to code
-A place for people who hate to code`,
-			`Your answer is wrong...
+			`Input the number of cards:
+The term for card #1:
+The definition for card #1:
+The term for card #2:
+The definition for card #2:
+Print the definition of "print()":
+Correct!
+Print the definition of "str()":
+Wrong. The right answer is "converts to a string".
 `,
 		},
 	}
