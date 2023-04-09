@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strconv"
 )
 
 func main() {
@@ -16,18 +17,40 @@ func main() {
 func FlashCards(scanner *bufio.Scanner, writer io.Writer) {
 	scanner.Split(bufio.ScanLines)
 
-	scanner.Scan()
-	//label := scanner.Text()
+	_, _ = fmt.Fprintln(writer, "Input the number of cards:")
 
 	scanner.Scan()
-	question := scanner.Text()
+	v := scanner.Text()
+	n, _ := strconv.Atoi(v)
 
-	scanner.Scan()
-	answer := scanner.Text()
+	type card struct {
+		label  string
+		answer string
+	}
 
-	if question == answer {
-		_, _ = fmt.Fprintln(writer, "Your answer is right!")
-	} else {
-		_, _ = fmt.Fprintln(writer, "Your answer is wrong...")
+	cards := make([]card, n)
+
+	for i := 1; i <= n; i++ {
+		_, _ = fmt.Fprintf(writer, "The term for card #%d:\n", i)
+		scanner.Scan()
+		label := scanner.Text()
+
+		_, _ = fmt.Fprintf(writer, "The definition for card #%d:\n", i)
+		scanner.Scan()
+		answer := scanner.Text()
+
+		cards[i-1] = card{label, answer}
+	}
+
+	for i := 1; i <= n; i++ {
+		_, _ = fmt.Fprintf(writer, "Print the definition of \"%s\":\n", cards[i-1].label)
+		scanner.Scan()
+		answer := scanner.Text()
+
+		if answer == cards[i-1].answer {
+			_, _ = fmt.Fprintln(writer, "Correct!")
+		} else {
+			_, _ = fmt.Fprintf(writer, "Wrong. The right answer is \"%s\".\n", cards[i-1].answer)
+		}
 	}
 }
