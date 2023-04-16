@@ -17,45 +17,137 @@ func TestPlay(t *testing.T) {
 		want string
 	}{
 		{
-			`2
-print()
-outputs text
-print()
-str()
-outputs text
-converts to a string
-outputs text
-converts to a string`,
-			`Input the number of cards:
-The term for card #1:
-The definition for card #1:
-The term for card #2:
-The term "print()" already exists. Try again:
-The definition for card #2:
-The definition "outputs text" already exists. Try again:
-Print the definition of "print()":
-Correct!
-Print the definition of "str()":
-Correct!
+			`add
+France
+Paris
+add
+France
+Great Britain
+Paris
+London
+remove
+France
+remove
+Wakanda
+exit`,
+			`Input the action (add, remove, import, export, ask, exit):
+The card:
+The definition of the card:
+The pair ("France":"Paris") has been added.
+
+Input the action (add, remove, import, export, ask, exit):
+The card:
+The card "France" already exists. Try again:
+The definition of the card:
+The definition "Paris" already exists. Try again:
+The pair ("Great Britain":"London") has been added.
+
+Input the action (add, remove, import, export, ask, exit):
+Which card?
+The card has been removed.
+
+Input the action (add, remove, import, export, ask, exit):
+Which card?
+Can't remove "Wakanda": there is no such card.
+
+Input the action (add, remove, import, export, ask, exit):
+Bye bye!
 `,
 		},
 		{
-			`2
-uncle
+			`import
+ghost_file.txt
+add
+Japan
+Tokyo
+add
+Russia
+UpdateMeFromFile
+import
+capitals.txt
+ask
+2
+Tokyo
+Moscow
+export
+capitalsNew.txt
+exit`,
+			`Input the action (add, remove, import, export, ask, exit):
+File name:
+File not found.
+
+Input the action (add, remove, import, export, ask, exit):
+The card:
+The definition of the card:
+The pair ("Japan":"Tokyo") has been added.
+
+Input the action (add, remove, import, export, ask, exit):
+The card:
+The definition of the card:
+The pair ("Russia":"UpdateMeFromFile") has been added.
+
+Input the action (add, remove, import, export, ask, exit):
+File name:
+28 cards have been loaded.
+
+Input the action (add, remove, import, export, ask, exit):
+How many times to ask?
+Print the definition of "Japan":
+Correct!
+Print the definition of "Russia":
+Correct!
+
+Input the action (add, remove, import, export, ask, exit):
+File name:
+29 cards have been saved.
+
+Input the action (add, remove, import, export, ask, exit):
+Bye bye!
+`,
+		},
+		{
+			`add
 a brother of one's parent
+uncle
+add
+a part of the body where the foot and the leg meet
 ankle
-a part of the body where the foot and the leg meet
-a part of the body where the foot and the leg meet
-???`,
-			`Input the number of cards:
-The term for card #1:
-The definition for card #1:
-The term for card #2:
-The definition for card #2:
-Print the definition of "uncle":
-Wrong. The right answer is "a brother of one's parent", but your definition is correct for "ankle".
-Print the definition of "ankle":
-Wrong. The right answer is "a part of the body where the foot and the leg meet".
+ask
+6
+ankle
+??
+uncle
+ankle
+??
+uncle
+exit`,
+			`Input the action (add, remove, import, export, ask, exit):
+The card:
+The definition of the card:
+The pair ("a brother of one's parent":"uncle") has been added.
+
+Input the action (add, remove, import, export, ask, exit):
+The card:
+The definition of the card:
+The pair ("a part of the body where the foot and the leg meet":"ankle") has been added.
+
+Input the action (add, remove, import, export, ask, exit):
+How many times to ask?
+Print the definition of "a brother of one's parent":
+Wrong. The right answer is "uncle", but your definition is correct for "a part of the body where the foot and the leg meet".
+Print the definition of "a part of the body where the foot and the leg meet":
+Wrong. The right answer is "ankle".
+Print the definition of "a brother of one's parent":
+Correct!
+Print the definition of "a part of the body where the foot and the leg meet":
+Correct!
+Print the definition of "a brother of one's parent":
+Wrong. The right answer is "uncle".
+Print the definition of "a part of the body where the foot and the leg meet":
+Wrong. The right answer is "ankle", but your definition is correct for "a brother of one's parent".
+
+Input the action (add, remove, import, export, ask, exit):
+Bye bye!
 `,
 		},
 	}
