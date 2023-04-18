@@ -204,7 +204,7 @@ Bye bye!
 			buf := new(strings.Builder)
 			writer := bufio.NewWriter(buf)
 
-			FlashCards(scanner, writer)
+			FlashCards(scanner, writer, "", "")
 
 			err := writer.Flush()
 			assert.NoError(t, err)

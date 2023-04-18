@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io"
 	"os"
@@ -11,9 +12,14 @@ import (
 )
 
 func main() {
+	importFile := flag.String("import_from", "", "import file")
+	exportFile := flag.String("export_to", "", "export file")
+
+	flag.Parse()
+
 	scanner := bufio.NewScanner(os.Stdin)
 
-	FlashCards(scanner, os.Stdout)
+	FlashCards(scanner, os.Stdout, *importFile, *exportFile)
 }
 
 func newReadWriter(scanner *bufio.Scanner, writer io.Writer) *readWriter {
@@ -47,10 +53,14 @@ func (l *readWriter) Text() string {
 	return s
 }
 
-func FlashCards(scanner *bufio.Scanner, writer io.Writer) {
+func FlashCards(scanner *bufio.Scanner, writer io.Writer, importFile string, exportFile string) {
 	cards := newCards()
 
 	rw := newReadWriter(scanner, writer)
+
+	if importFile != "" {
+		importCardsFromFile(importFile, rw, cards)
+	}
 
 	for {
 		_, _ = fmt.Fprintln(rw, "Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):")
@@ -73,6 +83,10 @@ func FlashCards(scanner *bufio.Scanner, writer io.Writer) {
 			askCards(rw, cards)
 		case "exit":
 			_, _ = fmt.Fprintln(rw, "Bye bye!")
+
+			if exportFile != "" {
+				exportCardsToFile(exportFile, rw, cards)
+			}
 			return
 		case "log":
 			logging(rw)
@@ -91,6 +105,10 @@ func importCards(rw *readWriter, cards *cardEntries) {
 	rw.Scan()
 	fileName := rw.Text()
 
+	importCardsFromFile(fileName, rw, cards)
+}
+
+func importCardsFromFile(fileName string, rw *readWriter, cards *cardEntries) {
 	file, err := os.Open(fileName)
 	if err != nil {
 		_, _ = fmt.Fprintf(rw, "File not found.\n")
@@ -115,6 +133,10 @@ func exportCards(rw *readWriter, cards *cardEntries) {
 	rw.Scan()
 	fileName := rw.Text()
 
+	exportCardsToFile(fileName, rw, cards)
+}
+
+func exportCardsToFile(fileName string, rw *readWriter, cards *cardEntries) {
 	file, err := os.Create(fileName)
 	if err != nil {
 		_, _ = fmt.Fprintf(rw, "%+v\n", err)
