@@ -16,7 +16,7 @@ import (
 	"go.uber.org/zap"
 )
 
-var AppFs = afero.NewOsFs()
+var fileSystem = afero.NewOsFs()
 
 func main() {
 	if err := createFolder(); err != nil {
@@ -46,7 +46,7 @@ func main() {
 const fullPath = "D:/Downloads/Nipponsei"
 
 func createFolder() error {
-	if err := AppFs.Mkdir(fullPath, 0755); !os.IsExist(err) {
+	if err := fileSystem.Mkdir(fullPath, 0755); !os.IsExist(err) {
 		return err
 	}
 	return nil
@@ -99,7 +99,7 @@ func getPage(endpoint string, logger *zap.Logger) error {
 }
 
 func downloadFile(filepath, url string) (err error) {
-	out, err := os.Create(filepath)
+	out, err := fileSystem.Create(filepath)
 	if err != nil {
 		return err
 	}
