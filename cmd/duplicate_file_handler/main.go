@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"crypto/md5"
 	"fmt"
 	"io"
 	"os"
@@ -30,10 +31,19 @@ var fileSystem = afero.NewMemMapFs()
 
 var (
 	filepathWalk = filepath.Walk
+	osOpen       = osOpenFunc
 )
 
-func walkFunc(path string, f filepath.WalkFunc) error {
+func mockWalkFunc(path string, f filepath.WalkFunc) error {
 	return afero.Walk(fileSystem, path, f)
+}
+
+func osOpenFunc(path string) (afero.File, error) {
+	return os.Open(path)
+}
+
+func mockOpenFunc(path string) (afero.File, error) {
+	return fileSystem.Open(path)
 }
 
 func duplicateFileHandler(targetPath string, scanner *bufio.Scanner, writer io.Writer) {
@@ -62,7 +72,11 @@ func duplicateFileHandler(targetPath string, scanner *bufio.Scanner, writer io.W
 		_, _ = fmt.Fprintln(writer)
 	}
 
-	files := make(map[int64][]string)
+	type entry struct {
+		path string
+		hash string
+	}
+	files := make(map[int64][]entry)
 
 	err := filepathWalk(targetPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
@@ -75,44 +89,110 @@ func duplicateFileHandler(targetPath string, scanner *bufio.Scanner, writer io.W
 			return nil
 		}
 
-		files[info.Size()] = append(files[info.Size()], filepath.ToSlash(path))
+		hash := md5.New()
+		f, err := osOpen(path)
+		if err != nil {
+			return err
+		}
+		defer func() { _ = f.Close() }()
+		if _, err := io.Copy(hash, f); err != nil {
+			return err
+		}
+
+		files[info.Size()] = append(files[info.Size()], entry{
+			path: filepath.ToSlash(path),
+			hash: fmt.Sprintf("%x", hash.Sum(nil)),
+		})
 		return nil
 	})
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
-	var res []struct {
+	var sameSizes []struct {
 		size  int64
-		files []string
+		files []entry
 	}
 	for size, files := range files {
 		if len(files) < 2 {
 			continue
 		}
 
-		sort.Strings(files)
+		sort.Slice(files, func(i, j int) bool {
+			return files[i].path < files[j].path
+		})
 
-		res = append(res, struct {
+		sameSizes = append(sameSizes, struct {
 			size  int64
-			files []string
+			files []entry
 		}{size, files})
 	}
 
 	if sortingOption == "1" {
-		sort.Slice(res, func(i, j int) bool {
-			return res[i].size > res[j].size
+		sort.Slice(sameSizes, func(i, j int) bool {
+			return sameSizes[i].size > sameSizes[j].size
 		})
 	} else {
-		sort.Slice(res, func(i, j int) bool {
-			return res[i].size < res[j].size
+		sort.Slice(sameSizes, func(i, j int) bool {
+			return sameSizes[i].size < sameSizes[j].size
 		})
 	}
 
-	for _, r := range res {
+	for _, r := range sameSizes {
 		_, _ = fmt.Fprintf(writer, "%d bytes\n", r.size)
 		for _, file := range r.files {
-			_, _ = fmt.Fprintf(writer, "%s\n", file)
+			_, _ = fmt.Fprintf(writer, "%s\n", file.path)
+		}
+		_, _ = fmt.Fprintln(writer)
+	}
+
+	for {
+		_, _ = fmt.Fprintln(writer, "Check for duplicates?")
+
+		scanner.Scan()
+		sortingOption = scanner.Text()
+		if sortingOption == "yes" {
+			break
+		}
+		if sortingOption == "no" {
+			return
+		}
+		_, _ = fmt.Fprintln(writer, "Wrong option")
+		_, _ = fmt.Fprintln(writer)
+	}
+
+	totIdx := 0
+	for _, r := range sameSizes {
+		hashMap := make(map[string][]entry)
+		for _, file := range r.files {
+			hashMap[file.hash] = append(hashMap[file.hash], file)
+		}
+
+		var sameHashKeys []string
+		for k, v := range hashMap {
+			if len(v) > 1 {
+				sameHashKeys = append(sameHashKeys, k)
+			}
+		}
+
+		if len(sameHashKeys) < 1 {
+			continue
+		}
+
+		sort.Strings(sameHashKeys)
+
+		_, _ = fmt.Fprintf(writer, "%d bytes\n", r.size)
+		for _, k := range sameHashKeys {
+			files := hashMap[k]
+			sort.Slice(files, func(i, j int) bool {
+				return files[i].path < files[j].path
+			})
+			_, _ = fmt.Fprintf(writer, "Hash: %s\n", k)
+			for _, file := range files {
+				totIdx++
+				_, _ = fmt.Fprintf(writer, "%d. %s\n", totIdx, file.path)
+			}
 		}
 		_, _ = fmt.Fprintln(writer)
 	}
