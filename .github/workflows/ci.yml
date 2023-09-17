@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        go: [ '1.20' ]
+        go: [ '1.21' ]
     name: action test
     steps:
       - uses: actions/checkout@v3
@@ -33,7 +33,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-${{ matrix.go }}-
       - name: Setup go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v4
         with:
           go-version: ${{ matrix.go }}
       - run: go fmt ./...
@@ -42,7 +42,7 @@ jobs:
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
         with:
-          version: v1.51.1
+          version: v1.54
       - name: Convert coverage to lcov
         uses: jandelgado/gcov2lcov-action@v1.0.9
       - uses: actions/upload-artifact@v3
@@ -54,7 +54,7 @@ jobs:
       - run: go test -json ./... > test.json
       - name: Annotate tests
         if: always()
-        uses: guyarb/golang-test-annotations@v0.6.0
+        uses: guyarb/golang-test-annotations@v0.7.0
         with:
           test-results: test.json
 
@@ -74,16 +74,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - uses: codecov/codecov-action@v3
 
-      #      - name: coveralls
-      #        uses: coverallsapp/github-action@master
-      #        with:
-      #          github-token: ${{ secrets.GITHUB_TOKEN }}
-      #          path-to-lcov: coverage.lcov
-
       - uses: shogo82148/actions-goveralls@v1
         with:
           path-to-profile: coverage.out
-      - name: 'Qodana Scan'
-        uses: JetBrains/qodana-action@main
-        env:
-          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
