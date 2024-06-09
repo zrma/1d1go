@@ -21,31 +21,31 @@ jobs:
         go: [ '1.22' ]
     name: action test
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install dependencies
         run: |
           sudo apt update
           sudo apt install libgl1-mesa-dev xorg-dev gcc
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-${{ matrix.go }}-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-${{ matrix.go }}-
       - name: Setup go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
       - run: go fmt ./...
       - run: go vet ./...
       - run: go test -race -coverprofile=coverage.out -covermode=atomic $(go list ./... | grep -v /cmd/)
       - name: golangci-lint
-        uses: golangci/golangci-lint-action@v3
+        uses: golangci/golangci-lint-action@v6
         with:
           version: v1.54
       - name: Convert coverage to lcov
         uses: jandelgado/gcov2lcov-action@v1.0.9
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: coverage
           path: |
@@ -54,7 +54,7 @@ jobs:
       - run: go test -json ./... > test.json
       - name: Annotate tests
         if: always()
-        uses: guyarb/golang-test-annotations@v0.7.0
+        uses: guyarb/golang-test-annotations@v0.8.0
         with:
           test-results: test.json
 
@@ -63,8 +63,8 @@ jobs:
     runs-on: ubuntu-latest
     name: action report
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
         with:
           name: coverage
       - name: SonarCloud Scan
@@ -72,8 +72,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v4
 
-      - uses: shogo82148/actions-goveralls@v1
-        with:
-          path-to-profile: coverage.out
+#      - uses: shogo82148/actions-goveralls@v1
+#        with:
+#          path-to-profile: coverage.out
