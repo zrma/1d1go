@@ -1,4 +1,4 @@
-FROM golang:1.22-bullseye
+FROM golang:1.23-bookworm
 
 RUN groupadd nonroot \
     && useradd -ms /bin/bash nonroot -g nonroot
