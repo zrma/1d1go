@@ -118,7 +118,7 @@ type mockAcceptor struct {
 }
 
 func (m mockAcceptor) AcceptTCP() (*net.TCPConn, error) {
-	return nil, fmt.Errorf(m.wantErrMsg)
+	return nil, fmt.Errorf("%s", m.wantErrMsg)
 }
 
 func TestHandleConn(t *testing.T) {
@@ -145,7 +145,7 @@ func TestHandleConnError(t *testing.T) {
 			b := newBufferImpl(t, msg, want)
 			b.setReadBuffer = func(n int) error {
 				assert.Equal(t, maxBufferSize, n)
-				return fmt.Errorf(wantErrMsg)
+				return fmt.Errorf("%s", wantErrMsg)
 			}
 			handleConn(b)
 		})
@@ -157,7 +157,7 @@ func TestHandleConnError(t *testing.T) {
 			b := newBufferImpl(t, msg, want)
 			b.setWriteBuffer = func(n int) error {
 				assert.Equal(t, len(want), n)
-				return fmt.Errorf(wantErrMsg)
+				return fmt.Errorf("%s", wantErrMsg)
 			}
 			handleConn(b)
 		})
@@ -170,7 +170,7 @@ func TestHandleConnError(t *testing.T) {
 			b.read = func(p []byte) (n int, err error) {
 				assert.NotNil(t, p)
 				assert.Len(t, p, maxBufferSize)
-				return 0, fmt.Errorf(wantErrMsg)
+				return 0, fmt.Errorf("%s", wantErrMsg)
 			}
 			handleConn(b)
 		})
@@ -186,7 +186,7 @@ func TestHandleConnError(t *testing.T) {
 				for i, c := range want {
 					assert.EqualValues(t, c, p[i])
 				}
-				return len(msg), fmt.Errorf(wantErrMsg)
+				return len(msg), fmt.Errorf("%s", wantErrMsg)
 			}
 			handleConn(b)
 		})
@@ -257,7 +257,7 @@ func (b bufferImpl) Write(p []byte) (n int, err error) {
 	panic("implement me")
 }
 
-func (_ bufferImpl) Close() error { return nil }
+func (b bufferImpl) Close() error { return nil }
 
 func tcpClient(addr string, messages []string) ([]string, error) {
 	if !strings.Contains(addr, ":") {
