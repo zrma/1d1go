@@ -1,8 +1,8 @@
 module 1d1go
 
-go 1.23
+go 1.24
 
-toolchain go1.23.4
+toolchain go1.24.1
 
 require (
 	github.com/PuerkitoBio/goquery v1.10.1

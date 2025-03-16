@@ -193,16 +193,6 @@ func TestBricksGamePerformance(t *testing.T) {
 	}
 }
 
-// goos: windows
-// goarch: amd64
-// pkg: 1d1go/hacker_rank/algorithms/dp
-// cpu: AMD Ryzen 7 3700X 8-Core Processor
-// BenchmarkBrickGame
-// BenchmarkBrickGame/Loop
-// BenchmarkBrickGame/Loop-16                  4346            265899 ns/op
-// BenchmarkBrickGame/Recur
-// BenchmarkBrickGame/Recur-16                   38          27910642 ns/op
-// PASS
 func BenchmarkBrickGame(b *testing.B) {
 	b.Run("Loop", func(b *testing.B) {
 		b.RunParallel(func(pb *testing.PB) {
