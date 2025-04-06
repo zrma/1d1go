@@ -3,7 +3,6 @@ reports/
 coverage.out
 **/*.wasm
 
-
 # Created by https://www.gitignore.io/api/go,linux,macos,windows,sonarqube,jetbrains+all
 # Edit at https://www.gitignore.io/?templates=go,linux,macos,windows,sonarqube,jetbrains+all
 
@@ -196,3 +195,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/go,linux,macos,windows,sonarqube,jetbrains+all
+
+.history
