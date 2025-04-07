@@ -27,10 +27,7 @@ func Solve1450(reader io.Reader, writer io.Writer) {
 	res := 0
 	lo, hi := 0, len(result1)-1
 
-	for {
-		if lo >= len(result0) || hi < 0 {
-			break
-		}
+	for lo < len(result0) && hi >= 0 {
 
 		if result0[lo]+result1[hi] > c {
 			hi--

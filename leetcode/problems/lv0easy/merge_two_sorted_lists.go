@@ -7,10 +7,7 @@ import (
 func mergeTwoLists(l1, l2 *common.ListNode) *common.ListNode {
 	res := &common.ListNode{}
 	cur := res
-	for {
-		if l1 == nil && l2 == nil {
-			break
-		}
+	for l1 != nil || l2 != nil {
 
 		if l1 == nil {
 			cur.Next = l2

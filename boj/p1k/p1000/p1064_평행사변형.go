@@ -37,7 +37,7 @@ func Solve1064(reader io.Reader, writer io.Writer) {
 }
 
 func distance(x0, y0, x1, y1 float64) float64 {
-	return math.Sqrt(math.Pow(x0-x1, 2) + math.Pow(y0-y1, 2))
+	return math.Sqrt((x0-x1)*(x0-x1) + (y0-y1)*(y0-y1))
 }
 
 func slope(x0, y0, x1, y1 float64) float64 {

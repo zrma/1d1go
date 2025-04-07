@@ -11,10 +11,11 @@ func Solve5586(reader io.Reader, writer io.Writer) {
 
 	joi := 0
 	ioi := 0
-	for i := 0; i < len(s)-2; i++ {
-		if s[i:i+3] == "JOI" {
+	for i := range len(s) - 2 {
+		switch s[i : i+3] {
+		case "JOI":
 			joi++
-		} else if s[i:i+3] == "IOI" {
+		case "IOI":
 			ioi++
 		}
 	}
