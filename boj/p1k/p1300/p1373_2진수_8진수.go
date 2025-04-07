@@ -10,9 +10,10 @@ func Solve1373(reader io.Reader, writer io.Writer) {
 	_, _ = fmt.Fscanln(reader, &s)
 
 	n := len(s)
-	if n%3 == 1 {
+	switch n % 3 {
+	case 1:
 		s = "00" + s
-	} else if n%3 == 2 {
+	case 2:
 		s = "0" + s
 	}
 

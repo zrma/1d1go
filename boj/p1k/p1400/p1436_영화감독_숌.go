@@ -11,10 +11,8 @@ func Solve1436(reader io.Reader, writer io.Writer) {
 
 	res := 1
 	num := 666
-	for {
-		if res == n {
-			break
-		}
+	for res != n {
+
 		num++
 		if contains666(num) {
 			res++

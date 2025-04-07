@@ -34,5 +34,5 @@ func Solve7869(reader io.Reader, writer io.Writer) {
 }
 
 func distance(x1, y1, x2, y2 float64) float64 {
-	return math.Sqrt(math.Pow(x1-x2, 2) + math.Pow(y1-y2, 2))
+	return math.Sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2))
 }

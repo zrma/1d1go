@@ -35,10 +35,11 @@ func myAtoI(str string) int {
 
 func parseSign(str string) (bool, string) {
 	var negative bool
-	if str[0] == '-' {
+	switch str[0] {
+	case '-':
 		negative = true
 		str = str[1:]
-	} else if str[0] == '+' {
+	case '+':
 		str = str[1:]
 	}
 	return negative, str

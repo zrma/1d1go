@@ -53,10 +53,11 @@ func bfs(r int, graph [][]int, visited []int) bool {
 		queueIdx++
 
 		for _, v := range graph[here] {
-			if visited[v] == 0 {
+			switch visited[v] {
+			case 0:
 				visited[v] = -visited[here]
 				queue = append(queue, v)
-			} else if visited[v] == visited[here] {
+			case visited[here]:
 				return false
 			}
 		}

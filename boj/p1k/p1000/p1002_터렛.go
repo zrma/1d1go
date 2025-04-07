@@ -37,7 +37,7 @@ func countJunctionOfCircles(x0, y0, r0, x1, y1, r1 int) int {
 	fR0 := float64(r0)
 	fR1 := float64(r1)
 
-	distance := math.Sqrt(math.Pow(fX1-fX0, 2) + math.Pow(fY1-fY0, 2))
+	distance := math.Sqrt((fX1-fX0)*(fX1-fX0) + (fY1-fY0)*(fY1-fY0))
 	// 포함
 	if distance < math.Abs(fR0-fR1) {
 		return 0

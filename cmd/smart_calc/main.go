@@ -33,7 +33,7 @@ func SmartCalc(scanner *bufio.Scanner, writer io.Writer) {
 				_, _ = fmt.Fprintln(writer, "Bye!")
 				return
 			default:
-				_, _ = fmt.Fprintln(writer, "Unknown command")
+				_, _ = fmt.Fprintln(writer, "unknown command")
 			}
 		} else {
 			n, ok, err := process(s, variables, writer)
@@ -75,13 +75,12 @@ func process(input string, variables map[string]int, writer io.Writer) (int, boo
 	return res, true, nil
 }
 
-//goland:noinspection GoErrorStringFormat
 var (
-	errInvalidAssignment = errors.New("Invalid assignment")
-	errInvalidIdentifier = errors.New("Invalid identifier")
-	errInvalidExpression = errors.New("Invalid expression")
-	errUnknownVariable   = errors.New("Unknown variable")
-	errUnknownOperator   = errors.New("Unknown operator")
+	errInvalidAssignment = errors.New("invalid assignment")
+	errInvalidIdentifier = errors.New("invalid identifier")
+	errInvalidExpression = errors.New("invalid expression")
+	errUnknownVariable   = errors.New("unknown variable")
+	errUnknownOperator   = errors.New("unknown operator")
 )
 
 func processAssignment(input string, variables map[string]int, writer io.Writer) error {
@@ -255,10 +254,8 @@ func infixToPostfix(input string, variables map[string]int) ([]string, error) {
 				continue
 			}
 
-			for {
-				if len(stack) == 0 {
-					break
-				}
+			for len(stack) != 0 {
+
 				if _, ok := operatorsPriority[stack[len(stack)-1]]; !ok {
 					break
 				}

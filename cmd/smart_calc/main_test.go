@@ -29,14 +29,14 @@ abc
 /go
 /exit`,
 			`11
-Unknown variable
-Invalid expression
+unknown variable
+invalid expression
 15
-Invalid expression
+invalid expression
 -22
-Invalid expression
+invalid expression
 5
-Unknown command
+unknown command
 Bye!
 `,
 		},
@@ -70,16 +70,16 @@ Z`,
 		{
 			`a2a
 n22`,
-			`Invalid identifier
-Invalid identifier
+			`invalid identifier
+invalid identifier
 `,
 		},
 		{
 			`a = 8
 b = c
 e`,
-			`Unknown variable
-Unknown variable
+			`unknown variable
+unknown variable
 `,
 		},
 		{
@@ -87,10 +87,10 @@ Unknown variable
 n1 = a2a
 n = a2a
 a = 7 = 8`,
-			`Invalid identifier
-Invalid identifier
-Invalid assignment
-Invalid assignment
+			`invalid identifier
+invalid identifier
+invalid assignment
+invalid assignment
 `,
 		},
 		{
@@ -116,13 +116,13 @@ a*2+b*3+c*(2+3)
 /exit`,
 			`48
 3
-Invalid expression
+invalid expression
 -10
 53
 11
-Invalid expression
-Invalid expression
-Unknown command
+invalid expression
+invalid expression
+unknown command
 Bye!
 `,
 		},

@@ -52,5 +52,5 @@ type edge struct {
 }
 
 func dist(pos0 [2]float64, pos1 [2]float64) float64 {
-	return math.Sqrt(math.Pow(pos0[0]-pos1[0], 2) + math.Pow(pos0[1]-pos1[1], 2))
+	return math.Sqrt((pos0[0]-pos1[0])*(pos0[0]-pos1[0]) + (pos0[1]-pos1[1])*(pos0[1]-pos1[1]))
 }

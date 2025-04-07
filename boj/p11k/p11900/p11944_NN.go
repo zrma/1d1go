@@ -14,7 +14,7 @@ func Solve11944(reader io.Reader, writer io.Writer) {
 	buf.Grow(m)
 
 	for i := 0; i < n; i++ {
-		buf.WriteString(fmt.Sprintf("%d", n))
+		fmt.Fprintf(buf, "%d", n)
 		if buf.Len() >= m {
 			break
 		}

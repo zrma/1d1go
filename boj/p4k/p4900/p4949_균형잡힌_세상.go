@@ -25,15 +25,16 @@ func Solve4949(reader *bufio.Reader, writer io.Writer) {
 func checkBalancedParenthesis(s string) bool {
 	stack := make([]rune, 0, len(s))
 	for _, c := range s {
-		if c == '(' || c == '[' {
+		switch c {
+		case '(', '[':
 			stack = append(stack, c)
-		} else if c == ')' {
+		case ')':
 			var ok bool
 			stack, ok = pop(stack, '(')
 			if !ok {
 				return false
 			}
-		} else if c == ']' {
+		case ']':
 			var ok bool
 			stack, ok = pop(stack, '[')
 			if !ok {
