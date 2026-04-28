@@ -21,19 +21,19 @@ jobs:
         go: [ '1.26' ]
     name: action test
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.2
       - name: Install dependencies
         run: |
           sudo apt update
           sudo apt install -y libgl1-mesa-dev xorg-dev gcc
-      - uses: actions/cache@v5
+      - uses: actions/cache@v5.0.5
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-${{ matrix.go }}-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-${{ matrix.go }}-
       - name: Setup go
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v6.4.0
         with:
           go-version: ${{ matrix.go }}
       - run: go fmt ./...
@@ -45,7 +45,7 @@ jobs:
           version: v2.11.4
       - name: Convert coverage to lcov
         uses: jandelgado/gcov2lcov-action@v1.2.0
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@v7.0.1
         with:
           name: coverage
           path: |
@@ -63,8 +63,8 @@ jobs:
     runs-on: ubuntu-latest
     name: action report
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/download-artifact@v8
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/download-artifact@v8.0.1
         with:
           name: coverage
       - uses: codecov/codecov-action@v6
