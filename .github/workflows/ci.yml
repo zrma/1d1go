@@ -18,34 +18,34 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        go: [ '1.24' ]
+        go: [ '1.26' ]
     name: action test
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install dependencies
         run: |
           sudo apt update
           sudo apt install -y libgl1-mesa-dev xorg-dev gcc
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-${{ matrix.go }}-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-${{ matrix.go }}-
       - name: Setup go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
           go-version: ${{ matrix.go }}
       - run: go fmt ./...
       - run: go vet ./...
       - run: go test -race -coverprofile=coverage.out -covermode=atomic $(go list ./... | grep -v /cmd/)
       - name: golangci-lint
-        uses: golangci/golangci-lint-action@v7
+        uses: golangci/golangci-lint-action@v9
         with:
-          version: v2.0
+          version: v2.11.4
       - name: Convert coverage to lcov
-        uses: jandelgado/gcov2lcov-action@v1.0.9
-      - uses: actions/upload-artifact@v4
+        uses: jandelgado/gcov2lcov-action@v1.2.0
+      - uses: actions/upload-artifact@v7
         with:
           name: coverage
           path: |
@@ -54,7 +54,7 @@ jobs:
       - run: go test -json ./... > test.json
       - name: Annotate tests
         if: always()
-        uses: guyarb/golang-test-annotations@v0.8.0
+        uses: guyarb/golang-test-annotations@v0.9.0
         with:
           test-results: test.json
 
@@ -63,16 +63,16 @@ jobs:
     runs-on: ubuntu-latest
     name: action report
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@v6
+      - uses: actions/download-artifact@v8
         with:
           name: coverage
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@v7.2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      - uses: codecov/codecov-action@v4
+      - uses: codecov/codecov-action@v6
 
 #      - uses: shogo82148/actions-goveralls@v1
 #        with:
