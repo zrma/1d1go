@@ -67,13 +67,6 @@ jobs:
       - uses: actions/download-artifact@v8
         with:
           name: coverage
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarqube-scan-action@v7.2.0
-        with:
-          scannerVersion: 7.0.2.4839
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - uses: codecov/codecov-action@v6
 
 #      - uses: shogo82148/actions-goveralls@v1
