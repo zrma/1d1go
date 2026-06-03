@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -17,6 +18,7 @@ import (
 )
 
 var fileSystem = afero.NewOsFs()
+var httpClient = &http.Client{Timeout: 30 * time.Second}
 
 func main() {
 	if err := createFolder(); err != nil {
@@ -53,7 +55,7 @@ func createFolder() error {
 }
 
 func getPage(endpoint string, logger *zap.Logger) error {
-	res, err := http.Get(endpoint)
+	res, err := httpClient.Get(endpoint)
 	if err != nil {
 		return err
 	}
@@ -69,16 +71,13 @@ func getPage(endpoint string, logger *zap.Logger) error {
 
 	document.Find(".download ").Each(func(i int, s *goquery.Selection) {
 		if attr, ok := s.Attr("href"); ok {
-			//goland:noinspection HttpUrlsUsage
-			const prefix = "http://tracker.minglong.org/torrents/"
-			name, err := url.QueryUnescape(strings.TrimPrefix(attr, prefix))
+			name, err := downloadPathFromURL(attr)
 			if err != nil {
-				logger.Error("unescape",
+				logger.Error("download path",
 					zap.Error(err),
 				)
+				return
 			}
-			name = strings.ReplaceAll(name, "?", "-")
-			name = fullPath + "/" + name
 
 			n, err := rand.Int(rand.Reader, big.NewInt(40))
 			if err != nil {
@@ -98,8 +97,41 @@ func getPage(endpoint string, logger *zap.Logger) error {
 	return nil
 }
 
-func downloadFile(filepath, url string) (err error) {
-	out, err := fileSystem.Create(filepath)
+//goland:noinspection HttpUrlsUsage
+const downloadURLPrefix = "http://tracker.minglong.org/torrents/"
+
+func downloadPathFromURL(downloadURL string) (string, error) {
+	if !strings.HasPrefix(downloadURL, downloadURLPrefix) {
+		return "", fmt.Errorf("unexpected download URL: %s", downloadURL)
+	}
+
+	name, err := url.QueryUnescape(strings.TrimPrefix(downloadURL, downloadURLPrefix))
+	if err != nil {
+		return "", err
+	}
+
+	return safeDownloadPath(name)
+}
+
+func safeDownloadPath(name string) (string, error) {
+	name = strings.ReplaceAll(name, "?", "-")
+	if name == "" || name == "." || name == ".." {
+		return "", fmt.Errorf("unsafe download filename: %q", name)
+	}
+	if filepath.IsAbs(name) || strings.ContainsAny(name, `/\:`) {
+		return "", fmt.Errorf("unsafe download filename: %q", name)
+	}
+
+	cleanName := filepath.Clean(name)
+	if cleanName != name || strings.HasPrefix(cleanName, ".."+string(filepath.Separator)) {
+		return "", fmt.Errorf("unsafe download filename: %q", name)
+	}
+
+	return filepath.Join(fullPath, cleanName), nil
+}
+
+func downloadFile(filePath, url string) (err error) {
+	out, err := fileSystem.Create(filePath)
 	if err != nil {
 		return err
 	}
@@ -107,7 +139,7 @@ func downloadFile(filepath, url string) (err error) {
 		_ = out.Close()
 	}()
 
-	resp, err := http.Get(url)
+	resp, err := httpClient.Get(url)
 	if err != nil {
 		return err
 	}
