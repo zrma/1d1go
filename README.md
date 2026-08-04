@@ -2,8 +2,8 @@
 
 [![CI](https://github.com/zrma/1d1go/workflows/CI/badge.svg)](https://github.com/zrma/1d1go/actions)
 [![Go Report Card](https://goreportcard.com/badge/github.com/zrma/1d1go)](https://goreportcard.com/report/github.com/zrma/1d1go)
-[![Coverage Status](https://coveralls.io/repos/github/zrma/1d1go/badge.svg?branch=master)](https://coveralls.io/github/zrma/1d1go?branch=master)
-[![Codecov Status](https://codecov.io/gh/zrma/1d1go/branch/master/graphs/badge.svg)](https://codecov.io/gh/zrma/1d1go)
+[![Coverage Status](https://coveralls.io/repos/github/zrma/1d1go/badge.svg?branch=main)](https://coveralls.io/github/zrma/1d1go?branch=main)
+[![Codecov Status](https://codecov.io/gh/zrma/1d1go/branch/main/graphs/badge.svg)](https://codecov.io/gh/zrma/1d1go)
 
 [![DeepSource](https://deepsource.io/gh/zrma/1d1go.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/zrma/1d1go/?ref=repository-badge)
 [![DeepSource](https://deepsource.io/gh/zrma/1d1go.svg/?label=resolved+issues&show_trend=true)](https://deepsource.io/gh/zrma/1d1go/?ref=repository-badge)

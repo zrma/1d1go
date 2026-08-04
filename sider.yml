@@ -91,6 +91,6 @@ linter:
 # Exclude specific branches. Example:
 # branches:
 #   exclude:
-#     - master
+#     - main
 #     - development
 #     - /^release-.*$/
